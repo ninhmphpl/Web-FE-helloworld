@@ -28,6 +28,9 @@
                 </tr>
               </tbody>
             </table>
+            <div *ngIf="pageService.page.content.length == 0">
+              Hiện tại không có sản phẩm nào
+            </div>
       </div>
   </div>
   <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
