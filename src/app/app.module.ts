@@ -26,7 +26,8 @@ import { ProductListComponent } from './product-list/product-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
