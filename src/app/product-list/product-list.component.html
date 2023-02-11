@@ -1,1 +1,35 @@
-<p>product-list works!</p>
+<div class="container-xxl px-0 bg-light">
+  <app-header class=""></app-header>
+  <div class="row mt-4">
+      <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
+      <div class="col-9 p-5">
+          <table class="table" *ngIf="pageService.page">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Ảnh</th>
+                  <th scope="col">Tên</th>
+                  <th scope="col">Giá</th>
+                  <th scope="col">Thể Loại</th>
+                  <th scope="col">Đã Bán</th>
+                  <th scope="col" colspan="2">Hành Động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of pageService.page.content">
+                  <th class="align-middle" scope="row row-cols-auto">{{p.id}}</th>
+                  <td class="card col-5 p-0"><img src="{{p.avatar}}" class="card-img" alt=""></td>
+                  <td class="align-middle col">{{p.name}}</td>
+                  <td class="align-middle col">{{p.price}}</td>
+                  <td class="align-middle col">{{p.category.name}}</td>
+                  <td class="align-middle col">{{p.sold}}</td>
+                  <td class="align-middle col"><button class="btn btn-warning">Sửa</button></td>
+                  <td class="align-middle col"><button class="btn btn-danger">Xóa</button></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>
+
