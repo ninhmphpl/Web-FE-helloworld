@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CategoryComponent } from './category/category.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FilterComponent } from './filter/filter.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FilterComponent } from './filter/filter.component';
     FooterComponent,
     CategoryComponent,
     CarouselComponent,
-    FilterComponent
+    FilterComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
