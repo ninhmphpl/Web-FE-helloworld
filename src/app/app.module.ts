@@ -11,6 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CategoryComponent } from './category/category.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FilterComponent } from './filter/filter.component';
+import { AdminDisplayEmployeeComponent } from './admin-display-employee/admin-display-employee.component';
+import { LocalComponent } from './local/local.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FilterComponent } from './filter/filter.component';
     CategoryComponent,
     CarouselComponent,
     FilterComponent,
-    
+    AdminDisplayEmployeeComponent,
+    LocalComponent,
+    AdminComponent,
+
   ],
   imports: [
     BrowserModule,
