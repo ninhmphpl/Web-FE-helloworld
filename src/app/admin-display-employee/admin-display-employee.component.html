@@ -1,0 +1,42 @@
+<div class="container d-flex justify-content-center">
+  <table class="text-center">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Status</th>
+      <th>PhoneNumber</th>
+    </tr>
+    <tr *ngFor="let a of adminService.page.content ">
+      <td>{{a.id}}</td>
+      <td>{{a.name}}</td>
+      <td>{{a.position.name}}</td>
+      <td>{{a.status.name}}</td>
+      <td>{{a.phoneNumber}}</td>
+      <td><button class="btn btn-outline-primary" [routerLink]="['/detail',a.id]">Chi Tiết</button></td>
+      <td>
+        <button class="btn btn-outline-warning" [routerLink]="['/formcreat',a.id]">Sửa Nội Dung</button>
+      </td>
+      <td>
+<!--        <mat-slide-toggle-->
+<!--          class="example-margin"-->
+<!--          [color]="color"-->
+<!--          [checked]="checked"-->
+<!--          [disabled]="disabled">-->
+<!--          Slide me!-->
+<!--        </mat-slide-toggle>-->
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+{{adminService.pageControl | json}}
+<div class="d-flex justify-content-center">
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="adminService.preePage()">Trang trước</a>
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of adminService.pageControl"
+     (click)="adminService.getListEmployee(i)" [ngClass]="{'active' : i == adminService.page.pageable.pageNumber}">
+    {{i+1}}
+  </a>
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="adminService.nextPage()"> Trang sau</a>
+</div>
