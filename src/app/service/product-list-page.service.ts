@@ -11,6 +11,7 @@ const url = environtment.url
 export class ProductListPageService extends APIService<Page<ProductSimple>> {
   
   public page!: Page<ProductSimple>;
+  public pageControl : number[] = []
 
   getListProduct(pageNumber : number) {
     let httpOptions: HttpOptions = {
@@ -20,14 +21,35 @@ export class ProductListPageService extends APIService<Page<ProductSimple>> {
       }),
       params : new HttpParams().append("page", pageNumber)
     }
-    this.getOne(url + "/employees/product-list", httpOptions).subscribe(data =>
+    this.getOne(url + "/employees/product-list", httpOptions).subscribe(data => {
       this.page = data
-    )
+      this.renderFooter()
+    })
   }
 
-  changePage(pageNumber : number){
-    this.getListProduct(pageNumber)
+  nextPage(){
+    this.getListProduct(this.page.pageable.pageNumber + 1)
   }
+
+  preePage(){
+    this.getListProduct(this.page.pageable.pageNumber - 1)
+  }
+
+  
+  renderFooter(){
+    this.pageControl = []
+    let number;
+    if(( number = this.page.pageable.pageNumber) >= 2){
+      for(let i = number - 2 ; (i <= number + 2) && (i < this.page.totalPages) ; i++ ){
+        this.pageControl.push(i)
+      }
+    }else{
+      for(let i = 0; i < this.page.totalPages ; i++){
+        this.pageControl.push(i)
+      }
+    }
+  }
+
 
 
 

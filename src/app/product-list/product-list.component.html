@@ -6,31 +6,45 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Ảnh</th>
-            <th scope="col">Tên</th>
-            <th scope="col">Giá</th>
-            <th scope="col">Thể Loại</th>
-            <th scope="col">Đã Bán</th>
-            <th scope="col" colspan="2">Hành Động</th>
+            <th scope="col" class="text-center">ID</th>
+            <th scope="col" class="text-center">Ảnh</th>
+            <th scope="col" class="text-center">Tên</th>
+            <th scope="col" class="text-center">Giá</th>
+            <th scope="col" class="text-center">Thể Loại</th>
+            <th scope="col" class="text-center">Đã Bán</th>
+            <th scope="col" class="text-center" colspan="2">Hành Động</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let p of pageService.page.content">
-            <th class="align-middle" scope="row row-cols-auto">{{p.id}}</th>
-            <td class="card col-5 p-0"><img src="{{p.avatar}}" class="card-img" alt=""></td>
-            <td class="align-middle col">{{p.name}}</td>
-            <td class="align-middle col">{{p.price}}</td>
-            <td class="align-middle col">{{p.category.name}}</td>
-            <td class="align-middle col">{{p.sold}}</td>
-            <td class="align-middle col"><button class="btn btn-warning">Sửa</button></td>
-            <td class="align-middle col"><button class="btn btn-danger">Xóa</button></td>
+            <th class="text-center align-middle" scope="">{{p.id}}</th>
+            <td class="text-center align-middle">
+              <a href="/product-detail/{{p.id}}">
+                <img src="{{p.avatar}}" class="" style="height: 100px; width: 100px;;" alt="">
+              </a>
+            </td>
+            <td class="text-center align-middle">{{p.name}}</td>
+            <td class="text-center align-middle">{{p.price}}</td>
+            <td class="text-center align-middle">{{p.category.name}}</td>
+            <td class="text-center align-middle">{{p.sold}}</td>
+            <td class="text-center align-middle"><button class="btn btn-warning">Sửa</button></td>
+            <td class="text-center align-middle"><button class="btn btn-danger">Xóa</button></td>
           </tr>
         </tbody>
       </table>
       <div *ngIf="pageService.page.content.length == 0">
         Hiện tại không có sản phẩm nào
       </div>
+      <!-- control -->
+      <div class="d-flex justify-content-center">
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.preePage()">Trang trước</a>
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of pageService.pageControl"
+          (click)="pageService.getListProduct(i)" [ngClass]="{'active' : i == pageService.page.pageable.pageNumber}">
+          {{i+1}}
+        </a>
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.nextPage()"> Trang sau</a>
+      </div>
+      <!-- control -->
     </div>
   </div>
   <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
