@@ -12,7 +12,7 @@ const url = environtment.url
 })
 export class AdminListPageService extends APIService<Page<Employee>>{
   public page!: Page<Employee>;
-
+  public pageControl : number[] = []
   getListEmployee(pageNumber : number) {
     let httpOptions: HttpOptions = {
       headers : new HttpHeaders({
@@ -22,12 +22,41 @@ export class AdminListPageService extends APIService<Page<Employee>>{
       params : new HttpParams().append("page", pageNumber)
     }
     this.getOne(url + "/admin/employee-list", httpOptions).subscribe(data =>
-      this.page = data
+    { this.page = data
+      this.renderFooter()
+    }
+
     )
   }
-  changePage(pageNumber : number){
+  changePage(pageNumber : 0){
     this.getListEmployee(pageNumber)
   }
+
+  nextPage(){
+    this.getListEmployee(this.page.pageable.pageNumber + 1)
+    this.renderFooter()
+  }
+
+  preePage(){
+    this.getListEmployee(this.page.pageable.pageNumber - 1)
+    this.renderFooter()
+  }
+
+
+  renderFooter(){
+    this.pageControl = []
+    let number;
+    if(( number = this.page.pageable.pageNumber) >= 2){
+      for(let i = number - 2 ; (i <= number + 2) && (i < this.page.totalPages) ; i++ ){
+        this.pageControl.push(i)
+      }
+    }else{
+      for(let i = 0; i < this.page.totalPages ; i++){
+        this.pageControl.push(i)
+      }
+    }
+  }
+
 
 }
 

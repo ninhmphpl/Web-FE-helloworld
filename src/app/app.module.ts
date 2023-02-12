@@ -15,6 +15,9 @@ import { AdminDisplayEmployeeComponent } from './admin-display-employee/admin-di
 import { LocalComponent } from './local/local.component';
 import { AdminComponent } from './admin/admin.component';
 
+// import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,7 @@ import { AdminComponent } from './admin/admin.component';
     AdminDisplayEmployeeComponent,
     LocalComponent,
     AdminComponent,
+    DetailEmployeeComponent,
 
   ],
   imports: [

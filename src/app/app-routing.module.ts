@@ -5,10 +5,12 @@ import {AdminDisplayEmployeeComponent} from "./admin-display-employee/admin-disp
 import {ProductListPageService} from "./service/product-list-page.service";
 import {AdminListPageService} from "./service/admin-list-page-service";
 import {AdminComponent} from "./admin/admin.component";
+import {DetailEmployeeComponent} from "./detail-employee/detail-employee.component";
 
 const routes: Routes = [
   {path:'search' , component : AdminDisplayEmployeeComponent},
   {path:'', component : AdminComponent},
+  {path :'detail/:id',component : DetailEmployeeComponent }
 ];
 
 @NgModule({
