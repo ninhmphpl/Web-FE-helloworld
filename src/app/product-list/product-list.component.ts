@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit{
 
   ngOnInit(): void {
     this.pageService.getListProduct(0);
+    this.categoryService.getAllCategory();
   }
 
 
