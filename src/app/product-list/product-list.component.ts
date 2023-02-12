@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../service/category.service';
 import { ProductListPageService } from '../service/product-list-page.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { ProductListPageService } from '../service/product-list-page.service';
 export class ProductListComponent implements OnInit{
 
   constructor(
-    public pageService : ProductListPageService
+    public pageService : ProductListPageService,
+    public categoryService : CategoryService,
   ){}
 
   ngOnInit(): void {
