@@ -11,5 +11,7 @@ export interface HttpOptions{
 }
 
 export const environtment = {
-    url : "http://localhost:8080"
+    role : 'EMPLOYEE',
+    url : "http://localhost:8080",
+    token : 'MyToken'
 }
