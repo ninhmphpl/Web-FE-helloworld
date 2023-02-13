@@ -1,56 +1,89 @@
-<form [formGroup]="formEmployee" (ngSubmit)="onSubmit()">
-  <input type="text" value="" formControlName="id" hidden="">
-  <div>
-    <label for="name" class="form-label">Tên: </label>
-    <input id="name" formControlName="name" class="form-control" placeholder="Enter name">
-    <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tên</div>
+<div class="container-fluid px-0 bg-light">
+  <app-header class=""></app-header>
+
+  <div class="row mt-4">
+    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
+    <div class="col-7 px-5">
+      <h3>Tạo thông tin người dùng</h3>
+      <form [formGroup]="formEmployee" (ngSubmit)="onSubmit()">
+        <input type="text" value="" formControlName="id" hidden="">
+        <div>
+          <label for="name" class="form-label">Tên: </label>
+          <input id="name" formControlName="name" class="form-control" placeholder="Enter name">
+          <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tên
+          </div>
+        </div>
+        <div>
+          <label for="birth" class="form-label">Ngày sinh: </label>
+          <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh">
+        </div>
+        <div>
+          <label for="age" class="form-label">Tuổi </label>
+          <input id="age" formControlName="age" class="form-control" placeholder="Nhập tuổi">
+          <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tuổi
+          </div>
+        </div>
+        <div>
+          <label for="phoneNumber" class="form-label">Số điện thoại</label>
+          <input id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Nhập số điện thoại">
+          <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tuổi
+          </div>
+        </div>
+
+        <div class="mb-3 mt-3" formGroupName="position">
+          <label for="position" class="form-label">Chức vụ: </label>
+          <select class="form-select" formControlName="id" id="position">
+            <option *ngFor="let a of adminEmployeeRenderService.employeeRender.positions" value="{{a.id}}">{{a.name}}
+              & {{a.salary}}</option>
+          </select>
+        </div>
+        <div class="mb-3 mt-3" formGroupName="gender">
+          <label for="gender" class="form-label">Giới tính: </label>
+          <select class="form-select" formControlName="id" id="gender">
+            <option *ngFor="let a of adminEmployeeRenderService.employeeRender.genders"
+                    value="{{a.id}}">{{a.name}}</option>
+          </select>
+        </div>
+        <div class="mb-3 mt-3" formGroupName="status">
+          <label for="status" class="form-label">Trạng thái </label>
+          <select class="form-select" formControlName="id" id="status">
+            <option *ngFor="let a of adminEmployeeRenderService.employeeRender.status"
+                    value="{{a.id}}">{{a.name}}</option>
+          </select>
+        </div>
+
+        <h4>Tạo tài khoản đăng nhập </h4>
+        <div class="mb-3 mt-3" formGroupName="user">
+          <input type="text" value="" formControlName="id" hidden="">
+          <div>
+            <label for="name1" class="form-label">Nhập User Name: </label>
+            <input id="name1" formControlName="username" class="form-control" placeholder="Nhập user name">
+            <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tên
+            </div>
+          </div>
+          <div>
+            <label for="password" class="form-label">Pass Word </label>
+            <input type="password" id="password" formControlName="password" class="form-control"
+                   placeholder="Nhập pass word">
+            <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập
+              Pass
+              Word
+            </div>
+          </div>
+          <div class="mb-3 mt-3" formGroupName="role">
+            <label for="role" class="form-label">Role </label>
+            <select class="form-select" formControlName="id" id="role">
+              <option *ngFor="let a of adminEmployeeRenderService.employeeRender.roles"
+                      value="{{a.id}}">{{a.name}}</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button (click)="back()" class="btn btn-primary">Back</button>
+      </form>
+
+
+    </div>
   </div>
-  <div>
-    <label for="birth" class="form-label">Ngày sinh: </label>
-    <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh">
-  </div>
-  <div>
-    <label for="age" class="form-label">Tuổi </label>
-    <input id="age" formControlName="name" class="form-control" placeholder="Nhập tuổi">
-    <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tuổi</div>
-  </div>
-  <div class="mb-3 mt-3" formGroupName="position">
-    <label for="position" class="form-label">Category: </label>
-    <select class="form-select" formControlName="id" id="position" >
-      <option *ngFor="let a of adminEmployeeRenderService.employeeRender.positions" value="{{a.id}}">{{a.name}}& {{a.salary}}</option>
-    </select>
-  </div>
-  <div class="mb-3 mt-3" formGroupName="gender">
-    <label for="gender" class="form-label">Giới tính: </label>
-    <select class="form-select" formControlName="id" id="gender" >
-      <option *ngFor="let a of adminEmployeeRenderService.employeeRender.genders" value="{{a.id}}">{{a.name}}</option>
-    </select>
-  </div>
-  <div class="mb-3 mt-3" formGroupName="status">
-    <label for="status" class="form-label">Trạng thái </label>
-    <select class="form-select" formControlName="id" id="status" >
-      <option *ngFor="let a of adminEmployeeRenderService.employeeRender.status" value="{{a.id}}">{{a.name}}</option>
-    </select>
-  </div>
- <div class="mb-3 mt-3" formGroupName="user">
-   <input type="text" value="" formControlName="id" hidden="">
-   <div>
-     <label for="name1" class="form-label">Nhập User Name: </label>
-     <input id="name1" formControlName="username" class="form-control" placeholder="Enter name">
-     <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tên</div>
-   </div>
-   <div>
-     <label for="password" class="form-label">Tên: </label>
-     <input id="password" formControlName="password" class="form-control" placeholder="Enter name">
-     <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tên</div>
-   </div>
-   <div class="mb-3 mt-3" formGroupName="role">
-     <label for="role" class="form-label">Role </label>
-     <select class="form-select" formControlName="id" id="role" >
-       <option *ngFor="let a of adminEmployeeRenderService.employeeRender.roles" value="{{a.id}}">{{a.name}}</option>
-     </select>
-   </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Save</button>
-  <button (click)="back()" class="btn btn-primary">Back</button>
-</form>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>
