@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {AdminEmployeeRenderService} from "../service/admin-employee-render.service";
-import {environtment} from "../../environments/environtment";
+import {environtment, HttpOptions} from "../../environments/environtment";
 import {EmployeeRender} from "../model/employee-Render";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -20,7 +20,7 @@ export class FormEmployeeComponent implements OnInit {
 
   constructor(public adminEmployeeRenderService: AdminEmployeeRenderService,
               private routerActive: ActivatedRoute,
-              private router: Router
+              private router: Router,
   ) {
     this.adminEmployeeRenderService.getEmployeeRender(url + '/admin/all-employee-render')
   }
@@ -32,6 +32,7 @@ export class FormEmployeeComponent implements OnInit {
       name: new FormControl('', Validators.required),
       birth: new FormControl(''),
       age: new FormControl(''),
+      phoneNumber: new FormControl(''),
       position: new FormGroup({
         id: new FormControl('')
       }),
@@ -61,10 +62,10 @@ export class FormEmployeeComponent implements OnInit {
 
 
   onSubmit() {
-
+    this.employee = this.formEmployee.value;
+    this.adminEmployeeRenderService.addEmployee(this.employee, ()=> this.back())
   }
-
   back() {
-
+    this.router.navigate([''])
   }
 }

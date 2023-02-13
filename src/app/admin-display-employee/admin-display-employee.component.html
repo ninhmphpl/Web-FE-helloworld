@@ -1,4 +1,4 @@
-<a class="nav-link" routerLink="/formcreate">Thêm nhân viên mới</a>
+<a class="nav-link" [routerLink]="['/formcreate',0]">Thêm nhân viên mới</a>
 <table class="table">
   <thead>
   <tr>
@@ -20,7 +20,7 @@
     <td>{{a.user.role.name}}</td>
     <td><button class="btn btn-outline-primary" [routerLink]="['/detail',a.id]">Chi Tiết</button></td>
     <td>
-      <button class="btn btn-outline-warning" [routerLink]="['/formcreat',a.id]">Sửa Nội Dung</button>
+      <button class="btn btn-outline-warning" [routerLink]="['/formcreate',a.id]">Sửa Nội Dung</button>
     </td>
     <td>
 

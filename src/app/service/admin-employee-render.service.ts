@@ -4,7 +4,7 @@ import {Employee} from "../model/employee";
 import {EmployeeRender} from "../model/employee-Render";
 import {environtment, HttpOptions} from "../../environments/environtment";
 import {Observable} from "rxjs";
-import {HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 const url = environtment.url
 
@@ -12,7 +12,9 @@ const url = environtment.url
   providedIn: 'root'
 })
 export class AdminEmployeeRenderService extends APIService<EmployeeRender> {
+
   employeeRender !: EmployeeRender;
+
   public getEmployeeRender(url: string)  {
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
@@ -24,5 +26,19 @@ export class AdminEmployeeRenderService extends APIService<EmployeeRender> {
         this.employeeRender = data
       }
     )
+  }
+
+  addEmployee(employee: Employee, action : any){
+    let httpOptions: HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token'
+      }),
+    }
+    let url = environtment.url
+    this.post(url+'/admin', employee, httpOptions).subscribe(data => {
+      action()
+    })
+
   }
 }

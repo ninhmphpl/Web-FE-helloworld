@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'search' , component : AdminDisplayEmployeeComponent},
   {path:'', component : AdminComponent},
   {path :'detail/:id',component : DetailEmployeeComponent },
-  {path :'formcreate',component : FormEmployeeComponent }
+  {path :'formcreate/:id',component : FormEmployeeComponent }
 ];
 
 @NgModule({
