@@ -6,11 +6,13 @@ import {ProductListPageService} from "./service/product-list-page.service";
 import {AdminListPageService} from "./service/admin-list-page-service";
 import {AdminComponent} from "./admin/admin.component";
 import {DetailEmployeeComponent} from "./detail-employee/detail-employee.component";
+import {FormEmployeeComponent} from "./form-employee/form-employee.component";
 
 const routes: Routes = [
   {path:'search' , component : AdminDisplayEmployeeComponent},
   {path:'', component : AdminComponent},
-  {path :'detail/:id',component : DetailEmployeeComponent }
+  {path :'detail/:id',component : DetailEmployeeComponent },
+  {path :'formcreate',component : FormEmployeeComponent }
 ];
 
 @NgModule({

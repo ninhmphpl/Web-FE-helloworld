@@ -17,6 +17,8 @@ import { AdminComponent } from './admin/admin.component';
 
 // import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+import { FormEmployeeComponent } from './form-employee/form-employee.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,12 +34,15 @@ import { DetailEmployeeComponent } from './detail-employee/detail-employee.compo
     LocalComponent,
     AdminComponent,
     DetailEmployeeComponent,
+    FormEmployeeComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

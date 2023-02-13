@@ -1,37 +1,33 @@
-<div class="container d-flex justify-content-center">
-  <table class="text-center">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Status</th>
-      <th>PhoneNumber</th>
-    </tr>
-    <tr *ngFor="let a of adminService.page.content ">
-      <td>{{a.id}}</td>
-      <td>{{a.name}}</td>
-      <td>{{a.position.name}}</td>
-      <td>{{a.status.name}}</td>
-      <td>{{a.phoneNumber}}</td>
-      <td><button class="btn btn-outline-primary" [routerLink]="['/detail',a.id]">Chi Tiết</button></td>
-      <td>
-        <button class="btn btn-outline-warning" [routerLink]="['/formcreat',a.id]">Sửa Nội Dung</button>
-      </td>
-      <td>
-<!--        <mat-slide-toggle-->
-<!--          class="example-margin"-->
-<!--          [color]="color"-->
-<!--          [checked]="checked"-->
-<!--          [disabled]="disabled">-->
-<!--          Slide me!-->
-<!--        </mat-slide-toggle>-->
-      </td>
-    </tr>
-  </table>
+<a class="nav-link" routerLink="/formcreate">Thêm nhân viên mới</a>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Tên</th>
+    <th scope="col">Chức Vụ</th>
+    <th scope="col">Trạng Thái</th>
+    <th scope="col">Số Điện Thoại</th>
+    <th scope="col">Vai Trò</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of adminService.page.content ">
+    <td>{{a.id}}</td>
+    <td>{{a.name}}</td>
+    <td>{{a.position.name}}</td>
+    <td>{{a.status.name}}</td>
+    <td>{{a.phoneNumber}}</td>
+    <td>{{a.user.role.name}}</td>
+    <td><button class="btn btn-outline-primary" [routerLink]="['/detail',a.id]">Chi Tiết</button></td>
+    <td>
+      <button class="btn btn-outline-warning" [routerLink]="['/formcreat',a.id]">Sửa Nội Dung</button>
+    </td>
+    <td>
 
-</div>
-
-{{adminService.pageControl | json}}
+    </td>
+  </tr>
+  </tbody>
+</table>
 <div class="d-flex justify-content-center">
   <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="adminService.preePage()">Trang trước</a>
   <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of adminService.pageControl"
