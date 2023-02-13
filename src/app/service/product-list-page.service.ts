@@ -18,7 +18,7 @@ const categoryDefaut = {name : "Thể loại", id : 0}
   providedIn: 'root'
 })
 export class ProductListPageService extends APIService<Page<ProductSimple>> {
-  
+
   public page!: Page<ProductSimple>;
   public pageControl : number[] = []
   public filter : Filter = {category : categoryDefaut}
@@ -53,7 +53,7 @@ export class ProductListPageService extends APIService<Page<ProductSimple>> {
     this.getListProduct(this.page.pageable.pageNumber - 1)
   }
 
-  
+
   renderFooter(){
     this.pageControl = []
     let number;

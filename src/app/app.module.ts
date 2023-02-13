@@ -14,6 +14,7 @@ import { FilterComponent } from './filter/filter.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,10 @@ import { ProductCreateComponent } from './product-create/product-create.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductDetailComponent,
+    ProductCreateComponent,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
