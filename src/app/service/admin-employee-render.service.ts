@@ -28,7 +28,7 @@ export class AdminEmployeeRenderService extends APIService<EmployeeRender> {
     )
   }
 
-  addEmployee(employee: Employee, action : any){
+  updateEmployee(employee: Employee, action : any){
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -36,7 +36,22 @@ export class AdminEmployeeRenderService extends APIService<EmployeeRender> {
       }),
     }
     let url = environtment.url
-    this.post(url+'/admin', employee, httpOptions).subscribe(data => {
+    this.put(url+'/admin', employee, httpOptions).subscribe(data => {
+      action()
+    })
+
+  }
+  createEmployee(employee: Employee, action : any){
+    alert("hello")
+    alert(JSON.stringify(employee))
+    let httpOptions: HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token'
+      }),
+    }
+    let url = environtment.url
+    this.post(url+'/admin/add', employee, httpOptions).subscribe(data => {
       action()
     })
 

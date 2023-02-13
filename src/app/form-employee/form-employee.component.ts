@@ -22,11 +22,13 @@ export class FormEmployeeComponent implements OnInit {
               private routerActive: ActivatedRoute,
               private router: Router,
   ) {
-    this.adminEmployeeRenderService.getEmployeeRender(url + '/admin/all-employee-render')
+    this.adminEmployeeRenderService.getEmployeeRender(url + '/employeeRender/all-employee-render')
   }
 
+  id = 0;
+
   ngOnInit() {
-    const id = Number(this.routerActive.snapshot.paramMap.get("id"))
+    this.id = Number(this.routerActive.snapshot.paramMap.get("id"))
     this.formEmployee = new FormGroup({
       id: new FormControl(''),
       name: new FormControl('', Validators.required),
@@ -53,7 +55,7 @@ export class FormEmployeeComponent implements OnInit {
       })
 
     })
-    this.adminEmployeeRenderService.findEmployee(id).subscribe((data) => {
+    this.adminEmployeeRenderService.findEmployee(this.id).subscribe((data) => {
       this.employee = data
       this.formEmployee.patchValue(data)
     })
@@ -62,9 +64,16 @@ export class FormEmployeeComponent implements OnInit {
 
 
   onSubmit() {
+
     this.employee = this.formEmployee.value;
-    this.adminEmployeeRenderService.addEmployee(this.employee, ()=> this.back())
+    if (this.id != 0) {
+      this.adminEmployeeRenderService.updateEmployee(this.employee, () => this.back())
+    } else {
+      this.adminEmployeeRenderService.createEmployee(this.employee, () => this.back())
+    }
+
   }
+
   back() {
     this.router.navigate([''])
   }
