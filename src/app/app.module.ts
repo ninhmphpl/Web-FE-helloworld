@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CategoryComponent } from './category/category.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FilterComponent } from './filter/filter.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FilterComponent } from './filter/filter.component';
     CategoryComponent,
     CarouselComponent,
     FilterComponent,
-    
+    ProductListComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
