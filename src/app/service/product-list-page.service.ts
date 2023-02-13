@@ -9,7 +9,7 @@ const url = environtment.url
   providedIn: 'root'
 })
 export class ProductListPageService extends APIService<Page<ProductSimple>> {
-  
+
   public page!: Page<ProductSimple>;
   public pageControl : number[] = []
 
@@ -35,7 +35,7 @@ export class ProductListPageService extends APIService<Page<ProductSimple>> {
     this.getListProduct(this.page.pageable.pageNumber - 1)
   }
 
-  
+
   renderFooter(){
     this.pageControl = []
     let number;

@@ -26,6 +26,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     FilterComponent,
     ProductListComponent,
     ProductDetailComponent
+
+
   ],
   imports: [
     BrowserModule,
