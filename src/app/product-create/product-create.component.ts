@@ -35,14 +35,15 @@ export class ProductCreateComponent {
     avatar : ['' , [Validators.required]],
     description : ['' , [Validators.required]],
     quantity : [0 , [Validators.required]],
-    category : [this.bf.group({
+    category : this.bf.group({
       name : ''
-    }), Validators.required]
+    })
   })
 
     create() {
       if (!this.formCreate.valid){
         let a : any = this.formCreate.value;
+        console.log(a)
         this.service.addProductDetail(a)
       }
     }

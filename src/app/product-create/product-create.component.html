@@ -1,10 +1,10 @@
-
 <div class="container-xxl px-0 bg-light">
   <app-header class=""></app-header>
   <div class="row mt-4">
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
 
-
+    <!--    body start -->
+    <div class="col-9">
       <h2>Thêm Sản Phẩm</h2>
       <form style="width: 500px" [formGroup]="formCreate" (ngSubmit)="create()">
 
@@ -13,18 +13,18 @@
           <input class="form-control" placeholder="Nhập Tên" formControlName="name">
           <div *ngIf="formCreate.invalid && (formCreate.controls.name.dirty || formCreate.controls.name.touched)">
             <div *ngIf="formCreate.controls.name.errors?.['required']" class="text-danger">
-             Xin hãy nhập tên sản phẩm
+              Xin hãy nhập tên sản phẩm
             </div>
           </div>
         </div>
         <div class="form-group">
           <label>Giá</label>
-          <input class="form-control" placeholder="Nhập Giá" formControlName="price">
-          <div *ngIf="formCreate.invalid && (formCreate.controls.price.dirty || formCreate.controls.price.touched)">
-            <div *ngIf="formCreate.controls.price.errors?.['required']" class="text-danger">
-              Xin hãy nhập giá sản phẩm
-            </div>
-          </div>
+          <input type="number" class="form-control" placeholder="Nhập Giá" formControlName="price">
+<!--          <div *ngIf="formCreate.invalid && (formCreate.controls.price.dirty || formCreate.controls.price.touched)">-->
+<!--            <div *ngIf="formCreate.controls.price.errors?.['required']" class="text-danger">-->
+<!--              Xin hãy nhập giá sản phẩm-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
 
         <div class="form-group">
@@ -32,7 +32,8 @@
           <textarea style="height: 200px" class="form-control" placeholder="Giới Thiệu Về Sản Phẩm"
                     formControlName="description"></textarea>
 
-          <div *ngIf="formCreate.invalid && (formCreate.controls.description.dirty || formCreate.controls.description.touched)">
+          <div
+            *ngIf="formCreate.invalid && (formCreate.controls.description.dirty || formCreate.controls.description.touched)">
             <div *ngIf="formCreate.controls.description.errors?.['required']" class="text-danger">
               Xin hãy giới thiệu sản phẩm của bạn
             </div>
@@ -40,34 +41,38 @@
         </div>
         <div class="form-group">
           <label>Số Lượng</label>
-          <input class="form-control" placeholder="Nhập Số Lượng Sản Phẩm" formControlName="quantitty">
+          <input type="number" class="form-control" placeholder="Nhập Số Lượng Sản Phẩm" formControlName="quantity">
 
-          <div *ngIf="formCreate.invalid && (formCreate.controls.quantity.dirty || formCreate.controls.quantity.touched)">
-            <div *ngIf="formCreate.controls.quantity.errors?.['required']" class="text-danger">
-              Xin hãy số lượng sản phẩm
-            </div>
-          </div>
+<!--          <div-->
+<!--            *ngIf="formCreate.invalid && (formCreate.controls.quantity.dirty || formCreate.controls.quantity.touched)">-->
+<!--            <div *ngIf="formCreate.controls.quantity.errors?.['required']" class="text-danger">-->
+<!--              Xin hãy số lượng sản phẩm-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
-        <div class="form-group">
-          <label>Ảnh Chi Tiết</label>
-          <input class="form-control" placeholder="Thêm Ảnh Chi Tiết Sản Phẩm" formControlName="picture">
-        </div>
-        <div class="form-group">
-          <label>Loại Sản Phẩm</label>
-          <input class="form-control" placeholder="Nhập Loại Sản Phẩm" formControlName="category">
+        <!--        <div class="form-group">-->
+        <!--          <label>Ảnh Chi Tiết</label>-->
+        <!--          <input class="form-control" placeholder="Thêm Ảnh Chi Tiết Sản Phẩm" formControlName="picture">-->
+        <!--        </div>-->
 
-          <div *ngIf="formCreate.invalid && (formCreate.controls.category.dirty || formCreate.controls.category.touched)">
-            <div *ngIf="formCreate.controls.category.errors?.['required']" class="text-danger">
-              Xin hãy nhập loại sản phẩm
-            </div>
-          </div>
-        </div>
+
+        <!--        <div class="form-group">-->
+        <!--          <label>Loại Sản Phẩm</label>-->
+        <!--          <input class="form-control" placeholder="Nhập Loại Sản Phẩm" formControlName="category">-->
+
+        <!--          <div *ngIf="formCreate.invalid && (formCreate.controls.category.dirty || formCreate.controls.category.touched)">-->
+        <!--            <div *ngIf="formCreate.controls.category.errors?.['required']" class="text-danger">-->
+        <!--              Xin hãy nhập loại sản phẩm-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
         <button type="submit" class="btn btn-primary" style="margin-right: 10px">Thêm</button>
         <a routerLink="" type="submit" class="btn btn-info">Quay Lại</a>
       </form>
+    </div>
+    <!--    body end -->
 
-
-
-    <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
   </div>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>
