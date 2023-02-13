@@ -1,44 +1,81 @@
 <div class="container-fluid px-0 bg-light">
   <app-header class=""></app-header>
-
   <div class="row mt-4">
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
-    <div class="col-7 px-5" >
+    <div class="col-7 px-5">
       <h3>Tạo thông tin người dùng</h3>
       <form [formGroup]="formEmployee" (ngSubmit)="onSubmit()">
         <input type="text" value="" formControlName="id" hidden="">
-        <div class="input-group " >
-          <span class="input-group-text">Họ Và Tên</span>
-          <input id="name" formControlName="name" class="form-control" placeholder="Nhập Tên">
-          <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
-          </div>
-        </div><div class="input-group">
-        <span class="input-group-text">Ngày Sinh</span>
-        <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh">
-      </div><div class="input-group">
-        <span class="input-group-text">Số Điện Thoại</span>
-        <input id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Nhập số điện thoại">
-        <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
-        </div>
-      </div><div class="input-group">
-        <span class="input-group-text">Chức Vụ</span>
-        <select class="form-select" formControlName="id" id="position">
-          <option *ngFor="let a of adminEmployeeRenderService.employeeRender.positions" value="{{a.id}}">{{a.name}}
-            & {{a.salary}}</option>
-        </select>
-      </div><div class="input-group">
-        <span class="input-group-text">Giới Tính</span>
-        <select class="form-select" formControlName="id" id="gender">
-          <option *ngFor="let a of adminEmployeeRenderService.employeeRender.genders"
-                  value="{{a.id}}">{{a.name}}</option>
-        </select>
-      </div><div class="input-group">
-        <span class="input-group-text">Trạng Thái</span>
-        <select class="form-select" formControlName="id" id="status">
-          <option *ngFor="let a of adminEmployeeRenderService.employeeRender.status"
-                  value="{{a.id}}">{{a.name}}</option>
-        </select>
-      </div>
+        <table>
+          <tBody>
+          <tr>
+            <th class="input-group-text">Họ Và Tên</th>
+            <td>
+              <div class="input-group ">
+                <input id="name" formControlName="name" class="form-control" placeholder="Nhập Tên">
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="input-group-text">Ngày Sinh</th>
+            <td>
+              <div class="input-group">
+                <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="input-group-text">Số Điện Thoại</th>
+            <td>
+              <div class="input-group">
+                <input id="phoneNumber" formControlName="phoneNumber" class="form-control"
+                       placeholder="Nhập số điện thoại">
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="input-group-text">Chức Vụ</th>
+            <td>
+              <div class="input-group">
+                <select class="form-select" formControlName="id" id="position">
+                  <option *ngFor="let a of adminEmployeeRenderService.employeeRender.positions"
+                          value="{{a.id}}">{{a.name}}
+                    & {{a.salary}}</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="input-group-text">Giới Tính</th>
+            <td>
+              <div class="input-group">
+                <select class="form-select" formControlName="id" id="gender">
+                  <option *ngFor="let a of adminEmployeeRenderService.employeeRender.genders"
+                          value="{{a.id}}">{{a.name}}</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="input-group-text">Trạng Thái</th>
+            <td>
+              <div class="input-group">
+                <select class="form-select" formControlName="id" id="status">
+                  <option *ngFor="let a of adminEmployeeRenderService.employeeRender.status"
+                          value="{{a.id}}">{{a.name}}</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tBody>
+        </table>
+
         <h4>Tạo tài khoản đăng nhập </h4>
         <div class="mb-3 mt-3" formGroupName="user">
           <input type="text" value="" formControlName="id" hidden="">
