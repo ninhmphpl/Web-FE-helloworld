@@ -29,8 +29,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     ProductListComponent,
     ProductDetailComponent,
     ProductCreateComponent
-
-
   ],
     imports: [
         BrowserModule,
