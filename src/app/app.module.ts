@@ -26,7 +26,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
     CarouselComponent,
     FilterComponent,
     ProductListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
     ProductListComponent,
     ProductDetailComponent
   ],
