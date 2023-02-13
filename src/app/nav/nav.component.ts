@@ -7,6 +7,7 @@ const employee = [
   {name : "Danh sách sản phẩm", path : '/employee'},
   {name : "Thêm sản phẩm", path : '/employee/create'},
 ]
+
 interface Nav {
   name : string
   path : string
