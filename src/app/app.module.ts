@@ -21,6 +21,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import {ReactiveFormsModule} from "@angular/forms";
 import { environtment } from 'src/environments/environtment';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { OnloadComponent } from './onload/onload.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
     ProductCreateComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    OnloadComponent
   ],
   imports: [
     BrowserModule,
