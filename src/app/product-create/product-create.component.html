@@ -9,6 +9,11 @@
       <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
         <table class="table bg-white">
           <tBody>
+          <br>
+          <h2 *ngIf="action== 'create'"><b>Thêm Mới Sản Phẩm</b></h2>
+          <h2 *ngIf="action== 'update'"><b>Sửa Sản Phẩm</b></h2>
+          <br>
+
             <tr>
               <th>
                 Ảnh
@@ -23,7 +28,7 @@
                     <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
                       Đại diện
                     </div>
-                    <button type="button" class="btn-close" aria-label="Close" 
+                    <button type="button" class="btn-close" aria-label="Close"
                     style="position: absolute; right: 0; top: -5px;" (click)="fire.delete(i)"></button>
                   </div>
                 </div>
