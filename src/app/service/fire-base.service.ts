@@ -25,4 +25,8 @@ export class FireBaseService {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.files, event.previousIndex, event.currentIndex);
   }
+
+  delete(index : number){
+    this.files.splice(index,1)
+  }
 }
