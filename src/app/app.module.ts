@@ -20,6 +20,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductCreateComponent } from './product-create/product-create.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { environtment } from 'src/environments/environtment';
+import { ProductUpdateComponent } from './product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { environtment } from 'src/environments/environtment';
     ProductListComponent,
     ProductCreateComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
