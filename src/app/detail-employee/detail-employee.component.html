@@ -10,6 +10,8 @@
     <th scope="col">Lương </th>
     <th scope="col">Giới Tính</th>
     <th scope="col">Trạng Thái</th>
+    <th scope="col">Tài Khoản</th>
+    <th scope="col">Mật Khẩu</th>
   </tr>
   </thead>
   <tbody>
@@ -38,10 +40,18 @@
     </td><td>
       <p id="gender" > {{employee.gender.name}}
     </p>
-    </td><td>
+    </td>
+    <td>
       <p id="status" > {{employee.status.name}}
     </p>
+    </td><td>
+      <p id="userName" > {{employee.user.username}}
+    </p>
+    </td><td>
+      <p id="passWord" > {{employee.user.password}}
+    </p>
     </td>
+
   </tr>
   </tbody>
   <button (click)="back()" class="btn btn-primary">Back</button>
