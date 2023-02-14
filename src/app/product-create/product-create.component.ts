@@ -25,7 +25,10 @@ export class ProductCreateComponent implements OnInit{
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
     if(id > 0){
-      
+      this.service.getProductDetail(id, (data : any) =>{
+        this.formCreate.patchValue(data)
+        this.fire.renderFormArrayImg(data.picture)
+      })
     }
   }
 

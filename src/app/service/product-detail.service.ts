@@ -11,9 +11,9 @@ const token = environtment.token
 export class ProductDetailService extends APIService<ProductDetail>{
   public product !: ProductDetail;
 
-  
+
   //lấy 1 đối tượng productDetail thông qua id.
-  getProductDetail(id: number) {
+  getProductDetail(id: number , action ? : any) {
   //thông tin headers của reques
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
@@ -21,8 +21,12 @@ export class ProductDetailService extends APIService<ProductDetail>{
         Authorization: token
       })
     }
-    //lấy dữ liệu thông qua đương dẫn
-    this.getOne(API_URL + "/employees/product-detail/" + id, httpOptions).subscribe(data => this.product = data)
+    //>>lấy dữ liệu thông qua đương dẫn, và khởi động 1 hàm có mong muốn kích hoạt sau khi dữ liệu được trả về thành công
+    //>> hàm đó mặc định sẽ được truyền giá trị trả về sau khi kích hoạt
+    this.getOne(API_URL + "/employees/product-detail/" + id, httpOptions).subscribe(data => {
+      this.product = data
+      action(data)
+    })
   }
 
   addProductDetail(productDetail: any , action : any) {
