@@ -4,16 +4,15 @@
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
     <!-- Body start -->
     <div class="col-9 p-5">
-      {{ formCreate.value | json }}
+      <!-- {{ formCreate.value | json }} -->
+      <br>
+      <h4 *ngIf="action== 'create'"><b>Thêm Mới Sản Phẩm</b></h4>
+      <h4 *ngIf="action== 'update'"><b>Sửa Sản Phẩm</b></h4>
+      <br>
       <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
       <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
         <table class="table bg-white">
           <tBody>
-          <br>
-          <h2 *ngIf="action== 'create'"><b>Thêm Mới Sản Phẩm</b></h2>
-          <h2 *ngIf="action== 'update'"><b>Sửa Sản Phẩm</b></h2>
-          <br>
-
             <tr>
               <th>
                 Ảnh
