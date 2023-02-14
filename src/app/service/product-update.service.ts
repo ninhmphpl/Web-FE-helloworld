@@ -14,17 +14,22 @@ export class ProductUpdateService extends APIService<ProductDetail>{
 
 
 //lấy 1 đối tượng productDetail thông qua id.
-  getProductEdit(id: number) {
-//thông tin headers của reques
-    let httpOptions: HttpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: token
-      })
+    editProduct(product:ProductDetail){
+   // thông tin headers của reques
+   let httpOptions: HttpOptions = {
+     headers: new HttpHeaders({
+       'Content-Type': 'application/json',
+       Authorization: token
+     }),
+   }
+   this.put(API_URL + "/employees/product-edit/", product, httpOptions).subscribe(data=>this.product=data)
     }
 
-    this.put(API_URL + "/employees/product-edit/" + id, httpOptions).subscribe(data => this.product = data)
-  }
+
+
+
+
+
 
 
 }
