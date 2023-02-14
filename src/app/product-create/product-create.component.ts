@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { ProductCreateService } from "../service/product-create.service";
 import { FireBaseService } from '../service/fire-base.service';
 import { CategoryService } from '../service/category.service';
 import { upFileArray } from 'src/environments/firebase';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductDetailService } from '../service/product-detail.service';
 
 @Component({
   selector: 'app-product-create',
@@ -14,14 +14,19 @@ import { Router } from '@angular/router';
 export class ProductCreateComponent implements OnInit{
 
   constructor(
-    public service: ProductCreateService,
+    public service: ProductDetailService,
     public categoryService : CategoryService,
     private bf: FormBuilder,
     public fire : FireBaseService,
     private router : Router,
+    private routerActive :  ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.categoryService.getAllCategory()
+    let id = Number(this.routerActive.snapshot.paramMap.get("id"))
+    if(id > 0){
+      
+    }
   }
 
   formCreate = this.bf.group({
@@ -52,8 +57,6 @@ export class ProductCreateComponent implements OnInit{
       })
     }
   }
-
-  
 
 
 

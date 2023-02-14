@@ -10,9 +10,11 @@ const token = environtment.token
 })
 export class ProductDetailService extends APIService<ProductDetail>{
   public product !: ProductDetail;
-//lấy 1 đối tượng productDetail thông qua id.
+
+  
+  //lấy 1 đối tượng productDetail thông qua id.
   getProductDetail(id: number) {
-//thông tin headers của reques
+  //thông tin headers của reques
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -21,6 +23,20 @@ export class ProductDetailService extends APIService<ProductDetail>{
     }
     //lấy dữ liệu thông qua đương dẫn
     this.getOne(API_URL + "/employees/product-detail/" + id, httpOptions).subscribe(data => this.product = data)
+  }
+
+  addProductDetail(productDetail: any , action : any) {
+    let httpOptions: HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: environtment.token
+      })
+    }
+
+    this.post(API_URL + "/employees/product-create/", productDetail, httpOptions).subscribe(data=>{
+      this.product = data
+      action(data.id);
+    })
   }
 
 
