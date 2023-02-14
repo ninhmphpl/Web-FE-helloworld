@@ -43,5 +43,21 @@ export class ProductDetailService extends APIService<ProductDetail>{
     })
   }
 
+  updateProductDetail(productDetail: any , action : any) {
+    console.log(productDetail);
+    
+    let httpOptions: HttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: environtment.token
+      })
+    }
+
+    this.put(API_URL + "/employees/product-edit/" + productDetail.id , productDetail, httpOptions).subscribe(data=>{
+      this.product = data
+      action(data.id);
+    })
+  }
+
 
 }

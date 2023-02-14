@@ -38,7 +38,7 @@ export class FileUploadFireBase {
       action()
       return
     }
-    //>> nếu file là 1 đối tượng File thì sẽ 
+    //>> nếu file là 1 đối tượng File thì sẽ up lên firebase và trả về url sau khi up thành công
     if (this.file && this.checkType) {
       const fileRef: AngularFireStorageReference = this.storage.ref(this.filePath);
       const task: AngularFireUploadTask = this.storage.upload(this.filePath, this.file);
