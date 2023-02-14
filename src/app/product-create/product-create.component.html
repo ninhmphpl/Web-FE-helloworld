@@ -1,0 +1,142 @@
+<div class="container-fluid px-0 bg-light">
+  <app-header class=""></app-header>
+  <div class="row mt-4">
+    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
+    <!-- Body start -->
+    <div class="col-9 p-5">
+      <!-- {{ formCreate.value | json }} -->
+      <br>
+      <h4 *ngIf="action== 'create'"><b>Thêm Mới Sản Phẩm</b></h4>
+      <h4 *ngIf="action== 'update'"><b>Sửa Sản Phẩm</b></h4>
+      <br>
+      <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
+      <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
+        <table class="table bg-white">
+          <tBody>
+            <tr>
+              <th>
+                Ảnh
+              </th>
+              <td>
+                <!-- ảnh start -->
+                <div cdkDropList cdkDropListOrientation="horizontal" class="example-list row row-cols-auto"
+                  (cdkDropListDropped)="fire.drop($event)">
+                  <div lass="card example-box p-1 border-primary" style="width: 130px; position: relative;"
+                    *ngFor="let file of fire.files ; let i = index">
+                    <img class="card-img" src="{{file.src}}" cdkDrag>
+                    <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
+                      Đại diện
+                    </div>
+                    <button type="button" class="btn-close" aria-label="Close"
+                    style="position: absolute; right: 0; top: -5px;" (click)="fire.delete(i)"></button>
+                  </div>
+                </div>
+                <label class="btn btn-outline-primary my-3" for="input-file">
+                  Thêm ảnh
+                </label>
+                <span class="fw-light">({{ fire.files.length }}/5)</span>
+                <div
+                  *ngIf="fire.files.length > 5 || fire.files.length < 1">
+                  <div class="text-danger" *ngIf="fire.files.length > 5">
+                    Số lượng ảnh vượt quá quy định, (5 ảnh)
+                  </div>
+                  <div *ngIf="fire.files.length < 1" class="text-danger">
+                    Bạn cần chọn ảnh
+                  </div>
+                </div>
+                <!-- ảnh end -->
+              </td>
+            </tr>
+            <tr>
+              <th class="col-3">
+                Tên
+              </th>
+              <td>
+                <input type="text" class="form-control" placeholder="Nhập tên của sản phẩm" formControlName="name">
+                <div class="fw-light text-right">{{formCreate.controls.name.value?.length}}/100</div>
+                <div
+                  *ngIf="formCreate.controls.name.invalid && (formCreate.controls.name.dirty || formCreate.controls.name.touched)">
+                  <div *ngIf="formCreate.controls.name.errors?.['required']" class="text-danger">
+                    Bạn phải nhập tên
+                  </div>
+                  <div *ngIf="formCreate.controls.name.errors?.['maxlength']" class="text-danger">
+                    Tên nhiều hơn 100 ký tự
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Giá
+              </th>
+              <td>
+                <input type="number" class="form-control" value="0" placeholder="Nhập giá của sản phẩm"
+                  formControlName="price">
+                <div
+                  *ngIf="formCreate.controls.price.invalid && (formCreate.controls.price.dirty || formCreate.controls.price.touched)">
+                  <div *ngIf="formCreate.controls.price.errors?.['required']" class="text-danger">
+                    Bạn phải nhập giá cho sản phẩm
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr formGroupName="category">
+              <th>
+                Thể loại
+              </th>
+              <td>
+                <select class="form-select bg-white" formControlName="id" value="">
+                  <option value="">Thể loại</option>
+                  <option value="{{category.id}}" *ngFor="let category of categoryService.categories">{{category.name}}
+                  </option>
+                </select>
+                <div
+                *ngIf="formCreate.controls.category.controls.id.invalid && (formCreate.controls.category.controls.id.dirty || formCreate.controls.category.controls.id.touched)">
+                <div *ngIf="formCreate.controls.category.controls.id.errors?.['required']" class="text-danger">
+                  Bạn phải chọn thể loại cho sản phẩm của mình
+                </div>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Thông tin chi tiết
+              </th>
+              <td>
+                <textarea name="" id="" cols="30" rows="4" class="form-control"
+                  placeholder="Thông tin chi tiết của sản phẩm" formControlName="description"></textarea>
+                  <div class="fw-light text-right">{{formCreate.controls.description.value?.length}}/2000</div>
+                <div
+                  *ngIf="formCreate.controls.description.invalid && (formCreate.controls.description.dirty || formCreate.controls.description.touched)">
+                  <div *ngIf="formCreate.controls.description.errors?.['required']" class="text-danger">
+                    Bạn phải nhập thông tin cho sản phẩm này
+                  </div>
+                  <div *ngIf="formCreate.controls.description.errors?.['maxlength']" class="text-danger">
+                    Số lượng ký tự đã nhiều hơn 2000!
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Số lượng
+              </th>
+              <td>
+                <input type="number" class="form-control" value="0" formControlName="quantity">
+                <div
+                  *ngIf="formCreate.controls.quantity.invalid && (formCreate.controls.quantity.dirty || formCreate.controls.quantity.touched)">
+                  <div *ngIf="formCreate.controls.quantity.errors?.['required']" class="text-danger">
+                    Bạn phải nhập giá cho sản phẩm
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tBody>
+        </table>
+        <button type="submit" class="btn btn-primary" [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Tạo</button>
+      </form>
+    </div>
+    <!-- Body end -->
+  </div>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>

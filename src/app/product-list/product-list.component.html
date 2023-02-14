@@ -1,0 +1,101 @@
+<div class="container-fluid px-0 bg-light">
+  <app-header class=""></app-header>
+  <div class="row mt-4">
+    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
+    <div class="col-9 p-5" *ngIf="pageService.page">
+<!--      body-->
+      <!-- fillter start -->
+      <div class="bg-white d-flex flex-row p-3 my-3 shadow">
+        <div class="p-auto my-auto">
+          <p class=" my-auto">Lọc: </p>
+        </div>
+        <button class="btn btn-outline-primary mx-2">
+          Liên quan
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+          </svg>
+        </button>
+        <button class="btn btn-outline-primary mx-2">
+          Giá
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+          </svg>
+        </button>
+        <button class="btn btn-outline-primary mx-2">
+          Mua Nhiều
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+          </svg>
+        </button>
+        <button class="btn btn-outline-primary mx-2">Mới</button>
+        <div class="dropdown" *ngIf="categoryService.categories">
+          <button class="btn btn-outline-primary mx-2" [ngClass]="{'active' : pageService.filter.category.id != 0  }">
+            {{pageService.filter.category.name}}
+          </button>
+          <div class="dropdown-content list-group">
+            <a class="list-group-item list-group-item-action" *ngFor="let c of categoryService.categories"
+              (click)="pageService.filter.category = c;pageService.getListProduct(0)"
+              [ngClass]="{'active' : pageService.filter.category.id == c.id}">
+              {{c.name}}
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- fillter end -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">ID</th>
+            <th scope="col" class="text-center">Ảnh</th>
+            <th scope="col" class="text-center">Tên</th>
+            <th scope="col" class="text-center">Giá</th>
+            <th scope="col" class="text-center">Thể Loại</th>
+            <th scope="col" class="text-center">Đã Bán</th>
+            <th scope="col" class="text-center" colspan="2">Hành Động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pageService.page.content">
+            <th class="text-center align-middle" scope="">{{p.id}}</th>
+            <td class="text-center align-middle">
+              <a href="/product-detail/{{p.id}}">
+                <img src="{{p.avatar}}" class="" style="height: 100px; width: 100px;;" alt="">
+              </a>
+            </td>
+            <td class="text-center align-middle">{{p.name}}</td>
+            <td class="text-center align-middle">{{p.price}}</td>
+            <td class="text-center align-middle">{{p.category.name}}</td>
+            <td class="text-center align-middle">{{p.sold}}</td>
+            <td class="text-center align-middle"><a class="btn btn-warning" href="/employee/product-edit/{{p.id}}">Sửa</a></td>
+            <td class="text-center align-middle"><a class="btn btn-danger">Xóa</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="pageService.page.content.length == 0">
+        Hiện tại không có sản phẩm nào
+      </div>
+      <!-- control -->
+      <div class="d-flex justify-content-center">
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.preePage()"
+        [ngClass]="{'d-none' : pageService.page.first }"
+        >Trang trước</a>
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of pageService.pageControl"
+          (click)="pageService.getListProduct(i)" [ngClass]="{'active' : i == pageService.page.pageable.pageNumber}">
+          {{i+1}}
+        </a>
+        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.nextPage()"
+        [ngClass]="{'d-none' : pageService.page.last }"
+        > Trang sau</a>
+      </div>
+      <!-- control -->
+    </div>
+  </div>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>
+

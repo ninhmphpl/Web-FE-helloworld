@@ -10,10 +10,20 @@ export class FileUploadFireBase {
   public percentageChanges!: number;
   public url!: string;
   public status: boolean = false;
-
-  constructor(private file: File, private storage: AngularFireStorage) {
-    this.filePath = `${this.file.type}/${this.file.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`
-    this.srcRendder()
+  /**
+   * 
+   * @param file là kiểu dữ liệu File hoặc là string
+   * @param storage 
+   */
+  constructor(private file: any , private storage: AngularFireStorage) {
+    //>> nếu file là 1 url thì sẽ gán luôn src = url đó
+    if(typeof file == 'string'){
+      this.src = file
+      this.url = file
+    }else{
+      this.filePath = `${this.file.type}/${this.file.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`
+      this.srcRendder()
+    }
   }
   /** 
    * up(action):void : thực hiện quá trình tải ảnh lên fire base
@@ -22,6 +32,13 @@ export class FileUploadFireBase {
    * nếu quá trình tải lên hoàn tất, status sẽ chuyển trạng thái là true 
   */
   public up(action: any | null): void {
+    //>> nếu file là url thì chỉ khởi chạy lại action
+    if(this.url){
+      this.status = true
+      action()
+      return
+    }
+    //>> nếu file là 1 đối tượng File thì sẽ up lên firebase và trả về url sau khi up thành công
     if (this.file && this.checkType) {
       const fileRef: AngularFireStorageReference = this.storage.ref(this.filePath);
       const task: AngularFireUploadTask = this.storage.upload(this.filePath, this.file);

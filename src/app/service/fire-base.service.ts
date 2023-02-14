@@ -13,11 +13,7 @@ export class FireBaseService {
   constructor(
     private storage: AngularFireStorage
   ) { }
-  /**
-   * Cái này gán vào phương vào (click)="" của thẻ input type="file"
-   * Dùng để chọn ảnh cần thao tác
-   * @param event 
-   */
+
   selectFile(event : any){
     let files = event.target.files
     for(let file of files){
@@ -31,5 +27,12 @@ export class FireBaseService {
 
   delete(index : number){
     this.files.splice(index,1)
+  }
+
+  renderFormArrayImg(imgs : any[]){
+    this.files = []
+    for (let img of imgs){
+      this.files.push(new FileUploadFireBase(img.name, this.storage))
+    }
   }
 }
