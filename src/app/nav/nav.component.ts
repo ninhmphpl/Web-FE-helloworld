@@ -5,7 +5,7 @@ const role = environtment.role
 
 const employee = [
   {name : "Danh sách sản phẩm", path : '/employee'},
-  {name : "Thêm sản phẩm", path : '/employee/product-create'},
+  {name : "Thêm sản phẩm", path : '/employee/product-edit/0'},
 ]
 interface Nav {
   name : string

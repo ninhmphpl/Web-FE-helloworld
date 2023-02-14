@@ -28,4 +28,11 @@ export class FireBaseService {
   delete(index : number){
     this.files.splice(index,1)
   }
+
+  renderFormArrayImg(imgs : any[]){
+    this.files = []
+    for (let img of imgs){
+      this.files.push(new FileUploadFireBase(img.name, this.storage))
+    }
+  }
 }
