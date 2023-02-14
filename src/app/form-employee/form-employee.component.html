@@ -13,7 +13,8 @@
             <td>
               <div class="input-group ">
                 <input id="name" formControlName="name" class="form-control" placeholder="Nhập Tên">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập tên
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải
+                  nhập tên
                 </div>
               </div>
             </td>
@@ -22,10 +23,12 @@
             <th class="input-group-text">Ngày Sinh</th>
             <td>
               <div class="input-group">
-                <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh" (change)="validatorBirth($event)">
+                <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh"
+                       (change)="validatorBirth($event)">
                 <div *ngIf="validate.validatorDate.before" class="text-danger">Bạn phải nhập tuổi lớn hơn 16</div>
                 <div *ngIf="validate.validatorDate.after" class="text-danger">Bạn phải nhập tuổi nhỏ hơn 100</div>
-                <div *ngIf="formEmployee.get('birth')?.touched&&formEmployee.get('birth')?.hasError('required')">Bạn phải nhập tuổi
+                <div *ngIf="formEmployee.get('birth')?.touched&&formEmployee.get('birth')?.hasError('required')">Bạn
+                  phải nhập tuổi
                 </div>
               </div>
             </td>
@@ -36,7 +39,8 @@
               <div class="input-group">
                 <input id="age" formControlName="age" class="form-control"
                        placeholder=""><br>
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập tuổi
+                <div *ngIf="formEmployee.get('age')?.touched&&formEmployee.get('age')?.hasError('required')">Bạn phải
+                  nhập tuổi
                 </div>
               </div>
             </td>
@@ -47,7 +51,13 @@
               <div class="input-group">
                 <input id="phoneNumber" formControlName="phoneNumber" class="form-control"
                        placeholder="Nhập số điện thoại">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập
+                <div
+                  *ngIf="formEmployee.get('phoneNumber')?.touched&&formEmployee.get('phoneNumber')?.hasError('required')">
+                  Bạn phải nhập số điện thoại
+                </div>
+                <div
+                  *ngIf="formEmployee.get('phoneNumber')?.touched&&formEmployee.get('phoneNumber')?.hasError('pattern')">
+                  Bạn nhập sai định dạng số điện thoại
                 </div>
               </div>
             </td>
@@ -62,6 +72,10 @@
                           value="{{a.id}}">{{a.name}}
                     & {{a.salary}}</option>
                 </select>
+                <div
+                  *ngIf="formEmployee.get('position')?.get('id')?.touched && formEmployee.get('position')?.get('id')?.hasError('required')">
+                  Bạn phải nhập chức vụ
+                </div>
               </div>
             </td>
           </tr>
@@ -74,6 +88,10 @@
                   <option *ngFor="let a of adminEmployeeRenderService.employeeRender.genders"
                           value="{{a.id}}">{{a.name}}</option>
                 </select>
+                <div
+                  *ngIf="formEmployee.get('gender')?.get('id')?.touched && formEmployee.get('gender')?.get('id')?.hasError('required')">
+                  Bạn phải nhập giới tính
+                </div>
               </div>
             </td>
           </tr>
@@ -86,6 +104,10 @@
                   <option *ngFor="let a of adminEmployeeRenderService.employeeRender.status"
                           value="{{a.id}}">{{a.name}}</option>
                 </select>
+                <div
+                  *ngIf="formEmployee.get('status')?.get('id')?.touched && formEmployee.get('status')?.get('id')?.hasError('required')">
+                  Bạn phải nhập trạng thái
+                </div>
               </div>
             </td>
           </tr>
@@ -98,14 +120,18 @@
           <div>
             <label for="name1" class="form-label">Nhập User Name: </label>
             <input id="name1" formControlName="username" class="form-control" placeholder="Nhập user name">
-            <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+            <div
+              *ngIf="formEmployee.get('user')?.get('username')?.touched && formEmployee.get('user')?.get('username')?.hasError('required')">
+              Bạn phải nhập tên đăng nhập
             </div>
           </div>
           <div>
             <label for="password" class="form-label">Pass Word </label>
             <input type="password" id="password" formControlName="password" class="form-control"
                    placeholder="Nhập pass word">
-            <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+            <div
+              *ngIf="formEmployee.get('user')?.get('password')?.touched && formEmployee.get('user')?.get('password')?.hasError('required')">
+              Bạn phải nhập mật khẩu
             </div>
           </div>
           <div class="mb-3 mt-3" formGroupName="role">
@@ -114,10 +140,14 @@
               <option *ngFor="let a of adminEmployeeRenderService.employeeRender.roles"
                       value="{{a.id}}">{{a.name}}</option>
             </select>
+            <div
+              *ngIf="formEmployee.get('role')?.get('id')?.touched && formEmployee.get('role')?.get('id')?.hasError('required')">
+              Bạn phải nhập chức vụ
+            </div>
           </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!formEmployee.valid ">Save</button>
+          <button (click)="back()" class="btn btn-primary">Back</button>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button (click)="back()" class="btn btn-primary">Back</button>
       </form>
     </div>
   </div>

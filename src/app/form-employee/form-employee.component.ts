@@ -38,22 +38,22 @@ export class FormEmployeeComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       birth: new FormControl('',Validators.required),
       age: new FormControl(''),
-      phoneNumber: new FormControl(''),
+      phoneNumber: new FormControl('',[Validators.required,Validators.pattern("^0[0-9]{9}")]),
       position: new FormGroup({
-        id: new FormControl('')
+        id: new FormControl('',Validators.required)
       }),
       gender: new FormGroup({
-        id: new FormControl('')
+        id: new FormControl('',Validators.required)
       }),
       status: new FormGroup({
-        id: new FormControl('')
+        id: new FormControl('',Validators.required)
       }),
       user: new FormGroup({
         id: new FormControl(''),
-        username: new FormControl(''),
-        password: new FormControl(''),
+        username: new FormControl('',Validators.required),
+        password: new FormControl('',Validators.required),
         role: new FormGroup({
-          id: new FormControl('')
+          id: new FormControl('',Validators.required)
         }),
 
       })
