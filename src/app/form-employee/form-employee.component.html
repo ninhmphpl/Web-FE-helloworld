@@ -22,7 +22,7 @@
             <th class="input-group-text">Ngày Sinh</th>
             <td>
               <div class="input-group">
-                <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh">
+                <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh" (change)="validatorBirth($event)">
               </div>
             </td>
           </tr>
@@ -32,7 +32,7 @@
               <div class="input-group">
                 <input id="age" formControlName="age" class="form-control"
                        placeholder="Nhập số điện thoại">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tuổi
                 </div>
               </div>
             </td>

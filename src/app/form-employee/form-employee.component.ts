@@ -5,6 +5,8 @@ import {EmployeeRender} from "../model/employee-Render";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Employee} from "../model/employee";
+import * as moment from "moment";
+
 
 const url = environtment.url;
 
@@ -31,8 +33,8 @@ export class FormEmployeeComponent implements OnInit {
     this.id = Number(this.routerActive.snapshot.paramMap.get("id"))
     this.formEmployee = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('',[Validators.required,] ),
-      birth: new FormControl(''),
+      name: new FormControl('', [Validators.required]),
+      birth: new FormControl('',),
       age: new FormControl(''),
       phoneNumber: new FormControl(''),
       position: new FormGroup({
@@ -76,5 +78,19 @@ export class FormEmployeeComponent implements OnInit {
 
   back() {
     this.router.navigate([''])
+  }
+  //  phải run npm install moment
+  validatorBirth(event: any) {
+    let date = event.target.value
+    alert(date)
+    let eighteenYearsAgo = moment().subtract(18, "years");
+    let birthday = moment(date);
+    if (!birthday.isValid()) {
+      alert("invalid date");
+    } else if (eighteenYearsAgo.isAfter(birthday)) {
+      alert("okay, you're good");
+    } else {
+      alert("sorry, no");
+    }
   }
 }
