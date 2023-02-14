@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FileUploadFireBase } from 'src/environments/firebase';
+import { FileUploadFireBase, upFileArray } from 'src/environments/firebase';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop'; //>> tạo chức năng kéo thả
 
 
@@ -15,7 +15,6 @@ export class FireBaseService {
   ) { }
 
   selectFile(event : any){
-    this.files = []
     let files = event.target.files
     for(let file of files){
       this.files.push(new FileUploadFireBase(file, this.storage))
