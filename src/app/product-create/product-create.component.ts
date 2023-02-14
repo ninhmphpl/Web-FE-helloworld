@@ -12,7 +12,7 @@ import { ProductDetailService } from '../service/product-detail.service';
   styleUrls: ['./product-create.component.scss']
 })
 export class ProductCreateComponent implements OnInit {
-
+  action = ''
   constructor(
     public service: ProductDetailService,
     public categoryService: CategoryService,
@@ -27,10 +27,13 @@ export class ProductCreateComponent implements OnInit {
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
     if (id > 0) {
+      this.action = 'update'
       this.service.getProductDetail(id, (data: any) => {
         this.formCreate.patchValue(data)
         this.fire.renderFormArrayImg(data.picture)
       })
+    }else{
+      this.action = 'create'
     }
   }
 
