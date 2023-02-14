@@ -22,6 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { environtment } from 'src/environments/environtment';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { OnloadComponent } from './onload/onload.component';
+import { PageErrorComponent } from './page-error/page-error.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { OnloadComponent } from './onload/onload.component';
     ProductListComponent,
     ProductDetailComponent,
     ProductUpdateComponent,
-    OnloadComponent
+    OnloadComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,

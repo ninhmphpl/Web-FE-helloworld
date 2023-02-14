@@ -26,8 +26,8 @@ export const environtment = {
 }
 
 export const errorLoader : ErrorLoader[] = [
-  {status : 400 , name : "Request không hợp lệ", path : "/"},
-  {status : 500 , name : "Đã xảy ra lỗi ở phía sever", path : "/"},
-  {status : 404 , name : "Không tìm thấy địa chỉ", path : "/"},
-  {status : 403 , name : "Không có quyền truy cập vào trang web", path : "/"},
+  {status : 400 , name : "Request không hợp lệ", path : "/error", description : "Không có chi tiết về vấn đề này"},
+  {status : 500 , name : "Đã xảy ra lỗi ở phía sever", path : "/error", description : "Không có chi tiết về vấn đề này"},
+  {status : 404 , name : "Không tìm thấy địa chỉ", path : "/error", description : "Không có chi tiết về vấn đề này"},
+  {status : 403 , name : "Không có quyền truy cập vào trang web", path : "/error", description : "Không có chi tiết về vấn đề này"},
 ]

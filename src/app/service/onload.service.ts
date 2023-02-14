@@ -27,7 +27,9 @@ export class OnloadService {
       if (status === err.status) {
         this.error = err
         this.router.navigate([err.path])
+        return
       }
     }
+    this.error = {status : 0 , name : "Lỗi không rõ", path : '/error', description : "Không có chi tiết về vấn đề này"}
   }
 }

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
 
-const role = environtment.role
-
 const employee = [
   {name : "Danh sách sản phẩm", path : '/employee'},
   {name : "Thêm sản phẩm", path : '/employee/product-edit/0'},
+]
+const admin = [
+  {name : "Danh sách nhân viên", path : '/employee'},
+  {name : "Thêm nhân viên", path : '/employee/product-edit/0'},
 ]
 interface Nav {
   name : string
@@ -22,9 +24,12 @@ export class NavComponent implements OnInit{
   public choice = 0
 
   ngOnInit(): void {
-    this.role = role;
-    if(role == "EMPLOYEE"){
+    this.role = environtment.role;
+    if(this.role == "EMPLOYEE"){
       this.nav = employee
+    }
+    if(this.role == "ADMIN"){
+      this.nav = admin
     }
   }
 
