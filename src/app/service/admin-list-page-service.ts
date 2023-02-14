@@ -57,6 +57,24 @@ export class AdminListPageService extends APIService<Page<Employee>>{
     }
   }
 
+  searchListEmployee(search: string | undefined, pageNumber: number) {
+    let httpOptions: HttpOptions;
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token'
+      }),
+      params: new HttpParams().append("page", pageNumber)
+    };
+    if (search != null) {
+      this.findEmployeebyName(search, httpOptions).subscribe(data => {
+          this.page = data
+          this.renderFooter()
+        }
+      )
+    }
+  }
+
 
 }
 

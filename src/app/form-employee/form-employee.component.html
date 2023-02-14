@@ -26,6 +26,17 @@
               </div>
             </td>
           </tr>
+          <tr hidden="hidden">
+            <th class="input-group-text">Tuổi</th>
+            <td>
+              <div class="input-group">
+                <input id="age" formControlName="age" class="form-control"
+                       placeholder="Nhập số điện thoại">
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                </div>
+              </div>
+            </td>
+          </tr>
           <tr>
             <th class="input-group-text">Số Điện Thoại</th>
             <td>
@@ -37,7 +48,8 @@
               </div>
             </td>
           </tr>
-          <tr>
+
+          <tr formGroupName="position">
             <th class="input-group-text">Chức Vụ</th>
             <td>
               <div class="input-group">
@@ -50,7 +62,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr formGroupName="gender">
             <th class="input-group-text">Giới Tính</th>
             <td>
               <div class="input-group">
@@ -62,7 +74,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr formGroupName="status">
             <th class="input-group-text">Trạng Thái</th>
             <td>
               <div class="input-group">

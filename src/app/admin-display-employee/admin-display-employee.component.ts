@@ -9,6 +9,7 @@ import {AdminListPageService} from "../service/admin-list-page-service";
   styleUrls: ['./admin-display-employee.component.scss']
 })
 export class AdminDisplayEmployeeComponent implements OnInit{
+  searchName ?: string;
   formLocal !: FormGroup;
   employees !:Employee[];
   constructor(public adminService : AdminListPageService) {
@@ -16,5 +17,9 @@ export class AdminDisplayEmployeeComponent implements OnInit{
   ngOnInit(){
   this.adminService.getListEmployee(0)
     }
+  onSubmit(searchName : string | undefined ) {
+    this.adminService.searchListEmployee(searchName,0);
+
+  }
 
 }

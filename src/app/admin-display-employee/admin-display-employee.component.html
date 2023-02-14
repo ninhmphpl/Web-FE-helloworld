@@ -1,4 +1,11 @@
 <a class="nav-link" [routerLink]="['/formcreate',0]">Thêm nhân viên mới</a>
+<div class="input-group mb-3">
+  <form #searchProduct = "ngForm" (ngSubmit)="onSubmit(searchName)">
+    <input name="search" [(ngModel)] ="searchName" type="text" class="form-control" placeholder="Input Search Product" >
+    <button class="btn btn-outline-secondary" type="" >Search</button>
+
+  </form>
+</div>
 <table class="table">
   <thead>
   <tr>

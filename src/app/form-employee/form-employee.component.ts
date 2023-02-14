@@ -31,7 +31,7 @@ export class FormEmployeeComponent implements OnInit {
     this.id = Number(this.routerActive.snapshot.paramMap.get("id"))
     this.formEmployee = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('', Validators.required),
+      name: new FormControl('',[Validators.required,] ),
       birth: new FormControl(''),
       age: new FormControl(''),
       phoneNumber: new FormControl(''),

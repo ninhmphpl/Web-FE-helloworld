@@ -28,6 +28,11 @@ export class APIService<E> {
     return this.http.get<Employee>(`${apiUrl}/admin/get-employee/${id}`).pipe(catchError(this.handleError))
 
   }
+  public findEmployeebyName(name: string, httpOptions? : HttpOptions) :Observable<E> {
+    return this.http.get<E>(`${apiUrl}/admin/searchname?searchname=`+name,httpOptions ).pipe(catchError(this.handleError))
+
+  }
+
 
   /** POST: add a new object to the database */
   post(url : string , object : any, httpOptions? : HttpOptions): Observable<E> {
