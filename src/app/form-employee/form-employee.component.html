@@ -13,7 +13,7 @@
             <td>
               <div class="input-group ">
                 <input id="name" formControlName="name" class="form-control" placeholder="Nhập Tên">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập tên
                 </div>
               </div>
             </td>
@@ -23,9 +23,10 @@
             <td>
               <div class="input-group">
                 <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh" (change)="validatorBirth($event)">
-                <div *ngIf="validate.validatorDate.before" class="text-danger">Tuổi của bạn nhỏ hơn 18</div>
-                <div *ngIf="validate.validatorDate.after" class="text-danger">Tuổi của bạn lớn hơn 100</div>
-
+                <div *ngIf="validate.validatorDate.before" class="text-danger">Bạn phải nhập tuổi lớn hơn 16</div>
+                <div *ngIf="validate.validatorDate.after" class="text-danger">Bạn phải nhập tuổi nhỏ hơn 100</div>
+                <div *ngIf="formEmployee.get('birth')?.touched&&formEmployee.get('birth')?.hasError('required')">Bạn phải nhập tuổi
+                </div>
               </div>
             </td>
           </tr>
@@ -34,8 +35,8 @@
             <td>
               <div class="input-group">
                 <input id="age" formControlName="age" class="form-control"
-                       placeholder="Nhập số điện thoại">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Phải nhập tuổi
+                       placeholder=""><br>
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập tuổi
                 </div>
               </div>
             </td>
@@ -46,7 +47,7 @@
               <div class="input-group">
                 <input id="phoneNumber" formControlName="phoneNumber" class="form-control"
                        placeholder="Nhập số điện thoại">
-                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bắt Buộc
+                <div *ngIf="formEmployee.get('name')?.touched&&formEmployee.get('name')?.hasError('required')">Bạn phải nhập
                 </div>
               </div>
             </td>

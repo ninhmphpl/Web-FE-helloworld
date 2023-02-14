@@ -36,7 +36,7 @@ export class FormEmployeeComponent implements OnInit {
     this.formEmployee = new FormGroup({
       id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
-      birth: new FormControl('',),
+      birth: new FormControl('',Validators.required),
       age: new FormControl(''),
       phoneNumber: new FormControl(''),
       position: new FormGroup({
@@ -83,7 +83,7 @@ export class FormEmployeeComponent implements OnInit {
   }
   //  phải run npm install moment
   validatorBirth(event: any) {
-    this.validate.dateBefore(18,event.target.value);
+    this.validate.dateBefore(16,event.target.value);
     this.validate.dateAfter(100, event.target.value)
   }
 }
