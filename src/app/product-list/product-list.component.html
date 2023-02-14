@@ -39,7 +39,7 @@
             {{pageService.filter.category.name}}
           </button>
           <div class="dropdown-content list-group">
-            <a href="#" class="list-group-item list-group-item-action" *ngFor="let c of categoryService.categories"
+            <a class="list-group-item list-group-item-action" *ngFor="let c of categoryService.categories"
               (click)="pageService.filter.category = c;pageService.getListProduct(0)"
               [ngClass]="{'active' : pageService.filter.category.id == c.id}">
               {{c.name}}
