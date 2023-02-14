@@ -5,7 +5,6 @@ import {environtment, HttpOptions} from "../../environments/environtment";
 import {HttpHeaders, HttpParams} from "@angular/common/http";
 
 const API_URL = `${environtment.url}`
-const token = environtment.token
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ const token = environtment.token
 export class ProductCreateService extends APIService<ProductDetail> {
   public product !: ProductDetail;
 
-  addProductDetail(productDetail: any) {
+  addProductDetail(productDetail: any , action : any) {
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -21,6 +20,9 @@ export class ProductCreateService extends APIService<ProductDetail> {
       })
     }
 
-    this.post(API_URL + "/employees/product-create/", productDetail, httpOptions).subscribe()
+    this.post(API_URL + "/employees/product-create/", productDetail, httpOptions).subscribe(data=>{
+      this.product = data
+      action(data.id);
+    })
   }
 }

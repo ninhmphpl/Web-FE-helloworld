@@ -10,7 +10,7 @@ export interface HttpOptions {
 }
 
 export const environtment = {
-    url : "http://localhost:8080",
+    url : "http://192.168.1.27:8080",
     role : "EMPLOYEE",
     token : "no Token",
     firebaseConfig: {

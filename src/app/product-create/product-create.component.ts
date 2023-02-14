@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ProductCreateService } from "../service/product-create.service";
 import { FireBaseService } from '../service/fire-base.service';
 import { CategoryService } from '../service/category.service';
+import { upFileArray } from 'src/environments/firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-create',
@@ -16,6 +18,7 @@ export class ProductCreateComponent implements OnInit{
     public categoryService : CategoryService,
     private bf: FormBuilder,
     public fire : FireBaseService,
+    private router : Router,
   ) {}
   ngOnInit(): void {
     this.categoryService.getAllCategory()
@@ -34,9 +37,19 @@ export class ProductCreateComponent implements OnInit{
 
   onSubmit() {
     if (this.formCreate.valid) {
-      let a: any = this.formCreate.value;
-      console.log(a)
-      this.service.addProductDetail(a)
+      let productDetail: any = this.formCreate.value;
+      console.log(productDetail)
+      upFileArray(this.fire.files, ()=>{
+        let urlImg = [];
+        for (let file of this.fire.files){
+          urlImg.push({name : file.url})
+        }
+        productDetail.picture = urlImg;
+        console.log(productDetail);
+        this.service.addProductDetail(productDetail, (id : number)=>{
+          this.router.navigate(["/product-detail/" + id])
+        })
+      })
     }
   }
 

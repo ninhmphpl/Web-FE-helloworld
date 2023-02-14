@@ -17,22 +17,34 @@
                 <!-- ảnh start -->
                 <div cdkDropList cdkDropListOrientation="horizontal" class="example-list row row-cols-auto"
                   (cdkDropListDropped)="fire.drop($event)">
-                  <div lass="card example-box p-1 border-primary" style="width: 130px;"
+                  <div lass="card example-box p-1 border-primary" style="width: 130px; position: relative;"
                     *ngFor="let file of fire.files ; let i = index">
                     <img class="card-img" src="{{file.src}}" cdkDrag>
                     <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
                       Đại diện
                     </div>
+                    <button type="button" class="btn-close" aria-label="Close" 
+                    style="position: absolute; right: 0; top: -5px;" (click)="fire.delete(i)"></button>
                   </div>
                 </div>
                 <label class="btn btn-outline-primary my-3" for="input-file">
                   Thêm ảnh
                 </label>
+                <span class="fw-light">({{ fire.files.length }}/5)</span>
+                <div
+                  *ngIf="fire.files.length > 5 || fire.files.length < 1">
+                  <div class="text-danger" *ngIf="fire.files.length > 5">
+                    Số lượng ảnh vượt quá quy định, (5 ảnh)
+                  </div>
+                  <div *ngIf="fire.files.length < 1" class="text-danger">
+                    Bạn cần chọn ảnh
+                  </div>
+                </div>
                 <!-- ảnh end -->
               </td>
             </tr>
             <tr>
-              <th>
+              <th class="col-3">
                 Tên
               </th>
               <td>
@@ -75,11 +87,11 @@
                   </option>
                 </select>
                 <div
-                  *ngIf="formCreate.controls.category.controls.id.valid && (formCreate.controls.category.controls.id.dirty || formCreate.controls.category.controls.id.touched)">
-                  <div *ngIf="formCreate.controls.category.controls.id.errors?.['required']" class="text-danger">
-                    Bạn phải chọn thể loại
-                  </div>
+                *ngIf="formCreate.controls.category.controls.id.invalid && (formCreate.controls.category.controls.id.dirty || formCreate.controls.category.controls.id.touched)">
+                <div *ngIf="formCreate.controls.category.controls.id.errors?.['required']" class="text-danger">
+                  Bạn phải chọn thể loại cho sản phẩm của mình
                 </div>
+              </div>
               </td>
             </tr>
             <tr>
@@ -117,7 +129,7 @@
             </tr>
           </tBody>
         </table>
-        <button type="submit" class="btn btn-primary" [disabled]="!formCreate.valid">Tạo</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Tạo</button>
       </form>
     </div>
     <!-- Body end -->
