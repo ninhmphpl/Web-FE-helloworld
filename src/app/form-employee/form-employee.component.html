@@ -23,6 +23,9 @@
             <td>
               <div class="input-group">
                 <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh" (change)="validatorBirth($event)">
+                <div *ngIf="validate.validatorDate.before" class="text-danger">Tuổi của bạn nhỏ hơn 18</div>
+                <div *ngIf="validate.validatorDate.after" class="text-danger">Tuổi của bạn lớn hơn 100</div>
+
               </div>
             </td>
           </tr>
