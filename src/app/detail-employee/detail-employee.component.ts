@@ -37,7 +37,7 @@ constructor(private employeeService: AdminListPageService,
     )
   }
   back(){
-  this.router.navigate(['/'])
+  this.router.navigate(['/search'])
   }
 
 }

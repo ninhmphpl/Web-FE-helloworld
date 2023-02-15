@@ -80,7 +80,7 @@ export class FormEmployeeComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate([''])
+    this.router.navigate(['/search'])
   }
   //  phải run npm install moment
   validatorBirth(event: any) {
