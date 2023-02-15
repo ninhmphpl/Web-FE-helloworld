@@ -9,6 +9,7 @@ const admin = [
   {name : "Danh sách nhân viên", path : '/employee'},
   {name : "Thêm nhân viên", path : '/employee/product-edit/0'},
 ]
+
 interface Nav {
   name : string
   path : string

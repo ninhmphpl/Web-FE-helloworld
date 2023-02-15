@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
-import { HttpOptions } from 'src/environments/environtment';
 import { OnloadService } from './onload.service';
 
+import {environtment, HttpOptions} from 'src/environments/environtment';
+import {Employee} from "../model/employee";
+const apiUrl = environtment.url
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,15 @@ export class APIService<E> {
         catchError(this.handleError)
       );
   }
+  public findEmployee(id : number) :Observable<Employee> {
+    return this.http.get<Employee>(`${apiUrl}/admin/get-employee/${id}`).pipe(catchError(this.handleError))
+
+  }
+  public findEmployeebyName(name: string, httpOptions? : HttpOptions) :Observable<E> {
+    return this.http.get<E>(`${apiUrl}/admin/searchname?searchname=`+name,httpOptions ).pipe(catchError(this.handleError))
+
+  }
+
 
   /** POST: add a new object to the database */
   post(url : string , object : any, httpOptions? : HttpOptions): Observable<E> {

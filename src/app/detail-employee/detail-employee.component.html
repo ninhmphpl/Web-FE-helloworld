@@ -1,0 +1,58 @@
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Họ Và Tên</th>
+    <th scope="col">Ngày Sinh</th>
+    <th scope="col">Tuổi</th>
+    <th scope="col">Số Điện Thoại</th>
+    <th scope="col">Chức Vụ</th>
+    <th scope="col">Lương </th>
+    <th scope="col">Giới Tính</th>
+    <th scope="col">Trạng Thái</th>
+    <th scope="col">Tài Khoản</th>
+    <th scope="col">Mật Khẩu</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <p id="name" >{{employee.name}}
+    </p>
+    </td>
+    <td>
+      <p id="birth" > {{employee.birth}}
+    </p></td>
+    <td>
+      <p id="age" > {{employee.age}}
+    </p>
+    </td>
+    <td>
+      <p id="phoneNumber" > {{employee.phoneNumber}}
+    </p>
+    </td>
+    <td>
+      <p id="position" > {{employee.position.name}}
+    </p>
+    </td><td>
+      <p id="saraly" > {{employee.position.salary}}
+    </p>
+    </td><td>
+      <p id="gender" > {{employee.gender.name}}
+    </p>
+    </td>
+    <td>
+      <p id="status" > {{employee.status.name}}
+    </p>
+    </td><td>
+      <p id="userName" > {{employee.user.username}}
+    </p>
+    </td><td>
+      <p id="passWord" > {{employee.user.password}}
+    </p>
+    </td>
+
+  </tr>
+  </tbody>
+  <button (click)="back()" class="btn btn-primary">Back</button>
+</table>

@@ -18,11 +18,18 @@ import { FilterComponent } from './filter/filter.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
 import { environtment } from 'src/environments/environtment';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { OnloadComponent } from './onload/onload.component';
 import { PageErrorComponent } from './page-error/page-error.component';
+import { AdminDisplayEmployeeComponent } from './admin-display-employee/admin-display-employee.component';
+import { LocalComponent } from './local/local.component';
+import { AdminComponent } from './admin/admin.component';
+
+// import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+import { FormEmployeeComponent } from './form-employee/form-employee.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -41,6 +48,12 @@ import { PageErrorComponent } from './page-error/page-error.component';
     ProductUpdateComponent,
     OnloadComponent,
     PageErrorComponent
+    AdminDisplayEmployeeComponent,
+    LocalComponent,
+    AdminComponent,
+    DetailEmployeeComponent,
+    FormEmployeeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -52,6 +65,8 @@ import { PageErrorComponent } from './page-error/page-error.component';
     AngularFireStorageModule,
     DragDropModule, //>> tạo chức năng kéo thả
 
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,45 @@
+<a class="nav-link" [routerLink]="['/formcreate',0]">Thêm nhân viên mới</a>
+<div class="input-group mb-3">
+  <form #searchProduct = "ngForm" (ngSubmit)="onSubmit(searchName)">
+    <input name="search" [(ngModel)] ="searchName" type="text" class="form-control" placeholder="Input Search Product" >
+    <button class="btn btn-outline-secondary" type="" >Search</button>
+
+  </form>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Tên</th>
+    <th scope="col">Chức Vụ</th>
+    <th scope="col">Trạng Thái</th>
+    <th scope="col">Số Điện Thoại</th>
+    <th scope="col">Vai Trò</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of adminService.page.content ">
+    <td>{{a.id}}</td>
+    <td>{{a.name}}</td>
+    <td>{{a.position.name}}</td>
+    <td>{{a.status.name}}</td>
+    <td>{{a.phoneNumber}}</td>
+    <td>{{a.user.role.name}}</td>
+    <td><button class="btn btn-outline-primary" [routerLink]="['/detail',a.id]">Chi Tiết</button></td>
+    <td>
+      <button class="btn btn-outline-warning" [routerLink]="['/formcreate',a.id]">Sửa Nội Dung</button>
+    </td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="adminService.preePage()">Trang trước</a>
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of adminService.pageControl"
+     (click)="adminService.getListEmployee(i)" [ngClass]="{'active' : i == adminService.page.pageable.pageNumber}">
+    {{i+1}}
+  </a>
+  <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="adminService.nextPage()"> Trang sau</a>
+</div>
