@@ -47,7 +47,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ProductDetailComponent,
     ProductUpdateComponent,
     OnloadComponent,
-    PageErrorComponent
+    PageErrorComponent,
     AdminDisplayEmployeeComponent,
     LocalComponent,
     AdminComponent,
