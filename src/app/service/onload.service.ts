@@ -20,16 +20,16 @@ export class OnloadService {
     private router : Router,
     private routerActive : ActivatedRoute
   ) {}
-  
+
   errorRender(status : number){
     this.onload = false
-    for (let err of errorLoader){
-      if (status === err.status) {
+  for (let err of errorLoader){
+    if (status === err.status) {
         this.error = err
-        this.router.navigate([err.path])
-        return
-      }
+      this.router.navigate([err.path])
+      return
     }
-    this.error = {status : 0 , name : "Lỗi không rõ", path : '/error', description : "Không có chi tiết về vấn đề này"}
   }
+  this.error = {status : 0 , name : "Lỗi không rõ", path : '/error', description : "Không có chi tiết về vấn đề này"}
+}
 }
