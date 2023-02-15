@@ -15,7 +15,7 @@
     display: block;
 }
 
-//checkbox start
+//>> checkbox start
 /* Customize the label (the container) */
 .container {
     display: block;
@@ -84,29 +84,3 @@
     transform: rotate(45deg);
   }
 //checkbox end
-
-//tooltip start
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgb(255, 255, 255);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
-//tooltip end
