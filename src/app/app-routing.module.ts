@@ -8,6 +8,7 @@ import {AdminDisplayEmployeeComponent} from "./admin-display-employee/admin-disp
 import {AdminComponent} from "./admin/admin.component";
 import {DetailEmployeeComponent} from "./detail-employee/detail-employee.component";
 import {FormEmployeeComponent} from "./form-employee/form-employee.component";
+import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
   {path : 'search' , component : AdminComponent},
   {path : 'detail/:id',component : DetailEmployeeComponent },
   {path : 'formcreate/:id',component : FormEmployeeComponent },
+  {path : "sign-in" , children : [
+    {path : "seller" , component : SignInSellerComponent}
+  ]},
   {path : '', component: ProductListComponent },
   {path : '', component : AdminComponent},
 ]

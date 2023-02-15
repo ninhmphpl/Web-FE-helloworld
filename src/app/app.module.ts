@@ -30,6 +30,7 @@ import { AdminComponent } from './admin/admin.component';
 import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
 import { FormEmployeeComponent } from './form-employee/form-employee.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AdminComponent,
     DetailEmployeeComponent,
     FormEmployeeComponent,
+    SignInSellerComponent,
 
   ],
   imports: [
