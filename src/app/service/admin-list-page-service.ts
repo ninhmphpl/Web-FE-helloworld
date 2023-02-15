@@ -24,6 +24,7 @@ export class AdminListPageService extends APIService<Page<Employee>>{
     this.getOne(url + "/admin/employee-list", httpOptions).subscribe(data =>
     { this.page = data
       this.renderFooter()
+      this.onload.onload = false
     }
 
     )

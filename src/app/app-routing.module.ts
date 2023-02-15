@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {path : 'product-detail/:id', component: ProductDetailComponent },
   {path : 'error' , component: PageErrorComponent},
-  {path : 'search' , component : AdminDisplayEmployeeComponent},
+  {path : 'search' , component : AdminComponent},
   {path : 'detail/:id',component : DetailEmployeeComponent },
   {path : 'formcreate/:id',component : FormEmployeeComponent },
   {path : '', component: ProductListComponent },
