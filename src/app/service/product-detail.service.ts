@@ -14,7 +14,6 @@ export class ProductDetailService extends APIService<ProductDetail>{
 
   //lấy 1 đối tượng productDetail thông qua id.
   getProductDetail(id: number , action ? : any) {
-    this.onload.onload = false
   //thông tin headers của reques
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
@@ -27,12 +26,11 @@ export class ProductDetailService extends APIService<ProductDetail>{
     this.getOne(API_URL + "/employees/product-detail/" + id, httpOptions).subscribe(data => {
       this.product = data
       action(data),
-      this.onload.onload = true
+      this.onload.onload = false
     })
   }
 
   addProductDetail(productDetail: any , action : any) {
-    this.onload.onload = false
     let httpOptions: HttpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -43,12 +41,11 @@ export class ProductDetailService extends APIService<ProductDetail>{
     this.post(API_URL + "/employees/product-create/", productDetail, httpOptions).subscribe(data=>{
       this.product = data
       action(data.id);
-      this.onload.onload = true
+      this.onload.onload = false
     })
   }
 
   updateProductDetail(productDetail: any , action : any) {
-    this.onload.onload = false
     console.log(productDetail);
     
     let httpOptions: HttpOptions = {
@@ -61,7 +58,7 @@ export class ProductDetailService extends APIService<ProductDetail>{
     this.put(API_URL + "/employees/product-edit/" + productDetail.id , productDetail, httpOptions).subscribe(data=>{
       this.product = data
       action(data.id);
-      this.onload.onload = true
+      this.onload.onload = false
     })
   }
 

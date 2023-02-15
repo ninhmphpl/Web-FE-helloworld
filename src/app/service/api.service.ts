@@ -11,7 +11,7 @@ export class APIService<E> {
 
   constructor(
     private http : HttpClient,
-    public onload : OnloadService
+    public onload : OnloadService,
     ) { }
 
   public getArray(url : string, httpOptions? : HttpOptions) : Observable<E[]> {
