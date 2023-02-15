@@ -29,8 +29,11 @@ constructor(private employeeService: AdminListPageService,
       }),
     }
     const id = Number(this.routerActive.snapshot.paramMap.get("id"))
-    this.employeeService.findEmployee(id).subscribe(data =>
+    this.employeeService.findEmployee(id).subscribe(data =>{
       this.employee = data
+      this.employeeService.onload.onload = false
+    }
+
     )
   }
   back(){

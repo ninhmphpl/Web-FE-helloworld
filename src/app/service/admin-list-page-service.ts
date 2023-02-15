@@ -70,6 +70,7 @@ export class AdminListPageService extends APIService<Page<Employee>>{
       this.findEmployeebyName(search, httpOptions).subscribe(data => {
           this.page = data
           this.renderFooter()
+          this.onload.onload = false
         }
       )
     }

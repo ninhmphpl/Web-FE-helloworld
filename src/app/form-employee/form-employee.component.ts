@@ -62,6 +62,7 @@ export class FormEmployeeComponent implements OnInit {
     this.adminEmployeeRenderService.findEmployee(this.id).subscribe((data) => {
       this.employee = data
       this.formEmployee.patchValue(data)
+      this.adminEmployeeRenderService.onload.onload = false
     })
 
   }
