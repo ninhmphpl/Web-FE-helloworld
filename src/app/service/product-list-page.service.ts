@@ -24,6 +24,7 @@ export class ProductListPageService extends APIService<Page<ProductSimple>> {
   public filter : Filter = {category : categoryDefaut}
 
   getListProduct(pageNumber : number) {
+    this.onload.onload = false
     let httpOptions: HttpOptions = {
       headers : new HttpHeaders({
         'Content-Type': 'application/json',
@@ -40,6 +41,7 @@ export class ProductListPageService extends APIService<Page<ProductSimple>> {
     this.getOne(urls, httpOptions).subscribe(data => {
       this.page = data
       this.renderFooter()
+      this.onload.onload = true
     })
   }
 

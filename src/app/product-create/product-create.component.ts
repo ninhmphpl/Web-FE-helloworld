@@ -54,6 +54,7 @@ export class ProductCreateComponent implements OnInit {
   })
 
   onSubmit() {
+    this.service.onload.onload = false
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
     if (this.formCreate.valid) {
@@ -66,7 +67,7 @@ export class ProductCreateComponent implements OnInit {
         }
         productDetail.picture = urlImg;
         console.log(productDetail);
-
+        this.service.onload.onload = true
         if (id > 0) {
           this.service.updateProductDetail(productDetail, (id: number) => {
             this.router.navigate(["/product-detail/" + id])

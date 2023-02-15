@@ -25,7 +25,8 @@ export class ProductDetailService extends APIService<ProductDetail>{
     //>> hàm đó mặc định sẽ được truyền giá trị trả về sau khi kích hoạt
     this.getOne(API_URL + "/employees/product-detail/" + id, httpOptions).subscribe(data => {
       this.product = data
-      action(data)
+      action(data),
+      this.onload.onload = false
     })
   }
 
@@ -40,6 +41,7 @@ export class ProductDetailService extends APIService<ProductDetail>{
     this.post(API_URL + "/employees/product-create/", productDetail, httpOptions).subscribe(data=>{
       this.product = data
       action(data.id);
+      this.onload.onload = false
     })
   }
 
@@ -56,6 +58,7 @@ export class ProductDetailService extends APIService<ProductDetail>{
     this.put(API_URL + "/employees/product-edit/" + productDetail.id , productDetail, httpOptions).subscribe(data=>{
       this.product = data
       action(data.id);
+      this.onload.onload = false
     })
   }
 

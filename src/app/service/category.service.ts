@@ -12,15 +12,16 @@ const url = environtment.url
 export class CategoryService extends APIService<Category> {
   categories! : Category[]
   getAllCategory(){
+    this.onload.onload = true
     let httpOptions: HttpOptions = {
       headers : new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: environtment.token
       })
     }
-    this.getArray(url + '/categories', httpOptions).subscribe(data =>
+    this.getArray(url + '/categories', httpOptions).subscribe(data =>{
       this.categories = data
-    )
+      this.onload.onload = false
+  })
   }
-
 }
