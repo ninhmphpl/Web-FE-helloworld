@@ -4,6 +4,8 @@ import { environtment } from 'src/environments/environtment';
 const employee = [
   {name : "Danh sách sản phẩm", path : '/employee'},
   {name : "Thêm sản phẩm", path : '/employee/product-edit/0'},
+  {path : 'error' , name : "PageErrorname"},
+  {path : '/search' , name : "Admin hiển thị employee"},
 ]
 const admin = [
   {name : "Danh sách nhân viên", path : '/employee'},
