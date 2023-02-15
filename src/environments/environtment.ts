@@ -9,10 +9,16 @@ export interface HttpOptions {
   // responseType?: 'arraybuffer'|'blob'|'json'|'text',
   withCredentials?: boolean,
 }
-
+const ROLE = {
+  customer : "CUSTOMER",
+  admin : "ADMIN",
+  employee : "EMPLOYEE",
+  buyer : "BUYER",
+  seller : "SELLER"
+}
 export const environtment = {
   url: "http://192.168.1.27:8080",
-  role: "EMPLOYEE",
+  role: ROLE.customer,
   token: "no Token",
   firebaseConfig: {
     apiKey: "AIzaSyAunDHJ-xdqfOP75d5FZrWKFXpvRHyKw84",
