@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, retry, switchMap, throwError } from 'rxjs';
 import { OnloadService } from './onload.service';
 
 import { environtment, HttpOptions } from 'src/environments/environtment';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,8 @@ export class APIAny {
   constructor(
     private http: HttpClient,
     public onload: OnloadService,
+    public route : Router,
+    public activeRoute : ActivatedRoute
   ) { }
 
   httpOption: HttpOptions = {
@@ -74,7 +77,6 @@ export class APIAny {
   /** PUT: update the object on the server. Returns the updated hero upon success. */
   putMapping(url: string, object: any,action : any) {
     this.onload.onload = true
-    this.onload.onload = true
     this.http.put<any>(url, object ,this.httpOption)
       .pipe(
         retry(3), catchError(this.handleError)
@@ -82,6 +84,12 @@ export class APIAny {
         action(data)
         this.onload.onload = false
       })
+  }
+  // get param pathvariable
+  getParam (key : string , action : any){
+    this.activeRoute.paramMap.subscribe((param : ParamMap)=> {
+      action(param.get(key))
+    });
   }
 
 

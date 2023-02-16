@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
-import {ProductDetailService} from "../service/product-detail.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ProductDetailService } from "../service/product-detail.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-display',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit{
+
+  imgMain = ''
+  amount : number = 0
+
+  setAmount (value : number){
+    if (value < 0 ) return this.amount = 0
+    return this.amount = value
+  }
 
   constructor(
     public service: ProductDetailService,
@@ -20,7 +28,15 @@ export class ProductDetailComponent {
 
   ngOnInit(): void {
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
-    console.log(id)
-    this.service.getProductDetail(id)
+    this.service.getProductDetail(id, () =>
+      this.imgMain = this.service.product.picture[0].name
+    );
   }
+
+  getPicture(img: any) {
+    this.imgMain = img.name
+  }
+
+
+
 }

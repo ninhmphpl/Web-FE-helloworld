@@ -5,6 +5,7 @@ import { CategoryService } from '../service/category.service';
 import { upFileArray } from 'src/environments/firebase';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailService } from '../service/product-detail.service';
+import { APIAny } from '../service/api-any.service';
 
 @Component({
   selector: 'app-product-create',
@@ -19,26 +20,28 @@ export class ProductCreateComponent implements OnInit {
     private bf: FormBuilder,
     public fire: FireBaseService,
     private router: Router,
-    private routerActive: ActivatedRoute
+    private routerActive: ActivatedRoute,
+    private api : APIAny
   ) { }
 
   ngOnInit(): void {
 
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
+    
     if (id > 0) {
       this.action = 'update'
       this.service.getProductDetail(id, (data: any) => {
         this.formCreate.patchValue(data)
         this.fire.renderFormArrayImg(data.picture)
       })
-    }else{
+    } else {
       this.action = 'create'
     }
   }
 
   formCreate = this.bf.group({
-    id : 0,
+    id: 0,
     name: ['', [Validators.required, Validators.maxLength(100)]],
     price: [0, [Validators.required]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
@@ -47,19 +50,19 @@ export class ProductCreateComponent implements OnInit {
       name: '',
       id: ['', [Validators.required]]
     }),
-    status : this.bf.group({
-      name : '',
-      id : 0
+    status: this.bf.group({
+      name: '',
+      id: 0
     })
   })
 
   onSubmit() {
-    this.service.onload.onload = false
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
     if (this.formCreate.valid) {
+
       let productDetail: any = this.formCreate.value;
-      console.log(productDetail)
+
       upFileArray(this.fire.files, () => {
         let urlImg = [];
         for (let file of this.fire.files) {
@@ -67,7 +70,7 @@ export class ProductCreateComponent implements OnInit {
         }
         productDetail.picture = urlImg;
         console.log(productDetail);
-        this.service.onload.onload = true
+        
         if (id > 0) {
           this.service.updateProductDetail(productDetail, (id: number) => {
             this.router.navigate(["/product-detail/" + id])
@@ -77,7 +80,6 @@ export class ProductCreateComponent implements OnInit {
             this.router.navigate(["/product-detail/" + id])
           })
         }
-
       })
     }
   }

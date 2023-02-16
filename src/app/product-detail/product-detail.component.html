@@ -56,68 +56,77 @@
   <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
 </div>
 
-<div id="container" *ngIf="true">
+<div id="container-fluid" *ngIf="true">
   <div id="header">
     <app-header></app-header>
   </div>
-  <div id="body" class="d-flex justify-content-between">
-    <!-- img start -->
-    <div class="img">
-      <div class="img-body">
-        <img src="{{ 'img' }}" alt="">
-      </div>
-      <div class="img-footer d-flex flex-row">
-        <div>
-          <button href="#" class="pree-img">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-              class="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg>
-          </button>
-          <button href="#" class="next-img">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-              class="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-            </svg>
-          </button>
+  <!-- body start -->
+  <div class="p-5 bg-light" *ngIf="service.product">
+    <!-- product detail start -->
+    <div id="body" class="d-flex justify-content-between p-3">
+      <!-- img start -->
+      <div class="img pr-3">
+        <div class="img-body">
+          <img src="{{ imgMain }}">
         </div>
-        <div class="img-child" [ngClass]="{'selected' : true}">
-          <a (click)="'changeIMG(imga)'">
-            <img src="{{ 'imga '}}" alt="">
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- img end -->
-    <div class="content">
-      <h3>{{ 'product.name' }}</h3>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="rate d-left font-main-color d-flex justify-content-between align-items-center">
-          <span>{{ 4.3 }}</span>
-          <!-- <app-star-percen [star]="product.rate"></app-star-percen> -->
-        </div>
-        |
-        <div class="rate-number d-left">
-          {{ 3423 }} <small>Rate</small>
-        </div>
-        |
-        <div class="sold d-left">
-          {{ 234 }} <small>Sold</small>
-        </div>
-        <div class="report d-right">
-          <a href="" class="text-decoration-none">Report</a>
-        </div>
-      </div>
-      <div id="price">
-        <div class="d-flex justify-content-between align-items-center">
-          <div id="old-price">
-            {{ 100000 | currency: 'VND' }}
+        <div class="img-footer d-flex flex-row">
+          <div>
+            <!-- <a class="pree-img">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+              </svg>
+            </a> -->
+            <!-- <a class="next-img">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </a> -->
           </div>
-          <div class="new-price font-main-color">
-            {{ 1000000 | currency: 'VND' }}
-            <span class="sale background-main-color" *ngIf="10 > 0">
+
+          <!-- img footer start -->
+          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture">
+            <a (click)="getPicture(img)">
+              <img src="{{ img.name }}">
+            </a>
+          </div>
+          <!-- img footer end -->
+
+        </div>
+      </div>
+      <!-- img end -->
+
+      <!-- content start -->
+      <div class="content px-4">
+        <div class="h3">{{ service.product.name }}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- <div class="rate d-left font-main-color d-flex justify-content-between align-items-center">
+          <span>{{ 4.3 }}</span>
+        </div>
+        | -->
+          <!-- <div class="rate-number d-left">
+          {{ 3423 }} <small>Đánh giá</small>
+        </div>
+        | -->
+          <div class="sold d-left">
+            {{ service.product.sold }} <small>Đã bán</small>
+          </div>
+          <div class="report d-right">
+            <a href="" class="text-decoration-none">Report</a>
+          </div>
+        </div>
+        <!-- price start -->
+        <div id="price">
+          <div class="d-flex justify-content-between align-items-center pt-2">
+            <!-- <div id="old-price" *ngIf="false">
+            {{ 100000 | currency: 'VND' }}
+          </div> -->
+            <div class="new-price font-main-color text-main">
+              {{ service.product.price | currency: 'VND' }}
+              <!-- <span class="sale background-main-color" *ngIf="false">
               {{100 | number : '1.0-0'}}% OFF
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin"
                 viewBox="0 0 16 16">
@@ -128,80 +137,108 @@
                   d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
                 <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
               </svg>
-            </span>
+            </span> -->
+            </div>
           </div>
         </div>
+        <!-- price end -->
+
+        <table class="info">
+          <tBody>
+
+            <!-- voucher start -->
+            <!-- <tr *ngIf="false">
+            <td>
+              Shop Vouchers
+            </td>
+            <td class="col-7">
+              <button class="voucher background-main-color" [ngClass]="{'select': true}">
+                {{ 'renderString(voucher.value)' }}
+              </button>
+            </td>
+          </tr> -->
+            <!-- voucher end -->
+
+            <!-- ship start -->
+            <tr>
+              <td class="col-5">
+                Giao hàng
+              </td>
+              <td class="col-7">
+                <img style="width: 20px;"
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
+                  alt="">
+                Miễn phí giao hàng
+              </td>
+            </tr>
+            <!-- ship end -->
+
+            <!-- color start -->
+            <!-- <tr>
+              <td class="col-5">
+                Color
+              </td>
+              <td class="col-7">
+                <button class="btn active btn-outline-primary">kho</button>
+              </td>
+            </tr> -->
+            <!-- color end -->
+
+
+            <!-- số lượng start -->
+            <tr>
+              <td class="col-5">
+                Số lượng
+              </td>
+              <td class="col-7 ">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                  (click)="setAmount(amount - 1)">-</a>
+                  <input style="width: 40px; text-align: center;" type="number" [(ngModel)]="amount">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                  (click)="setAmount(amount + 1)">+</a>
+                </div>
+              </td>
+            </tr>
+            <!-- số lượng end -->
+
+          </tBody>
+        </table>
+        <div style="margin-top: 20px">
+          <button type="button" class="btn btn-cart" style="margin-right: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
+              viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+              <path
+                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+            </svg>
+            Thêm vào giỏ hàng
+          </button>
+          <button type="button" class="btn btn-buy">Mua ngay</button>
+          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+        </div>
       </div>
-      <table class="info">
-        <tr>
-          <td class="title-info">
-            Shop Vouchers
-          </td>
-          <td>
-            <button class="voucher background-main-color" [ngClass]="{'select': true}">
-              {{ 'renderString(voucher.value)' }}
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Shipping
-          </td>
-          <td>
-            <img style="width: 20px;"
-              src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
-              alt="">
-            Free Shipping
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Color
-          </td>
-          <td>
-            <button class="btn active btn-outline-primary">kho</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Quantity
-          </td>
-          <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-primary">Minus</button>
-              <input style="width: 40px; text-align: center;" type="text">
-              <button type="button" class="btn btn-outline-primary">Plus</button>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <div style="margin-top: 20px">
-        <button type="button" class="btn btn-cart" style="margin-right: 20px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
-            viewBox="0 0 16 16">
-            <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-            <path
-              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-          </svg>
-          Add to Card
-        </button>
-        <button type="button" class="btn btn-buy">Buy Now</button>
-        <span class="available">{{ 'product.available' }} Available</span>
+      <!-- content end -->
+    </div>
+    <!-- product detail end -->
+
+    <!-- Product owner -->
+    <div class="specifications">
+
+    </div>
+    <!-- Product owner -->
+
+    <!-- Description start -->
+    <div class="description">
+      <h3>Thông tin chi tiết sản phẩm</h3>
+      <hr>
+      <div class="blockquote" [innerHTML]="service.product.description">
       </div>
     </div>
-  </div>
-  <div class="owner">
+    <!-- Description end -->
+
 
   </div>
-  <div class="specifications">
-
-  </div>
-  <div class="description">
-    <h3>Product Description</h3>
-    <hr>
-    <div class="blockquote" [innerHTML]="'product.description'">
-    </div>
-
-  </div>
+  <!-- body end -->
 
 </div>
