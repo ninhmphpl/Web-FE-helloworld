@@ -9,7 +9,7 @@
         <div class="p-auto my-auto">
           <p class=" my-auto">Lọc: </p>
         </div>
-        <button class="btn btn-outline-primary mx-2">
+        <button class="btn-main mx-2">
           Liên quan
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
             viewBox="0 0 16 16">
@@ -17,7 +17,7 @@
               d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
           </svg>
         </button>
-        <button class="btn btn-outline-primary mx-2">
+        <button class="btn-main mx-2">
           Giá
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
             viewBox="0 0 16 16">
@@ -25,7 +25,7 @@
               d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
           </svg>
         </button>
-        <button class="btn btn-outline-primary mx-2">
+        <button class="btn-main mx-2">
           Mua Nhiều
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
             viewBox="0 0 16 16">
@@ -33,9 +33,9 @@
               d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
           </svg>
         </button>
-        <button class="btn btn-outline-primary mx-2">Mới</button>
+        <button class="btn-main mx-2">Mới</button>
         <div class="dropdown" *ngIf="categoryService.categories">
-          <button class="btn btn-outline-primary mx-2" [ngClass]="{'active' : pageService.filter.category.id != 0  }">
+          <button class="btn-main mx-2" [ngClass]="{'active' : pageService.filter.category.id != 0  }">
             {{pageService.filter.category.name}}
           </button>
           <div class="dropdown-content list-group">
@@ -82,14 +82,14 @@
       </div>
       <!-- control -->
       <div class="d-flex justify-content-center">
-        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.preePage()"
+        <a href="#" type="button" class="btn-main mx-2" (click)="pageService.preePage()"
         [ngClass]="{'d-none' : pageService.page.first }"
         >Trang trước</a>
-        <a href="#" type="button" class="btn btn-outline-primary mx-2" *ngFor="let i of pageService.pageControl"
+        <a href="#" type="button" class="btn-main mx-2" *ngFor="let i of pageService.pageControl"
           (click)="pageService.getListProduct(i)" [ngClass]="{'active' : i == pageService.page.pageable.pageNumber}">
           {{i+1}}
         </a>
-        <a href="#" type="button" class="btn btn-outline-primary mx-2" (click)="pageService.nextPage()"
+        <a href="#" type="button" class="btn-main mx-2" (click)="pageService.nextPage()"
         [ngClass]="{'d-none' : pageService.page.last }"
         > Trang sau</a>
       </div>

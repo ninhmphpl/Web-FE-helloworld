@@ -12,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .bg-main{
   background-color: rgb(255, 94, 0);
 }
+.active{
+  background-color: rgb(255, 94, 0) !important;
+  color: white !important;
+}
 // bg end
 //>> size start
 .full-height{
@@ -45,8 +49,11 @@ input::-webkit-inner-spin-button {
 .text-main{
   color: rgb(255, 94, 0);;
 }
+.primary{
+  color: rgb(255, 94, 0) !important;
+}
 a{
-  text-decoration : none;
+  text-decoration : none !important;
 }
 //text end
 //>>btn start
@@ -54,6 +61,17 @@ a{
   border : none;
   color: white;
   size: 20px;
+}
+.btn-main{
+  padding : 8px 15px 8px 15px;
+  border : 1px #00000058 solid;
+  background-color: white;
+  color: #000000ab;
+  border-radius: 2px;
+}
+.btn-main:hover{
+  background-color: rgb(255, 94, 0);
+  color: white;
 }
 //btn end
 
