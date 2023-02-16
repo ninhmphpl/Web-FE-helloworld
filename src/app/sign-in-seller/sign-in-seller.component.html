@@ -1,24 +1,82 @@
 <app-header></app-header>
-<div class="bg-shadow full-height container-fluid bg-sign " *ngIf="role == 'CUSTOMER'">
+<form class="bg-shadow container-fluid bg-sign " style="height: 800px;" *ngIf="role == 'CUSTOMER'" [formGroup]="sellerForm" (ngSubmit)="onSubmit()">
   <div class="bg-white p-3 body-sign mx-auto row">
     <!-- cột 1 -->
-    <div class="col-6 pr-4">
-      <div class="mb-3">
+    <div class="col-6 pr-4" >
+      <!-- Nhập username start -->
+      <div class="mb-3" formGroupName="user">
         <div>Tên đăng nhập <span class="text-danger">*</span></div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập tên đăng nhập">
+        <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập tên đăng nhập"
+          (keydown)="checkUserName()" id="username"
+          formControlName="username">
+        <!-- Valid username start -->
+        <div class="text-danger" *ngIf="checkUsername">
+          Tên này đã tồn tại!!
+        </div>
+        <div
+          *ngIf="sellerForm.controls.user.controls.username.invalid && (sellerForm.controls.user.controls.username.dirty || sellerForm.controls.user.controls.username.touched)">
+          <div *ngIf="sellerForm.controls.user.controls.username.errors?.['required']" class="text-danger">
+            Bạn phải tên đăng nhập
+          </div>
+          <div
+            *ngIf="sellerForm.controls.user.controls.username.errors?.['pattern']"
+            class="text-danger">
+            Mật khẩu yêu cầu hoa thường chữ số ghi liền
+          </div>
+        </div>
+        <!-- Valid username start -->
       </div>
+      <!-- Nhập username end -->
       <div class="mb-3">
         <div>Số điện thoại <span class="text-danger">*</span></div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập số điện thoại">
+        <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập số điện thoại" formControlName="phoneNumber">
+        <!-- Valid number phone start -->
+        <div
+          *ngIf="sellerForm.controls.phoneNumber.invalid && (sellerForm.controls.phoneNumber.dirty || sellerForm.controls.phoneNumber.touched)">
+          <div *ngIf="sellerForm.controls.phoneNumber.errors?.['required']" class="text-danger">
+            Bạn phải nhập số điện thoại
+          </div>
+          <div
+            *ngIf="sellerForm.controls.phoneNumber.errors?.['pattern']"
+            class="text-danger">
+            (phải có 10 số và bắt đầu bằng số 0)
+          </div>
+        </div>
+        <!-- Valid number phone end -->
       </div>
-      <div class="mb-3">
+      <!-- password start -->
+      <div class="mb-3" formGroupName="user">
         <div>Nhập mật khẩu <span class="text-danger">*</span></div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập mật khẩu">
+        <input type="password" class="p-2 full-width border" placeholder="Vui lòng nhập mật khẩu" formControlName="password">
+        <!-- Valid mật khẩu start -->
+        <div
+          *ngIf="sellerForm.controls.user.controls.password.invalid && (sellerForm.controls.user.controls.password.dirty || sellerForm.controls.user.controls.password.touched)">
+          <div *ngIf="sellerForm.controls.user.controls.password.errors?.['required']" class="text-danger">
+            Bạn phải nhập mật khẩu
+          </div>
+          <div
+            *ngIf="sellerForm.controls.user.controls.password.errors?.['pattern']"
+            class="text-danger">
+            Mật khẩu yêu cầu 6-32 kí tự có chữ hoa , thường và số
+          </div>
+        </div>
+        <!-- Valid mật khẩu end -->
       </div>
+      <!-- password end -->
+      <!-- repassword start -->
       <div class="mb-3">
         <div>Nhập lại mật khẩu <span class="text-danger">*</span></div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập lại mật khẩu">
+        <input type="password" class="p-2 full-width border" placeholder="Vui lòng nhập lại mật khẩu" formControlName="repassword">
+        <!-- valid repassword start -->
+        <div
+          *ngIf="sellerForm.controls.repassword.invalid && (sellerForm.controls.repassword.dirty || sellerForm.controls.repassword.touched)">
+          <div *ngIf="sellerForm.controls.repassword.errors?.['required']" class="text-danger">
+            Bạn phải nhập mật khẩu
+          </div>
+        </div>
+        <!-- valid repassword end -->
       </div>
+      <!-- repassword end -->
       <div>
         Địa chỉ <span class="text-danger">*</span>
       </div>
@@ -26,7 +84,8 @@
       <div class="row p-0">
         <!-- Thành phố -->
         <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">Tỉnh
+          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">
+            {{ serviceAddress.address.province.name }}
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -35,16 +94,18 @@
               </svg>
             </span>
           </button>
-          <div class="dropdown-content overflow-y-auto border bg-white" style="height: 300px;">
+          <div class="dropdown-content overflow-y-auto border bg-white">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action">Link 1</a>
+              <a *ngFor="let province of serviceAddress.province" class="list-group-item list-group-item-action"
+                (click)="serviceAddress.getDistrict(province)">{{ province.name }}</a>
             </div>
           </div>
         </div>
         <!-- Thành phố -->
-        <!-- Huyện -->
+        <!-- Huyện start-->
         <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">Huyện
+          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">
+            {{ serviceAddress.address.district.name }}
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -53,16 +114,20 @@
               </svg>
             </span>
           </button>
-          <div class="dropdown-content overflow-y-auto border bg-white" style="height: 300px;">
+          <div class="dropdown-content overflow-y-auto border bg-white">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action">Link 1</a>
+              <a class="list-group-item list-group-item-action" *ngFor="let district of serviceAddress.district"
+                (click)="serviceAddress.getWard(district)">
+                {{ district.name }}
+              </a>
             </div>
           </div>
         </div>
-        <!-- Huyện -->
+        <!-- Huyện end -->
         <!-- Xã start-->
         <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">Xã
+          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">{{
+            serviceAddress.address.ward.name }}
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -71,23 +136,34 @@
               </svg>
             </span>
           </button>
-          <div class="dropdown-content overflow-y-auto border bg-white" style="height: 300px;">
+          <div class="dropdown-content overflow-y-auto border bg-white">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action">Link 1</a>
+              <a class="list-group-item list-group-item-action" *ngFor="let ward of serviceAddress.ward"
+                (click)="serviceAddress.address.ward = ward">
+                {{ ward.name }}
+              </a>
             </div>
           </div>
         </div>
         <!-- Xã end-->
       </div>
+      <div class="text-danger">{{ addressMessage }}</div>
       <!-- Địa chỉ chi tiết start -->
       <div class="mt-3">
         <div>
           Địa chỉ chi tiết (Số nhà/Đường)<span class="text-danger">*</span>
         </div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập số nhà / Đường">
+        <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập số nhà / Đường" formControlName="addressDetail">
+        <div
+        *ngIf="sellerForm.controls.addressDetail.invalid && (sellerForm.controls.addressDetail.dirty || sellerForm.controls.addressDetail.touched)">
+        <div *ngIf="sellerForm.controls.addressDetail.errors?.['required']" class="text-danger">
+          Bạn phải địa chỉ chi tiết
+        </div>
+      </div>
       </div>
       <!-- Địa chỉ chi tiết end -->
       <!-- địa chỉ -->
+      <!-- {{ serviceAddress.address | json }} -->
     </div>
     <!-- cột 1 -->
     <!-- cột 2  -->
@@ -95,7 +171,15 @@
       <!-- tên cửa hàng start -->
       <div>
         <div>Tên cửa hàng<span class="text-danger">*</span></div>
-        <input type="number" class="p-2 full-width border" placeholder="Vui lòng nhập tên của cửa hàng">
+        <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập tên của cửa hàng" formControlName="name">
+        <!-- valid name start -->
+        <div
+        *ngIf="sellerForm.controls.name.invalid && (sellerForm.controls.name.dirty || sellerForm.controls.name.touched)">
+        <div *ngIf="sellerForm.controls.name.errors?.['required']" class="text-danger">
+          Bạn phải nhập tên cửa hàng
+        </div>
+      </div>
+        <!-- valid name end -->
       </div>
       <!-- tên cửa hàng end -->
       <!-- điều khoản start -->
@@ -107,9 +191,10 @@
       <!-- điều khoản end -->
       <!-- nút đăng ký start -->
       <button class="full-width text-center btn-big bg-main py-3 mt-3">Đăng ký</button>
+      <div class="text-danger">{{ messenger }}</div>
       <!-- nút đăng ký end -->
 
     </div>
     <!-- cột 2 -->
   </div>
-</div>
+</form>
