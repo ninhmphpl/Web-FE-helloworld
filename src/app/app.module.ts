@@ -22,13 +22,12 @@ import { environtment } from 'src/environments/environtment';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { OnloadComponent } from './onload/onload.component';
 import { PageErrorComponent } from './page-error/page-error.component';
-import { AdminDisplayEmployeeComponent } from './admin-display-employee/admin-display-employee.component';
 import { LocalComponent } from './local/local.component';
-import { AdminComponent } from './admin/admin.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 // import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
-import { FormEmployeeComponent } from './form-employee/form-employee.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail-component.service';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 
@@ -49,11 +48,10 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
     ProductUpdateComponent,
     OnloadComponent,
     PageErrorComponent,
-    AdminDisplayEmployeeComponent,
     LocalComponent,
-    AdminComponent,
-    DetailEmployeeComponent,
-    FormEmployeeComponent,
+    EmployeeListComponent,
+    EmployeeDetailComponent,
+    EmployeeCreateComponent,
     SignInSellerComponent,
 
   ],

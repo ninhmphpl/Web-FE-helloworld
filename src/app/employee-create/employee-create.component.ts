@@ -13,10 +13,10 @@ const url = environtment.url;
 
 @Component({
   selector: 'app-form-employee',
-  templateUrl: './form-employee.component.html',
-  styleUrls: ['./form-employee.component.scss']
+  templateUrl: './employee-create.component.html',
+  styleUrls: ['./employee-create.component.scss']
 })
-export class FormEmployeeComponent implements OnInit {
+export class EmployeeCreateComponent implements OnInit {
   formEmployee !: FormGroup
   employee !: Employee
 

@@ -4,7 +4,70 @@
   <div class="row mt-4">
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
     <!--    <app-product class="col-9"></app-product>-->
-    <app-admin-display-employee class="col-9"></app-admin-display-employee>
+<!--    <app-admin-display-employee class="col-9"></app-admin-display-employee>-->
+
+  <!-- body start -->
+
+    <div class="col-9 px-4">
+      <!-- <a class="nav-link" [routerLink]="['/formcreate',0]">Thêm nhân viên mới</a> -->
+
+      <!-- tìm kiếm start -->
+      <div class="input-group mb-3">
+        <form #searchProduct="ngForm" (ngSubmit)="onSubmit(searchName)" class="row">
+          <input name="search" [(ngModel)]="searchName" type="text" class="form-control col-8"
+                 placeholder="Tìm kiếm nhân viên">
+          <a class="btn-main col-4" type="">Tìm kiếm</a>
+
+        </form>
+      </div>
+      <!-- tìm kiếm end -->
+
+      <!-- bảng start -->
+      <table class="table bg-white">
+        <thead>
+        <tr>
+          <th class="text-center align-middle" scope="col">ID</th>
+          <th class="text-center align-middle" scope="col">Tên</th>
+          <th class="text-center align-middle" scope="col">Chức Vụ</th>
+          <th class="text-center align-middle" scope="col">Trạng Thái</th>
+          <th class="text-center align-middle" scope="col">Số Điện Thoại</th>
+          <th class="text-center align-middle" scope="col">Vai Trò</th>
+          <th scope="col" class="text-center align-middle" >Hành Động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of adminService.page.content ">
+          <th class="text-center align-middle">{{a.id}}</th>
+          <td><a href="/employee/detail/{{a.id}}" class="text-dark">{{a.name}}</a></td>
+          <td class="text-center align-middle">{{a.position.name}}</td>
+          <td class="text-center align-middle">{{a.status.name}}</td>
+          <td class="text-center align-middle">{{a.phoneNumber}}</td>
+          <td class="text-center align-middle">{{a.user.role.name}}</td>
+          <td class="text-center align-middle">
+            <a class="btn-main" href="/employee/detail/{{a.id}}">Sửa</a>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!-- bảng end -->
+
+      <!-- điều trang start -->
+      <div class="d-flex justify-content-center">
+        <a href="#" type="button" class="btn-main mx-2" (click)="adminService.preePage()">Trang trước</a>
+        <a href="#" type="button" class="btn-main mx-2" *ngFor="let i of adminService.pageControl"
+           (click)="adminService.getListEmployee(i)" [ngClass]="{'active' : i == adminService.page.pageable.pageNumber}">
+          {{i+1}}
+        </a>
+        <a href="#" type="button" class="btn-main mx-2" (click)="adminService.nextPage()"> Trang sau</a>
+      </div>
+      <!-- điều trang end -->
+
+    </div>
+  <!-- body end -->
+
   </div>
   <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
 </div>

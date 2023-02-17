@@ -1,58 +1,83 @@
-<app-header></app-header>
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">Họ Và Tên</th>
-    <th scope="col">Ngày Sinh</th>
-    <th scope="col">Tuổi</th>
-    <th scope="col">Số Điện Thoại</th>
-    <th scope="col">Chức Vụ</th>
-    <th scope="col">Lương </th>
-    <th scope="col">Giới Tính</th>
-    <th scope="col">Trạng Thái</th>
-    <th scope="col">Tài Khoản</th>
-    <th scope="col">Mật Khẩu</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>
-      <p id="name" >{{employee.name}}
-    </p>
-    </td>
-    <td>
-      <p id="birth" > {{employee.birth}}
-    </p></td>
-    <td>
-      <p id="age" > {{employee.age}}
-    </p>
-    </td>
-    <td>
-      <p id="phoneNumber" > {{employee.phoneNumber}}
-    </p>
-    </td>
-    <td>
-      <p id="position" > {{employee.position.name}}
-    </p>
-    </td><td>
-      <p id="saraly" > {{employee.position.salary}}
-    </p>
-    </td><td>
-      <p id="gender" > {{employee.gender.name}}
-    </p>
-    </td>
-    <td>
-      <p id="status" > {{employee.status.name}}
-    </p>
-    </td><td>
-      <p id="userName" > {{employee.user.username}}
-    </p>
-    </td><td>
-      <p id="passWord" > {{employee.user.password}}
-    </p>
-    </td>
+<div class="container-fluid px-0">
+  <app-header class="mx-0 "></app-header>
 
-  </tr>
-  </tbody>
-  <button (click)="back()" class="btn btn-primary">Back</button>
-</table>
+  <body class="p-5 bg-shadow ">
+
+    <div class="bg-white row">
+
+      <!-- cột 1 start -->
+      <div class="col-4 p-5 border-r-1">
+        <div class="border rounded-circle p-3">
+          <img class="rounded-circle full-size"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlR3hMw_3daUL3Uhr5Y3uJh_kMaYzyqQhhPA&usqp=CAU"
+            alt="">
+        </div>
+        <h1 class="text-center pt-3">{{employee.name}}</h1>
+      </div>
+      <!-- cột 1 start -->
+
+      <!-- cột 2 start -->
+      <div class="col-8 p-5">
+        <h1>Thông tin nhân viên</h1>
+        <table class="table table-bordered">
+          <tBody>
+            <tr>
+              <td class="align-middle">ID Nhân viên</td>
+              <td class="align-middle">{{employee.id}}</td>
+            </tr>
+            <tr>
+              <td class="align-middle">Tên Nhân viên</td>
+              <td class="align-middle">{{employee.name}}</td>
+            </tr>
+            <tr>
+              <td class="align-middle">Ngày sinh</td>
+              <td class="align-middle">
+                <p> {{employee.birth}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">
+                Tuổi
+              </td>
+              <td class="align-middle">
+                <p>{{employee.age}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">Giới tính</td>
+              <td class="align-middle">
+                <p> {{employee.gender.name}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">Số Điện thoại </td>
+              <td class="align-middle">
+                <p> {{employee.phoneNumber}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">Chức vụ</td>
+              <td class="align-middle">
+                <p> {{employee.position.name}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">
+                Lương hưởng
+              </td>
+              <td class="align-middle">
+                <p> {{employee.position.salary}} Đồng</p> 
+              </td>
+            </tr>
+
+          </tBody>
+        </table>
+        <a href="/employee/edit/{{employee.id}}" class="btn-main">Cập nhật thông tin</a>
+
+      </div>
+      <!-- cột 2 end -->
+
+    </div>
+  </body>
+
+</div>

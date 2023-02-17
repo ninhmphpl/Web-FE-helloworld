@@ -24,6 +24,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width{
   width: 100%;
 }
+.full-size{
+  height: 100%;
+  width: 100%;
+}
 //size end
 //>>sign start
 .body-sign{
@@ -70,9 +74,52 @@ a{
   border-radius: 2px;
 }
 .btn-main:hover{
-  background-color: rgb(255, 94, 0);
-  color: white;
+  background-color: rgb(255, 94, 0) !important;
+  border-color: rgb(255, 94, 0) !important;
+  color: white !important;
+}
+.col-20{
+  width: 20%;
 }
 //btn end
+
+//boder start
+.border-l-1{
+  border-left: solid 1px #000000ab;
+}
+.border-l-2{
+  border-left: solid 2px #000000ab;
+}
+.border-l-3{
+  border-left: solid 3px #000000ab;
+}
+.border-r-1{
+  border-right: solid 1px #0000003b;
+}
+.border-r-2{
+  border-right: solid 2px #0000003b;
+}
+.border-r-3{
+  border-right: solid 3px #0000003b;
+}
+.border-t-1{
+  border-top: solid 1px #0000003b;
+}
+.border-t-2{
+  border-top: solid 2px #0000003b;
+}
+.border-t-3{
+  border-top: solid 3px #0000003b;
+}
+.border-b-1{
+  border-bottom: solid 1px #0000003b;
+}
+.border-b-2{
+  border-bottom: solid 2px #0000003b;
+}
+.border-b-3{
+  border-bottom: solid 3px #0000003b;
+}
+//boder end
 
 

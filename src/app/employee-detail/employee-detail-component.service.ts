@@ -11,10 +11,10 @@ const url = environtment.url
 
 @Component({
   selector: 'app-detail-employee',
-  templateUrl: './detail-employee.component.html',
-  styleUrls: ['./detail-employee.component.scss']
+  templateUrl: './employee-detail-component.service.html',
+  styleUrls: ['./employee-detail-component.service.scss']
 })
-export class DetailEmployeeComponent implements OnInit{
+export class EmployeeDetailComponent implements OnInit{
   employee!: Employee ;
 constructor(private employeeService: AdminListPageService,
             private routerActive : ActivatedRoute,
