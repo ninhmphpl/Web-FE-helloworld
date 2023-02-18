@@ -48,6 +48,7 @@
         </div>
       </div>
       <!-- fillter end -->
+      {{role}}
       <table class="table bg-white">
         <thead>
           <tr>
@@ -64,7 +65,7 @@
           <tr *ngFor="let p of pageService.page.content">
             <th class="text-center align-middle" scope="">{{p.id}}</th>
             <td class="text-center align-middle">
-              <a href="/product-detail/{{p.id}}">
+              <a href="/product/detail/{{role}}/{{p.id}}">
                 <img src="{{p.avatar}}" class="" style="height: 100px; width: 100px;;" alt="">
               </a>
             </td>
@@ -72,7 +73,7 @@
             <td class="text-center align-middle">{{p.price}}</td>
             <td class="text-center align-middle">{{p.category.name}}</td>
             <td class="text-center align-middle">{{p.sold}}</td>
-            <td class="text-center align-middle"><a class="btn btn-warning" href="/employee/product-edit/{{p.id}}">Sửa</a></td>
+            <td class="text-center align-middle"><a class="btn btn-warning" href="/product/edit/{{role}}/{{p.id}}">Sửa</a></td>
             <td class="text-center align-middle"><a class="btn btn-danger">Xóa</a></td>
           </tr>
         </tbody>

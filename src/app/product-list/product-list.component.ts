@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { environtment, ROLE } from 'src/environments/environtment';
+import { APIAny } from '../service/api-any.service';
 import { CategoryService } from '../service/category.service';
 import { ProductListPageService } from '../service/product-list-page.service';
 
@@ -8,17 +10,29 @@ import { ProductListPageService } from '../service/product-list-page.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit{
-
+export class ProductListComponent implements OnInit {
+  role: any = ''
   constructor(
-    public pageService : ProductListPageService,
-    public categoryService : CategoryService,
-  ){}
+    public pageService: ProductListPageService,
+    public categoryService: CategoryService,
+    private activeRouter: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.pageService.getListProduct(0);
     this.categoryService.getAllCategory();
-    environtment.role = ROLE.admin
+    this.getRole()
+  }
+
+  getRole(): any {
+    let role: any = this.activeRouter.snapshot.paramMap.get("role");
+    console.log(role);
+
+    if ((role == ROLE.employee) || (role == ROLE.seller)) {
+      this.role = role
+      console.log(this.role);
+      environtment.role = role
+    }
   }
 
 

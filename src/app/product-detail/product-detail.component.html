@@ -100,7 +100,8 @@
       <!-- img end -->
 
       <!-- content start -->
-      <div class="content px-5">
+      <!-- content customer, buyer start -->
+      <div class="content px-5" *ngIf="role == 'CUSTOMER' || role == 'BUYER'">
         <div class="h3">{{ service.product.name }}</div>
         <div class="d-flex justify-content-between align-items-center">
           <!-- <div class="rate d-left font-main-color d-flex justify-content-between align-items-center">
@@ -219,6 +220,14 @@
           <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
         </div>
       </div>
+      <!-- content customer, buyer end-->
+
+      <!-- content seller, employee, admin start -->
+      <div class="">
+
+      </div>
+      <!-- content seller, employee, admin end -->
+
       <!-- content end -->
     </div>
     <!-- product detail end -->

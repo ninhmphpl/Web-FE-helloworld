@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit{
   role = ''
   ngOnInit(): void {
     this.role = environtment.role
+    console.log("header : " + this.role);
   }
 
 }

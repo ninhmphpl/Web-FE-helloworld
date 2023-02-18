@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDetailService } from "../service/product-detail.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ROLE } from 'src/environments/environtment';
 
 @Component({
   selector: 'app-display',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit{
-
+  role : any = ''
   imgMain = ''
 
   amount : number = 1
@@ -36,7 +37,8 @@ export class ProductDetailComponent implements OnInit{
   // khi component này được gọi hay đc sử dụng, hàm này sẽ được khởi động
 
   ngOnInit(): void {
-    let id = Number(this.routerActive.snapshot.paramMap.get("id"))
+    let id = Number(this.routerActive.snapshot.paramMap.get("id"));
+    this.role =  this.routerActive.snapshot.paramMap.get("role");
     this.service.getProductDetail(id, () =>
       this.imgMain = this.service.product.picture[0].name
     );

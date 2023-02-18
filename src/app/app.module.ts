@@ -17,7 +17,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { FilterComponent } from './filter/filter.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 import { environtment } from 'src/environments/environtment';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { OnloadComponent } from './onload/onload.component';
@@ -27,7 +27,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 // import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail-component.service';
-import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 
@@ -42,7 +42,7 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
     CarouselComponent,
     FilterComponent,
     ProductListComponent,
-    ProductCreateComponent,
+    ProductEditComponent,
     ProductListComponent,
     ProductDetailComponent,
     ProductUpdateComponent,
@@ -51,7 +51,7 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
     LocalComponent,
     EmployeeListComponent,
     EmployeeDetailComponent,
-    EmployeeCreateComponent,
+    EmployeeEditComponent,
     SignInSellerComponent,
 
   ],

@@ -23,7 +23,7 @@ const IP_CONFIG = {
 }
 export const environtment = {
   url: IP_CONFIG.ninh,
-  role: ROLE.buyer,
+  role: ROLE.customer,
   token: "no Token",
   firebaseConfig: {
     apiKey: "AIzaSyAunDHJ-xdqfOP75d5FZrWKFXpvRHyKw84",

@@ -10,10 +10,10 @@ import { environtment, path } from 'src/environments/environtment';
 
 @Component({
   selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.scss']
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.scss']
 })
-export class ProductCreateComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
   action = ''
   constructor(
     public service: ProductDetailService,
@@ -29,7 +29,7 @@ export class ProductCreateComponent implements OnInit {
 
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
-    
+
     if (id > 0) {
       this.action = 'update'
       this.service.getProductDetail(id, (data: any) => {
@@ -71,7 +71,7 @@ export class ProductCreateComponent implements OnInit {
         }
         productDetail.picture = urlImg;
         console.log(productDetail);
-        
+
         if (id > 0) {
           this.service.updateProductDetail(productDetail, (product : any) => {
             this.router.navigate([path.product.detail + product.id])
