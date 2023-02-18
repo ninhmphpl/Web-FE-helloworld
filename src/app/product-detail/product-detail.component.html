@@ -65,7 +65,7 @@
     <!-- product detail start -->
     <div id="body" class="d-flex justify-content-between p-3">
       <!-- img start -->
-      <div class="img pr-3">
+      <div class="col-4 pr-3">
         <div class="img-body">
           <img src="{{ imgMain }}">
         </div>
@@ -88,7 +88,8 @@
           </div>
 
           <!-- img footer start -->
-          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture">
+          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}"
+            *ngFor="let img of service.product.picture">
             <a (click)="getPicture(img)">
               <img src="{{ img.name }}">
             </a>
@@ -100,34 +101,34 @@
       <!-- img end -->
 
       <!-- content start -->
-      <!-- content customer, buyer start -->
-      <div class="content px-5" *ngIf="role == 'CUSTOMER' || role == 'BUYER'">
-        <div class="h3">{{ service.product.name }}</div>
-        <div class="d-flex justify-content-between align-items-center">
-          <!-- <div class="rate d-left font-main-color d-flex justify-content-between align-items-center">
+        <!-- content customer, buyer start -->
+        <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class="col-7 px-5">
+          <div class="h3">{{ service.product.name }}</div>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- <div class="rate d-left font-main-color d-flex justify-content-between align-items-center">
           <span>{{ 4.3 }}</span>
         </div>
         | -->
-          <!-- <div class="rate-number d-left">
+            <!-- <div class="rate-number d-left">
           {{ 3423 }} <small>Đánh giá</small>
         </div>
         | -->
-          <div class="text-1">
-             <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
-          </div>
-          <!-- <div class="report d-right">
+            <div class="text-1">
+              <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
+            </div>
+            <!-- <div class="report d-right">
             <a href="" class="text-decoration-none">Report</a>
           </div> -->
-        </div>
-        <!-- price start -->
-        <div id="full-width">
-          <div class="d-flex justify-content-between align-items-center pt-2">
-            <!-- <div id="old-price" *ngIf="false">
+          </div>
+          <!-- price start -->
+          <div id="full-width">
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <!-- <div id="old-price" *ngIf="false">
             {{ 100000 | currency: 'VND' }}
           </div> -->
-            <h1 class="px-5 text-main bg-shadow full-width rounded py-2">
-              {{ service.product.price | currency: 'VND' }}
-              <!-- <span class="sale background-main-color" *ngIf="false">
+              <h1 class="px-5 text-main bg-shadow full-width rounded py-2">
+                {{ service.product.price | currency: 'VND' }}
+                <!-- <span class="sale background-main-color" *ngIf="false">
               {{100 | number : '1.0-0'}}% OFF
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin"
                 viewBox="0 0 16 16">
@@ -139,16 +140,16 @@
                 <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
               </svg>
             </span> -->
-            </h1>
+              </h1>
+            </div>
           </div>
-        </div>
-        <!-- price end -->
+          <!-- price end -->
 
-        <table class="info">
-          <tBody>
+          <table class="info">
+            <tBody>
 
-            <!-- voucher start -->
-            <!-- <tr *ngIf="false">
+              <!-- voucher start -->
+              <!-- <tr *ngIf="false">
             <td>
               Shop Vouchers
             </td>
@@ -158,24 +159,24 @@
               </button>
             </td>
           </tr> -->
-            <!-- voucher end -->
+              <!-- voucher end -->
 
-            <!-- ship start -->
-            <tr>
-              <td class="col-5">
-                Giao hàng
-              </td>
-              <td class="col-7">
-                <img style="width: 20px;"
-                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
-                  alt="">
-                Miễn phí giao hàng
-              </td>
-            </tr>
-            <!-- ship end -->
+              <!-- ship start -->
+              <tr>
+                <td class="col-5">
+                  Giao hàng
+                </td>
+                <td class="col-7">
+                  <img style="width: 20px;"
+                    src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
+                    alt="">
+                  Miễn phí giao hàng
+                </td>
+              </tr>
+              <!-- ship end -->
 
-            <!-- color start -->
-            <!-- <tr>
+              <!-- color start -->
+              <!-- <tr>
               <td class="col-5">
                 Color
               </td>
@@ -183,50 +184,78 @@
                 <button class="btn active btn-outline-primary">kho</button>
               </td>
             </tr> -->
-            <!-- color end -->
+              <!-- color end -->
 
 
-            <!-- số lượng start -->
-            <tr>
-              <td class="col-5">
-                Số lượng
-              </td>
-              <td class="col-7 ">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <a type="button" class="bg-white text-1 border px-3 py-2"
-                  (click)="setAmount(amount - 1)">-</a>
-                  <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="amount">
-                  <a type="button" class="bg-white text-1 border px-3 py-2"
-                  (click)="setAmount(amount + 1)">+</a>
-                </div>
-                <p class="text-danger">{{ amountMessage }}</p>
-              </td>
-            </tr>
-            <!-- số lượng end -->
+              <!-- số lượng start -->
+              <tr>
+                <td class="col-5">
+                  Số lượng
+                </td>
+                <td class="col-7 ">
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <a type="button" class="bg-white text-1 border px-3 py-2" (click)="setAmount(amount - 1)">-</a>
+                    <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="amount">
+                    <a type="button" class="bg-white text-1 border px-3 py-2" (click)="setAmount(amount + 1)">+</a>
+                  </div>
+                  <p class="text-danger">{{ amountMessage }}</p>
+                </td>
+              </tr>
+              <!-- số lượng end -->
 
-          </tBody>
-        </table>
-        <div style="margin-top: 20px">
-          <button type="button" class="btn btn-cart" style="margin-right: 20px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
-              viewBox="0 0 16 16">
-              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-              <path
-                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
-            Thêm vào giỏ hàng
-          </button>
-          <button type="button" class="btn btn-buy">Mua ngay</button>
-          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+            </tBody>
+          </table>
+          <div style="margin-top: 20px">
+            <button type="button" class="btn btn-cart" style="margin-right: 20px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
+                viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                <path
+                  d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+              Thêm vào giỏ hàng
+            </button>
+            <button type="button" class="btn btn-buy">Mua ngay</button>
+            <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+          </div>
         </div>
-      </div>
-      <!-- content customer, buyer end-->
+        <!-- content customer, buyer end-->
 
-      <!-- content seller, employee, admin start -->
-      <div class="">
+        <!-- content seller, employee, admin start -->
+        <div  *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')" class="col-7 px-5">
+          <table class="table table-bordered">
+            <tBody>
+              <tr>
+                <th class="text-center align-middle"> ID san pham </th>
+                <td class="text-center align-middle"> {{ service.product.id }}</td>
+              </tr>
+              <tr>
+                <th class="text-center align-middle"> Tên </th>
+                <td class="text-center align-middle"> {{ service.product.name }}</td>
+              </tr>
+              <tr>
+                <th class="text-center align-middle"> Gia </th>
+                <td class="text-center align-middle"> {{ service.product.price }}</td>
+              </tr>
+              <tr>
+                <th class="text-center align-middle"> So luong da ban </th>
+                <td class="text-center align-middle"> {{ service.product.sold }}</td>
+              </tr>
+              <tr>
+                <th class="text-center align-middle"> Ton kho </th>
+                <td class="text-center align-middle"> {{ service.product.quantity }}</td>
+              </tr>
+              <tr>
+                <th class="text-center align-middle"> Trang thai </th>
+                <td class="text-center align-middle"> {{ service.product.status.name }}</td>
+              </tr>
+            </tBody>
+          </table>
+        </div>
+        <!-- content seller, employee, admin end -->
 
-      </div>
-      <!-- content seller, employee, admin end -->
+
+
 
       <!-- content end -->
     </div>
