@@ -43,14 +43,12 @@ export class SignInSellerComponent implements OnInit {
 
   messenger = ''
   onSubmit() {
-    let modal : any = $('#exampleModal')
     let data: any = this.sellerForm.value
     let url = environtment.url + "/sigin/seller"
     if (data.user?.password != data.repassword) {
       this.messenger = "Mật khẩu bạn nhập không đúng"
       return
     }
-
     if (this.sellerForm.valid && !this.checkUsername && this.checkAddress()) {
       this.messenger = ''
       data.address = this.serviceAddress.address
@@ -58,16 +56,18 @@ export class SignInSellerComponent implements OnInit {
       data.address.detail = data.addressDetail
       data.addressDetail = null
       this.api.postMapping(url, data, (back: any) => {
-        // modal.modal('toggle'); //>> npm install jquery --save
-        modal.modal('show');
-        // modal.modal('hide');
+        this.openModal()
+        this.sellerForm.reset()
       })
     } else {
       this.messenger = "Thông tin của bạn chưa hợp lệ"
     }
   }
 
-  open(){
+  //>> Open modal
+  openModal(){
+    console.log("đăng ký thành công");
+    
     let a = document.getElementById("boottrap")
     a?.click()
   }
@@ -96,9 +96,5 @@ export class SignInSellerComponent implements OnInit {
     }, 1000)
   }
   checkUsername = false
-
-
-
-
 
 }
