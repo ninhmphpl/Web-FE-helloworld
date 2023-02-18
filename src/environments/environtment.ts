@@ -1,4 +1,5 @@
 import { HttpHeaders, HttpParams } from "@angular/common/http";
+import { error } from "jquery";
 import { ErrorLoader } from "src/app/service/onload.service";
 
 export interface HttpOptions {
@@ -9,7 +10,7 @@ export interface HttpOptions {
   // responseType?: 'arraybuffer'|'blob'|'json'|'text',
   withCredentials?: boolean,
 }
-const ROLE = {
+export const ROLE = {
   customer : "CUSTOMER",
   admin : "ADMIN",
   employee : "EMPLOYEE",
@@ -41,3 +42,21 @@ export const errorLoader : ErrorLoader[] = [
   {status : 404 , name : "Không tìm thấy địa chỉ", path : "/error", description : "Không có chi tiết về vấn đề này"},
   {status : 403 , name : "Không có quyền truy cập vào trang web", path : "/error", description : "Không có chi tiết về vấn đề này"},
 ]
+
+export const path = {
+  product : {
+    list : '/product',
+    edit : '/product/edit/',
+    detail : '/product/detail/',
+    adminList : '/admin-list'
+  },
+  employee : {
+    list : '/employee',
+    edit : '/employee/edit',
+    detail : '/employee/detail/',
+  },
+  signin : {
+    seller : '/sign-in/seller',
+  },
+  error : "/error"
+}

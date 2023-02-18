@@ -1,4 +1,6 @@
-<header class="shadow bg-primary bg-gradient" *ngIf="role == 'ADMIN'">
+
+<!-- Header customer, buyer start -->
+<header class="shadow bg-primary bg-gradient" *ngIf="role == 'CUSTOMER' || role == 'BUYER'">
     <div class="d-flex justify-content-between mx-2">
         <ul class="nav">
             <li><a href="#" class="nav-link px-2 link-secondary text-white">Home</a></li>
@@ -71,9 +73,11 @@
     </div>
 
 </header>
+<!-- Header customer, buyer end -->
+
 
 <!-- header custom start -->
-<div style="height: 80px;" class="bg-main" *ngIf="role == 'CUSTOMER'">
+<div style="height: 80px;" class="bg-main" *ngIf="role == 'ADMIN'">
     <div class="row">
         <!-- logo start -->
         <div class="col-9">

@@ -6,6 +6,7 @@ import { upFileArray } from 'src/environments/firebase';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailService } from '../service/product-detail.service';
 import { APIAny } from '../service/api-any.service';
+import { environtment, path } from 'src/environments/environtment';
 
 @Component({
   selector: 'app-product-create',
@@ -72,12 +73,12 @@ export class ProductCreateComponent implements OnInit {
         console.log(productDetail);
         
         if (id > 0) {
-          this.service.updateProductDetail(productDetail, (id: number) => {
-            this.router.navigate(["/product-detail/" + id])
+          this.service.updateProductDetail(productDetail, (product : any) => {
+            this.router.navigate([path.product.detail + product.id])
           })
         } else {
-          this.service.addProductDetail(productDetail, (id: number) => {
-            this.router.navigate(["/product-detail/" + id])
+          this.service.addProductDetail(productDetail, (product: any) => {
+            this.router.navigate([path.product.detail + product.id])
           })
         }
       })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
 
 @Component({
@@ -6,6 +6,11 @@ import { environtment } from 'src/environments/environtment';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  role = environtment.role
+export class HeaderComponent implements OnInit{
+    
+  role = ''
+  ngOnInit(): void {
+    this.role = environtment.role
+  }
+
 }

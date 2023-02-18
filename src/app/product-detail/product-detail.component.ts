@@ -10,10 +10,19 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class ProductDetailComponent implements OnInit{
 
   imgMain = ''
-  amount : number = 0
 
+  amount : number = 1
+  amountMessage = ''
   setAmount (value : number){
-    if (value < 0 ) return this.amount = 0
+    this.amountMessage = ''
+    if (value < 1 ){
+      this.amountMessage = "Tối thiểu là 1"
+      return this.amount = 1
+    } 
+    if (value > this.service.product.quantity){
+      this.amountMessage = "Sản phẩm này đã đạt tối đa"
+      return this.amount = this.service.product.quantity
+    }
     return this.amount = value
   }
 
