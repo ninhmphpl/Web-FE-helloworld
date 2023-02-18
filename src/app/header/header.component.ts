@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
-import { RoleService } from '../role.service';
+import { RoleService } from '../service/role.service';
 
 @Component({
   selector: 'app-header',

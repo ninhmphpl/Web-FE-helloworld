@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductDetailService } from "../service/product-detail.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { environtment, ROLE } from 'src/environments/environtment';
-import { RoleService } from '../role.service';
+import { RoleService } from '../service/role.service';
 
 @Component({
   selector: 'app-display',

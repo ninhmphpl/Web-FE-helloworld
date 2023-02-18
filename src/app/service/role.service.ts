@@ -14,7 +14,7 @@ export class RoleService {
 
   getRoleByParam(role : any){
     this.role = role
-    
+    console.log("role: " + this.role);
   }
 
 

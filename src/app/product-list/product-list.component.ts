@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environtment, ROLE } from 'src/environments/environtment';
-import { RoleService } from '../role.service';
+import { RoleService } from '../service/role.service';
 import { APIAny } from '../service/api-any.service';
 import { CategoryService } from '../service/category.service';
 import { ProductListPageService } from '../service/product-list-page.service';

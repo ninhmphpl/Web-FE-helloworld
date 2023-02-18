@@ -226,31 +226,32 @@
           <table class="table table-bordered">
             <tBody>
               <tr>
-                <th class="text-center align-middle"> ID san pham </th>
+                <th class="align-middle"> ID Sản phẩm</th>
                 <td class="text-center align-middle"> {{ service.product.id }}</td>
               </tr>
               <tr>
-                <th class="text-center align-middle"> Tên </th>
+                <th class="align-middle"> Tên </th>
                 <td class="text-center align-middle"> {{ service.product.name }}</td>
               </tr>
               <tr>
-                <th class="text-center align-middle"> Gia </th>
+                <th class="align-middle"> Giá </th>
                 <td class="text-center align-middle"> {{ service.product.price }}</td>
               </tr>
               <tr>
-                <th class="text-center align-middle"> So luong da ban </th>
+                <th class="align-middle"> Số lượng đã bán </th>
                 <td class="text-center align-middle"> {{ service.product.sold }}</td>
               </tr>
               <tr>
-                <th class="text-center align-middle"> Ton kho </th>
+                <th class="align-middle"> Tồn kho </th>
                 <td class="text-center align-middle"> {{ service.product.quantity }}</td>
               </tr>
               <tr>
-                <th class="text-center align-middle"> Trang thai </th>
+                <th class="align-middle"> Trạng thái </th>
                 <td class="text-center align-middle"> {{ service.product.status.name }}</td>
               </tr>
             </tBody>
           </table>
+          <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
         </div>
         <!-- content seller, employee, admin end -->
 

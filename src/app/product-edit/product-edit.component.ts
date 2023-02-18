@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailService } from '../service/product-detail.service';
 import { APIAny } from '../service/api-any.service';
 import { environtment, path } from 'src/environments/environtment';
+import { RoleService } from '../service/role.service';
 
 @Component({
   selector: 'app-product-create',
@@ -22,11 +23,13 @@ export class ProductEditComponent implements OnInit {
     public fire: FireBaseService,
     private router: Router,
     private routerActive: ActivatedRoute,
-    private api : APIAny
+    public roleService : RoleService,
   ) { }
 
   ngOnInit(): void {
-
+    this.roleService.getRoleByParam(
+      this.routerActive.snapshot.paramMap.get("role")
+    )
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
