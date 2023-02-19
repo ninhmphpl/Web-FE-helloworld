@@ -20,20 +20,7 @@ export class ProductDetailComponent implements OnInit{
   ) {
   }
 
-  amount : number = 1
-  amountMessage = ''
-  setAmount (value : number){
-    this.amountMessage = ''
-    if (value < 1 ){
-      this.amountMessage = "Tối thiểu là 1"
-      return this.amount = 1
-    } 
-    if (value > this.service.product.quantity){
-      this.amountMessage = "Sản phẩm này đã đạt tối đa"
-      return this.amount = this.service.product.quantity
-    }
-    return this.amount = value
-  }
+
 
 
 
@@ -53,6 +40,7 @@ export class ProductDetailComponent implements OnInit{
   getPicture(img: any) {
     this.imgMain = img.name
   }
+
 
 
 

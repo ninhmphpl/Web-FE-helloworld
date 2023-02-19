@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
+import { CartService } from '../service/cart.service';
 import { RoleService } from '../service/role.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { RoleService } from '../service/role.service';
 export class HeaderComponent{
 
   constructor(
-    public roleService : RoleService
+    public roleService : RoleService,
+    public cartService : CartService,
   ){}
 
 }

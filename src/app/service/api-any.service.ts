@@ -57,8 +57,7 @@ export class APIAny {
       .pipe(
         retry(3), catchError(this.handleError)
       ).subscribe((data) => {
-        action(data)
-        this.onload.onload = false
+        this.filterData(data, action)
       })
   }
 
@@ -69,8 +68,7 @@ export class APIAny {
       .pipe(
         retry(3),catchError(this.handleError)
       ).subscribe((data) => {
-        action(data)
-        this.onload.onload = false
+        this.filterData(data, action)
       })
   }
 
@@ -81,8 +79,7 @@ export class APIAny {
       .pipe(
         retry(3), catchError(this.handleError)
       ).subscribe((data) => {
-        action(data)
-        this.onload.onload = false
+        this.filterData(data, action)
       })
   }
   // get param pathvariable
@@ -90,6 +87,17 @@ export class APIAny {
     this.activeRoute.paramMap.subscribe((param : ParamMap)=> {
       action(param.get(key))
     });
+  }
+
+  private filterData(data : any , action : any){
+    if(typeof data == 'string'){
+      let message = data.split(',')
+      console.log(message[0]);
+      console.log(message[0]);
+    }else{
+      action(data)
+    }
+    this.onload.onload = false
   }
 
 

@@ -74,8 +74,9 @@
 </header>
 <!-- Header customer, buyer end -->
 
-<!-- header custom start -->
-<div style="height: 80px;" class="bg-main" *ngIf=" (roleService.role == 'EMPLOYEE') || (roleService.role == 'ADMIN') || (roleService.role == 'SELLER')">
+<!-- header employee, admin, seller start -->
+<div style="height: 80px;" class="bg-main"
+    *ngIf=" (roleService.role == 'EMPLOYEE') || (roleService.role == 'ADMIN') || (roleService.role == 'SELLER')">
     <div class="row">
         <!-- logo start -->
         <div class="col-9">
@@ -93,7 +94,7 @@
         <!-- đăng nhập end -->
     </div>
 </div>
-<!-- header custom end -->
+<!-- header employee, admin, seller end -->
 
 <!-- header user start -->
 <div class="bg-main full-width" *ngIf=" (roleService.role == 'BUYER') || (roleService.role =='CUSTOMER')">
@@ -137,7 +138,10 @@
 
             <!-- giỏ hàng start -->
             <div class="cart pb-2">
-                <a href="" class="nav-link text-white ">
+                <a href="" class="nav-link text-white position-relative">
+                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
+                        {{ cartService.cart.length }}
+                    </span>
                     <svg width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                         <path
                             d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
