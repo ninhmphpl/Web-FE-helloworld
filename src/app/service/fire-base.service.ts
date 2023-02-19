@@ -15,6 +15,7 @@ export class FireBaseService {
   ) { }
 
   selectFile(event : any){
+    this.files = []
     let files = event.target.files
     for(let file of files){
       this.files.push(new FileUploadFireBase(file, this.storage))

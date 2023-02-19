@@ -2,68 +2,14 @@
 <app-carousel></app-carousel>
 <app-filter></app-filter>
 <div class="row row-cols-auto product">
-    <div class="col-3 p-2">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Wch7S_dHjafRUa78shq3vRY2MStHz0bjWQ&usqp=CAU"
-                class="card-img-top">
+    <div class="p-2" *ngFor="let product of productService.page.content">
+        <div class="card" style="width: 150px;">
+            <img class="card-img-top full-width" style="height: 150px;" [src]="product.avatar">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">1000</p>
+                <h5 class="card-title" [innerText]="product.name"></h5>
+                <p class="card-text" [innerText]="product.price"></p>
             </div>
         </div>
     </div>
-
-    <div class="col-3 p-2">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Wch7S_dHjafRUa78shq3vRY2MStHz0bjWQ&usqp=CAU"
-                class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">1000</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-3 p-2">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Wch7S_dHjafRUa78shq3vRY2MStHz0bjWQ&usqp=CAU"
-                class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">1000</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-3 p-2">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Wch7S_dHjafRUa78shq3vRY2MStHz0bjWQ&usqp=CAU"
-                class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">1000</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-3 p-2">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Wch7S_dHjafRUa78shq3vRY2MStHz0bjWQ&usqp=CAU"
-                class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">1000</p>
-            </div>
-        </div>
-    </div>
-
 </div>
-<div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-primary mx-2">Trang trước</button>
-    <button type="button" class="btn btn-outline-primary mx-2">1</button>
-    <button type="button" class="btn btn-outline-primary mx-2">2</button>
-    <button type="button" class="btn btn-outline-primary mx-2">3</button>
-    <button type="button" class="btn btn-outline-primary mx-2">4</button>
-    <button type="button" class="btn btn-outline-primary mx-2">5</button>
-    <button type="button" class="btn btn-outline-primary mx-2">Trang sau</button>
-</div>
+<app-control-product-page></app-control-product-page>

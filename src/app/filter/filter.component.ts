@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CategoryService } from '../service/category.service';
+import { ProductListPageService } from '../service/product-list-page.service';
 
 @Component({
   selector: 'app-filter',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-
+  constructor(
+    public categoryService : CategoryService,
+    public pageService : ProductListPageService
+  ){}
 }

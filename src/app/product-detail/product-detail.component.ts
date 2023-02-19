@@ -3,6 +3,7 @@ import { ProductDetailService } from "../service/product-detail.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { environtment, ROLE } from 'src/environments/environtment';
 import { RoleService } from '../service/role.service';
+import { FireBaseService } from '../service/fire-base.service';
 
 @Component({
   selector: 'app-display',

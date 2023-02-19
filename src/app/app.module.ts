@@ -30,6 +30,7 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail-compo
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
+import { ControlProductPageComponent } from './control-product-page/control-product-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
     EmployeeDetailComponent,
     EmployeeEditComponent,
     SignInSellerComponent,
+    ControlProductPageComponent,
 
   ],
   imports: [

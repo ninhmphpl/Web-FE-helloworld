@@ -71,20 +71,6 @@
         </div>
         <div class="img-footer d-flex flex-row">
           <div>
-            <!-- <a class="pree-img">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                class="bi bi-chevron-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-              </svg>
-            </a> -->
-            <!-- <a class="next-img">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                class="bi bi-chevron-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-              </svg>
-            </a> -->
           </div>
 
           <!-- img footer start -->
@@ -101,108 +87,112 @@
       <!-- img end -->
 
       <!-- content start -->
-        <!-- content customer, buyer start -->
-        <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class="col-7 px-5">
-          <div class="h3">{{ service.product.name }}</div>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="text-1">
-              <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
-            </div>
-          </div>
-          <!-- price start -->
-          <div id="full-width">
-            <div class="d-flex justify-content-between align-items-center pt-2">
-              <h1 class="px-5 text-main bg-shadow full-width rounded py-2">
-                {{ service.product.price | currency: 'VND' }}
-              </h1>
-            </div>
-          </div>
-          <!-- price end -->
-
-          <table class="info">
-            <tBody>
-
-              <!-- ship start -->
-              <tr>
-                <td class="col-5">
-                  Giao hàng
-                </td>
-                <td class="col-7">
-                  <img style="width: 20px;"
-                    src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
-                    alt="">
-                  Miễn phí giao hàng
-                </td>
-              </tr>
-              <!-- ship end -->
-
-              <!-- số lượng start -->
-              <tr>
-                <td class="col-5">
-                  Số lượng
-                </td>
-                <td class="col-7 ">
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <a type="button" class="bg-white text-1 border px-3 py-2" (click)="service.setAmount(service.amount - 1)">-</a>
-                    <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="service.amount">
-                    <a type="button" class="bg-white text-1 border px-3 py-2" (click)="service.setAmount(service.amount + 1)">+</a>
-                  </div>
-                  <p class="text-danger">{{ service.amountMessage }}</p>
-                </td>
-              </tr>
-              <!-- số lượng end -->
-
-            </tBody>
-          </table>
-          <div style="margin-top: 20px">
-            <button (click)="service.toCart()" type="button" class="btn btn-cart" style="margin-right: 20px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
-                viewBox="0 0 16 16">
-                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                <path
-                  d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-              </svg>
-              Thêm vào giỏ hàng
-            </button>
-            <button type="button" class="btn btn-buy">Mua ngay</button>
-            <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+      <!-- content customer, buyer start -->
+      <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class="col-7 px-5">
+        <div class="h3">{{ service.product.name }}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-1">
+            <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
           </div>
         </div>
-        <!-- content customer, buyer end-->
-
-        <!-- content seller, employee, admin start -->
-        <div  *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')" class="col-7 px-5">
-          <table class="table table-bordered">
-            <tBody>
-              <tr>
-                <th class="align-middle"> ID Sản phẩm</th>
-                <td class="text-center align-middle"> {{ service.product.id }}</td>
-              </tr>
-              <tr>
-                <th class="align-middle"> Tên </th>
-                <td class="text-center align-middle"> {{ service.product.name }}</td>
-              </tr>
-              <tr>
-                <th class="align-middle"> Giá </th>
-                <td class="text-center align-middle"> {{ service.product.price }}</td>
-              </tr>
-              <tr>
-                <th class="align-middle"> Số lượng đã bán </th>
-                <td class="text-center align-middle"> {{ service.product.sold }}</td>
-              </tr>
-              <tr>
-                <th class="align-middle"> Tồn kho </th>
-                <td class="text-center align-middle"> {{ service.product.quantity }}</td>
-              </tr>
-              <tr>
-                <th class="align-middle"> Trạng thái </th>
-                <td class="text-center align-middle"> {{ service.product.status.name }}</td>
-              </tr>
-            </tBody>
-          </table>
-          <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
+        <!-- price start -->
+        <div id="full-width">
+          <div class="d-flex justify-content-between align-items-center pt-2">
+            <h1 class="px-5 text-main bg-shadow full-width rounded py-2">
+              {{ service.product.price | currency: 'VND' }}
+            </h1>
+          </div>
         </div>
-        <!-- content seller, employee, admin end -->
+        <!-- price end -->
+
+        <table class="info">
+          <tBody>
+
+            <!-- ship start -->
+            <tr>
+              <td class="col-5">
+                Giao hàng
+              </td>
+              <td class="col-7">
+                <img style="width: 20px;"
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
+                  alt="">
+                Miễn phí giao hàng
+              </td>
+            </tr>
+            <!-- ship end -->
+
+            <!-- số lượng start -->
+            <tr>
+              <td class="col-5">
+                Số lượng
+              </td>
+              <td class="col-7 ">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                    (click)="service.setAmount(service.amount - 1)">-</a>
+                  <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="service.amount">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                    (click)="service.setAmount(service.amount + 1)">+</a>
+                </div>
+                <p class="text-danger">{{ service.amountMessage }}</p>
+              </td>
+            </tr>
+            <!-- số lượng end -->
+
+          </tBody>
+        </table>
+        <div style="margin-top: 20px">
+          <button (click)="service.toCart()" type="button" class="btn btn-cart" style="margin-right: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
+              viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+              <path
+                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+            </svg>
+            Thêm vào giỏ hàng
+          </button>
+          <button type="button" class="btn btn-buy">Mua ngay</button>
+          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+        </div>
+      </div>
+      <!-- content customer, buyer end-->
+
+      <!-- content seller, employee, admin start -->
+      <div *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')"
+        class="col-7 px-5">
+        <table class="table table-bordered">
+          <tBody>
+            <tr>
+              <th class="align-middle"> ID Sản phẩm</th>
+              <td class="text-center align-middle"> {{ service.product.id }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Tên </th>
+              <td class="text-center align-middle"> {{ service.product.name }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Giá </th>
+              <td class="text-center align-middle"> {{ service.product.price }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Số lượng đã bán </th>
+              <td class="text-center align-middle"> {{ service.product.sold }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Tồn kho </th>
+              <td class="text-center align-middle"> {{ service.product.quantity }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Trạng thái </th>
+              <td class="text-center align-middle"> {{ service.product.status.name }}</td>
+            </tr>
+          </tBody>
+        </table>
+        <a class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">Cập nhật ảnh</a>
+        <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
+      </div>
+      <!-- content seller, employee, admin end -->
 
 
 
@@ -231,3 +221,50 @@
   <!-- body end -->
 
 </div>
+
+<!-- model start -->
+<!-- Modal -->
+<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa ảnh</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row row-cols-auto">
+        <div style="height: 350px; width: 350px" class="imgMain border p-2 col position-relative">
+          <img src="{{imgMain}}" alt="" class="full-size rounded">
+          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3" (click)="service.setAvatar()">Đặt làm đại diện</a>
+        </div>
+        <!-- list ảnh start -->
+        <div class="col-6 row row-cols-auto">
+          <div class="col p-2 m-1 border position-relative" style="width: 100px; height: 100px;"
+            [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture; let i = index">
+            <span (click)="service.deletePicture(i)" class="position-absolute top-0 start-100 translate-middle p-2 text-danger">
+              <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg>
+            </span>
+
+            <a (click)="getPicture(img); service.indexImg = i">
+              <img src="{{ img.name }}" class="full-size">
+            </a>
+          </div>
+        </div>
+        <!-- list ảnh end -->
+        <div class="col">
+          <label for="file-input" type="button" class="btn-main">Thêm ảnh</label>
+          <a type="button" class="btn-main" (click)="service.savePicture()">Lưu thay đổi</a>
+          <p class="text-success text-center" [innerHTML]="service.pictrueMessenge"></p>
+          <input id="file-input" class="d-none" multiple type="file" (change)="service.selectPicture($event)">
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- model end -->
