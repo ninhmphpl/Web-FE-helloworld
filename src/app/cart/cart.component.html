@@ -54,7 +54,7 @@
                         <div class="text-danger" [innerText]="cart.amountMesseger"></div>
                     </td>
                     <td class="align-middle" [innerText]="cart.productSimple.price * cart.amount"></td>
-                    <td class="align-middle"><a class="btn-main">Xoa</a></td>
+                    <td class="align-middle"><button class="btn-main" (click)="userService.deleteOrder(cart.id)">Xóa</button></td>
                 </tr>
             </tBody>
         </table>
