@@ -38,7 +38,7 @@
                     <td class="align-middle col-2">
                         <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"
                                 (click)="userService.choiceProduct()" class="form-checkbox"></span>
-                        <img style="width: 70px; height: 70px;" [src]="cart.productSimple.avatar" alt="" class="">
+                        <a href="/product/detail/{{roleService.role}}/{{cart.productSimple.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productSimple.avatar" alt="" class=""></a>
                     </td>
                     <td class="align-middle col-3" [innerText]="cart.productSimple.name"></td>
                     <td class="align-middle col-1" [innerText]="cart.productSimple.price"></td>
