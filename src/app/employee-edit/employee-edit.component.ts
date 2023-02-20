@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Employee} from "../model/employee";
 import * as moment from "moment";
 import {ValidatorService} from "../service/validator.service";
+import { APIService } from '../service/api.service';
+import { APIAny } from '../service/api-any.service';
 
 
 const url = environtment.url;
@@ -24,7 +26,8 @@ export class EmployeeEditComponent implements OnInit {
   constructor(public adminEmployeeRenderService: AdminEmployeeRenderService,
               private routerActive: ActivatedRoute,
               private router: Router,
-              public validate : ValidatorService
+              public validate : ValidatorService,
+              public api : APIAny,
   ) {
     this.adminEmployeeRenderService.getEmployeeRender(url + '/employeeRender/all-employee-render')
   }
@@ -59,10 +62,9 @@ export class EmployeeEditComponent implements OnInit {
       })
 
     })
-    this.adminEmployeeRenderService.findEmployee(this.id).subscribe((data) => {
+    this.api.getMapping(`${environtment.url}/admin/get-employee/${this.id}`, (data : any)=>{
       this.employee = data
       this.formEmployee.patchValue(data)
-      this.adminEmployeeRenderService.onload.onload = false
     })
 
   }
