@@ -18,11 +18,11 @@ export const ROLE = {
   seller : "SELLER"
 }
 const IP_CONFIG = {
-  linh : "http://192.168.1.196:8080",
+  linh : "http://192.168.0.211:8080",
   ninh : "http://localhost:8080",
 }
 export const environtment = {
-  url: IP_CONFIG.ninh,
+  url: IP_CONFIG.linh,
   role: '',
   token: "no Token",
   firebaseConfig: {
