@@ -58,7 +58,7 @@ export class UserService {
         if (cart.choice){
           this.listBuy.push(cart)
           this.total += cart.productSimple.price * cart.amount
-        } 
+        }
       }
     },100)
   }
@@ -80,7 +80,7 @@ export class UserService {
   }
 
   checkCartAmount(i : any){
-    
+
     if(this.cart[i].amount < 1){
       this.cart[i].amountMesseger = "Tối thiểu là 1"
       this.cart[i].amount = 1
@@ -97,7 +97,17 @@ export class UserService {
         }
       })
     }
- 
+
+  }
+  deleteOrder(id : number) {
+    alert(id)
+   let url = environtment.url + '/buyer/cart/delete/' + id
+    this.api.putMapping(url,{},()=>{
+      this.getUser()
+
+    });
+
+
   }
 
 
