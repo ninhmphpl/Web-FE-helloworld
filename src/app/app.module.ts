@@ -19,7 +19,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { environtment } from 'src/environments/environtment';
-import { ProductUpdateComponent } from './product-update/product-update.component';
 import { OnloadComponent } from './onload/onload.component';
 import { PageErrorComponent } from './page-error/page-error.component';
 import { LocalComponent } from './local/local.component';
@@ -47,7 +46,6 @@ import { CartComponent } from './cart/cart.component';
     ProductEditComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ProductUpdateComponent,
     OnloadComponent,
     PageErrorComponent,
     LocalComponent,

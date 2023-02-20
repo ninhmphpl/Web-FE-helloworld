@@ -5,7 +5,7 @@
     <span class="fs-4">Sidebar</span>
 </a>
 <hr>
-<ul class="nav nav-pills flex-column mb-auto" *ngIf="role">
+<ul class="nav nav-pills flex-column mb-auto" *ngIf="roleService.role">
     <li class="nav-item" *ngFor="let n of nav; let i = index">
         <a href="{{n.path}}" class="nav-link" aria-current="page" (click)="choice = i" [ngClass]="{'active' : i == choice}">
             <svg class="bi pe-none me-2" width="16" height="16">
