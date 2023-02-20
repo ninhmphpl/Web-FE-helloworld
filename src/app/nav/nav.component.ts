@@ -4,7 +4,7 @@ import { RoleService } from '../service/role.service';
 
 const employee = [
   {name : "Danh sách sản phẩm", path : '/product/list/EMPLOYEE'},
-  {name : "Thêm sản phẩm", path : '/product/edit/EMLOYEE/0'},
+  {name : "Thêm sản phẩm", path : '/product/edit/EMPLOYEE/0'},
 ]
 const admin = [
   {name : "Danh sách nhân viên", path : '/employee'},
