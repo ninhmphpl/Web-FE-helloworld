@@ -81,7 +81,7 @@ export class ProductEditComponent implements OnInit {
           })
         } else {
           this.service.addProductDetail(productDetail, (product: any) => {
-            this.router.navigate([path.product.detail + product.id])
+            this.router.navigate(["/product/detail/" + this.roleService.role + '/' +  product.id])
           })
         }
       })

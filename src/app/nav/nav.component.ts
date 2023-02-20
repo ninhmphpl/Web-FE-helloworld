@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { environtment, ROLE } from 'src/environments/environtment';
+import { NavService } from '../service/nav.service';
 import { RoleService } from '../service/role.service';
 
 const employee = [
   {name : "Danh sách sản phẩm", path : '/product/list/EMPLOYEE'},
-  {name : "Thêm sản phẩm", path : '/product/edit/EMLOYEE/0'},
+  {name : "Thêm sản phẩm", path : '/product/edit/EMPLOYEE/0'},
 ]
 const admin = [
   {name : "Danh sách nhân viên", path : '/employee'},
@@ -25,7 +26,8 @@ export class NavComponent implements OnInit{
   public choice = 0
 
   constructor(
-    public roleService : RoleService
+    public roleService : RoleService,
+    public navService : NavService
   ){}
 
   ngOnInit(): void {
