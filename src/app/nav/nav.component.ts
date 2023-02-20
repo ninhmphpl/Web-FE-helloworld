@@ -4,7 +4,7 @@ import { RoleService } from '../service/role.service';
 
 const employee = [
   {name : "Danh sách sản phẩm", path : '/product/list/EMPLOYEE'},
-  {name : "Thêm sản phẩm", path : '/employee/edit/EMLOYEE/0'},
+  {name : "Thêm sản phẩm", path : '/product/edit/EMLOYEE/0'},
 ]
 const admin = [
   {name : "Danh sách nhân viên", path : '/employee'},
@@ -23,7 +23,7 @@ interface Nav {
 export class NavComponent implements OnInit{
   public nav : Nav[] = []
   public choice = 0
-  
+
   constructor(
     public roleService : RoleService
   ){}
