@@ -133,7 +133,7 @@
               Bạn phải điền mật khẩu
             </div>
           </div>
-          <div class="mb-3 mt-3" formGroupName="role">
+          <!-- <div class="mb-3 mt-3" formGroupName="role">
             <label for="role" class="form-label">Role </label>
             <select class="form-select" formControlName="id" id="role">
               <option *ngFor="let a of adminEmployeeRenderService.employeeRender.roles"
@@ -143,7 +143,7 @@
               *ngIf="formEmployee.get('user')?.get('role')?.get('id')?.touched && formEmployee.get('user')?.get('role')?.get('id')?.hasError('required')">
               Bạn phải nhập quyền cho người dùng
             </div>
-          </div>
+          </div> -->
           <button type="submit" class="btn btn-primary" [disabled]="!formEmployee.valid ">Save</button>
           <button (click)="back()" class="btn btn-primary">Back</button>
         </div>

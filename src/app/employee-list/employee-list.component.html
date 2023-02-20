@@ -13,7 +13,7 @@
 
       <!-- tìm kiếm start -->
       <div class="input-group mb-3">
-        <form #searchProduct="ngForm" (ngSubmit)="onSubmit(searchName)" class="row">
+        <form #searchProduct="ngForm" (keydown)="onSubmit(searchName)" class="row">
           <input name="search" [(ngModel)]="searchName" type="text" class="form-control col-8"
                  placeholder="Tìm kiếm nhân viên">
           <a class="btn-main col-4" type="">Tìm kiếm</a>
@@ -40,7 +40,7 @@
           <th class="text-center align-middle">{{a.id}}</th>
           <td><a href="/employee/detail/{{a.id}}" class="text-dark">{{a.name}}</a></td>
           <td class="text-center align-middle">{{a.position.name}}</td>
-          <td class="text-center align-middle">{{a.status.name}}</td>
+          <td class="text-center align-middle">{{a.user.status.name}}</td>
           <td class="text-center align-middle">{{a.phoneNumber}}</td>
           <td class="text-center align-middle">{{a.user.role.name}}</td>
           <td class="text-center align-middle">
@@ -56,14 +56,17 @@
 
       <!-- điều trang start -->
       <div class="d-flex justify-content-center">
-        <a href="#" type="button" class="btn-main mx-2" (click)="adminService.preePage()">Trang trước</a>
-        <a href="#" type="button" class="btn-main mx-2" *ngFor="let i of adminService.pageControl"
-           (click)="adminService.getListEmployee(i)" [ngClass]="{'active' : i == adminService.page.pageable.pageNumber}">
+        <a type="button" class="btn-main mx-2" (click)="adminService.preePage()"
+          [ngClass]="{'d-none' : adminService.page.first }">Trang trước</a>
+        <a type="button" class="btn-main mx-2" *ngFor="let i of adminService.pageControl"
+          (click)="adminService.getListEmployee(i)" [ngClass]="{'active' : i == adminService.page.pageable.pageNumber}">
           {{i+1}}
         </a>
-        <a href="#" type="button" class="btn-main mx-2" (click)="adminService.nextPage()"> Trang sau</a>
+        <a type="button" class="btn-main mx-2" (click)="adminService.nextPage()"
+          [ngClass]="{'d-none' : adminService.page.last }"> Trang sau</a>
       </div>
       <!-- điều trang end -->
+
 
     </div>
   <!-- body end -->

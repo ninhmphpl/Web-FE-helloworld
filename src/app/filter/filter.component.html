@@ -20,7 +20,7 @@
           </svg>
         </button>
         <button class="btn-main mx-2">
-          Mua Nhiều
+          Khoảng giá
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -40,5 +40,19 @@
             </a>
           </div>
         </div>
+        <!-- khoảng giá start -->
+        <div class="dropdown" *ngIf="categoryService.categories">
+          <button class="btn-main mx-2" [ngClass]="{'active' : pageService.rangeChoice != -1  }">
+            {{ pageService.rangeChoice == -1 ? 'Khoảng giá' : pageService.range[pageService.rangeChoice].min + '-' + pageService.range[pageService.rangeChoice].max  }}
+          </button>
+          <div class="dropdown-content list-group">
+            <a class="list-group-item list-group-item-action" *ngFor="let c of pageService.range; let i = index"
+              (click)="pageService.rangePriceFilter(i)"
+              [ngClass]="{'active' : pageService.rangeChoice == i}">
+              {{c.min}} - {{c.max}}
+            </a>
+          </div>
+        </div>
+        <!-- khoảng giá end -->
       </div>
       <!-- fillter end -->

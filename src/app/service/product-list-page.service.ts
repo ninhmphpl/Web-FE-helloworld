@@ -1,11 +1,8 @@
-import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { environtment, HttpOptions } from 'src/environments/environtment';
+import { HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environtment } from 'src/environments/environtment';
 import { Page } from 'src/environments/page';
 import { ProductSimple } from '../model/product';
-import { Category } from '../model/category';
-
-import { APIService } from './api.service';
 import { APIAny } from './api-any.service';
 
 
@@ -27,8 +24,7 @@ export class ProductListPageService{
 
   getListProduct(pageNumber : number) {
     this.api.setParam(new HttpParams().append("page", pageNumber))
-    console.log("helelo" + this.url);
-    
+    console.log(this.url);
     this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
@@ -36,13 +32,15 @@ export class ProductListPageService{
   }
 
   getSearchByNameCategoryFilter(name : any){
+    this.rangeChoice = -1
     this.url = url + "/product/filter/" + name
     this.getListProduct(0)
   }
 
   category : any = {name : 'Thể Loại' , id : 0}
   getCategoryFilter(category : any){
-    this.url = url + '/employees/prodcut-list/category/' + category.id
+    this.rangeChoice = -1
+    this.url = url + '/employees/list/category/' + category.id
     this.category = category
     this.getListProduct(0)
   }
@@ -71,6 +69,21 @@ export class ProductListPageService{
         this.pageControl.push(i)
       }
     }
+  }
+
+  rangeChoice = -1;
+  range = [
+    { min: 0, max: 1000 },
+    { min: 1000, max: 5000 },
+    { min: 5000, max: 10000 },
+    { min: 10000, max: 20000 },
+    { min: 20000, max: 50000 },
+  ]
+  rangePriceFilter(i : any){
+    this.url = environtment.url + '/employees/price/' + this.range[i].min + '/' + this.range[i].max
+    this.category = {name : 'Thể Loại' , id : 0}
+    this.rangeChoice = i
+    this.getListProduct(0)
   }
 
 

@@ -13,7 +13,6 @@ export interface Employee {
   phoneNumber : string;
   position : Position;
   gender : Gender;
-  status : Status;
   user : User;
 
 }
