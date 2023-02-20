@@ -13,7 +13,9 @@
             </div>
         </div>
         <div style="height: 100px;" class="p-3 bg-white">
-            <img class="full-height" src="/assets/Untitled.png" alt="">
+            <a href="/product/list/BUYER">
+                <img class="full-height" src="/assets/Untitled.png" alt="">
+            </a>
         </div>
     </div>
     <!-- heder end -->
@@ -23,7 +25,7 @@
         <table class="table">
             <tHead>
                 <tr>
-                    <th class="p-2" colspan="2"><span class="p-2"><input type="checkbox" class="form-checkbox"></span>
+                    <th class="p-2" colspan="2">
                         Sản phẩm</th>
                     <th>Đơn giá</th>
                     <th>Số lượng</th>
@@ -32,21 +34,24 @@
                 </tr>
             </tHead>
             <tBody>
-                <tr *ngFor="let cart of userService.cart">
-                    <td class="align-middle">
-                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice" class="form-checkbox"></span>
+                <tr *ngFor="let cart of userService.cart; let i = index">
+                    <td class="align-middle col-2">
+                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"
+                                (click)="userService.choiceProduct()" class="form-checkbox"></span>
                         <img style="width: 70px; height: 70px;" [src]="cart.productSimple.avatar" alt="" class="">
                     </td>
-                    <td class="align-middle" [innerText]="cart.productSimple.name"></td>
-                    <td class="align-middle" [innerText]="cart.productSimple.price"></td>
-                    <td class="align-middle">
+                    <td class="align-middle col-3" [innerText]="cart.productSimple.name"></td>
+                    <td class="align-middle col-1" [innerText]="cart.productSimple.price"></td>
+                    <td class="align-middle col-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a type="button" class="bg-white text-1 border px-3 py-2"
-                              (click)="cart.amount = cart.amount - 1">-</a>
-                            <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="cart.amount">
+                                (click)="cart.amount = cart.amount - 1; userService.checkCartAmount(i)">-</a>
+                            <input style="width: 40px" class="border text-center" type="number"
+                                [(ngModel)]="cart.amount" (change)="userService.checkCartAmount(i)">
                             <a type="button" class="bg-white text-1 border px-3 py-2"
-                              (click)="cart.amount = cart.amount + 1">+</a>
-                          </div>
+                                (click)="cart.amount = cart.amount + 1; userService.checkCartAmount(i)">+</a>
+                        </div>
+                        <div class="text-danger" [innerText]="cart.amountMesseger"></div>
                     </td>
                     <td class="align-middle" [innerText]="cart.productSimple.price * cart.amount"></td>
                     <td class="align-middle"><a class="btn-main">Xoa</a></td>
@@ -60,18 +65,65 @@
     <div class="position-fixed bottom-0 px-5 full-width ">
         <div class="d-flex justify-content-between bg-white shadow ">
             <div class="h6 p-4 link text-dark">
-                <input id="all" type="checkbox" class="form-checkbox">
+                <input id="all" type="checkbox" class="form-checkbox" (click)="userService.checkAll()"
+                    [(ngModel)]="userService.checkAlls">
                 <label for="all" class="px-2"> Chon tat ca</label>
             </div>
             <div class="h6 p-3 "></div>
-            <div class="h6 p-4 ">Tong thanh toan (11 san pham)</div>
-            <h2 class="pt-4 text-main">{{ 1000 | currency: 'VND'}}
-               <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a> 
+            <div class="h6 p-4 ">Tong thanh toan ({{userService.listBuy.length}} san pham)</div>
+            <h2 class="pt-4 text-main">{{ userService.total | currency: 'VND'}}
+                <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a>
             </h2>
-                
+
         </div>
     </div>
     <!-- footer end -->
 
 
 </div>
+
+<!-- modal start -->
+<!-- Button trigger modal -->
+<button type="button" id="buysuccess" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Mua hàng thành công</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="userService.bill">
+                <div>Thông tin đơn hàng</div>
+                <table class="table">
+                    <tHead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </tHead>
+                    <tBody>
+                        <tr *ngFor="let bill of userService.bill.orderPayments">
+                            <td [innerText]="bill.productSimple.name"></td>
+                            <td [innerText]="bill.productSimple.price"></td>
+                            <td [innerText]="bill.amount"></td>
+                            <td [innerText]="bill.totalPrice"></td>
+                        </tr>
+                    </tBody>
+                </table>
+                <div>Tổng bill : {{ userService.bill.total }}</div>
+                <div>Người mua : {{userService.bill.nameBuyer }}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->

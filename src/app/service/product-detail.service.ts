@@ -95,7 +95,7 @@ export class ProductDetailService {
 
   pictrueMessenge = ""
   savePicture() {
-    let url = API_URL + "/product/edit-picture/" + this.product.id
+    let url = API_URL + "/product/editPicture/" + this.product.id
     this.api.putMapping(url, this.product.picture, () => {
       this.pictrueMessenge = "Thay đổi thành công"
       setTimeout(() => {
