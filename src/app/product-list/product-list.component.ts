@@ -5,6 +5,7 @@ import { RoleService } from '../service/role.service';
 import { APIAny } from '../service/api-any.service';
 import { CategoryService } from '../service/category.service';
 import { ProductListPageService } from '../service/product-list-page.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +18,7 @@ export class ProductListComponent implements OnInit {
     public categoryService: CategoryService,
     private activeRouter: ActivatedRoute,
     public roleService : RoleService,
+    public userService : UserService,
   ) { }
 
   ngOnInit(): void {

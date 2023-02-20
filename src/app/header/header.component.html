@@ -121,10 +121,11 @@
             <!-- tìm kiếm start -->
             <div class="search headerBody d-flex justify-content-between align-items-center">
                 <div class="left">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm" #search>
                 </div>
                 <div class="right">
-                    <button class="bg-main text-white">
+                    <button class="bg-main text-white" (click)="productListService.getSearchByNameCategoryFilter(search.value)"
+                    *ngIf="userService.user && userService.user.cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-search" viewBox="0 0 16 16">
                             <path
@@ -168,13 +169,7 @@
         </div>
         <div class="">
             <div class="d-flex justify-content-center">
-                <a href="" class="mx-2 text-white link-none">Áo khoác</a>
-                <a href="" class="mx-2 text-white link-none">Điện tử</a>
-                <a href="" class="mx-2 text-white link-none">Gia dụng</a>
-                <a href="" class="mx-2 text-white link-none">Điện thoại</a>
-                <a href="" class="mx-2 text-white link-none">Mỹ phẩm</a>
-                <a href="" class="mx-2 text-white link-none">Đồ chơi</a>
-                <a href="" class="mx-2 text-white link-none">Sữa</a>
+                <a href="" class="mx-2 text-white link-none">--</a>
             </div>
             <div class="clear"></div>
         </div>

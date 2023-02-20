@@ -2,6 +2,7 @@
 .product .card:hover{
     box-shadow: 0px 0px 3px rgb(255, 94, 0);
 }
+$main : rgb(255, 94, 0);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -45,6 +46,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.form-checkbox {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 0;
+}
+input[type="checkbox"] {
+  background: rgb(255, 94, 0) !important;   
+}
 //hidend input arrow
 //>>text start
 .text-1{
@@ -72,6 +81,16 @@ a{
   background-color: white;
   color: #000000ab;
   border-radius: 2px;
+}
+.btn-main-bg{
+  padding : 8px 15px 8px 15px;
+  border : 1px #00000058 solid;
+  background-color: $main;
+  color: white;
+  border-radius: 2px;
+}
+.btn-main-bg:hover{
+  background-color: rgba(255, 94, 0, 0.836);
 }
 .btn-main:hover{
   background-color: rgb(255, 94, 0) !important;

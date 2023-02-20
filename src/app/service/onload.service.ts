@@ -14,22 +14,11 @@ export interface ErrorLoader{
 })
 export class OnloadService {
   onload = false
-  error! : ErrorLoader
+  error : any
 
   constructor(
     private router : Router,
     private routerActive : ActivatedRoute
   ) {}
 
-  errorRender(status : number){
-    this.onload = false
-  for (let err of errorLoader){
-    if (status === err.status) {
-        this.error = err
-      this.router.navigate([err.path])
-      return
-    }
-  }
-  this.error = {status : 0 , name : "Lỗi không rõ", path : '/error', description : "Không có chi tiết về vấn đề này"}
-}
 }

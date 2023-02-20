@@ -1,0 +1,77 @@
+<div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px;">
+    <!-- heder start -->
+    <div>
+        <div class="bg-main d-flex justify-content-center">
+            <div class="col-6 d-flex justify-content-start">
+                <a class="p-2 link text-white border-r-1">Kênh người bán</a>
+                <a class="p-2 link text-white border-r-1">Ứng dụng</a>
+                <a class="p-2 link text-white">Kêt nối</a>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <a class="p-2 link text-white border-r-1">Thông báo</a>
+                <a class="p-2 link text-white">Người dùng</a>
+            </div>
+        </div>
+        <div style="height: 100px;" class="p-3 bg-white">
+            <img class="full-height" src="/assets/Untitled.png" alt="">
+        </div>
+    </div>
+    <!-- heder end -->
+
+    <!-- body start -->
+    <div class="m-5 bg-white">
+        <table class="table">
+            <tHead>
+                <tr>
+                    <th class="p-2" colspan="2"><span class="p-2"><input type="checkbox" class="form-checkbox"></span>
+                        Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Số tiền</th>
+                    <th>Thao tác</th>
+                </tr>
+            </tHead>
+            <tBody>
+                <tr *ngFor="let cart of userService.cart">
+                    <td class="align-middle">
+                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice" class="form-checkbox"></span>
+                        <img style="width: 70px; height: 70px;" [src]="cart.productSimple.avatar" alt="" class="">
+                    </td>
+                    <td class="align-middle" [innerText]="cart.productSimple.name"></td>
+                    <td class="align-middle" [innerText]="cart.productSimple.price"></td>
+                    <td class="align-middle">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="bg-white text-1 border px-3 py-2"
+                              (click)="cart.amount = cart.amount - 1">-</a>
+                            <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="cart.amount">
+                            <a type="button" class="bg-white text-1 border px-3 py-2"
+                              (click)="cart.amount = cart.amount + 1">+</a>
+                          </div>
+                    </td>
+                    <td class="align-middle" [innerText]="cart.productSimple.price * cart.amount"></td>
+                    <td class="align-middle"><a class="btn-main">Xoa</a></td>
+                </tr>
+            </tBody>
+        </table>
+    </div>
+    <!-- body end -->
+
+    <!-- footer start -->
+    <div class="position-fixed bottom-0 px-5 full-width ">
+        <div class="d-flex justify-content-between bg-white shadow ">
+            <div class="h6 p-4 link text-dark">
+                <input id="all" type="checkbox" class="form-checkbox">
+                <label for="all" class="px-2"> Chon tat ca</label>
+            </div>
+            <div class="h6 p-3 "></div>
+            <div class="h6 p-4 ">Tong thanh toan (11 san pham)</div>
+            <h2 class="pt-4 text-main">{{ 1000 | currency: 'VND'}}
+               <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a> 
+            </h2>
+                
+        </div>
+    </div>
+    <!-- footer end -->
+
+
+</div>

@@ -8,6 +8,7 @@ import {EmployeeListComponent as EmployeeListComponent} from "./employee-list/em
 import {EmployeeDetailComponent} from "./employee-detail/employee-detail-component.service";
 import {EmployeeEditComponent} from "./employee-edit/employee-edit.component";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {path : 'employee' , children : [
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path : 'edit/:role/:id', component: ProductEditComponent },
     {path : 'list/:role', component: ProductListComponent },
   ]},
+  {path : 'cart' , component : CartComponent},
   {path : "sign-in" , children : [
     {path : "seller" , component : SignInSellerComponent}
   ]},

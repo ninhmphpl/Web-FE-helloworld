@@ -1,15 +1,15 @@
-<app-category></app-category>
+<!-- <app-category></app-category> -->
 <app-carousel></app-carousel>
 <app-filter></app-filter>
 <div class="row row-cols-auto product">
     <div class="p-2" *ngFor="let product of productService.page.content">
-        <div class="card" style="width: 150px;">
+        <a href="/product/detail/{{roleService.role}}/{{product.id}}" class="card text-dark" style="width: 150px;">
             <img class="card-img-top full-width" style="height: 150px;" [src]="product.avatar">
             <div class="card-body">
                 <h5 class="card-title" [innerText]="product.name"></h5>
                 <p class="card-text" [innerText]="product.price"></p>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 <app-control-product-page></app-control-product-page>

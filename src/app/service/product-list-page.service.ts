@@ -1,15 +1,13 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { environtment, HttpOptions } from 'src/environments/environtment';
 import { Page } from 'src/environments/page';
 import { ProductSimple } from '../model/product';
 import { Category } from '../model/category';
 
 import { APIService } from './api.service';
+import { APIAny } from './api-any.service';
 
-interface Filter{
-  category : Category;
-}
 
 const url = environtment.url
 const categoryDefaut = {name : "Thể loại", id : 0}
@@ -17,32 +15,38 @@ const categoryDefaut = {name : "Thể loại", id : 0}
 @Injectable({
   providedIn: 'root'
 })
-export class ProductListPageService extends APIService<Page<ProductSimple>> {
+export class ProductListPageService{
+  url = url + "/employees/product-list"
+
+  constructor (
+    private api : APIAny
+  ){}
 
   public page!: Page<ProductSimple>;
   public pageControl : number[] = []
-  public filter : Filter = {category : categoryDefaut}
 
   getListProduct(pageNumber : number) {
-    let httpOptions: HttpOptions = {
-      headers : new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: environtment.token
-      }),
-      params : new HttpParams().append("page", pageNumber)
-    }
-    let urls = url + "/employees/product-list"
-    //>> nếu có category.id nào khác 0 thì sẽ thay đổi đường dẫn, ngược lại dữ nguyên đường dẫn ban đầu
-    if (this.filter.category.id != 0 ){
-      urls = url + '/employees/prodcut-list/category/' + this.filter.category.id
-    }
-
-    this.getOne(urls, httpOptions).subscribe(data => {
+    this.api.setParam(new HttpParams().append("page", pageNumber))
+    console.log("helelo" + this.url);
+    
+    this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
-      this.onload.onload = false
     })
   }
+
+  getSearchByNameCategoryFilter(name : any){
+    this.url = url + "/product/filter/" + name
+    this.getListProduct(0)
+  }
+
+  category : any = {name : 'Thể Loại' , id : 0}
+  getCategoryFilter(category : any){
+    this.url = url + '/employees/prodcut-list/category/' + category.id
+    this.category = category
+    this.getListProduct(0)
+  }
+
 
 
 

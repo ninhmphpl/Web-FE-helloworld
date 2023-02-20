@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductListPageService } from '../service/product-list-page.service';
+import { RoleService } from '../service/role.service';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +10,8 @@ import { ProductListPageService } from '../service/product-list-page.service';
 export class ProductComponent {
 
   constructor(
-    public productService : ProductListPageService
+    public productService : ProductListPageService,
+    public roleService : RoleService
   ){}
 
 }

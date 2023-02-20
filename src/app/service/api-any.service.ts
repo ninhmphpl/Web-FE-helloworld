@@ -12,7 +12,7 @@ export class APIAny {
 
   constructor(
     private http: HttpClient,
-    public onload: OnloadService,
+    public onloadService: OnloadService,
     public route : Router,
     public activeRoute : ActivatedRoute
   ) { }
@@ -40,19 +40,19 @@ export class APIAny {
   }
 
   getMapping(url: string, action: any) {
-    this.onload.onload = true
+    this.onloadService.onload = true
     this.http.get<any>(url, this.httpOption)
       .pipe(
         retry(3),catchError(this.handleError)
       ).subscribe((data) => {
         action(data)
-        this.onload.onload = false
+        this.onloadService.onload = false
       })
   }
 
   /** POST: add a new object to the database */
   postMapping(url: string, object : any, action : any){
-    this.onload.onload = true
+    this.onloadService.onload = true
     this.http.post<any>(url, object,  this.httpOption)
       .pipe(
         retry(3), catchError(this.handleError)
@@ -63,7 +63,7 @@ export class APIAny {
 
   /** DELETE: delete the hero from the server */
   delete(url: string, action : any){
-    this.onload.onload = true
+    this.onloadService.onload = true
     this.http.delete<any>(url, this.httpOption)
       .pipe(
         retry(3),catchError(this.handleError)
@@ -74,7 +74,7 @@ export class APIAny {
 
   /** PUT: update the object on the server. Returns the updated hero upon success. */
   putMapping(url: string, object: any,action : any) {
-    this.onload.onload = true
+    this.onloadService.onload = true
     this.http.put<any>(url, object ,this.httpOption)
       .pipe(
         retry(3), catchError(this.handleError)
@@ -92,12 +92,12 @@ export class APIAny {
   private filterData(data : any , action : any){
     if(typeof data == 'string'){
       let message = data.split(',')
-      console.log(message[0]);
-      console.log(message[0]);
+      this.onloadService.error = message
+      this.route.navigate(['/error'])
     }else{
       action(data)
     }
-    this.onload.onload = false
+    this.onloadService.onload = false
   }
 
 
