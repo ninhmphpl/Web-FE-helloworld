@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environtment, ROLE } from 'src/environments/environtment';
+import { NavService } from '../service/nav.service';
 import { RoleService } from '../service/role.service';
 
 const employee = [
@@ -25,7 +26,8 @@ export class NavComponent implements OnInit{
   public choice = 0
 
   constructor(
-    public roleService : RoleService
+    public roleService : RoleService,
+    public navService : NavService
   ){}
 
   ngOnInit(): void {
