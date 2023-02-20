@@ -16,6 +16,7 @@ const token = environtment.token
 })
 export class ProductDetailService {
   public product !: ProductDetail;
+  public seller: any
 
   constructor(
     public api: APIAny,
@@ -29,6 +30,10 @@ export class ProductDetailService {
     let url = API_URL + "/employees/product-detail/" + id
     this.api.getMapping(url, (data: any) => {
       this.product = data
+      let urlSeller = API_URL + "/product/seller/" + data.id
+      this.api.getMapping(urlSeller, (seller: any) => {
+        this.seller = seller
+      })
       action(data)
     })
   }
@@ -51,13 +56,13 @@ export class ProductDetailService {
     })
   }
 
-  amount: number = 1
+  amount: number = 0
   amountMessage = ''
   setAmount(value: number) {
     this.amountMessage = ''
-    if (value < 1) {
-      this.amountMessage = "Tối thiểu là 1"
-      return this.amount = 1
+    if (value < 0) {
+      this.amountMessage = "Không thể giảm"
+      return this.amount = 0
     }
     if (value > this.product.quantity) {
       this.amountMessage = "Sản phẩm này đã đạt tối đa"
@@ -73,7 +78,7 @@ export class ProductDetailService {
     this.pictrueMessenge = `<div class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>`
-    
+
     this.fireService.selectFile(file)
     upFileArray(this.fireService.files, () => {
       for (let file of this.fireService.files) {

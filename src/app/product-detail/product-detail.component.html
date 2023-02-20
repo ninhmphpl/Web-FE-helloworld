@@ -122,6 +122,14 @@
             </tr>
             <!-- ship end -->
 
+            <tr>
+              <td class="col-5">
+                Thể loại
+              </td>
+              <td class="col-7">
+                {{ service.product.category.name }}
+              </td>
+            </tr>
             <!-- số lượng start -->
             <tr>
               <td class="col-5">
@@ -202,7 +210,13 @@
     <!-- product detail end -->
 
     <!-- Product owner -->
-    <div class="specifications">
+    <div class="specifications" *ngIf="service.seller">
+      <div class="row row-cols-auto px-3">
+        <img class="rounded-circle border col ml-2" style="width: 50px; height: 50px;"
+          src="https://media.istockphoto.com/vectors/house-leaf-icon-vector-id867412416?k=6&m=867412416&s=170667a&w=0&h=q_RQ3t3ID6RyRH4299mDGigEIOd9GcY_6GDlhSqfkMo="
+          alt="">
+        <div class="col h5 p-3">{{ service.seller.name }}</div>
+      </div>
 
     </div>
     <!-- Product owner -->
@@ -224,7 +238,8 @@
 
 <!-- model start -->
 <!-- Modal -->
-<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content ">
       <div class="modal-header">
@@ -234,13 +249,15 @@
       <div class="modal-body row row-cols-auto">
         <div style="height: 350px; width: 350px" class="imgMain border p-2 col position-relative">
           <img src="{{imgMain}}" alt="" class="full-size rounded">
-          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3" (click)="service.setAvatar()">Đặt làm đại diện</a>
+          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3"
+            (click)="service.setAvatar()">Đặt làm đại diện</a>
         </div>
         <!-- list ảnh start -->
         <div class="col-6 row row-cols-auto">
           <div class="col p-2 m-1 border position-relative" style="width: 100px; height: 100px;"
             [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture; let i = index">
-            <span (click)="service.deletePicture(i)" class="position-absolute top-0 start-100 translate-middle p-2 text-danger">
+            <span (click)="service.deletePicture(i)"
+              class="position-absolute top-0 start-100 translate-middle p-2 text-danger">
               <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" viewBox="0 0 16 16">
                 <path
