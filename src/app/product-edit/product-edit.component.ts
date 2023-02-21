@@ -9,6 +9,7 @@ import { RoleService } from '../service/role.service';
 import { SellerService } from '../service/seller.service';
 import { environtment, ROLE } from 'src/environments/environtment';
 import { APIAny } from '../service/api-any.service';
+import { NavService } from '../service/nav.service';
 
 @Component({
   selector: 'app-product-create',
@@ -27,10 +28,11 @@ export class ProductEditComponent implements OnInit {
     public roleService: RoleService,
     public sellerService: SellerService,
     public api: APIAny,
+    public navService : NavService
   ) { }
 
   ngOnInit(): void {
-    
+    this.navService.choice = 1
     this.roleService.getRoleByParam(
       this.routerActive.snapshot.paramMap.get("role")
     )

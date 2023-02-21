@@ -6,6 +6,7 @@ import { APIAny } from '../service/api-any.service';
 import { CategoryService } from '../service/category.service';
 import { ProductListPageService } from '../service/product-list-page.service';
 import { UserService } from '../service/user.service';
+import { NavService } from '../service/nav.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,6 +20,7 @@ export class ProductListComponent implements OnInit {
     private activeRouter: ActivatedRoute,
     public roleService : RoleService,
     public userService : UserService,
+    public navSerive : NavService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,8 @@ export class ProductListComponent implements OnInit {
     this.roleService.getRoleByParam(
       this.activeRouter.snapshot.paramMap.get("role")
     )
+    this.navSerive.choice = 0
+
   }
 
 }
