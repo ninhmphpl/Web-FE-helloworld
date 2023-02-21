@@ -45,7 +45,7 @@ export class APIAny {
       .pipe(
         retry(3), catchError(this.handleError)
       ).subscribe((data) => {
-        action(data)
+        this.filterData(data, action)
         this.onloadService.onload = false
       })
   }
@@ -89,12 +89,13 @@ export class APIAny {
     });
   }
 
-  private filterData(data: any, action: any) {
+  public filterData(data: any, action: any) {
     if (typeof data == 'string') {
       let message = data.split(',')
       this.onloadService.error = message
       this.route.navigate(['/error'])
     } else {
+      console.log(data);
       action(data)
     }
     this.onloadService.onload = false

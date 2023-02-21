@@ -38,10 +38,10 @@
                     <td class="align-middle col-2">
                         <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"
                                 (click)="userService.choiceProduct()" class="form-checkbox"></span>
-                        <a href="/product/detail/{{roleService.role}}/{{cart.productSimple.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productSimple.avatar" alt="" class=""></a>
+                        <a href="/product/detail/{{roleService.role}}/{{cart.productDetail.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productDetail.avatar" alt="" class=""></a>
                     </td>
-                    <td class="align-middle col-3" [innerText]="cart.productSimple.name"></td>
-                    <td class="align-middle col-1" [innerText]="cart.productSimple.price"></td>
+                    <td class="align-middle col-3" [innerText]="cart.productDetail.name"></td>
+                    <td class="align-middle col-1" [innerText]="cart.productDetail.price"></td>
                     <td class="align-middle col-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a type="button" class="bg-white text-1 border px-3 py-2"
@@ -53,7 +53,7 @@
                         </div>
                         <div class="text-danger" [innerText]="cart.amountMesseger"></div>
                     </td>
-                    <td class="align-middle" [innerText]="cart.productSimple.price * cart.amount"></td>
+                    <td class="align-middle" [innerText]="cart.productDetail.price * cart.amount"></td>
                     <td class="align-middle"><button class="btn-main" (click)="userService.deleteOrder(cart.id)">Xóa</button></td>
                 </tr>
             </tBody>
@@ -112,8 +112,8 @@
                     </tHead>
                     <tBody>
                         <tr *ngFor="let bill of userService.bill.orderPayments">
-                            <td [innerText]="bill.productSimple.name"></td>
-                            <td [innerText]="bill.productSimple.price"></td>
+                            <td [innerText]="bill.productDetail.name"></td>
+                            <td [innerText]="bill.productDetail.price"></td>
                             <td [innerText]="bill.amount"></td>
                             <td [innerText]="bill.totalPrice"></td>
                         </tr>

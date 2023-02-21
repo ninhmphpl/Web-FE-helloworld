@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environtment } from 'src/environments/environtment';
 import { Page } from 'src/environments/page';
-import { ProductSimple } from '../model/product';
 import { APIAny } from './api-any.service';
 import { RoleService } from './role.service';
 
@@ -23,7 +22,7 @@ export class ProductListPageService{
     private roleService : RoleService
   ){}
 
-  public page!: Page<ProductSimple>;
+  public page!: Page<any>;
   public pageControl : number[] = []
 
   getListProduct(pageNumber : number) {

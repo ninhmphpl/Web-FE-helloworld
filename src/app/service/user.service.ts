@@ -29,6 +29,8 @@ export class UserService {
       this.api.getMapping(url, (data: any) => {
         this.user = data
         this.cartService.cart = this.user.cart
+        console.log(this.cartService.cart);
+        
         this.cart = this.user.cart
         for(let cart of this.cart){
           cart.choice = false
@@ -58,7 +60,7 @@ export class UserService {
       for (let cart of this.cart) {
         if (cart.choice){
           this.listBuy.push(cart)
-          this.total += cart.productSimple.price * cart.amount
+          this.total += cart.productDetail.price * cart.amount
         }
       }
     },100)
@@ -92,7 +94,7 @@ export class UserService {
       this.api.getMapping(url, (data: any) => {
         if (!data) {
           this.cart[i].amountMesseger = "Số lượng vượt quá kho"
-          this.cart[i].amount = this.cart[i].productSimple.quantity
+          this.cart[i].amount = this.cart[i].productDetail.quantity
         } else {
           this.cart[i].amountMesseger = ""
         }

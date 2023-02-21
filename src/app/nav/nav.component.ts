@@ -32,7 +32,7 @@ export class NavComponent implements OnInit{
 
   ngOnInit(): void {
 
-    if(this.roleService.role == ROLE.employee){
+    if(this.roleService.role == ROLE.employee || this.roleService.role == ROLE.seller){
       this.nav = employee
     }
     if(this.roleService.role == ROLE.admin){
