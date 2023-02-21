@@ -46,3 +46,16 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.sellerList:hover > div{
+  display: block !important;
+}
+.list-group{
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  min-width: 150px !important;
+}
+.list-group-item:hover{
+  background-color: rgb(255, 94, 0) !important;
+  color: white !important;
+}

@@ -47,6 +47,27 @@
                 <!-- ảnh end -->
               </td>
             </tr>
+            <!-- chon seller start -->
+           <!----> <tr *ngIf="roleService.role == 'EMPLOYEE'">
+              <th>Người bán</th>
+              <td>
+                <div class="text-1" *ngIf="sellerService.seller">{{sellerService.seller.name}}</div>
+                <div class="text-danger">{{sellerMeasser}}</div>
+                <div  class="input-group mb-3 position-relative sellerList">
+                  <div  *ngIf="sellerService.listSeller && sellerService.listSeller.length > 0"class="d-none list-group position-absolute top-100">
+                    <li *ngFor="let seller of sellerService.listSeller" class="list-group-item"
+                      (click)="sellerService.setSeller(seller)">{{seller.name}} -
+                      {{seller.phoneNumber}}</li>
+                  </div>
+                  <input #searchSeller type="text" class="form-control" placeholder="Người bán"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="input-group-text" id="basic-addon2"
+                    (click)="sellerService.findAllSellerByName(searchSeller.value)">Tim kiem</span>
+                </div>
+              </td>
+            </tr>
+            <!-- chon seller end -->
+
             <tr>
               <th class="col-3">
                 Tên
@@ -133,7 +154,10 @@
             </tr>
           </tBody>
         </table>
-        <button type="submit" class="btn btn-primary" [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Tạo</button>
+        <button type="submit" class="btn btn-primary"
+          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhập</button>
+        <!-- <button (click)="onSubmitEmployee" class="btn btn-primary"
+          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật</button> -->
       </form>
     </div>
     <!-- Body end -->

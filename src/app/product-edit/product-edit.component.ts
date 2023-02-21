@@ -5,9 +5,10 @@ import { CategoryService } from '../service/category.service';
 import { upFileArray } from 'src/environments/firebase';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailService } from '../service/product-detail.service';
-import { APIAny } from '../service/api-any.service';
-import { environtment, path } from 'src/environments/environtment';
 import { RoleService } from '../service/role.service';
+import { SellerService } from '../service/seller.service';
+import { environtment, ROLE } from 'src/environments/environtment';
+import { APIAny } from '../service/api-any.service';
 
 @Component({
   selector: 'app-product-create',
@@ -23,13 +24,17 @@ export class ProductEditComponent implements OnInit {
     public fire: FireBaseService,
     private router: Router,
     private routerActive: ActivatedRoute,
-    public roleService : RoleService,
+    public roleService: RoleService,
+    public sellerService: SellerService,
+    public api: APIAny,
   ) { }
 
   ngOnInit(): void {
+    
     this.roleService.getRoleByParam(
       this.routerActive.snapshot.paramMap.get("role")
     )
+    this.sellerService.findAllSeller()
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
@@ -61,6 +66,15 @@ export class ProductEditComponent implements OnInit {
   })
 
   onSubmit() {
+    if(this.roleService.role == ROLE.employee){
+      this.onSubmitEmployee()
+    }else{
+      this.onSubmitSeller()
+    }
+    
+  }
+
+  onSubmitSeller(){
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
     if (this.formCreate.valid) {
@@ -76,15 +90,51 @@ export class ProductEditComponent implements OnInit {
         console.log(productDetail);
 
         if (id > 0) {
-          this.service.updateProductDetail(productDetail, (product : any) => {
-            this.router.navigate(["/product/detail/" + this.roleService.role + '/' +  product.id])
+          this.service.updateProductDetail(productDetail, (product: any) => {
+            this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
           })
         } else {
           this.service.addProductDetail(productDetail, (product: any) => {
-            this.router.navigate(["/product/detail/" + this.roleService.role + '/' +  product.id])
+            this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
           })
         }
       })
+    }
+  }
+
+  getValue(data : any) {
+    let productDetail: any = this.formCreate.value;
+
+    upFileArray(this.fire.files, () => {
+      let urlImg = [];
+      for (let file of this.fire.files) {
+        urlImg.push({ name: file.url })
+      }
+      productDetail.picture = urlImg;
+      data(productDetail)
+    })
+
+  }
+
+  sellerMeasser: any
+  onSubmitEmployee() {
+    console.log("abc");
+
+    if (this.sellerService.seller) {
+      this.sellerMeasser = ''
+      let url = environtment.url + '/seller/create-product/' + this.sellerService.seller.id
+      console.log(url);
+
+      this.getValue((data: any) => {
+        console.log(data);
+        
+        this.api.postMapping(url, data, (product: any) => {
+          this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
+        })
+      })
+
+    } else {
+      this.sellerMeasser = "Vui Long chọn người bán"
     }
   }
 
