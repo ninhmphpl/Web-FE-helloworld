@@ -1,9 +1,11 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environtment } from 'src/environments/environtment';
 import { Page } from 'src/environments/page';
 import { ProductSimple } from '../model/product';
 import { APIAny } from './api-any.service';
+import { RoleService } from './role.service';
 
 
 const url = environtment.url
@@ -16,7 +18,9 @@ export class ProductListPageService{
   url = url + "/employees/product-list"
 
   constructor (
-    private api : APIAny
+    private api : APIAny,
+    private router : Router,
+    private roleService : RoleService
   ){}
 
   public page!: Page<ProductSimple>;
@@ -28,6 +32,7 @@ export class ProductListPageService{
     this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
+      this.router.navigate(['/product/list/' + this.roleService.role])
     })
   }
 
@@ -87,6 +92,18 @@ export class ProductListPageService{
   }
 
 
+  modalMessager : any
+  deleteProduct(id : any){
+    let url = environtment.url + '/employees/product-delete/' + id
+    this.api.deleteMapping(url, (data : any)=>{
+      this.modalMessager = "Xóa thành công"
+      document.getElementById('modal')?.click()
+      this.getListProduct(0)
+    })
+  }
+
+
 
 
 }
+ 

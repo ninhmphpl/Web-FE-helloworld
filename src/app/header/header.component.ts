@@ -11,18 +11,23 @@ import { RoleService } from '../service/role.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   constructor(
-    public roleService : RoleService,
-    public cartService : CartService,
-    public productListService : ProductListPageService,
-    public userService : UserService
-  ){}
+    public roleService: RoleService,
+    public cartService: CartService,
+    public productListService: ProductListPageService,
+    public userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.userService.getUser()
   }
+  scroll(element: any) {
+    window.scrollTo(element.yPosition)
+  }
+
+
 
 
 

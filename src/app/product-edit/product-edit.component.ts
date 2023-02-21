@@ -75,7 +75,7 @@ export class ProductEditComponent implements OnInit {
     }
     
   }
-
+  // submit nếu role là seller
   onSubmitSeller(){
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
@@ -106,19 +106,21 @@ export class ProductEditComponent implements OnInit {
 
   getValue(data : any) {
     let productDetail: any = this.formCreate.value;
-
     upFileArray(this.fire.files, () => {
       let urlImg = [];
       for (let file of this.fire.files) {
         urlImg.push({ name: file.url })
       }
       productDetail.picture = urlImg;
+      console.log(productDetail.description);
+      productDetail.description = productDetail.description.replace("\n" , '<br>')
+      console.log(productDetail.description);
       data(productDetail)
     })
-
   }
 
   sellerMeasser: any
+  // submit nếu role là employee
   onSubmitEmployee() {
     console.log("abc");
 

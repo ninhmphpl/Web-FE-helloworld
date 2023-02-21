@@ -40,6 +40,7 @@ export class UserService {
   bill : any
   listBuy : any[] = []
   total = 0
+  modalBody : any
   buy() {
     if(this.listBuy.length > 0){
       let url = environtment.url + '/buyer/cart/buy'
@@ -100,16 +101,10 @@ export class UserService {
 
   }
   deleteOrder(id : number) {
-    alert(id)
    let url = environtment.url + '/buyer/cart/delete/' + id
     this.api.putMapping(url,{},()=>{
+      document.getElementById('modalDelete')?.click()
       this.getUser()
-
     });
-
-
   }
-
-
-
 }

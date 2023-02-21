@@ -21,10 +21,6 @@ export class ProductDetailComponent implements OnInit{
   ) {
   }
 
-
-
-
-
   // khi component này được gọi hay đc sử dụng, hàm này sẽ được khởi động
 
   ngOnInit(): void {

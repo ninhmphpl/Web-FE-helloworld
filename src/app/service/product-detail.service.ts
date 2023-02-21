@@ -48,11 +48,13 @@ export class ProductDetailService {
     this.api.putMapping(url, productDetail, action)
   }
 
+  modalMesager: any
   toCart() {
     let url = API_URL + `/buyer/to-cart/${this.product.id}/${this.amount}`
     this.api.postMapping(url, {}, (data: any) => {
       this.cartService.cart = data
       this.amount = 1
+      document.getElementById('modal')?.click()
     })
   }
 

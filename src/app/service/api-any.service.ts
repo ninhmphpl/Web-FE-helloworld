@@ -13,8 +13,8 @@ export class APIAny {
   constructor(
     private http: HttpClient,
     public onloadService: OnloadService,
-    public route : Router,
-    public activeRoute : ActivatedRoute
+    public route: Router,
+    public activeRoute: ActivatedRoute
   ) { }
 
   httpOption: HttpOptions = {
@@ -43,7 +43,7 @@ export class APIAny {
     this.onloadService.onload = true
     this.http.get<any>(url, this.httpOption)
       .pipe(
-        retry(3),catchError(this.handleError)
+        retry(3), catchError(this.handleError)
       ).subscribe((data) => {
         action(data)
         this.onloadService.onload = false
@@ -51,9 +51,9 @@ export class APIAny {
   }
 
   /** POST: add a new object to the database */
-  postMapping(url: string, object : any, action : any){
+  postMapping(url: string, object: any, action: any) {
     this.onloadService.onload = true
-    this.http.post<any>(url, object,  this.httpOption)
+    this.http.post<any>(url, object, this.httpOption)
       .pipe(
         retry(3), catchError(this.handleError)
       ).subscribe((data) => {
@@ -62,20 +62,20 @@ export class APIAny {
   }
 
   /** DELETE: delete the hero from the server */
-  delete(url: string, action : any){
+  deleteMapping(url: string, action: any) {
     this.onloadService.onload = true
     this.http.delete<any>(url, this.httpOption)
       .pipe(
-        retry(3),catchError(this.handleError)
+        retry(3), catchError(this.handleError)
       ).subscribe((data) => {
         this.filterData(data, action)
       })
   }
 
   /** PUT: update the object on the server. Returns the updated hero upon success. */
-  putMapping(url: string, object: any,action : any) {
+  putMapping(url: string, object: any, action: any) {
     this.onloadService.onload = true
-    this.http.put<any>(url, object ,this.httpOption)
+    this.http.put<any>(url, object, this.httpOption)
       .pipe(
         retry(3), catchError(this.handleError)
       ).subscribe((data) => {
@@ -83,18 +83,18 @@ export class APIAny {
       })
   }
   // get param pathvariable
-  getParam (key : string , action : any){
-    this.activeRoute.paramMap.subscribe((param : ParamMap)=> {
+  getParam(key: string, action: any) {
+    this.activeRoute.paramMap.subscribe((param: ParamMap) => {
       action(param.get(key))
     });
   }
 
-  private filterData(data : any , action : any){
-    if(typeof data == 'string'){
+  private filterData(data: any, action: any) {
+    if (typeof data == 'string') {
       let message = data.split(',')
       this.onloadService.error = message
       this.route.navigate(['/error'])
-    }else{
+    } else {
       action(data)
     }
     this.onloadService.onload = false
