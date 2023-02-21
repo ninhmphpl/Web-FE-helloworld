@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit {
     public roleService: RoleService,
     public sellerService: SellerService,
     public api: APIAny,
-    public navService : NavService
+    public navService: NavService
   ) { }
 
   ngOnInit(): void {
@@ -68,35 +68,25 @@ export class ProductEditComponent implements OnInit {
   })
 
   onSubmit() {
-    if(this.roleService.role == ROLE.employee){
+    if (this.roleService.role == ROLE.employee) {
       this.onSubmitEmployee()
-    }else{
+    } else {
       this.onSubmitSeller()
     }
-    
+
   }
   // submit nếu role là seller
-  onSubmitSeller(){
+  onSubmitSeller() {
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))
 
     if (this.formCreate.valid) {
-
-      let productDetail: any = this.formCreate.value;
-
-      upFileArray(this.fire.files, () => {
-        let urlImg = [];
-        for (let file of this.fire.files) {
-          urlImg.push({ name: file.url })
-        }
-        productDetail.picture = urlImg;
-        console.log(productDetail);
-
+      this.getValue((data: any) => {
         if (id > 0) {
-          this.service.updateProductDetail(productDetail, (product: any) => {
+          this.service.updateProductDetail(data, (product: any) => {
             this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
           })
         } else {
-          this.service.addProductDetail(productDetail, (product: any) => {
+          this.service.addProductDetail(data, (product: any) => {
             this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
           })
         }
@@ -104,7 +94,11 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
-  getValue(data : any) {
+  htmlEscape(str: any) {
+    return  $('<div/>').text(str).html();
+  }
+
+  getValue(data: any) {
     let productDetail: any = this.formCreate.value;
     upFileArray(this.fire.files, () => {
       let urlImg = [];
@@ -112,9 +106,9 @@ export class ProductEditComponent implements OnInit {
         urlImg.push({ name: file.url })
       }
       productDetail.picture = urlImg;
-      console.log(productDetail.description);
-      productDetail.description = productDetail.description.replace("\n" , '<br>')
-      console.log(productDetail.description);
+      productDetail.description = this.htmlEscape(productDetail.description)
+      console.log(productDetail);
+
       data(productDetail)
     })
   }
@@ -131,7 +125,7 @@ export class ProductEditComponent implements OnInit {
 
       this.getValue((data: any) => {
         console.log(data);
-        
+
         this.api.postMapping(url, data, (product: any) => {
           this.router.navigate(["/product/detail/" + this.roleService.role + '/' + product.id])
         })
