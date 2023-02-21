@@ -55,7 +55,7 @@ export class ProductEditComponent implements OnInit {
     id: 0,
     name: ['', [Validators.required, Validators.maxLength(100)]],
     price: [0, [Validators.required]],
-    description: ['', [Validators.required, Validators.maxLength(200)]],
+    description: ['', [Validators.required, Validators.maxLength(2000)]],
     quantity: [0, [Validators.required]],
     category: this.bf.group({
       name: '',
