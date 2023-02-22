@@ -1,4 +1,7 @@
 <app-header></app-header>
+<button (click)="setSeller()">Đăng ký tài khoản cửa hàng</button>
+<button (click)="setBuyer()">Đăng ký tài khoản</button>
+
 <form class="bg-shadow container-fluid bg-sign " style="height: 800px;" [formGroup]="sellerForm"
       (ngSubmit)="onSubmit()">
   <div class="bg-white p-3 body-sign mx-auto row">
@@ -174,7 +177,7 @@
     <div class="col-6 pl-4">
       <!-- tên cửa hàng start -->
       <div>
-        <div>Tên cửa hàng<span class="text-danger">*</span></div>
+        <div>{{seller?"Tên cửa hàng": 'Họ và tên'}}<span class="text-danger">*</span></div>
         <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập tên của cửa hàng"
                formControlName="name">
         <!-- valid name start -->
