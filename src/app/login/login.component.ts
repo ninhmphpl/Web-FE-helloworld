@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { environtment } from 'src/environments/environtment';
 import { APIAny } from '../service/api-any.service';
 import { RoleService } from '../service/role.service';
@@ -12,7 +13,8 @@ export class LoginComponent {
 
   constructor(
     public api : APIAny,
-    public roleService : RoleService
+    public roleService : RoleService,
+    public router : Router
     ){}
 
   user = {
@@ -27,6 +29,7 @@ export class LoginComponent {
       this.roleService.userTokent = data
       localStorage.setItem('user_web', JSON.stringify(data))
     })
+    this.router.navigate(['/'])
   }
 
 

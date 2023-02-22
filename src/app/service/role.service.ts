@@ -19,7 +19,12 @@ export class RoleService {
       this.userTokent = JSON.parse(user) 
       if(this.userTokent) return
     }
-    this.router.navigate(['/home'])
+    if(this.userTokent){
+      this.router.navigate(['/home'])
+      return
+    }
+    this.router.navigate(['/login'])
+    
   }
 
 

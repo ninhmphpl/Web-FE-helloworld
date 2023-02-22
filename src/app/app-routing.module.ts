@@ -17,10 +17,10 @@ const routes: Routes = [
     {path : 'edit/:id',component : EmployeeEditComponent },
     {path : '', component : EmployeeListComponent},
   ]},
-  {path : 'product', children : [
-    {path : 'detail/:role/:id', component: ProductDetailComponent },
-    {path : 'edit/:role/:id', component: ProductEditComponent },
-    {path : 'list/:role', component: ProductListComponent },
+  {path : '', children : [
+    {path : 'detail', component: ProductDetailComponent },
+    {path : 'edit', component: ProductEditComponent },
+    {path : '', component: ProductListComponent },
   ]},
   {path : 'cart' , component : CartComponent},
   {path : "sign-in" , children : [

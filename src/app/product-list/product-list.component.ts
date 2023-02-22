@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
     this.pageService.getListProduct(0);
     this.categoryService.getAllCategory();
     this.navSerive.choice = 0
-
+    this.roleService.getRoleByParam()
   }
 
 }
