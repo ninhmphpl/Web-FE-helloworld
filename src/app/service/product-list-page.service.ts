@@ -14,7 +14,7 @@ const categoryDefaut = {name : "Thể loại", id : 0}
   providedIn: 'root'
 })
 export class ProductListPageService{
-  url = url + "/employees/product-list"
+  url = url + "/product/list"
 
   constructor (
     private api : APIAny,
@@ -24,23 +24,23 @@ export class ProductListPageService{
 
   public page!: Page<any>;
   public pageControl : number[] = []
-
+  // goi list
   getListProduct(pageNumber : number) {
     this.api.setParam(new HttpParams().append("page", pageNumber))
     console.log(this.url);
     this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
-      this.router.navigate(['/product/list/' + this.roleService.role])
+      this.router.navigate(['/'])
     })
   }
-
+  // tim theo tu khoa
   getSearchByNameCategoryFilter(name : any){
     this.rangeChoice = -1
     this.url = url + "/product/filter/" + name
     this.getListProduct(0)
   }
-
+  // tim theo caegory
   category : any = {name : 'Thể Loại' , id : 0}
   getCategoryFilter(category : any){
     this.rangeChoice = -1

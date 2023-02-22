@@ -32,6 +32,7 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
 import { ControlProductPageComponent } from './control-product-page/control-product-page.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { LoginComponent } from './login/login.component';
     ControlProductPageComponent,
     CartComponent,
     LoginComponent,
+    TestComponent,
 
   ],
   imports: [

@@ -10,6 +10,7 @@ import {EmployeeEditComponent} from "./employee-edit/employee-edit.component";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {path : 'employee' , children : [
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path : "seller" , component : SignInSellerComponent}
   ]},
   {path : 'error' , component: PageErrorComponent},
-  {path : 'login', component: LoginComponent}
+  {path : 'login', component: LoginComponent},
+  {path : 'test' , component: TestComponent}
 
 ]
 

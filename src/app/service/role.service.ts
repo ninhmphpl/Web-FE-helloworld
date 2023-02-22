@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { APIAny } from './api-any.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,24 +8,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RoleService {
   role : any
   userTokent : any
+  header : any
 
   constructor(
     private router : Router,
     private activeRouter : ActivatedRoute,
+    private api : APIAny
   ) { }
 
   getRoleByParam(){
-    if(!this.userTokent){
-      let user : any = localStorage.getItem("user_web")
-      this.userTokent = JSON.parse(user) 
-      if(this.userTokent) return
-    }
-    if(this.userTokent){
-      this.router.navigate(['/home'])
-      return
-    }
-    this.router.navigate(['/login'])
-    
   }
 
 

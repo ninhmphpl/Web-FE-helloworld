@@ -28,6 +28,7 @@ export class LoginComponent {
       alert("dang ky thanh cong");
       this.roleService.userTokent = data
       localStorage.setItem('user_web', JSON.stringify(data))
+      localStorage.setItem('token', `${data.type} ${data.token}`)
     })
     this.router.navigate(['/'])
   }

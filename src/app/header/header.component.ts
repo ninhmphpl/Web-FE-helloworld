@@ -5,6 +5,7 @@ import { UserService } from '../service/user.service';
 import { CartService } from '../service/cart.service';
 import { ProductListPageService } from '../service/product-list-page.service';
 import { RoleService } from '../service/role.service';
+import { BuyerService } from '../service/buyer.service';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,13 @@ export class HeaderComponent implements OnInit {
     public roleService: RoleService,
     public cartService: CartService,
     public productListService: ProductListPageService,
-    public userService: UserService
+    public userService: UserService,
+    public buyerService : BuyerService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser()
+    this.roleService.getRoleByParam()
+    this.buyerService.getBuyer()
   }
   scroll(element: any) {
     window.scrollTo(element.yPosition)

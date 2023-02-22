@@ -1,5 +1,6 @@
 <div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px;">
     <!-- heder start -->
+    {{api.httpOption | json}}
     <div>
         <div class="bg-main d-flex justify-content-center">
             <div class="col-6 d-flex justify-content-start">
@@ -34,27 +35,27 @@
                 </tr>
             </tHead>
             <tBody>
-                <tr *ngFor="let cart of userService.cart; let i = index">
+                <tr >
                     <td class="align-middle col-2">
-                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"
-                                (click)="userService.choiceProduct()" class="form-checkbox"></span>
-                        <a href="/product/detail/{{roleService.role}}/{{cart.productDetail.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productDetail.avatar" alt="" class=""></a>
+                        <span class="p-2"><input type="checkbox"
+                                 class="form-checkbox"></span>
+                        <a ><img style="width: 70px; height: 70px;" alt="" class=""></a>
                     </td>
-                    <td class="align-middle col-3" [innerText]="cart.productDetail.name"></td>
-                    <td class="align-middle col-1" [innerText]="cart.productDetail.price"></td>
+                    <td class="align-middle col-3" ></td>
+                    <td class="align-middle col-1" ></td>
                     <td class="align-middle col-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a type="button" class="bg-white text-1 border px-3 py-2"
-                                (click)="cart.amount = cart.amount - 1; userService.checkCartAmount(i)">-</a>
+                                >-</a>
                             <input style="width: 40px" class="border text-center" type="number"
-                                [(ngModel)]="cart.amount" (change)="userService.checkCartAmount(i)">
+                                >
                             <a type="button" class="bg-white text-1 border px-3 py-2"
-                                (click)="cart.amount = cart.amount + 1; userService.checkCartAmount(i)">+</a>
+                                >+</a>
                         </div>
-                        <div class="text-danger" [innerText]="cart.amountMesseger"></div>
+                        <div class="text-danger" ></div>
                     </td>
-                    <td class="align-middle" [innerText]="cart.productDetail.price * cart.amount"></td>
-                    <td class="align-middle"><button class="btn-main" (click)="userService.deleteOrder(cart.id)">Xóa</button></td>
+                    <td class="align-middle" ></td>
+                    <td class="align-middle"><button class="btn-main">Xóa</button></td>
                 </tr>
             </tBody>
         </table>
@@ -65,14 +66,14 @@
     <div class="position-fixed bottom-0 px-5 full-width ">
         <div class="d-flex justify-content-between bg-white shadow ">
             <div class="h6 p-4 link text-dark">
-                <input id="all" type="checkbox" class="form-checkbox" (click)="userService.checkAll()"
-                    [(ngModel)]="userService.checkAlls">
+                <input id="all" type="checkbox" class="form-checkbox" 
+                    >
                 <label for="all" class="px-2"> Chon tat ca</label>
             </div>
             <div class="h6 p-3 "></div>
-            <div class="h6 p-4 ">Tong thanh toan ({{userService.listBuy.length}} san pham)</div>
-            <h2 class="pt-4 text-main">{{ userService.total | currency: 'VND'}}
-                <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a>
+            <div class="h6 p-4 ">Tong thanh toan ( san pham)</div>
+            <h2 class="pt-4 text-main">{{ 0 | currency: 'VND'}}
+                <a class="btn-main-bg mx-3" style="width: 30px;" >Mua Hang</a>
             </h2>
 
         </div>
@@ -96,7 +97,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Mua hàng thành công</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" *ngIf="userService.bill">
+            <div class="modal-body" >
                 <div [innerHTML]="">
 
                 </div>
@@ -111,16 +112,16 @@
                         </tr>
                     </tHead>
                     <tBody>
-                        <tr *ngFor="let bill of userService.bill.orderPayments">
-                            <td [innerText]="bill.productDetail.name"></td>
-                            <td [innerText]="bill.productDetail.price"></td>
-                            <td [innerText]="bill.amount"></td>
-                            <td [innerText]="bill.totalPrice"></td>
+                        <tr >
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
                         </tr>
                     </tBody>
                 </table>
-                <div>Tổng bill : {{ userService.bill.total }}</div>
-                <div>Người mua : {{userService.bill.nameBuyer }}</div>
+                <div>Tổng bill : </div>
+                <div>Người mua : </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
