@@ -22,7 +22,7 @@ const IP_CONFIG = {
   ninh : "http://localhost:8080",
 }
 export const environtment = {
-  url: IP_CONFIG.ninh,
+  url: IP_CONFIG.linh,
   role: '',
   token: "no Token",
   firebaseConfig: {

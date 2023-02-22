@@ -1,165 +1,432 @@
-<div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px;">
-    <!-- heder start -->
-    <div>
-        <div class="bg-main d-flex justify-content-center">
-            <div class="col-6 d-flex justify-content-start">
-                <a class="p-2 link text-white border-r-1">Kênh người bán</a>
-                <a class="p-2 link text-white border-r-1">Ứng dụng</a>
-                <a class="p-2 link text-white">Kêt nối</a>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <a class="p-2 link text-white border-r-1">Thông báo</a>
-                <a class="p-2 link text-white">Người dùng</a>
-            </div>
-        </div>
-        <div style="height: 100px;" class="p-3 bg-white">
-            <a href="/product/list/BUYER">
-                <img class="full-height" src="/assets/Untitled.png" alt="">
-            </a>
-        </div>
-    </div>
-    <!-- heder end -->
+<!--<div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px;">-->
+<!--    &lt;!&ndash; heder start &ndash;&gt;-->
+<!--    <div>-->
+<!--        <div class="bg-main d-flex justify-content-center">-->
+<!--            <div class="col-6 d-flex justify-content-start">-->
+<!--                <a class="p-2 link text-white border-r-1">Kênh người bán</a>-->
+<!--                <a class="p-2 link text-white border-r-1">Ứng dụng</a>-->
+<!--                <a class="p-2 link text-white">Kêt nối</a>-->
+<!--            </div>-->
+<!--            <div class="col-6 d-flex justify-content-end">-->
+<!--                <a class="p-2 link text-white border-r-1">Thông báo</a>-->
+<!--                <a class="p-2 link text-white">Người dùng</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div style="height: 100px;" class="p-3 bg-white">-->
+<!--            <a href="/product/list/BUYER">-->
+<!--                <img class="full-height" src="/assets/Untitled.png" alt="">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; heder end &ndash;&gt;-->
 
-    <!-- body start -->
-    <div class="m-5 bg-white">
-        <table class="table">
-            <tHead>
-                <tr>
-                    <th class="p-2" colspan="2">
-                        Sản phẩm</th>
-                    <th>Đơn giá</th>
-                    <th>Số lượng</th>
-                    <th>Số tiền</th>
-                    <th>Thao tác</th>
-                </tr>
-            </tHead>
-            <tBody>
-                <tr *ngFor="let cart of userService.cart; let i = index">
-                    <td class="align-middle col-2">
-                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"
-                                (click)="userService.choiceProduct()" class="form-checkbox"></span>
-                        <a href="/product/detail/{{roleService.role}}/{{cart.productDetail.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productDetail.avatar" alt="" class=""></a>
-                    </td>
-                    <td class="align-middle col-3" [innerText]="cart.productDetail.name"></td>
-                    <td class="align-middle col-1" [innerText]="cart.productDetail.price"></td>
-                    <td class="align-middle col-2">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a type="button" class="bg-white text-1 border px-3 py-2"
-                                (click)="cart.amount = cart.amount - 1; userService.checkCartAmount(i)">-</a>
-                            <input style="width: 40px" class="border text-center" type="number"
-                                [(ngModel)]="cart.amount" (change)="userService.checkCartAmount(i)">
-                            <a type="button" class="bg-white text-1 border px-3 py-2"
-                                (click)="cart.amount = cart.amount + 1; userService.checkCartAmount(i)">+</a>
-                        </div>
-                        <div class="text-danger" [innerText]="cart.amountMesseger"></div>
-                    </td>
-                    <td class="align-middle" [innerText]="cart.productDetail.price * cart.amount"></td>
-                    <td class="align-middle"><button class="btn-main" (click)="userService.deleteOrder(cart.id)">Xóa</button></td>
-                </tr>
-            </tBody>
-        </table>
-    </div>
-    <!-- body end -->
+<!--    &lt;!&ndash; body start &ndash;&gt;-->
+<!--    <div class="m-5 bg-white">-->
+<!--        <table class="table">-->
+<!--            <tHead>-->
+<!--                <tr>-->
+<!--                    <th class="p-2" colspan="2">-->
+<!--                        Sản phẩm</th>-->
+<!--                    <th>Đơn giá</th>-->
+<!--                    <th>Số lượng</th>-->
+<!--                    <th>Số tiền</th>-->
+<!--                    <th>Thao tác</th>-->
+<!--                </tr>-->
+<!--            </tHead>-->
+<!--            <tBody>-->
+<!--                <tr *ngFor="let cart of userService.cart; let i = index">-->
+<!--                    <td class="align-middle col-2">-->
+<!--                        <span class="p-2"><input type="checkbox" [(ngModel)]="cart.choice"-->
+<!--                                (click)="userService.choiceProduct()" class="form-checkbox"></span>-->
+<!--                        <a href="/product/detail/{{roleService.role}}/{{cart.productDetail.id}}"><img style="width: 70px; height: 70px;" [src]="cart.productDetail.avatar" alt="" class=""></a>-->
+<!--                    </td>-->
+<!--                    <td class="align-middle col-3" [innerText]="cart.productDetail.name"></td>-->
+<!--                    <td class="align-middle col-1" [innerText]="cart.productDetail.price"></td>-->
+<!--                    <td class="align-middle col-2">-->
+<!--                        <div class="btn-group" role="group" aria-label="Basic example">-->
+<!--                            <a type="button" class="bg-white text-1 border px-3 py-2"-->
+<!--                                (click)="cart.amount = cart.amount - 1; userService.checkCartAmount(i)">-</a>-->
+<!--                            <input style="width: 40px" class="border text-center" type="number"-->
+<!--                                [(ngModel)]="cart.amount" (change)="userService.checkCartAmount(i)">-->
+<!--                            <a type="button" class="bg-white text-1 border px-3 py-2"-->
+<!--                                (click)="cart.amount = cart.amount + 1; userService.checkCartAmount(i)">+</a>-->
+<!--                        </div>-->
+<!--                        <div class="text-danger" [innerText]="cart.amountMesseger"></div>-->
+<!--                    </td>-->
+<!--                    <td class="align-middle" [innerText]="cart.productDetail.price * cart.amount"></td>-->
+<!--                    <td class="align-middle"><button class="btn-main" (click)="userService.deleteOrder(cart.id)">Xóa</button></td>-->
+<!--                </tr>-->
+<!--            </tBody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; body end &ndash;&gt;-->
 
-    <!-- footer start -->
-    <div class="position-fixed bottom-0 px-5 full-width ">
-        <div class="d-flex justify-content-between bg-white shadow ">
-            <div class="h6 p-4 link text-dark">
-                <input id="all" type="checkbox" class="form-checkbox" (click)="userService.checkAll()"
-                    [(ngModel)]="userService.checkAlls">
-                <label for="all" class="px-2"> Chon tat ca</label>
-            </div>
-            <div class="h6 p-3 "></div>
-            <div class="h6 p-4 ">Tong thanh toan ({{userService.listBuy.length}} san pham)</div>
-            <h2 class="pt-4 text-main">{{ userService.total | currency: 'VND'}}
-                <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a>
-            </h2>
+<!--    &lt;!&ndash; footer start &ndash;&gt;-->
+<!--    <div class="position-fixed bottom-0 px-5 full-width ">-->
+<!--        <div class="d-flex justify-content-between bg-white shadow ">-->
+<!--            <div class="h6 p-4 link text-dark">-->
+<!--                <input id="all" type="checkbox" class="form-checkbox" (click)="userService.checkAll()"-->
+<!--                    [(ngModel)]="userService.checkAlls">-->
+<!--                <label for="all" class="px-2"> Chon tat ca</label>-->
+<!--            </div>-->
+<!--            <div class="h6 p-3 "></div>-->
+<!--            <div class="h6 p-4 ">Tong thanh toan ({{userService.listBuy.length}} san pham)</div>-->
+<!--            <h2 class="pt-4 text-main">{{ userService.total | currency: 'VND'}}-->
+<!--                <a class="btn-main-bg mx-3" style="width: 30px;" (click)="userService.buy()">Mua Hang</a>-->
+<!--            </h2>-->
 
-        </div>
-    </div>
-    <!-- footer end -->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; footer end &ndash;&gt;-->
 
 
-</div>
+<!--</div>-->
 
-<!-- modal start -->
-<!-- Button trigger modal -->
-<button type="button" id="buysuccess" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-</button>
+<!--&lt;!&ndash; modal start &ndash;&gt;-->
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<button type="button" id="buysuccess" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--    Launch demo modal-->
+<!--</button>-->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Mua hàng thành công</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" *ngIf="userService.bill">
-                <div [innerHTML]="">
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h1 class="modal-title fs-5" id="exampleModalLabel">Mua hàng thành công</h1>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body" *ngIf="userService.bill">-->
+<!--                <div [innerHTML]="">-->
 
+<!--                </div>-->
+<!--                <div>Thông tin đơn hàng</div>-->
+<!--                <table class="table">-->
+<!--                    <tHead>-->
+<!--                        <tr>-->
+<!--                            <th>Tên</th>-->
+<!--                            <th>Giá</th>-->
+<!--                            <th>Số lượng</th>-->
+<!--                            <th>Thành tiền</th>-->
+<!--                        </tr>-->
+<!--                    </tHead>-->
+<!--                    <tBody>-->
+<!--                        <tr *ngFor="let bill of userService.bill.orderPayments">-->
+<!--                            <td [innerText]="bill.productDetail.name"></td>-->
+<!--                            <td [innerText]="bill.productDetail.price"></td>-->
+<!--                            <td [innerText]="bill.amount"></td>-->
+<!--                            <td [innerText]="bill.totalPrice"></td>-->
+<!--                        </tr>-->
+<!--                    </tBody>-->
+<!--                </table>-->
+<!--                <div>Tổng bill : {{ userService.bill.total }}</div>-->
+<!--                <div>Người mua : {{userService.bill.nameBuyer }}</div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; modal end &ndash;&gt;-->
+
+
+<!--&lt;!&ndash; modal delete start &ndash;&gt;-->
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<button id="modalDelete" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">-->
+<!--    Launch static backdrop modal-->
+<!--  </button>-->
+<!--  &lt;!&ndash; Modal &ndash;&gt;-->
+<!--  <div class="fade modal" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-body border-none">-->
+<!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--          <body class="text-center pt-5">-->
+<!--          <div class="text-success mb-2">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"-->
+<!--                 class="bi bi-check2-circle"-->
+<!--                 viewBox="0 0 16 16">-->
+<!--              <path-->
+<!--                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>-->
+<!--              <path-->
+<!--                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>-->
+<!--            </svg>-->
+<!--          </div>-->
+<!--          <h1>Xóa thành công thành công</h1>-->
+<!--          </body>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--&lt;!&ndash; modal delete end &ndash;&gt;-->
+
+<!--testthucart-->
+<!-- ============== SECTION PAGETOP ============== -->
+<section class="bg-primary padding-y-sm">
+  <div class="container">
+    <ol class="breadcrumb ondark mb-0">
+      <li class="breadcrumb-item"> <a href="#">Home</a>  </li>
+      <li class="breadcrumb-item active"> Shopping cart  </li>
+    </ol>
+  </div> <!-- container //  -->
+</section>
+<!-- ============== SECTION PAGETOP END// ============== -->
+
+<section class="padding-y bg-light">
+  <div class="container">
+
+    <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+    <div class="row">
+      <div class="col-lg-9">
+
+        <div class="card">
+          <div class="content-body">
+            <h4 class="card-title mb-4">Your shopping cart</h4>
+            <article class="row gy-3 mb-4">
+              <div class="col-lg-5">
+                <figure class="itemside me-lg-5">
+                  <div class="aside"><img src="assets/images/items/11.webp" class="img-sm img-thumbnail"></div>
+                  <figcaption class="info">
+                    <a href="#" class="title">Winter jacket for men and lady</a>
+                    <p class="text-muted"> Yellow, Jeans </p>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-auto">
+                <select style="width: 100px" class="form-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-sm-4 col-6">
+                <div class="price-wrap lh-sm">
+                  <var class="price h6">$1156.00</var>  <br>
+                  <small class="text-muted"> $460.00 / per item </small>
+                </div> <!-- price-wrap .// -->
+              </div>
+              <div class="col-lg col-sm-4">
+                <div class="float-lg-end">
+                  <a href="#" class="btn btn-light"> <i class="fa fa-heart"></i></a>
+                  <a href="#" class="btn btn-light text-danger"> Remove</a>
                 </div>
-                <div>Thông tin đơn hàng</div>
-                <table class="table">
-                    <tHead>
-                        <tr>
-                            <th>Tên</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                        </tr>
-                    </tHead>
-                    <tBody>
-                        <tr *ngFor="let bill of userService.bill.orderPayments">
-                            <td [innerText]="bill.productDetail.name"></td>
-                            <td [innerText]="bill.productDetail.price"></td>
-                            <td [innerText]="bill.amount"></td>
-                            <td [innerText]="bill.totalPrice"></td>
-                        </tr>
-                    </tBody>
-                </table>
-                <div>Tổng bill : {{ userService.bill.total }}</div>
-                <div>Người mua : {{userService.bill.nameBuyer }}</div>
+              </div>
+            </article> <!-- row.// -->
+
+            <article class="row gy-3 mb-4">
+              <div class="col-lg-5">
+                <figure class="itemside me-lg-5">
+                  <div class="aside"><img src="assets/images/items/12.webp" class="img-sm img-thumbnail"></div>
+                  <figcaption class="info">
+                    <a href="#" class="title">Mens T-shirt Cotton Base</a>
+                    <p class="text-muted"> Blue, Medium </p>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-auto">
+                <select style="width: 100px" class="form-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option selected>4</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-sm-4 col-6">
+                <div class="price-wrap lh-sm">
+                  <var class="price h6">$44.80</var>  <br>
+                  <small class="text-muted"> $12.20 / per item </small>
+                </div> <!-- price-wrap .// -->
+              </div>
+              <div class="col-lg col-sm-4">
+                <div class="float-lg-end">
+                  <a href="#" class="btn btn-light"> <i class="fa fa-heart"></i></a>
+                  <a href="#" class="btn btn-light text-danger"> Remove</a>
+                </div>
+              </div>
+            </article> <!-- row.// -->
+
+            <article class="row gy-3 mb-4">
+              <div class="col-lg-5">
+                <figure class="itemside me-lg-5">
+                  <div class="aside"><img src="assets/images/items/10.webp" class="img-sm img-thumbnail"></div>
+                  <figcaption class="info">
+                    <a href="#" class="title">Blazer Suit Dress Jacket for Men</a>
+                    <p class="text-muted"> XL size, Jeans, Blue </p>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-auto">
+                <select style="width: 100px" class="form-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option selected>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-sm-4 col-6">
+                <div class="price-wrap lh-sm">
+                  <var class="price h6">$1156.00</var>  <br>
+                  <small class="text-muted"> $460.00 / per item </small>
+                </div> <!-- price-wrap .// -->
+              </div>
+              <div class="col-lg col-sm-4">
+                <div class="float-lg-end">
+                  <a href="#" class="btn btn-light"> <i class="fa fa-heart"></i></a>
+                  <a href="#" class="btn btn-light text-danger"> Remove</a>
+                </div>
+              </div>
+            </article> <!-- row.// -->
+
+          </div> <!-- card-body .// -->
+
+          <div class="content-body border-top">
+            <p><i class="me-2 text-muted fa-lg fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+          </div> <!-- card-body.// -->
+
+        </div> <!-- card.// -->
+
+      </div> <!-- col.// -->
+      <aside class="col-lg-3">
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label class="form-label">Have coupon?</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="" placeholder="Coupon code">
+                  <button class="btn btn-light">Apply</button>
+                </div>
+              </div>
+            </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card.// -->
+
+        <div class="card">
+          <div class="card-body">
+            <dl class="dlist-align">
+              <dt>Total price:</dt>
+              <dd class="text-end"> $329.00</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Discount:</dt>
+              <dd class="text-end text-success"> - $60.00 </dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>TAX:</dt>
+              <dd class="text-end"> $14.00 </dd>
+            </dl>
+            <hr>
+            <dl class="dlist-align">
+              <dt>Total:</dt>
+              <dd class="text-end text-dark h5"> $357.90 </dd>
+            </dl>
+
+            <div class="d-grid gap-2 my-3">
+              <a href="#" class="btn btn-success w-100"> Make Purchase </a>
+              <a href="#" class="btn btn-light w-100"> Back to shop </a>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- modal end -->
+          </div> <!-- card-body.// -->
+        </div> <!-- card.// -->
+
+      </aside> <!-- col.// -->
+
+    </div> <!-- row.// -->
+    <!-- =================== COMPONENT 1 CART+SUMMARY .//END  ====================== -->
+
+    <br><br>
+
+  </div> <!-- container .//  -->
+</section>
 
 
-<!-- modal delete start -->
-<!-- Button trigger modal -->
-<button id="modalDelete" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-  </button>
-  <!-- Modal -->
-  <div class="fade modal" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body border-none">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <body class="text-center pt-5">
-          <div class="text-success mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
-                 class="bi bi-check2-circle"
-                 viewBox="0 0 16 16">
-              <path
-                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
-              <path
-                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
-            </svg>
+
+<!-- ============== SECTION  ============== -->
+<section class="padding-y border-top">
+  <div class="container">
+    <header class="section-heading">
+      <h4 class="section-title">Recommended items</h4>
+    </header>
+
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 col-12">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <span class="topbar">
+              <a href="#" class="float-end"><i class="fa fa-lg fa-heart"></i></a>
+              <span class="badge bg-danger"> New </span>
+            </span>
+            <a href="#"><img src="assets/images/items/7.webp"></a>
           </div>
-          <h1>Xóa thành công thành công</h1>
-          </body>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- modal delete end -->
+          <figcaption class="info-wrap border-top">
+            <a href="#" class="title">Gaming Headset with Mic</a>
+            <div class="price-wrap mb-3">
+              <strong class="price">$18.95</strong>
+              <del class="price-old">$24.99</del>
+            </div> <!-- price-wrap.// -->
+            <a href="#" class="btn btn-outline-primary w-100">Add to cart</a>
+          </figcaption>
+        </figure> <!-- card // -->
+      </div> <!-- col.// -->
+      <div class="col-lg-3 col-sm-6 col-12">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <span class="topbar">
+              <a href="#" class="float-end"><i class="fa fa-lg fa-heart"></i></a>
+            </span>
+            <a href="#"><img src="assets/images/items/8.webp"></a>
+          </div>
+          <figcaption class="info-wrap border-top">
+            <a href="#" class="title">Apple Watch Series 1 Sport </a>
+            <div class="price-wrap mb-3">
+              <strong class="price">$120.00</strong>
+            </div> <!-- price-wrap.// -->
+            <a href="#" class="btn btn-outline-primary w-100">Add to cart</a>
+          </figcaption>
+        </figure> <!-- card // -->
+      </div> <!-- col.// -->
+      <div class="col-lg-3 col-sm-6 col-12">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <span class="topbar">
+              <a href="#" class="float-end"><i class="fa fa-lg fa-heart"></i></a>
+            </span>
+            <a href="#"><img src="assets/images/items/9.webp"></a>
+          </div>
+          <figcaption class="info-wrap border-top">
+            <a href="#" class="title"> Men's Denim Jeans Shorts  </a>
+            <div class="price-wrap mb-3">
+              <strong class="price">$80.50</strong>
+            </div> <!-- price-wrap.// -->
+            <a href="#" class="btn btn-outline-primary w-100">Add to cart</a>
+          </figcaption>
+        </figure> <!-- card // -->
+      </div> <!-- col.// -->
+      <div class="col-lg-3 col-sm-6 col-12">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <span class="topbar">
+              <a href="#" class="float-end"><i class="fa fa-lg fa-heart"></i></a>
+            </span>
+            <a href="#"><img src="assets/images/items/10.webp"></a>
+          </div>
+          <figcaption class="info-wrap border-top">
+            <a href="#" class="title text-truncate">Mens T-shirt Cotton Base Layer Slim fit </a>
+            <div class="price-wrap mb-3">
+              <strong class="price">$13.90</strong>
+            </div> <!-- price-wrap.// -->
+            <a href="#" class="btn btn-outline-primary w-100">Add to cart</a>
+          </figcaption>
+        </figure> <!-- card // -->
+      </div> <!-- col.// -->
+    </div> <!-- row.// -->
 
-
+  </div> <!-- container .//  -->
+</section>
+<!-- ============== SECTION END// ============== -->
 
