@@ -25,10 +25,6 @@ export class ProductDetailComponent implements OnInit{
 
   ngOnInit(): void {
     let id = Number(this.routerActive.snapshot.paramMap.get("id"));
-    this.roleService.getRoleByParam(
-      this.routerActive.snapshot.paramMap.get("role")
-    )
-    
     this.service.getProductDetail(id, () =>
       this.imgMain = this.service.product.picture[0].name
     );

@@ -26,9 +26,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.pageService.getListProduct(0);
     this.categoryService.getAllCategory();
-    this.roleService.getRoleByParam(
-      this.activeRouter.snapshot.paramMap.get("role")
-    )
     this.navSerive.choice = 0
 
   }

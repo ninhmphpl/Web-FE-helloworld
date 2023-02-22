@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
 import { APIAny } from '../service/api-any.service';
+import { RoleService } from '../service/role.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,10 @@ import { APIAny } from '../service/api-any.service';
 })
 export class LoginComponent {
 
-  constructor(public api : APIAny){
-  }
+  constructor(
+    public api : APIAny,
+    public roleService : RoleService
+    ){}
 
   user = {
     username : '',
@@ -19,8 +22,10 @@ export class LoginComponent {
 
   submit(){
     let url = environtment.url + '/login'
-    this.api.postMapping(url, this.user, ()=>{
-      alert("dang ky thanh cong")
+    this.api.postMapping(url, this.user, (data : any)=>{
+      alert("dang ky thanh cong");
+      this.roleService.userTokent = data
+      localStorage.setItem('user_web', JSON.stringify(data))
     })
   }
 
