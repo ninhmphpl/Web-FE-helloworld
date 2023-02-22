@@ -33,9 +33,6 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.navService.choice = 1
-    this.roleService.getRoleByParam(
-      this.routerActive.snapshot.paramMap.get("role")
-    )
     this.sellerService.findAllSeller()
     this.categoryService.getAllCategory()
     let id = Number(this.routerActive.snapshot.paramMap.get("id"))

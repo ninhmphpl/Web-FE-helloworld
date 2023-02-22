@@ -189,6 +189,22 @@
         </div>
         <!-- valid name end -->
       </div>
+      <div *ngIf="!seller">
+        <input type="date" formControlName="birth">
+        <p class="text-danger">{{validatorsBirth}}</p>
+        <div formGroupName="gender">
+          Giới tính
+          <select formControlName formControlName="id">
+            <option value="{{gender.id}}" *ngFor="let gender of genderService.genders">{{gender.name}}</option>
+          </select>
+          <div class="text-danger">
+            {{validatorsGender}}
+          </div>
+        
+        </div>
+      </div>
+
+
       <!-- tên cửa hàng end -->
       <!-- nút đăng ký start -->
       <button class="full-width text-center btn-big bg-main py-3 mt-3">Đăng ký</button>

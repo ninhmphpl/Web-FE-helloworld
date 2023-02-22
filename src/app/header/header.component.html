@@ -1,6 +1,6 @@
 <!-- header employee, admin, seller start -->
 <div style="height: 80px;" class="bg-main"
-    *ngIf=" (roleService.role == 'EMPLOYEE') || (roleService.role == 'ADMIN') || (roleService.role == 'SELLER')">
+    *ngIf=" (roleService.userTokent.role == 'ROLE_EMPLOYEE') || (roleService.userTokent.role == 'ROLE_ADMIN') || (roleService.userTokent.role == 'ROLE_SELLER')">
     <div class="row">
         <!-- logo start -->
         <div class="col-9">

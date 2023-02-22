@@ -6,15 +6,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RoleService {
   role : any
+  userTokent : any
 
   constructor(
     private router : Router,
     private activeRouter : ActivatedRoute,
   ) { }
 
-  getRoleByParam(role : any){
-    this.role = role
-    console.log("role: " + this.role);
+  getRoleByParam(){
+    if(!this.userTokent){
+      let user : any = localStorage.getItem("user_web")
+      this.userTokent = JSON.parse(user) 
+      if(this.userTokent) return
+    }
+    if(this.userTokent){
+      this.router.navigate(['/home'])
+      return
+    }
+    this.router.navigate(['/login'])
+    
   }
 
 
