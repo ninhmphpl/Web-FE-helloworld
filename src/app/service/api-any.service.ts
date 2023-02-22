@@ -43,7 +43,7 @@ export class APIAny {
     this.onloadService.onload = true
     this.http.get<any>(url, this.httpOption)
       .pipe(
-        retry(3), catchError(this.handleError)
+        retry(3), catchError((err : any)=>this.handleError(err))
       ).subscribe((data) => {
         this.filterData(data, action)
         this.onloadService.onload = false
@@ -55,7 +55,7 @@ export class APIAny {
     this.onloadService.onload = true
     this.http.post<any>(url, object, this.httpOption)
       .pipe(
-        retry(3), catchError(this.handleError)
+        retry(3), catchError((err : any)=>this.handleError(err))
       ).subscribe((data) => {
         this.filterData(data, action)
       })
@@ -66,7 +66,7 @@ export class APIAny {
     this.onloadService.onload = true
     this.http.delete<any>(url, this.httpOption)
       .pipe(
-        retry(3), catchError(this.handleError)
+        retry(3), catchError((err : any)=>this.handleError(err))
       ).subscribe((data) => {
         this.filterData(data, action)
       })
@@ -77,7 +77,7 @@ export class APIAny {
     this.onloadService.onload = true
     this.http.put<any>(url, object, this.httpOption)
       .pipe(
-        retry(3), catchError(this.handleError)
+        retry(3), catchError((err : any)=>this.handleError(err))
       ).subscribe((data) => {
         this.filterData(data, action)
       })
@@ -100,11 +100,12 @@ export class APIAny {
     }
     this.onloadService.onload = false
   }
-
-
+  a = 11234
 
   // bắt lỗi của chương trình
   private handleError(error: HttpErrorResponse) {
+    console.log(this.a);
+    
     if (error.status === 0) {
       // Lỗi trả về từ client
       // A client-side or network error occurred. Handle it accordingly.

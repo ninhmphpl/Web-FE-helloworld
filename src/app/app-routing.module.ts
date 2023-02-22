@@ -9,6 +9,7 @@ import {EmployeeDetailComponent} from "./employee-detail/employee-detail-compone
 import {EmployeeEditComponent} from "./employee-edit/employee-edit.component";
 import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path : 'employee' , children : [
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path : "seller" , component : SignInSellerComponent}
   ]},
   {path : 'error' , component: PageErrorComponent},
+  {path : 'login', component: LoginComponent}
 
 ]
 
