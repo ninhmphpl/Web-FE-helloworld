@@ -6,8 +6,8 @@ import { APIAny } from '../service/api-any.service';
 import { SignInSellerService } from '../service/sign-in-seller.service';
 
 declare var $: any;
-declare var bootstrap : any
-declare var modalToggle : any
+declare var bootstrap: any
+declare var modalToggle: any
 
 @Component({
   selector: 'app-sign-in-seller',
@@ -15,8 +15,9 @@ declare var modalToggle : any
   styleUrls: ['./sign-in-seller.component.scss']
 })
 export class SignInSellerComponent implements OnInit {
-  role: string = environtment.role
 
+  seller = true
+  url = ''
   constructor(
     public serviceSeller: SignInSellerService,
     public api: APIAny,
@@ -24,6 +25,13 @@ export class SignInSellerComponent implements OnInit {
     public fb: FormBuilder,
 
   ) { }
+
+  setSeller(){
+    this.seller = true
+  }
+  setBuyer(){
+    this.seller = false
+  }
 
   sellerForm = this.fb.group({
     phoneNumber: ["", [Validators.pattern('^0[0-9]{9}$'), Validators.required]],
@@ -37,14 +45,18 @@ export class SignInSellerComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.role = environtment.role;
     this.serviceAddress.getProvince()
   }
 
   messenger = ''
   onSubmit() {
     let data: any = this.sellerForm.value
-    let url = environtment.url + "/sigin/seller"
+    if (this.seller) {
+      this.url = environtment.url + "/signIn/seller/" + data.user.username + '/' + data.user.password
+    } else (
+      this.url = environtment.url + "/signIn/buyer/" + data.user.username + '/' + data.user.password
+    )
+
     if (data.user?.password != data.repassword) {
       this.messenger = "Mật khẩu bạn nhập không đúng"
       return
@@ -55,7 +67,9 @@ export class SignInSellerComponent implements OnInit {
       data.repassword = null
       data.address.detail = data.addressDetail
       data.addressDetail = null
-      this.api.postMapping(url, data, (back: any) => {
+      console.log(data);
+
+      this.api.postMapping(this.url, data, (back: any) => {
         this.openModal()
         this.sellerForm.reset()
       })
@@ -65,9 +79,9 @@ export class SignInSellerComponent implements OnInit {
   }
 
   //>> Open modal
-  openModal(){
+  openModal() {
     console.log("đăng ký thành công");
-    
+
     let a = document.getElementById("boottrap")
     a?.click()
   }

@@ -168,7 +168,6 @@
       </div>
       <!-- Địa chỉ chi tiết end -->
       <!-- địa chỉ -->
-      <!-- {{ serviceAddress.address | json }} -->
     </div>
     <!-- cột 1 -->
     <!-- cột 2  -->
@@ -182,19 +181,12 @@
         <div
           *ngIf="sellerForm.controls.name.invalid && (sellerForm.controls.name.dirty || sellerForm.controls.name.touched)">
           <div *ngIf="sellerForm.controls.name.errors?.['required']" class="text-danger">
-            Bạn phải nhập tên cửa hàng
+            {{seller?'Bạn phải nhập tên cửa hàng': 'Bạn phải nhập họ tên'}}
           </div>
         </div>
         <!-- valid name end -->
       </div>
       <!-- tên cửa hàng end -->
-      <!-- điều khoản start -->
-      <!-- <label class="container mt-3">Tôi đồng với điều khoản và dịch vụ
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      </label> -->
-      <!-- <a href="#" class="link-primary">Đọc điều khoản và dịch vụ</a> -->
-      <!-- điều khoản end -->
       <!-- nút đăng ký start -->
       <button class="full-width text-center btn-big bg-main py-3 mt-3">Đăng ký</button>
       <div class="text-danger">{{ messenger }}</div>
