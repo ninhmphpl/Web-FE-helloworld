@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { environtment } from 'src/environments/environtment';
 import { AddressService } from '../service/address.service';
 import { APIAny } from '../service/api-any.service';
+import { GenderService } from '../service/gender.service';
 import { SignInSellerService } from '../service/sign-in-seller.service';
 
 declare var $: any;
@@ -23,13 +24,14 @@ export class SignInSellerComponent implements OnInit {
     public api: APIAny,
     public serviceAddress: AddressService,
     public fb: FormBuilder,
+    public genderService : GenderService
 
   ) { }
 
-  setSeller(){
+  setSeller() {
     this.seller = true
   }
-  setBuyer(){
+  setBuyer() {
     this.seller = false
   }
 
@@ -42,20 +44,40 @@ export class SignInSellerComponent implements OnInit {
     }),
     repassword: ['', [Validators.required]],
     addressDetail: ['', [Validators.required]],
+    birth: '',
+    gender : this.fb.group({
+      id : 0,
+      name : ''
+    })
   })
+  validatorsBirth = ''
+  validatorsGender = ''
 
   ngOnInit(): void {
     this.serviceAddress.getProvince()
+    this.genderService.getGender()
   }
 
   messenger = ''
   onSubmit() {
     let data: any = this.sellerForm.value
+    console.log(data);
+    
     if (this.seller) {
       this.url = environtment.url + "/signIn/seller/" + data.user.username + '/' + data.user.password
-    } else (
+    } else {
       this.url = environtment.url + "/signIn/buyer/" + data.user.username + '/' + data.user.password
-    )
+      if (data.birth.length <= 0) {
+        this.validatorsBirth = "Bạn phải nhập ngày sinh";
+        return
+      }
+      if (data.gender.id == 0) {
+        this.validatorsGender = 'Bạn phải nhập giới tính'
+        return
+      }
+      this.validatorsGender = ''
+      this.validatorsBirth = ''
+    }
 
     if (data.user?.password != data.repassword) {
       this.messenger = "Mật khẩu bạn nhập không đúng"
