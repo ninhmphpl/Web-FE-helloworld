@@ -2,7 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environtment } from 'src/environments/environtment';
-import { Page } from 'src/environments/page';
 import { APIAny } from './api-any.service';
 import { RoleService } from './role.service';
 
@@ -14,7 +13,7 @@ const categoryDefaut = {name : "Thể loại", id : 0}
   providedIn: 'root'
 })
 export class ProductListPageService{
-  url = url + "/product/list"
+  url = url + "/employees/product-list"
 
   constructor (
     private api : APIAny,
@@ -22,25 +21,24 @@ export class ProductListPageService{
     private roleService : RoleService
   ){}
 
-  public page!: Page<any>;
+  public page: any;
   public pageControl : number[] = []
-  // goi list
+
   getListProduct(pageNumber : number) {
     this.api.setParam(new HttpParams().append("page", pageNumber))
     console.log(this.url);
     this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
-      this.router.navigate(['/'])
     })
   }
-  // tim theo tu khoa
+
   getSearchByNameCategoryFilter(name : any){
     this.rangeChoice = -1
     this.url = url + "/product/filter/" + name
     this.getListProduct(0)
   }
-  // tim theo caegory
+
   category : any = {name : 'Thể Loại' , id : 0}
   getCategoryFilter(category : any){
     this.rangeChoice = -1
@@ -89,8 +87,6 @@ export class ProductListPageService{
     this.rangeChoice = i
     this.getListProduct(0)
   }
-
-
   modalMessager : any
   deleteProduct(id : any){
     let url = environtment.url + '/employees/product-delete/' + id
@@ -100,9 +96,4 @@ export class ProductListPageService{
       this.getListProduct(0)
     })
   }
-
-
-
-
 }
- 

@@ -34,6 +34,10 @@ import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 import { SignupSellerComponent } from './signup-seller/signup-seller.component';
 import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
+import { HomeComponent } from './home/home.component';
+import { HomeManagerComponent } from './home-manager/home-manager.component';
+import { HeaderDefaultComponent } from './header-default/header-default.component';
+import { HeaderManagerComponent } from './header-manager/header-manager.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,10 @@ import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
     TestComponent,
     SignupSellerComponent,
     SignupBuyerComponent,
+    HomeComponent,
+    HomeManagerComponent,
+    HeaderDefaultComponent,
+    HeaderManagerComponent,
 
   ],
   imports: [

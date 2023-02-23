@@ -12,8 +12,14 @@ import {LoginComponent} from './login/login.component';
 import {TestComponent} from './test/test.component';
 import {SignupSellerComponent} from './signup-seller/signup-seller.component';
 import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
+import { HomeComponent } from './home/home.component';
+import { HomeManagerComponent } from './home-manager/home-manager.component';
 
 const routes: Routes = [
+  {path:'',children:[
+    {path:'',component:HomeComponent},
+    {path:'manager',component:HomeManagerComponent},
+  ]},
   {path:'employee',children:[
     {path:'detail/:d',component:EmployeeDetailComponent},
     {path:'edit/:d',component:EmployeeEditComponent},

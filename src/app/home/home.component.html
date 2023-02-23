@@ -1,0 +1,23 @@
+<app-header-default></app-header-default>
+<div class="row bg-light">
+    <div class="col-9 p-5 mx-auto">
+        <div class="row mt-4">
+            <app-carousel></app-carousel>
+            <app-filter></app-filter>
+            <div class="row row-cols-auto product" *ngIf="productService.page">
+                <div class="p-2" *ngFor="let product of productService.page.content">
+                    <a href="/product/detail/{{product.id}}" class="card text-dark"
+                        style="width: 150px;">
+                        <img class="card-img-top full-width" style="height: 150px;" [src]="product.avatar">
+                        <div class="card-body">
+                            <h5 class="card-title" [innerText]="product.name"></h5>
+                            <p class="card-text" [innerText]="product.price"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <app-control-product-page></app-control-product-page>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

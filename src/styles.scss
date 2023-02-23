@@ -143,6 +143,28 @@ a{
 }
 //boder end
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none !important;
+  position: absolute !important;
+  min-width: 160px !important;
+  overflow-y: auto !important;
+  max-height: 300px !important;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block !important;
+}
+
+// user start
+
+// user end
+
 
 
 

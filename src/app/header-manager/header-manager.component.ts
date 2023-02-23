@@ -8,11 +8,11 @@ import { RoleService } from '../service/role.service';
 import { BuyerService } from '../service/buyer.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-header-manager',
+  templateUrl: './header-manager.component.html',
+  styleUrls: ['./header-manager.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderManagerComponent {
 
   constructor(
     public roleService: RoleService,
