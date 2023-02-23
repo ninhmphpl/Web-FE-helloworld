@@ -2,7 +2,7 @@
     <a type="button" class="btn-main mx-2" (click)="pageService.preePage()"
         [ngClass]="{'d-none' : pageService.page.first }">Trang trước</a>
     <a type="button" class="btn-main mx-2" *ngFor="let i of pageService.pageControl"
-        (click)="pageService.getListProduct(i)" [ngClass]="{'active' : i == pageService.page.pageable.pageNumber}">
+        (click)="pageService.getListProduct(i)" [ngClass]="{'active' : true}">
         {{i+1}}
     </a>
     <a type="button" class="btn-main mx-2" (click)="pageService.nextPage()"

@@ -1,6 +1,3 @@
-<button (click)="setSeller()">Đăng ký tài khoản cửa hàng</button>
-<button (click)="setBuyer()">Đăng ký tài khoản</button>
-
 <form class="bg-shadow container-fluid bg-sign " style="height: 800px;" [formGroup]="sellerForm"
       (ngSubmit)="onSubmit()">
   <div class="bg-white p-3 body-sign mx-auto row">
@@ -87,88 +84,59 @@
         Địa chỉ <span class="text-danger">*</span>
       </div>
       <!-- địa chỉ -->
-      <div class="row p-0">
-        <!-- Thành phố -->
-        <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">
-            {{ serviceAddress.address.province.name }}
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </span>
-          </button>
-          <div class="dropdown-content border bg-white">
-            <div class="list-group">
-              <a *ngFor="let province of serviceAddress.province" class="list-group-item list-group-item-action"
-                 (click)="serviceAddress.getDistrict(province)">{{ province.name }}</a>
-            </div>
+      <div formGroupName="address">
+        <div class="row p-0">
+          <!-- Thành phố -->
+          <div class="col-4 m-0" formGroupName="province">
+            <label for="province">Tỉnh</label>
+            <select id="province" class="list-group" formControlName="id"
+                    (change)="addressService.getDistrict($event)">
+              <option *ngFor="let province of addressService.province" value="{{province.id}}"
+                      class="list-group-item list-group-item-action"
+              >{{ province.name }}</option>
+            </select>
           </div>
-        </div>
-        <!-- Thành phố -->
-        <!-- Huyện start-->
-        <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">
-            {{ serviceAddress.address.district.name }}
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </span>
-          </button>
-          <div class="dropdown-content border bg-white">
-            <div class="list-group " style="max-height: 300px;">
-              <a class="list-group-item list-group-item-action" *ngFor="let district of serviceAddress.district"
-                 (click)="serviceAddress.getWard(district)">
+          <!-- Thành phố -->
+          <!-- Huyện start-->
+          <div class="col-4 m-0" formGroupName="district" *ngIf="addressService.district">
+            <label for="district">Huyện</label>
+            <select id="district" class="list-group" formControlName="id" style="max-height: 300px;"
+                    (click)="addressService.getWard($event)">
+              <option class="list-group-item list-group-item-action"
+                      *ngFor="let district of addressService.district" value="{{district.id}}">
                 {{ district.name }}
-              </a>
-            </div>
+              </option>
+            </select>
           </div>
-        </div>
-        <!-- Huyện end -->
-        <!-- Xã start-->
-        <div class="dropdown col-4 m-0">
-          <button class="dropbtn border bg-white py-2 full-width text-1 d-flex justify-content-between">{{
-            serviceAddress.address.ward.name }}
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </span>
-          </button>
-          <div class="dropdown-content border bg-white">
-            <div class="list-group">
-              <a class="list-group-item list-group-item-action" *ngFor="let ward of serviceAddress.ward"
-                 (click)="serviceAddress.address.ward = ward">
+          <!-- Huyện end -->
+          <!-- Xã start-->
+          <div class="col-4 m-0" formGroupName="ward" *ngIf="addressService.ward">
+            <label for="ward">Ward</label>
+            <select id="ward" class="list-group" formControlName="id" style="max-height: 300px;"
+                    (click)="addressService.getWard($event)">
+              <option class="list-group-item list-group-item-action" *ngFor="let ward of addressService.ward"
+                      value="{{ward.id}}">
                 {{ ward.name }}
-              </a>
+              </option>
+            </select>
+          </div>
+          <!-- Xã end-->
+        </div>
+        <!-- Địa chỉ chi tiết start -->
+        <div class="form-group">
+          <label for="Address Detail">Chi tiết</label>
+          <input id="Address Detail" type="text" class="form-control" placeholder="Address Detail"
+                 formControlName="detail">
+          <div
+            *ngIf="sellerForm.controls.address.controls.detail.invalid && (sellerForm.controls.address.controls.detail.dirty || sellerForm.controls.address.controls.detail.touched)">
+            <div *ngIf="sellerForm.controls.address.controls.detail.errors?.['required']"
+                 class="text-danger">
+              Just Enter
             </div>
           </div>
         </div>
-        <!-- Xã end-->
+        <!-- Địa chỉ chi tiết end -->
       </div>
-      <div class="text-danger">{{ addressMessage }}</div>
-      <!-- Địa chỉ chi tiết start -->
-      <div class="mt-3">
-        <div>
-          Địa chỉ chi tiết (Số nhà/Đường)<span class="text-danger">*</span>
-        </div>
-        <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập số nhà / Đường"
-               formControlName="addressDetail">
-        <div
-          *ngIf="sellerForm.controls.addressDetail.invalid && (sellerForm.controls.addressDetail.dirty || sellerForm.controls.addressDetail.touched)">
-          <div *ngIf="sellerForm.controls.addressDetail.errors?.['required']" class="text-danger">
-            Bạn phải địa chỉ chi tiết
-          </div>
-        </div>
-      </div>
-      <!-- Địa chỉ chi tiết end -->
       <!-- địa chỉ -->
     </div>
     <!-- cột 1 -->
@@ -176,34 +144,18 @@
     <div class="col-6 pl-4">
       <!-- tên cửa hàng start -->
       <div>
-        <div>{{seller?"Tên cửa hàng": 'Họ và tên'}}<span class="text-danger">*</span></div>
+        <div>Tên cửa hàng<span class="text-danger">*</span></div>
         <input type="text" class="p-2 full-width border" placeholder="Vui lòng nhập tên của cửa hàng"
                formControlName="name">
         <!-- valid name start -->
         <div
           *ngIf="sellerForm.controls.name.invalid && (sellerForm.controls.name.dirty || sellerForm.controls.name.touched)">
           <div *ngIf="sellerForm.controls.name.errors?.['required']" class="text-danger">
-            {{seller?'Bạn phải nhập tên cửa hàng': 'Bạn phải nhập họ tên'}}
+            'Bạn phải nhập tên cửa hàng
           </div>
         </div>
         <!-- valid name end -->
       </div>
-      <div *ngIf="!seller">
-        <input type="date" formControlName="birth">
-        <p class="text-danger">{{validatorsBirth}}</p>
-        <div formGroupName="gender">
-          Giới tính
-          <select formControlName formControlName="id">
-            <option value="{{gender.id}}" *ngFor="let gender of genderService.genders">{{gender.name}}</option>
-          </select>
-          <div class="text-danger">
-            {{validatorsGender}}
-          </div>
-        
-        </div>
-      </div>
-
-
       <!-- tên cửa hàng end -->
       <!-- nút đăng ký start -->
       <button class="full-width text-center btn-big bg-main py-3 mt-3">Đăng ký</button>

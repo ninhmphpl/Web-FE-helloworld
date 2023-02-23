@@ -216,7 +216,7 @@
     <!-- Product owner -->
     <div class="specifications" *ngIf="service.seller">
       <div class="row row-cols-auto px-3">
-        <img class="rounded-circle border col ml-2" style="width: 50px; height: 50px;"
+        <img class="rounded-circle border col-2 ml-2" style="width: 50px; height: 50px;"
           src="https://media.istockphoto.com/vectors/house-leaf-icon-vector-id867412416?k=6&m=867412416&s=170667a&w=0&h=q_RQ3t3ID6RyRH4299mDGigEIOd9GcY_6GDlhSqfkMo="
           alt="">
         <div class="col h5 p-3">{{ service.seller.name }}</div>
@@ -227,7 +227,7 @@
 
     <!-- Description start -->
     <div class="description">
-      <h1>Thông tin chi tiết sản phẩm</h1>
+      <h5>Thông tin chi tiết sản phẩm</h5>
       <hr>
       <div class="blockquote" [innerHTML]="service.product.description">
       </div>
