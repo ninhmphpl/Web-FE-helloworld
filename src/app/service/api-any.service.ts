@@ -81,7 +81,7 @@ export class APIAny {
   deleteMapping(url: string, action: any) {
     console.log(url)
     this.onloadService.onload = true
-    let token : any = localStorage.getItem('token')
+    let token : any = this.getToken()
     this.setHeader(new HttpHeaders().append('Authorization', token))
     this.http.delete<any>(url, this.httpOption)
       .pipe(

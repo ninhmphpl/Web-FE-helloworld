@@ -1,6 +1,6 @@
-<div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px;">
+<div class="container-flud bg-light full-size pb-5" style="padding-bottom: 500px !important;">
     <!-- heder start -->
-    {{api.httpOption | json}}
+
     <div>
         <div class="bg-main d-flex justify-content-center">
             <div class="col-6 d-flex justify-content-start">
@@ -22,12 +22,14 @@
     <!-- heder end -->
 
     <!-- body start -->
-    <div class="m-5 bg-white">
+    <div class="m-5 bg-white" *ngFor="let c of cart; let ci = index">
+      <div>
+        <input type="checkbox" class="form-checkbox" (change)="choiceAllOrder($event, ci)" [(ngModel)]="c.choice">
+        Cửa hàng: {{c.seller.name}}</div>
         <table class="table">
             <tHead>
                 <tr>
-                    <th class="p-2" colspan="2">
-                        Sản phẩm</th>
+                    <th class="p-2" colspan="2">Sản phẩm</th>
                     <th>Đơn giá</th>
                     <th>Số lượng</th>
                     <th>Số tiền</th>
@@ -35,38 +37,37 @@
                 </tr>
             </tHead>
             <tBody>
-                <tr >
+                <tr *ngFor="let o of c.orders; let oi = index">
                     <td class="align-middle col-2">
-                        <span class="p-2"><input type="checkbox"
-                                 class="form-checkbox"></span>
-                        <a ><img style="width: 70px; height: 70px;" alt="" class=""></a>
+                        <span class="p-2">
+                          <input type="checkbox" class="form-checkbox" (change)="choiceOrder($event, ci, oi)" [(ngModel)]="c.choice">
+                        </span>
+                        <a ><img [src]="o.productDetail.avatar" style="width: 70px; height: 70px;" alt="" class=""></a>
                     </td>
-                    <td class="align-middle col-3" ></td>
-                    <td class="align-middle col-1" ></td>
+                    <td class="align-middle col-3" [innerText]="o.productDetail.name">san pham</td>
+                    <td class="align-middle col-1" [innerText]="o.productDetail.price">don gia</td>
                     <td class="align-middle col-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a type="button" class="bg-white text-1 border px-3 py-2"
-                                >-</a>
-                            <input style="width: 40px" class="border text-center" type="number"
-                                >
-                            <a type="button" class="bg-white text-1 border px-3 py-2"
-                                >+</a>
+                            <a type="button" class="bg-white text-1 border px-3 py-2" (click)="setAmount(o.id, o.amount - 1)">-</a>
+                            <input style="width: 40px" class="border text-center" type="number" value="{{o.amount}}" (change)="setAmount(o.id, $event)">
+                            <a type="button" class="bg-white text-1 border px-3 py-2" (click)="setAmount(o.id, o.amount + 1)">+</a>
                         </div>
                         <div class="text-danger" ></div>
                     </td>
-                    <td class="align-middle" ></td>
-                    <td class="align-middle"><button class="btn-main">Xóa</button></td>
+                    <td class="align-middle" [innerText]="o.total">so tien</td>
+                    <td class="align-middle"><button class="btn-main" (click)="deleteOrder(o.id)">Xóa</button></td>
                 </tr>
             </tBody>
         </table>
     </div>
     <!-- body end -->
-
+  <div style="height: 300px">
+  </div>
     <!-- footer start -->
     <div class="position-fixed bottom-0 px-5 full-width ">
         <div class="d-flex justify-content-between bg-white shadow ">
             <div class="h6 p-4 link text-dark">
-                <input id="all" type="checkbox" class="form-checkbox" 
+                <input id="all" type="checkbox" class="form-checkbox"
                     >
                 <label for="all" class="px-2"> Chon tat ca</label>
             </div>
@@ -160,7 +161,7 @@
       </div>
     </div>
   </div>
-<!-- modal delete end -->
+<!-- modal delete end-->
 
 <!--&lt;!&ndash;testthucart&ndash;&gt;-->
 <!--&lt;!&ndash; ============== SECTION PAGETOP ============== &ndash;&gt;-->
