@@ -40,24 +40,9 @@
 
             <!-- giỏ hàng start -->
             <div class="cart pb-2" >
-                <a href="/cart" class="nav-link text-white position-relative dropdown">
-                    <!-- drop list start -->
-                    <div class="dropdown-content bg-light shadow px-3" style="right:0; top: 20px; width: 600px">
-                        <a href="/cart" class="row text-1 border-b-1" style="" *ngFor="let cart of cartService.cart">
-                            <div class="col-2" style="width: 70px; height : 70px">
-                                <img class="full-size" src="{{ cart.productDetail.avatar }}" alt="" >
-                            </div>
-                            <div class="col-4 py-3 text-left">{{ cart.productDetail.name }}</div>
-                            <div class="col-3 py-3 text-left">Số lượng : {{ cart.amount }}</div>
-                            <div class="col-3 py-3 py-3">
-                                <a class="btn-main">Mua ngay</a>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- drop list end -->
-
+                <a href="/cart" class="nav-link text-white position-relative">
                     <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
-                        0
+                        {{userService.cartLength}}
                     </span>
                     <svg width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                         <path

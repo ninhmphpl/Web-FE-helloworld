@@ -11,11 +11,11 @@ export interface HttpOptions {
   withCredentials?: boolean,
 }
 export const ROLE = {
-  customer : "CUSTOMER",
-  admin : "ADMIN",
-  employee : "EMPLOYEE",
-  buyer : "BUYER",
-  seller : "SELLER"
+  customer : "ROLE_CUSTOMER",
+  admin : "ROLE_ADMIN",
+  employee : "ROLE_EMPLOYEE",
+  buyer : "ROLE_BUYER",
+  seller : "ROLE_SELLER"
 }
 const IP_CONFIG = {
   linh : "http://192.168.0.211:8080",
