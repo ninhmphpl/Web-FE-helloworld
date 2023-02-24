@@ -13,7 +13,11 @@
                             <h5 class="card-title" [innerText]="product.name"></h5>
                             <p class="card-text" [innerText]="product.price"></p>
                         </div>
+                      <div class="product-hover-overlay">
+                      <button (click)="productDetail.toCartById(product.id)"><i class="">add</i></button>
+                    </div>
                     </a>
+
                 </div>
             </div>
             <app-control-product-page></app-control-product-page>
