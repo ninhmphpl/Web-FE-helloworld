@@ -20,7 +20,6 @@ export class ProductDetailService {
 
   constructor(
     public api: APIAny,
-    public cartService: CartService,
     public fireService: FireBaseService,
     public onLoad: OnloadService,
   ) { }
@@ -52,7 +51,6 @@ export class ProductDetailService {
   toCart() {
     let url = API_URL + `/buyer/to-cart/${this.product.id}/${this.amount}`
     this.api.postMapping(url, {}, (data: any) => {
-      this.cartService.cart = data
       this.amount = 1
       document.getElementById('modal')?.click()
     })
@@ -62,7 +60,6 @@ export class ProductDetailService {
   toCartById(id : number) {
     let url = API_URL + `/buyer/to-cart/${id}/${1}`
     this.api.postMapping(url, {}, (data: any) => {
-      this.cartService.cart = data
       this.amount = 1
       document.getElementById('modal')?.click()
     })

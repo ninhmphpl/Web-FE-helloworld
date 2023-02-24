@@ -50,6 +50,7 @@ export class APIAny {
   }
 
   getMapping(url: string, action: any) {
+    console.log(url)
     this.onloadService.onload = true
     let token : any = this.getToken()
     this.setHeader(new HttpHeaders().append('Authorization', token))
@@ -64,6 +65,7 @@ export class APIAny {
 
   /** POST: add a new object to the database */
   postMapping(url: string, object: any, action: any) {
+    console.log(url)
     this.onloadService.onload = true
     let token : any = this.getToken()
     this.setHeader(new HttpHeaders().append('Authorization', token))
@@ -77,6 +79,7 @@ export class APIAny {
 
   /** DELETE: delete the hero from the server */
   deleteMapping(url: string, action: any) {
+    console.log(url)
     this.onloadService.onload = true
     let token : any = localStorage.getItem('token')
     this.setHeader(new HttpHeaders().append('Authorization', token))
@@ -90,6 +93,7 @@ export class APIAny {
 
   /** PUT: update the object on the server. Returns the updated hero upon success. */
   putMapping(url: string, object: any, action: any) {
+    console.log(url)
     this.onloadService.onload = true
     let token : any = this.getToken()
     this.setHeader(new HttpHeaders().append('Authorization', token))
@@ -112,11 +116,11 @@ export class APIAny {
     }
     this.onloadService.onload = false
   }
-  a = 11234
+  a = "Lỗi"
 
   // bắt lỗi của chương trình
   private handleError(error: HttpErrorResponse) {
-    console.log(this.a);
+    console.log(this.a)
 
     if (error.status === 0) {
       // Lỗi trả về từ client
