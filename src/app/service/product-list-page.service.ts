@@ -2,7 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environtment } from 'src/environments/environtment';
-import { Page } from 'src/environments/page';
 import { APIAny } from './api-any.service';
 import { RoleService } from './role.service';
 
@@ -22,7 +21,7 @@ export class ProductListPageService{
     private roleService : RoleService
   ){}
 
-  public page!: Page<any>;
+  public page: any;
   public pageControl : number[] = []
 
   getListProduct(pageNumber : number) {
@@ -31,7 +30,6 @@ export class ProductListPageService{
     this.api.getMapping(this.url, (data : any) => {
       this.page = data
       this.renderFooter()
-      this.router.navigate(['/product/list/' + this.roleService.role])
     })
   }
 
@@ -89,8 +87,6 @@ export class ProductListPageService{
     this.rangeChoice = i
     this.getListProduct(0)
   }
-
-
   modalMessager : any
   deleteProduct(id : any){
     let url = environtment.url + '/employees/product-delete/' + id
@@ -100,9 +96,4 @@ export class ProductListPageService{
       this.getListProduct(0)
     })
   }
-
-
-
-
 }
- 

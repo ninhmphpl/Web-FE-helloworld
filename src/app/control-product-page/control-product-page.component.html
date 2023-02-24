@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center" *ngIf="pageService.page">
     <a type="button" class="btn-main mx-2" (click)="pageService.preePage()"
         [ngClass]="{'d-none' : pageService.page.first }">Trang trước</a>
     <a type="button" class="btn-main mx-2" *ngFor="let i of pageService.pageControl"

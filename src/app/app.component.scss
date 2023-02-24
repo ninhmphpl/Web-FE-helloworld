@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+.product .card:hover{
+    box-shadow: 0px 0px 3px rgb(255, 94, 0);
+  }
+  
+  
+  html, body { height: 100%; }
+  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+   bg start
+    .bg-shadow{
+      background-color: rgb(238, 239, 244);
+    }
+  .bg-main{
+    background-color: rgb(255, 94, 0);
+  }
+  .active{
+    background-color: rgb(255, 94, 0) !important;
+    color: white !important;
+  }
+  
+    .full-height{
+      height: 100%;
+    }
+  .full-width{
+    width: 100%;
+  }
+  .full-size{
+    height: 100%;
+    width: 100%;
+  }
+  
+    .body-sign{
+      width: 800px;
+    }
+  .bg-sign{
+    padding-top: 5%;
+  }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  .form-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 0;
+  }
+  input[type="checkbox"] {
+    background: rgb(255, 94, 0) !important;
+  }
+  
+    .text-1{
+      color: #00000084;
+    }
+  .text-main{
+    color: rgb(255, 94, 0);;
+  }
+  .primary{
+    color: rgb(255, 94, 0) !important;
+  }
+  a{
+    text-decoration : none !important;
+  }
+    .btn-big{
+      border : none !important;
+      color: white !important;
+      size: 20px !important;
+    }
+  .btn-main{
+    padding : 8px 15px 8px 15px !important;
+    border : 1px #00000058 solid !important;
+    background-color: white !important;
+    color: #000000ab !important;
+    border-radius: 2px !important;
+  }
+  .btn-main-bg{
+    padding : 8px 15px 8px 15px !important;
+    border : 1px #00000058 solid !important;
+    background-color: rgb(255, 94, 0) !important;;
+    color: white !important;
+    border-radius: 2px !important;
+  }
+  .btn-main-bg:hover{
+    background-color: rgba(255, 94, 0, 0.836);
+  }
+  .btn-main:hover{
+    background-color: rgb(255, 94, 0) !important;
+    border-color: rgb(255, 94, 0) !important;
+    color: white !important;
+  }
+  .col-20{
+    width: 20%;
+  }
+  
+    .border-l-1{
+      border-left: solid 1px #000000ab;
+    }
+  .border-l-2{
+    border-left: solid 2px #000000ab;
+  }
+  .border-l-3{
+    border-left: solid 3px #000000ab;
+  }
+  .border-r-1{
+    border-right: solid 1px #0000003b;
+  }
+  .border-r-2{
+    border-right: solid 2px #0000003b;
+  }
+  .border-r-3{
+    border-right: solid 3px #0000003b;
+  }
+  .border-t-1{
+    border-top: solid 1px #0000003b;
+  }
+  .border-t-2{
+    border-top: solid 2px #0000003b;
+  }
+  .border-t-3{
+    border-top: solid 3px #0000003b;
+  }
+  .border-b-1{
+    border-bottom: solid 1px #0000003b;
+  }
+  .border-b-2{
+    border-bottom: solid 2px #0000003b;
+  }
+  .border-b-3{
+    border-bottom: solid 3px #0000003b;
+  }
+  
+  
+  
+  
+  

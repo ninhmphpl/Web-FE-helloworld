@@ -8,12 +8,11 @@ import { RoleService } from '../service/role.service';
 import { BuyerService } from '../service/buyer.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-header-default',
+  templateUrl: './header-default.component.html',
+  styleUrls: ['./header-default.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderDefaultComponent {
   constructor(
     public roleService: RoleService,
     public cartService: CartService,
@@ -29,4 +28,6 @@ export class HeaderComponent implements OnInit {
   scroll(element: any) {
     window.scrollTo(element.yPosition)
   }
+
+
 }

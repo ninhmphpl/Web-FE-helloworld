@@ -28,11 +28,16 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail-component.service';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component';
 import { ControlProductPageComponent } from './control-product-page/control-product-page.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { TestComponent } from './test/test.component';
+import { SignupSellerComponent } from './signup-seller/signup-seller.component';
+import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
+import { HomeComponent } from './home/home.component';
+import { HomeManagerComponent } from './home-manager/home-manager.component';
+import { HeaderDefaultComponent } from './header-default/header-default.component';
+import { HeaderManagerComponent } from './header-manager/header-manager.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +59,16 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     EmployeeListComponent,
     EmployeeDetailComponent,
     EmployeeEditComponent,
-    SignInSellerComponent,
     ControlProductPageComponent,
     CartComponent,
     LoginComponent,
+    TestComponent,
+    SignupSellerComponent,
+    SignupBuyerComponent,
+    HomeComponent,
+    HomeManagerComponent,
+    HeaderDefaultComponent,
+    HeaderManagerComponent,
 
   ],
   imports: [
@@ -71,8 +82,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     DragDropModule, //>> tạo chức năng kéo thả
 
     FormsModule,
-    ReactiveFormsModule,
-    SlickCarouselModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

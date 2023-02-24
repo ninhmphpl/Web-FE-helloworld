@@ -45,10 +45,9 @@
       <!-- control -->
     </div>
 
-    <app-product class="col-9 p-5"
-      *ngIf="pageService.page && ((roleService.userTokent.role == 'ROLE_CUSTOMER') || (roleService.userTokent.role == 'ROLE_BUYER'))"></app-product>
+    <app-product class="col-9 p-5"></app-product>
   </div>
-  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+  <app-footer></app-footer>
 </div>
 
 <!-- Button trigger modal -->

@@ -24,7 +24,7 @@ const IP_CONFIG = {
 export const environtment = {
   url: IP_CONFIG.ninh,
   role: '',
-  token: "no Token",
+  token: "",
   firebaseConfig: {
     apiKey: "AIzaSyAunDHJ-xdqfOP75d5FZrWKFXpvRHyKw84",
     authDomain: "product-2023.firebaseapp.com",
