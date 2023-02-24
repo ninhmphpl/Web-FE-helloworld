@@ -4,7 +4,7 @@
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
     <div class="col-9 p-5" *ngIf="service.product">
       <!--      body-->
-      <h4>Thông Tin Chi Tiết Sản Phẩm</h4>
+      <h4>Thông tin chi tiết sản phẩm</h4>
       <table class="table">
         <tBody>
           <br>
@@ -39,11 +39,11 @@
                 style="height: 100px; width: 100px;border-radius: 5px" alt=""></td>
           </tr>
           <tr>
-            <th class="align-middle">Loại Sản Phẩm</th>
+            <th class="align-middle">Loại sản phẩm</th>
             <td class="align-middle">{{service.product.category.name}}</td>
           </tr>
           <tr>
-            <th class="align-middle">Trạng Thái</th>
+            <th class="align-middle">Trạng thái</th>
             <td class="align-middle">{{service.product.status.name}}</td>
           </tr>
 
@@ -161,7 +161,7 @@
             Thêm vào giỏ hàng
           </button>
           <button type="button" class="btn btn-buy">Mua ngay</button>
-          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+          <span class="available"> Còn {{ service.product.quantity }} sản phẩm</span>
         </div>
       </div>
       <!-- content customer, buyer end-->
@@ -172,7 +172,7 @@
         <table class="table table-bordered">
           <tBody>
             <tr>
-              <th class="align-middle"> ID Sản phẩm</th>
+              <th class="align-middle"> Mã sản phẩm</th>
               <td class="text-center align-middle"> {{ service.product.id }}</td>
             </tr>
             <tr>
@@ -314,11 +314,11 @@
           </svg>
         </div>
         <h1>Thêm vào giỏ hàng thành công</h1>
-        <div>Đi đến <a class="text-main" href="/cart">giỏ hàng</a></div>
+        <div>Đi đến <a class="text-main" href="/cart">Giỏ hàng</a></div>
         </body>
       </div>
       <div class="text-center p-3">
-        
+
       </div>
     </div>
   </div>
