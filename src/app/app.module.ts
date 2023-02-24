@@ -38,6 +38,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import { HeaderDefaultComponent } from './header-default/header-default.component';
 import { HeaderManagerComponent } from './header-manager/header-manager.component';
+import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { HeaderManagerComponent } from './header-manager/header-manager.componen
     HomeManagerComponent,
     HeaderDefaultComponent,
     HeaderManagerComponent,
+    ProductDetailDefaulComponent,
 
   ],
   imports: [
