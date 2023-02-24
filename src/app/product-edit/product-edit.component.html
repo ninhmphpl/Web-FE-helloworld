@@ -6,8 +6,8 @@
     <div class="col-9 p-5">
       <!-- {{ formCreate.value | json }} -->
       <br>
-      <h4 *ngIf="action== 'create'"><b>Thêm Mới Sản Phẩm</b></h4>
-      <h4 *ngIf="action== 'update'"><b>Sửa Sản Phẩm</b></h4>
+      <h4 *ngIf="action== 'create'"><b>Thêm mới sản phẩm</b></h4>
+      <h4 *ngIf="action== 'update'"><b>Sửa sản phẩm</b></h4>
       <br>
       <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
       <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
@@ -62,7 +62,7 @@
                   <input #searchSeller type="text" class="form-control" placeholder="Người bán"
                     aria-label="Recipient's username" aria-describedby="basic-addon2">
                   <span class="input-group-text" id="basic-addon2"
-                    (click)="sellerService.findAllSellerByName(searchSeller.value)">Tim kiem</span>
+                    (click)="sellerService.findAllSellerByName(searchSeller.value)">Tìm kiếm</span>
                 </div>
               </td>
             </tr>
@@ -155,7 +155,7 @@
           </tBody>
         </table>
         <button type="submit" class="btn btn-primary"
-          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhập</button>
+          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật</button>
         <!-- <button (click)="onSubmitEmployee" class="btn btn-primary"
           [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật</button> -->
       </form>

@@ -111,7 +111,7 @@
           <!-- Huyện end -->
           <!-- Xã start-->
           <div class="col-4 m-0" formGroupName="ward" *ngIf="addressService.ward">
-            <label for="ward">Ward</label>
+            <label for="ward">Xã</label>
             <select id="ward" class="list-group" formControlName="id" style="max-height: 300px;"
                     (click)="addressService.getWard($event)">
               <option class="list-group-item list-group-item-action" *ngFor="let ward of addressService.ward"
@@ -131,7 +131,7 @@
             *ngIf="sellerForm.controls.address.controls.detail.invalid && (sellerForm.controls.address.controls.detail.dirty || sellerForm.controls.address.controls.detail.touched)">
             <div *ngIf="sellerForm.controls.address.controls.detail.errors?.['required']"
                  class="text-danger">
-              Just Enter
+              Nhập
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@
         </body>
       </div>
       <div class="text-center p-3">
-        Chuyuyển tới trang <a href="/login" class="text-main">đăng nhập</a>
+        Chuyển tới trang <a href="/login" class="text-main">Đăng nhập</a>
       </div>
     </div>
   </div>

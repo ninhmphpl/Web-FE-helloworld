@@ -20,7 +20,7 @@
             </td>
           </tr>
           <tr>
-            <th class="input-group-text">Ngày Sinh</th>
+            <th class="input-group-text">Ngày sinh</th>
             <td>
               <div class="input-group">
                 <input type="date" id="birth" formControlName="birth" class="form-control" placeholder="Nhập ngày sinh"
@@ -46,7 +46,7 @@
             </td>
           </tr>
           <tr>
-            <th class="input-group-text">Số Điện Thoại</th>
+            <th class="input-group-text">Số điện thoại</th>
             <td>
               <div class="input-group">
                 <input id="phoneNumber" formControlName="phoneNumber" class="form-control"
@@ -64,7 +64,7 @@
           </tr>
 
           <tr formGroupName="position">
-            <th class="input-group-text">Chức Vụ</th>
+            <th class="input-group-text">Chức vụ</th>
             <td>
               <div class="input-group">
                 <select class="form-select" formControlName="id" id="position">
@@ -81,7 +81,7 @@
           </tr>
 
           <tr formGroupName="gender">
-            <th class="input-group-text">Giới Tính</th>
+            <th class="input-group-text">Giới tính</th>
             <td>
               <div class="input-group">
                 <select class="form-select" formControlName="id" id="gender">
@@ -97,7 +97,7 @@
           </tr>
 
           <tr formGroupName="status">
-            <th class="input-group-text">Trạng Thái</th>
+            <th class="input-group-text">Trạng thái</th>
             <td>
               <div class="input-group">
                 <select class="form-select" formControlName="id" id="status">
@@ -144,8 +144,8 @@
               Bạn phải nhập quyền cho người dùng
             </div>
           </div> -->
-          <button type="submit" class="btn btn-primary" [disabled]="!formEmployee.valid ">Save</button>
-          <button (click)="back()" class="btn btn-primary">Back</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!formEmployee.valid ">Lưu</button>
+          <button (click)="back()" class="btn btn-primary">Trở về</button>
         </div>
       </form>
     </div>

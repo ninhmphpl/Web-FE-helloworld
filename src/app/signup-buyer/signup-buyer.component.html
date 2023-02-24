@@ -124,14 +124,14 @@
         </div>
         <!-- Địa chỉ chi tiết start -->
         <div class="form-group">
-          <label for="Address Detail">Address Detail</label>
+          <label for="Address Detail">Chi tiết địa chỉ</label>
           <input id="Address Detail" type="text" class="form-control" placeholder="Address Detail"
                  formControlName="detail">
           <div
             *ngIf="buyerForm.controls.address.controls.detail.invalid && (buyerForm.controls.address.controls.detail.dirty || buyerForm.controls.address.controls.detail.touched)">
             <div *ngIf="buyerForm.controls.address.controls.detail.errors?.['required']"
                  class="text-danger">
-              Just Enter
+              Nhập
             </div>
           </div>
         </div>
@@ -158,14 +158,14 @@
       </div>
       <!-- gender start -->
       <div class="form-group mb-4" formGroupName="gender">
-        <label for="gender">Gender</label>
+        <label for="gender">Giới tính</label>
         <select id="gender" formControlName="id">
           <option value="{{gender.id}}" *ngFor="let gender of genderService.genders">{{gender.name}}</option>
         </select>
           <div
             *ngIf="buyerForm.controls.gender.controls.id.invalid && (buyerForm.controls.gender.controls.id.dirty || buyerForm.controls.gender.controls.id.touched)">
             <div *ngIf="buyerForm.controls.gender.controls.id.errors?.['required']" class="text-danger">
-              Just choice gender
+             Nhập giới tính
             </div>
           </div>
       </div>
@@ -178,7 +178,7 @@
         <div
           *ngIf="buyerForm.controls.birth.invalid && (buyerForm.controls.birth.dirty || buyerForm.controls.birth.touched)">
           <div *ngIf="buyerForm.controls.birth.errors?.['required']" class="text-danger">
-            Just choice birth
+            Nhập năm sinh
           </div>
         </div>
       </div>
@@ -221,7 +221,7 @@
         </body>
       </div>
       <div class="text-center p-3">
-        Chuyuyển tới trang <a href="/login" class="text-main">đăng nhập</a>
+        Chuyển tới trang <a href="/login" class="text-main">Đăng nhập</a>
       </div>
     </div>
   </div>
