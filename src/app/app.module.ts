@@ -32,6 +32,7 @@ import { SignInSellerComponent } from './sign-in-seller/sign-in-seller.component
 import { ControlProductPageComponent } from './control-product-page/control-product-page.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { LoginComponent } from './login/login.component';
     DragDropModule, //>> tạo chức năng kéo thả
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

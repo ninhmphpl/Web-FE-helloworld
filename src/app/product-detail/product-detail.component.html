@@ -1,593 +1,590 @@
-<!--<div class="container-xxl px-0 bg-light" *ngIf="false">-->
+<div class="container-xxl px-0 bg-light" *ngIf="false">
   <app-header class=""></app-header>
-<!--  <div class="row mt-4">-->
-<!--    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>-->
-<!--    <div class="col-9 p-5" *ngIf="service.product">-->
-<!--      &lt;!&ndash;      body&ndash;&gt;-->
-<!--      <h4>Thông Tin Chi Tiết Sản Phẩm</h4>-->
-<!--      <table class="table">-->
-<!--        <tBody>-->
-<!--          <br>-->
-<!--          <br>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">STT</th>-->
-<!--            <td class="align-middle">{{service.product.id}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Tên</th>-->
-<!--            <td class="align-middle">{{service.product.name}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Giá</th>-->
-<!--            <td class="align-middle">{{service.product.price}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Số lượng đã bán</th>-->
-<!--            <td class="align-middle">{{service.product.sold}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Mô tả</th>-->
-<!--            <td class="align-middle">{{service.product.description}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Số lượng</th>-->
-<!--            <td class="align-middle">{{service.product.quantity}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Ảnh</th>-->
-<!--            <td class="align-middle"><img *ngFor="let p of service.product.picture" src="{{p.name}}" class="px-2"-->
-<!--                style="height: 100px; width: 100px;border-radius: 5px" alt=""></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Loại Sản Phẩm</th>-->
-<!--            <td class="align-middle">{{service.product.category.name}}</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th class="align-middle">Trạng Thái</th>-->
-<!--            <td class="align-middle">{{service.product.status.name}}</td>-->
-<!--          </tr>-->
+  <div class="row mt-4">
+    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
+    <div class="col-9 p-5" *ngIf="service.product">
+      <!--      body-->
+      <h4>Thông Tin Chi Tiết Sản Phẩm</h4>
+      <table class="table">
+        <tBody>
+          <br>
+          <br>
+          <tr>
+            <th class="align-middle">STT</th>
+            <td class="align-middle">{{service.product.id}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Tên</th>
+            <td class="align-middle">{{service.product.name}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Giá</th>
+            <td class="align-middle">{{service.product.price}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Số lượng đã bán</th>
+            <td class="align-middle">{{service.product.sold}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Mô tả</th>
+            <td class="align-middle">{{service.product.description}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Số lượng</th>
+            <td class="align-middle">{{service.product.quantity}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Ảnh</th>
+            <td class="align-middle"><img *ngFor="let p of service.product.picture" src="{{p.name}}" class="px-2"
+                style="height: 100px; width: 100px;border-radius: 5px" alt=""></td>
+          </tr>
+          <tr>
+            <th class="align-middle">Loại Sản Phẩm</th>
+            <td class="align-middle">{{service.product.category.name}}</td>
+          </tr>
+          <tr>
+            <th class="align-middle">Trạng Thái</th>
+            <td class="align-middle">{{service.product.status.name}}</td>
+          </tr>
 
-<!--        </tBody>-->
+        </tBody>
 
-<!--      </table>-->
-<!--      &lt;!&ndash;      body&ndash;&gt;-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>-->
-<!--</div>-->
+      </table>
+      <!--      body-->
+    </div>
+  </div>
+  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
+</div>
 
-<!--<div id="container-fluid" *ngIf="true">-->
-<!--  <div id="header">-->
-<!--    <app-header></app-header>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; body start &ndash;&gt;-->
-<!--  <div class="p-5 bg-light" *ngIf="service.product">-->
-<!--    &lt;!&ndash; product detail start &ndash;&gt;-->
-<!--    <div id="body" class="d-flex justify-content-between p-3">-->
-<!--      &lt;!&ndash; img start &ndash;&gt;-->
-<!--      <div class="col-4 pr-3">-->
-<!--        <div class="img-body">-->
-<!--          <img src="{{ imgMain }}">-->
-<!--        </div>-->
-<!--        <div class="img-footer d-flex flex-row">-->
-<!--          <div>-->
-<!--          </div>-->
-
-<!--          &lt;!&ndash; img footer start &ndash;&gt;-->
-<!--          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}"-->
-<!--            *ngFor="let img of service.product.picture">-->
-<!--            <a (click)="getPicture(img)">-->
-<!--              <img src="{{ img.name }}">-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; img footer end &ndash;&gt;-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; img end &ndash;&gt;-->
-
-<!--      &lt;!&ndash; content start &ndash;&gt;-->
-<!--      &lt;!&ndash; content customer, buyer start &ndash;&gt;-->
-<!--      <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class="col-7 px-5">-->
-<!--        <div class="h3">{{ service.product.name }}</div>-->
-<!--        <div class="d-flex justify-content-between align-items-center">-->
-<!--          <div class="text-1">-->
-<!--            <small>Đã bán {{ service.product.sold }} Sản phẩm</small>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; price start &ndash;&gt;-->
-<!--        <div id="full-width">-->
-<!--          <div class="d-flex justify-content-between align-items-center pt-2">-->
-<!--            <h1 class="px-5 text-main bg-shadow full-width rounded py-2">-->
-<!--              {{ service.product.price | currency: 'VND' }}-->
-<!--            </h1>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; price end &ndash;&gt;-->
-
-<!--        <table class="info">-->
-<!--          <tBody>-->
-
-<!--            &lt;!&ndash; ship start &ndash;&gt;-->
-<!--            <tr>-->
-<!--              <td class="col-5">-->
-<!--                Giao hàng-->
-<!--              </td>-->
-<!--              <td class="col-7">-->
-<!--                <img style="width: 20px;"-->
-<!--                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"-->
-<!--                  alt="">-->
-<!--                Miễn phí giao hàng-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            &lt;!&ndash; ship end &ndash;&gt;-->
-
-<!--            <tr>-->
-<!--              <td class="col-5">-->
-<!--                Thể loại-->
-<!--              </td>-->
-<!--              <td class="col-7">-->
-<!--                {{ service.product.category.name }}-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            &lt;!&ndash; số lượng start &ndash;&gt;-->
-<!--            <tr>-->
-<!--              <td class="col-5">-->
-<!--                Số lượng-->
-<!--              </td>-->
-<!--              <td class="col-7 ">-->
-<!--                <div class="btn-group" role="group" aria-label="Basic example">-->
-<!--                  <a type="button" class="bg-white text-1 border px-3 py-2"-->
-<!--                    (click)="service.setAmount(service.amount - 1)">-</a>-->
-<!--                  <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="service.amount">-->
-<!--                  <a type="button" class="bg-white text-1 border px-3 py-2"-->
-<!--                    (click)="service.setAmount(service.amount + 1)">+</a>-->
-<!--                </div>-->
-<!--                <p class="text-danger">{{ service.amountMessage }}</p>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            &lt;!&ndash; số lượng end &ndash;&gt;-->
-
-<!--          </tBody>-->
-<!--        </table>-->
-<!--        <div style="margin-top: 20px">-->
-<!--          <button [disabled]="service.amount <= 0 " (click)="service.toCart()" type="button" class="btn btn-cart" style="margin-right: 20px;">-->
-<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"-->
-<!--              viewBox="0 0 16 16">-->
-<!--              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />-->
-<!--              <path-->
-<!--                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />-->
-<!--            </svg>-->
-<!--            Thêm vào giỏ hàng-->
-<!--          </button>-->
-<!--          <button type="button" class="btn btn-buy">Mua ngay</button>-->
-<!--          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; content customer, buyer end&ndash;&gt;-->
-
-<!--      &lt;!&ndash; content seller, employee, admin start &ndash;&gt;-->
-<!--      <div *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')"-->
-<!--        class="col-7 px-5">-->
-<!--        <table class="table table-bordered">-->
-<!--          <tBody>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> ID Sản phẩm</th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.id }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Tên </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.name }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Thể loại </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.category.name }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Giá </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.price }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Số lượng đã bán </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.sold }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Tồn kho </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.quantity }}</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <th class="align-middle"> Trạng thái </th>-->
-<!--              <td class="text-center align-middle"> {{ service.product.status.name }}</td>-->
-<!--            </tr>-->
-<!--          </tBody>-->
-<!--        </table>-->
-<!--        <a class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">Cập nhật ảnh</a>-->
-<!--        <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; content seller, employee, admin end &ndash;&gt;-->
-
-
-
-
-<!--      &lt;!&ndash; content end &ndash;&gt;-->
-<!--    </div>-->
-<!--    &lt;!&ndash; product detail end &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Product owner &ndash;&gt;-->
-<!--    <div class="specifications" *ngIf="service.seller">-->
-<!--      <div class="row row-cols-auto px-3">-->
-<!--        <img class="rounded-circle border col ml-2" style="width: 50px; height: 50px;"-->
-<!--          src="https://media.istockphoto.com/vectors/house-leaf-icon-vector-id867412416?k=6&m=867412416&s=170667a&w=0&h=q_RQ3t3ID6RyRH4299mDGigEIOd9GcY_6GDlhSqfkMo="-->
-<!--          alt="">-->
-<!--        <div class="col h5 p-3">{{ service.seller.name }}</div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--    &lt;!&ndash; Product owner &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Description start &ndash;&gt;-->
-<!--    <div class="description">-->
-<!--      <h1>Thông tin chi tiết sản phẩm</h1>-->
-<!--      <hr>-->
-<!--      <div class="blockquote" [innerHTML]="service.product.description">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Description end &ndash;&gt;-->
-
-
-<!--  </div>-->
-<!--  &lt;!&ndash; body end &ndash;&gt;-->
-
-<!--</div>-->
-
-<!--&lt;!&ndash; model start &ndash;&gt;-->
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"-->
-<!--  aria-hidden="true">-->
-<!--  <div class="modal-dialog modal-xl">-->
-<!--    <div class="modal-content ">-->
-<!--      <div class="modal-header">-->
-<!--        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa ảnh</h1>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body row row-cols-auto">-->
-<!--        <div style="height: 350px; width: 350px" class="imgMain border p-2 col position-relative">-->
-<!--          <img src="{{imgMain}}" alt="" class="full-size rounded">-->
-<!--          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3"-->
-<!--            (click)="service.setAvatar()">Đặt làm đại diện</a>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; list ảnh start &ndash;&gt;-->
-<!--        <div class="col-6 row row-cols-auto">-->
-<!--          <div class="col p-2 m-1 border position-relative" style="width: 100px; height: 100px;"-->
-<!--            [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture; let i = index">-->
-<!--            <span (click)="service.deletePicture(i)"-->
-<!--              class="position-absolute top-0 start-100 translate-middle p-2 text-danger">-->
-<!--              <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16"-->
-<!--                fill="currentColor" viewBox="0 0 16 16">-->
-<!--                <path-->
-<!--                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />-->
-<!--              </svg>-->
-<!--            </span>-->
-
-<!--            <a (click)="getPicture(img); service.indexImg = i">-->
-<!--              <img src="{{ img.name }}" class="full-size">-->
-<!--            </a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; list ảnh end &ndash;&gt;-->
-<!--        <div class="col">-->
-<!--          <label for="file-input" type="button" class="btn-main">Thêm ảnh</label>-->
-<!--          <a type="button" class="btn-main" (click)="service.savePicture()">Lưu thay đổi</a>-->
-<!--          <p class="text-success text-center" [innerHTML]="service.pictrueMessenge"></p>-->
-<!--          <input id="file-input" class="d-none" multiple type="file" (change)="service.selectPicture($event)">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash; model end &ndash;&gt;-->
-
-
-<!--&lt;!&ndash; modal cart start &ndash;&gt;-->
-<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-<!--<button id="modal" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">-->
-<!--  Launch static backdrop modal-->
-<!--</button>-->
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="fade modal" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-body border-none">-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--        <body class="text-center pt-5">-->
-<!--        <div class="text-success mb-2">-->
-<!--          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"-->
-<!--               class="bi bi-check2-circle"-->
-<!--               viewBox="0 0 16 16">-->
-<!--            <path-->
-<!--              d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>-->
-<!--            <path-->
-<!--              d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>-->
-<!--          </svg>-->
-<!--        </div>-->
-<!--        <h1>Thêm vào giỏ hàng thành công</h1>-->
-<!--        <div>Đi đến <a class="text-main" href="/cart">giỏ hàng</a></div>-->
-<!--        </body>-->
-<!--      </div>-->
-<!--      <div class="text-center p-3">-->
-<!--        -->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash; modal &ndash;&gt;-->
-<!--&lt;!&ndash; modal cart end &ndash;&gt;-->
-
-
-<!-- ============== SECTION PAGETOP ============== -->
-<!--<section class="bg-primary padding-y-sm">-->
-<!--  <div class="container">-->
-
-<!--    <ol class="breadcrumb ondark mb-0">-->
-<!--      <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-<!--      <li class="breadcrumb-item"><a href="#">Library</a></li>-->
-<!--      <li class="breadcrumb-item active" aria-current="page">Data</li>-->
-<!--    </ol>-->
-
-<!--  </div> &lt;!&ndash; container //  &ndash;&gt;-->
-<!--</section>-->
-<!-- ============== SECTION PAGETOP END// ============== -->
-
-<!-- ============== SECTION CONTENT ============== -->
-<section class="padding-y">
-  <div class="container">
-
-    <div class="row">
-      <aside class="col-lg-6">
-        <article class="gallery-wrap">
-          <div class="img-big-wrap img-thumbnail">
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp">
-              <img height="560" src="assets/images/items/10.webp">
-            </a>
-          </div> <!-- img-big-wrap.// -->
-          <div class="thumbs-wrap">
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">
-              <img width="60" height="60" src="assets/images/items/10.webp">
-            </a>
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">
-              <img width="60" height="60" src="assets/images/items/10.webp">
-            </a>
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">
-              <img width="60" height="60" src="assets/images/items/10.webp">
-            </a>
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">
-              <img width="60" height="60" src="assets/images/items/10.webp">
-            </a>
-            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">
-              <img width="60" height="60" src="assets/images/items/10.webp">
-            </a>
-          </div> <!-- thumbs-wrap.// -->
-        </article> <!-- gallery-wrap .end// -->
-      </aside>
-      <main class="col-lg-6">
-        <article class="ps-lg-3">
-          <h4 class="title text-dark">Quality Men's Hoodie for Winter, Men's Fashion <br> Casual Hoodie </h4>
-          <div class="rating-wrap my-3">
-            <ul class="rating-stars">
-              <li style="width:80%" class="stars-active"> <img src="assets/images/misc/stars-active.svg" alt=""> </li>
-              <li> <img src="assets/images/misc/starts-disable.svg" alt=""> </li>
-            </ul>
-            <b class="label-rating text-warning"> 4.5</b>
-            <i class="dot"></i>
-            <span class="label-rating text-muted"> <i class="fa fa-shopping-basket"></i> 154 orders </span>
-            <i class="dot"></i>
-            <span class="label-rating text-success">In stock</span>
-          </div> <!-- rating-wrap.// -->
-
-          <div class="mb-3">
-            <var class="price h5">$75.00</var>
-            <span class="text-muted">/per box</span>
+<div id="container-fluid" *ngIf="true">
+  <div id="header">
+    <app-header></app-header>
+  </div>
+  <!-- body start -->
+  <div class="p-5 bg-light" *ngIf="service.product">
+    <!-- product detail start -->
+    <div id="body" class="d-flex justify-content-between p-3">
+      <!-- img start -->
+      <div class="col-4 pr-3">
+        <div class="img-body">
+          <img src="{{ imgMain }}">
+        </div>
+        <div class="img-footer d-flex flex-row">
+          <div>
           </div>
 
-          <p>Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for men.</p>
+          <!-- img footer start -->
+          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}"
+            *ngFor="let img of service.product.picture">
+            <a (click)="getPicture(img)">
+              <img src="{{ img.name }}">
+            </a>
+          </div>
+          <!-- img footer end -->
 
-          <dl class="row">
-            <dt class="col-3">Type:</dt>
-            <dd class="col-9">Regular</dd>
+        </div>
+      </div>
+      <!-- img end -->
 
-            <dt class="col-3">Color</dt>
-            <dd class="col-9">Brown</dd>
-
-            <dt class="col-3">Material</dt>
-            <dd class="col-9">Cotton, Jeans </dd>
-
-            <dt class="col-3">Brand</dt>
-            <dd class="col-9">Reebook </dd>
-          </dl>
-
-          <hr>
-
-          <div class="row mb-4">
-            <div class="col-md-4 col-6 mb-2">
-              <label class="form-label">Size</label>
-              <select class="form-select">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
-            </div> <!-- col.// -->
-            <div class="col-md-4 col-6 mb-3">
-              <label class="form-label d-block">Quantity</label>
-              <div class="input-group input-spinner">
-                <button class="btn btn-icon btn-light" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
-                    <path d="M19 13H5v-2h14v2z"></path>
-                  </svg>
-                </button>
-                <input class="form-control text-center" placeholder="" value="14">
-                <button class="btn btn-icon btn-light" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
-                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                  </svg>
-                </button>
-              </div> <!-- input-group.// -->
-            </div> <!-- col.// -->
-          </div> <!-- row.// -->
-
-          <a href="#" class="btn  btn-warning"> Buy now </a>
-          <a href="#" class="btn  btn-primary"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
-          <a href="#" class="btn  btn-light"> <i class="me-1 fa fa-heart"></i> Save </a>
-
-        </article> <!-- product-info-aside .// -->
-      </main> <!-- col.// -->
-    </div> <!-- row.// -->
-
-  </div> <!-- container .//  -->
-</section>
-<!-- ============== SECTION CONTENT END// ============== -->
-
-<!-- ============== SECTION  ============== -->
-<section class="padding-y bg-light border-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <!-- =================== COMPONENT SPECS ====================== -->
-        <div class="card">
-          <header class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link active">Specification</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" data-bs-target="#tab_warranty" data-bs-toggle="tab" class="nav-link">Warranty info</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" data-bs-target="#tab_shipping" data-bs-toggle="tab" class="nav-link">Shipping info</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" data-bs-target="#tab_seller" data-bs-toggle="tab" class="nav-link">Seller profile</a>
-              </li>
-            </ul>
-          </header>
-          <div class="tab-content">
-            <article id="tab_specs" class="tab-pane show active card-body">
-              <p>With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-              <ul class="list-check cols-two">
-                <li>Some great feature name here </li>
-                <li>Lorem ipsum dolor sit amet, consectetur </li>
-                <li>Duis aute irure dolor in reprehenderit </li>
-                <li>Optical heart sensor </li>
-                <li>Easy fast and ver good </li>
-                <li>Some great feature name here </li>
-                <li>Modern style and design</li>
-              </ul>
-              <table class="table border table-hover">
-                <tr>
-                  <th>  Display: </th> <td> 13.3-inch LED-backlit display with IPS </td>
-                </tr>
-                <tr>
-                  <th>  Processor capacity: </th> <td> 2.3GHz dual-core Intel Core i5 </td>
-                </tr>
-                <tr>
-                  <th>  Camera quality: </th> <td>720p FaceTime HD camera  </td>
-                </tr>
-                <tr>
-                  <th>  Memory </th> <td> 8 GB RAM or 16 GB RAM </td>
-                </tr>
-                <tr>
-                  <th>  Graphics </th> <td> Intel Iris Plus Graphics 640 </td>
-                </tr>
-              </table>
-            </article> <!-- tab-content.// -->
-            <article id="tab_warranty" class="tab-pane card-body">
-              Tab content or sample information now <br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            </article>
-            <article id="tab_shipping" class="tab-pane card-body">
-              Another tab content  or sample information now <br>
-              Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </article>
-            <article id="tab_seller" class="tab-pane card-body">
-              Some other tab content  or sample information now <br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </article>
+      <!-- content start -->
+      <!-- content customer, buyer start -->
+      <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class="col-7 px-5">
+        <div class="h3">{{ service.product.name }}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-1">
+            <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
           </div>
         </div>
-        <!-- =================== COMPONENT SPECS .// ================== -->
-      </div> <!-- col.// -->
-      <aside class="col-lg-4">
-        <!-- =================== COMPONENT ADDINGS ====================== -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Similar items</h5>
+        <!-- price start -->
+        <div id="full-width">
+          <div class="d-flex justify-content-between align-items-center pt-2">
+            <h1 class="px-5 text-main bg-shadow full-width rounded py-2">
+              {{ service.product.price | currency: 'VND' }}
+            </h1>
+          </div>
+        </div>
+        <!-- price end -->
 
-            <article class="itemside mb-3">
-              <a href="#" class="aside">
-                <img src="assets/images/items/8.webp" width="96" height="96" class="img-md img-thumbnail">
-              </a>
-              <div class="info">
-                <a href="#" class="title mb-1"> Rucksack Backpack Large <br> Line Mounts </a>
-                <strong class="price"> $38.90</strong> <!-- price.// -->
-              </div>
-            </article>
+        <table class="info">
+          <tBody>
 
-            <article class="itemside mb-3">
-              <a href="#" class="aside">
-                <img src="assets/images/items/9.webp" width="96" height="96" class="img-md img-thumbnail">
-              </a>
-              <div class="info">
-                <a href="#" class="title mb-1"> Summer New Men's Denim <br> Jeans Shorts  </a>
-                <strong class="price"> $29.50</strong> <!-- price.// -->
-              </div>
-            </article>
+            <!-- ship start -->
+            <tr>
+              <td class="col-5">
+                Giao hàng
+              </td>
+              <td class="col-7">
+                <img style="width: 20px;"
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
+                  alt="">
+                Miễn phí giao hàng
+              </td>
+            </tr>
+            <!-- ship end -->
 
-            <article class="itemside mb-3">
-              <a href="#" class="aside">
-                <img src="assets/images/items/10.webp" width="96" height="96" class="img-md img-thumbnail">
-              </a>
-              <div class="info">
-                <a href="#" class="title mb-1"> T-shirts with multiple colors, for men and lady </a>
-                <strong class="price"> $120.00</strong> <!-- price.// -->
-              </div>
-            </article>
+            <tr>
+              <td class="col-5">
+                Thể loại
+              </td>
+              <td class="col-7">
+                {{ service.product.category.name }}
+              </td>
+            </tr>
+            <!-- số lượng start -->
+            <tr>
+              <td class="col-5">
+                Số lượng
+              </td>
+              <td class="col-7 ">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                    (click)="service.setAmount(service.amount - 1)">-</a>
+                  <input style="width: 40px" class="border text-center" type="number" [(ngModel)]="service.amount">
+                  <a type="button" class="bg-white text-1 border px-3 py-2"
+                    (click)="service.setAmount(service.amount + 1)">+</a>
+                </div>
+                <p class="text-danger">{{ service.amountMessage }}</p>
+              </td>
+            </tr>
+            <!-- số lượng end -->
 
-            <article class="itemside mb-3">
-              <a href="#" class="aside">
-                <img src="assets/images/items/11.webp" width="96" height="96" class="img-md img-thumbnail">
-              </a>
-              <div class="info">
-                <a href="#" class="title mb-1"> Blazer Suit Dress Jacket for Men, Blue color </a>
-                <strong class="price"> $339.90</strong> <!-- price.// -->
-              </div>
-            </article>
+          </tBody>
+        </table>
+        <div style="margin-top: 20px">
+          <button [disabled]="service.amount <= 0 " (click)="service.toCart()" type="button" class="btn btn-cart" style="margin-right: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus"
+              viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+              <path
+                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+            </svg>
+            Thêm vào giỏ hàng
+          </button>
+          <button type="button" class="btn btn-buy">Mua ngay</button>
+          <span class="available"> còn {{ service.product.quantity }} sản phẩm</span>
+        </div>
+      </div>
+      <!-- content customer, buyer end-->
 
-          </div> <!-- card-body .// -->
-        </div> <!-- card .// -->
-        <!-- =================== COMPONENT ADDINGS .// ================== -->
-      </aside> <!-- col.// -->
+      <!-- content seller, employee, admin start -->
+      <div *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')"
+        class="col-7 px-5">
+        <table class="table table-bordered">
+          <tBody>
+            <tr>
+              <th class="align-middle"> ID Sản phẩm</th>
+              <td class="text-center align-middle"> {{ service.product.id }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Tên </th>
+              <td class="text-center align-middle"> {{ service.product.name }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Thể loại </th>
+              <td class="text-center align-middle"> {{ service.product.category.name }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Giá </th>
+              <td class="text-center align-middle"> {{ service.product.price }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Số lượng đã bán </th>
+              <td class="text-center align-middle"> {{ service.product.sold }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Tồn kho </th>
+              <td class="text-center align-middle"> {{ service.product.quantity }}</td>
+            </tr>
+            <tr>
+              <th class="align-middle"> Trạng thái </th>
+              <td class="text-center align-middle"> {{ service.product.status.name }}</td>
+            </tr>
+          </tBody>
+        </table>
+        <a class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">Cập nhật ảnh</a>
+        <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
+      </div>
+      <!-- content seller, employee, admin end -->
+
+      <!-- content end -->
     </div>
+    <!-- product detail end -->
 
-    <br><br>
+    <!-- Product owner -->
+    <div class="specifications" *ngIf="service.seller">
+      <div class="row row-cols-auto px-3">
+        <img class="rounded-circle border col ml-2" style="width: 50px; height: 50px;"
+          src="https://media.istockphoto.com/vectors/house-leaf-icon-vector-id867412416?k=6&m=867412416&s=170667a&w=0&h=q_RQ3t3ID6RyRH4299mDGigEIOd9GcY_6GDlhSqfkMo="
+          alt="">
+        <div class="col h5 p-3">{{ service.seller.name }}</div>
+      </div>
 
-  </div><!-- container // -->
+    </div>
+    <!-- Product owner -->
+
+    <!-- Description start -->
+    <div class="description">
+      <h1>Thông tin chi tiết sản phẩm</h1>
+      <hr>
+      <div class="blockquote" [innerHTML]="service.product.description">
+      </div>
+    </div>
+    <!-- Description end -->
+
+
+  </div>
+  <!-- body end -->
+
+</div>
+
+<!-- model start -->
+<!-- Modal -->
+<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa ảnh</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row row-cols-auto">
+        <div style="height: 350px; width: 350px" class="imgMain border p-2 col position-relative">
+          <img src="{{imgMain}}" alt="" class="full-size rounded">
+          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3"
+            (click)="service.setAvatar()">Đặt làm đại diện</a>
+        </div>
+        <!-- list ảnh start -->
+        <div class="col-6 row row-cols-auto">
+          <div class="col p-2 m-1 border position-relative" style="width: 100px; height: 100px;"
+            [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture; let i = index">
+            <span (click)="service.deletePicture(i)"
+              class="position-absolute top-0 start-100 translate-middle p-2 text-danger">
+              <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg>
+            </span>
+
+            <a (click)="getPicture(img); service.indexImg = i">
+              <img src="{{ img.name }}" class="full-size">
+            </a>
+          </div>
+        </div>
+        <!-- list ảnh end -->
+        <div class="col">
+          <label for="file-input" type="button" class="btn-main">Thêm ảnh</label>
+          <a type="button" class="btn-main" (click)="service.savePicture()">Lưu thay đổi</a>
+          <p class="text-success text-center" [innerHTML]="service.pictrueMessenge"></p>
+          <input id="file-input" class="d-none" multiple type="file" (change)="service.selectPicture($event)">
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- model end -->
+
+
+<!-- modal cart start -->
+<!-- Button trigger modal -->
+<button id="modal" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+<!-- Modal -->
+<div class="fade modal" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body border-none">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <body class="text-center pt-5">
+        <div class="text-success mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+               class="bi bi-check2-circle"
+               viewBox="0 0 16 16">
+            <path
+              d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+            <path
+              d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+          </svg>
+        </div>
+        <h1>Thêm vào giỏ hàng thành công</h1>
+        <div>Đi đến <a class="text-main" href="/cart">giỏ hàng</a></div>
+        </body>
+      </div>
+      <div class="text-center p-3">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+<!-- modal cart end -->
+
+
+ ============== SECTION PAGETOP ==============
+<section class="bg-primary padding-y-sm">
+  <div class="container">
+
+    <ol class="breadcrumb ondark mb-0">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+
+  </div> <!-- container //  -->
 </section>
+ ============== SECTION PAGETOP END// ==============
+
+<!--&lt;!&ndash; ============== SECTION CONTENT ============== &ndash;&gt;-->
+<!--<section class="padding-y">-->
+<!--  <div class="container">-->
+
+<!--    <div class="row">-->
+<!--      <aside class="col-lg-6">-->
+<!--        <article class="gallery-wrap">-->
+<!--          <div class="img-big-wrap img-thumbnail">-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp">-->
+<!--              <img height="560" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--          </div> &lt;!&ndash; img-big-wrap.// &ndash;&gt;-->
+<!--          <div class="thumbs-wrap">-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">-->
+<!--              <img width="60" height="60" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">-->
+<!--              <img width="60" height="60" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">-->
+<!--              <img width="60" height="60" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">-->
+<!--              <img width="60" height="60" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--            <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp" class="item-thumb">-->
+<!--              <img width="60" height="60" src="assets/images/items/10.webp">-->
+<!--            </a>-->
+<!--          </div> &lt;!&ndash; thumbs-wrap.// &ndash;&gt;-->
+<!--        </article> &lt;!&ndash; gallery-wrap .end// &ndash;&gt;-->
+<!--      </aside>-->
+<!--      <main class="col-lg-6">-->
+<!--        <article class="ps-lg-3">-->
+<!--          <h4 class="title text-dark">Quality Men's Hoodie for Winter, Men's Fashion <br> Casual Hoodie </h4>-->
+<!--          <div class="rating-wrap my-3">-->
+<!--            <ul class="rating-stars">-->
+<!--              <li style="width:80%" class="stars-active"> <img src="assets/images/misc/stars-active.svg" alt=""> </li>-->
+<!--              <li> <img src="assets/images/misc/starts-disable.svg" alt=""> </li>-->
+<!--            </ul>-->
+<!--            <b class="label-rating text-warning"> 4.5</b>-->
+<!--            <i class="dot"></i>-->
+<!--            <span class="label-rating text-muted"> <i class="fa fa-shopping-basket"></i> 154 orders </span>-->
+<!--            <i class="dot"></i>-->
+<!--            <span class="label-rating text-success">In stock</span>-->
+<!--          </div> &lt;!&ndash; rating-wrap.// &ndash;&gt;-->
+
+<!--          <div class="mb-3">-->
+<!--            <var class="price h5">$75.00</var>-->
+<!--            <span class="text-muted">/per box</span>-->
+<!--          </div>-->
+
+<!--          <p>Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for men.</p>-->
+
+<!--          <dl class="row">-->
+<!--            <dt class="col-3">Type:</dt>-->
+<!--            <dd class="col-9">Regular</dd>-->
+
+<!--            <dt class="col-3">Color</dt>-->
+<!--            <dd class="col-9">Brown</dd>-->
+
+<!--            <dt class="col-3">Material</dt>-->
+<!--            <dd class="col-9">Cotton, Jeans </dd>-->
+
+<!--            <dt class="col-3">Brand</dt>-->
+<!--            <dd class="col-9">Reebook </dd>-->
+<!--          </dl>-->
+
+<!--          <hr>-->
+
+<!--          <div class="row mb-4">-->
+<!--            <div class="col-md-4 col-6 mb-2">-->
+<!--              <label class="form-label">Size</label>-->
+<!--              <select class="form-select">-->
+<!--                <option>Small</option>-->
+<!--                <option>Medium</option>-->
+<!--                <option>Large</option>-->
+<!--              </select>-->
+<!--            </div> &lt;!&ndash; col.// &ndash;&gt;-->
+<!--            <div class="col-md-4 col-6 mb-3">-->
+<!--              <label class="form-label d-block">Quantity</label>-->
+<!--              <div class="input-group input-spinner">-->
+<!--                <button class="btn btn-icon btn-light" type="button">-->
+<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">-->
+<!--                    <path d="M19 13H5v-2h14v2z"></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
+<!--                <input class="form-control text-center" placeholder="" value="14">-->
+<!--                <button class="btn btn-icon btn-light" type="button">-->
+<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">-->
+<!--                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
+<!--              </div> &lt;!&ndash; input-group.// &ndash;&gt;-->
+<!--            </div> &lt;!&ndash; col.// &ndash;&gt;-->
+<!--          </div> &lt;!&ndash; row.// &ndash;&gt;-->
+
+<!--          <a href="#" class="btn  btn-warning"> Buy now </a>-->
+<!--          <a href="#" class="btn  btn-primary"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>-->
+<!--          <a href="#" class="btn  btn-light"> <i class="me-1 fa fa-heart"></i> Save </a>-->
+
+<!--        </article> &lt;!&ndash; product-info-aside .// &ndash;&gt;-->
+<!--      </main> &lt;!&ndash; col.// &ndash;&gt;-->
+<!--    </div> &lt;!&ndash; row.// &ndash;&gt;-->
+
+<!--  </div> &lt;!&ndash; container .//  &ndash;&gt;-->
+<!--</section>-->
+<!--&lt;!&ndash; ============== SECTION CONTENT END// ============== &ndash;&gt;-->
+
+<!--&lt;!&ndash; ============== SECTION  ============== &ndash;&gt;-->
+<!--<section class="padding-y bg-light border-top">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-8">-->
+<!--        &lt;!&ndash; =================== COMPONENT SPECS ====================== &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--          <header class="card-header">-->
+<!--            <ul class="nav nav-tabs card-header-tabs">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link active">Specification</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a href="#" data-bs-target="#tab_warranty" data-bs-toggle="tab" class="nav-link">Warranty info</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a href="#" data-bs-target="#tab_shipping" data-bs-toggle="tab" class="nav-link">Shipping info</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a href="#" data-bs-target="#tab_seller" data-bs-toggle="tab" class="nav-link">Seller profile</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </header>-->
+<!--          <div class="tab-content">-->
+<!--            <article id="tab_specs" class="tab-pane show active card-body">-->
+<!--              <p>With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>-->
+<!--              <ul class="list-check cols-two">-->
+<!--                <li>Some great feature name here </li>-->
+<!--                <li>Lorem ipsum dolor sit amet, consectetur </li>-->
+<!--                <li>Duis aute irure dolor in reprehenderit </li>-->
+<!--                <li>Optical heart sensor </li>-->
+<!--                <li>Easy fast and ver good </li>-->
+<!--                <li>Some great feature name here </li>-->
+<!--                <li>Modern style and design</li>-->
+<!--              </ul>-->
+<!--              <table class="table border table-hover">-->
+<!--                <tr>-->
+<!--                  <th>  Display: </th> <td> 13.3-inch LED-backlit display with IPS </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>  Processor capacity: </th> <td> 2.3GHz dual-core Intel Core i5 </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>  Camera quality: </th> <td>720p FaceTime HD camera  </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>  Memory </th> <td> 8 GB RAM or 16 GB RAM </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <th>  Graphics </th> <td> Intel Iris Plus Graphics 640 </td>-->
+<!--                </tr>-->
+<!--              </table>-->
+<!--            </article> &lt;!&ndash; tab-content.// &ndash;&gt;-->
+<!--            <article id="tab_warranty" class="tab-pane card-body">-->
+<!--              Tab content or sample information now <br>-->
+<!--              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+<!--              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,-->
+<!--              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse-->
+<!--              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non-->
+<!--              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+<!--              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,-->
+<!--              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--            </article>-->
+<!--            <article id="tab_shipping" class="tab-pane card-body">-->
+<!--              Another tab content  or sample information now <br>-->
+<!--              Dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+<!--              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,-->
+<!--              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse-->
+<!--              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non-->
+<!--              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+<!--            </article>-->
+<!--            <article id="tab_seller" class="tab-pane card-body">-->
+<!--              Some other tab content  or sample information now <br>-->
+<!--              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+<!--              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,-->
+<!--              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse-->
+<!--              cillum dolore eu fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non-->
+<!--              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+<!--            </article>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; =================== COMPONENT SPECS .// ================== &ndash;&gt;-->
+<!--      </div> &lt;!&ndash; col.// &ndash;&gt;-->
+<!--      <aside class="col-lg-4">-->
+<!--        &lt;!&ndash; =================== COMPONENT ADDINGS ====================== &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title">Similar items</h5>-->
+
+<!--            <article class="itemside mb-3">-->
+<!--              <a href="#" class="aside">-->
+<!--                <img src="assets/images/items/8.webp" width="96" height="96" class="img-md img-thumbnail">-->
+<!--              </a>-->
+<!--              <div class="info">-->
+<!--                <a href="#" class="title mb-1"> Rucksack Backpack Large <br> Line Mounts </a>-->
+<!--                <strong class="price"> $38.90</strong> &lt;!&ndash; price.// &ndash;&gt;-->
+<!--              </div>-->
+<!--            </article>-->
+
+<!--            <article class="itemside mb-3">-->
+<!--              <a href="#" class="aside">-->
+<!--                <img src="assets/images/items/9.webp" width="96" height="96" class="img-md img-thumbnail">-->
+<!--              </a>-->
+<!--              <div class="info">-->
+<!--                <a href="#" class="title mb-1"> Summer New Men's Denim <br> Jeans Shorts  </a>-->
+<!--                <strong class="price"> $29.50</strong> &lt;!&ndash; price.// &ndash;&gt;-->
+<!--              </div>-->
+<!--            </article>-->
+
+<!--            <article class="itemside mb-3">-->
+<!--              <a href="#" class="aside">-->
+<!--                <img src="assets/images/items/10.webp" width="96" height="96" class="img-md img-thumbnail">-->
+<!--              </a>-->
+<!--              <div class="info">-->
+<!--                <a href="#" class="title mb-1"> T-shirts with multiple colors, for men and lady </a>-->
+<!--                <strong class="price"> $120.00</strong> &lt;!&ndash; price.// &ndash;&gt;-->
+<!--              </div>-->
+<!--            </article>-->
+
+<!--            <article class="itemside mb-3">-->
+<!--              <a href="#" class="aside">-->
+<!--                <img src="assets/images/items/11.webp" width="96" height="96" class="img-md img-thumbnail">-->
+<!--              </a>-->
+<!--              <div class="info">-->
+<!--                <a href="#" class="title mb-1"> Blazer Suit Dress Jacket for Men, Blue color </a>-->
+<!--                <strong class="price"> $339.90</strong> &lt;!&ndash; price.// &ndash;&gt;-->
+<!--              </div>-->
+<!--            </article>-->
+
+<!--          </div> &lt;!&ndash; card-body .// &ndash;&gt;-->
+<!--        </div> &lt;!&ndash; card .// &ndash;&gt;-->
+<!--        &lt;!&ndash; =================== COMPONENT ADDINGS .// ================== &ndash;&gt;-->
+<!--      </aside> &lt;!&ndash; col.// &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <br><br>-->
+
+<!--  </div>&lt;!&ndash; container // &ndash;&gt;-->
+<!--</section>-->
