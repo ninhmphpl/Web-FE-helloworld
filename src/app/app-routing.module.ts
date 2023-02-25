@@ -15,7 +15,7 @@ import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
 import { HomeComponent } from './home/home.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import {ProfileDefaultComponent} from "./profile-default/profile-default.component";
-// import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
 
 const routes: Routes = [
   {path:'',children:[
@@ -29,7 +29,7 @@ const routes: Routes = [
     {path:'',component:EmployeeListComponent},
   ]},
   {path:'product',children:[
-    // {path:'detail/:id',component:ProductDetailDefaulComponent},
+    {path:'detail/:id',component:ProductDetailDefaulComponent},
     {path:'edit/:id',component:ProductEditComponent},
     {path:'',component:ProductListComponent},
   ]},

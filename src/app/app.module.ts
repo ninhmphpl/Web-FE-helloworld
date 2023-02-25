@@ -41,7 +41,7 @@ import { HeaderManagerComponent } from './header-manager/header-manager.componen
 import { BillBuyerComponent } from './bill-buyer/bill-buyer.component';
 import { ProfileDefaultComponent } from './profile-default/profile-default.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
-// import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,7 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     HomeManagerComponent,
     HeaderDefaultComponent,
     HeaderManagerComponent,
-    // ProductDetailDefaulComponent,
+    ProductDetailDefaulComponent,
     BillBuyerComponent,
     ProfileDefaultComponent,
     ProfileInfoComponent,
