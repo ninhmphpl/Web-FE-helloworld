@@ -1,0 +1,12 @@
+<app-header-default></app-header-default>
+<div class="row pt-5">
+  <div class="col-3">
+    <button class="col-12 btn-main" (click)="getBill()">Thông tin người dùng</button>
+    <button class="col-12 btn-main" (click)="getInfo()">Thông tin đơn hàng</button>
+  </div>
+  <div class="col-9">
+    <app-bill-buyer *ngIf="action == 'bill'"></app-bill-buyer>
+    <app-profile-info *ngIf="action == 'info'"></app-profile-info>
+  </div>
+</div>
+

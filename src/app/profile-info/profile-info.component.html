@@ -1,0 +1,57 @@
+<body class="p-5 bg-shadow ">
+
+<div class="bg-white row">
+
+  <!-- cột 1 start -->
+  <div class="col-4 p-5 border-r-1">
+    <div class="border rounded-circle p-3">
+      <img class="rounded-circle full-size"
+           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlR3hMw_3daUL3Uhr5Y3uJh_kMaYzyqQhhPA&usqp=CAU"
+           alt="">
+    </div>
+    <h1 class="text-center pt-3">{{buyer.name}}</h1>
+  </div>
+  <!-- cột 1 start -->
+
+  <!-- cột 2 start -->
+  <div class="col-8 p-5">
+    <h1>Thông tin nhân viên</h1>
+    <table class="table table-bordered">
+      <tBody>
+      <tr>
+        <td class="align-middle">Mã nhân viên</td>
+        <td class="align-middle">{{buyer.id}}</td>
+      </tr>
+      <tr>
+        <td class="align-middle">Tên nhân viên</td>
+        <td class="align-middle">{{buyer.name}}</td>
+      </tr>
+      <tr>
+        <td class="align-middle">Ngày sinh</td>
+        <td class="align-middle">
+          <p> {{buyer.birth}}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="align-middle">
+          Tuổi
+        </td>
+        <td class="align-middle">
+          <p>{{buyer.age}}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="align-middle">Giới tính</td>
+        <td class="align-middle">
+          <p> {{buyer.gender.name}}</p>
+        </td>
+      </tr>
+      </tBody>
+    </table>
+    <a href="/buyer/edit/{{buyer.id}}" class="btn-main">Cập nhật thông tin</a>
+
+  </div>
+  <!-- cột 2 end -->
+
+</div>
+</body>
