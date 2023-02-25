@@ -34,5 +34,12 @@ export class UserService {
     this.cartLength = length
   }
 
+  getBuyer(){
+    let url = environtment.url + '/buyer/info'
+    this.api.getMapping(url , (data: any)=>{
+      this.user = data
+    })
+  }
+
 
 }

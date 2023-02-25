@@ -111,6 +111,7 @@ export class APIAny {
       this.onloadService.error = message
       this.route.navigate(['/error'])
     } else {
+      console.log('data: ')
       console.log(data);
       action(data)
     }
