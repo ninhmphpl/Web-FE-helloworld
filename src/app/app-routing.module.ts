@@ -14,12 +14,14 @@ import {SignupSellerComponent} from './signup-seller/signup-seller.component';
 import { SignupBuyerComponent } from './signup-buyer/signup-buyer.component';
 import { HomeComponent } from './home/home.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
-import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import {ProfileDefaultComponent} from "./profile-default/profile-default.component";
+// import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
 
 const routes: Routes = [
   {path:'',children:[
     {path:'',component:HomeComponent},
     {path:'manager',component:HomeManagerComponent},
+    {path:'profile',component:ProfileDefaultComponent}
   ]},
   {path:'employee',children:[
     {path:'detail/:d',component:EmployeeDetailComponent},
@@ -27,7 +29,7 @@ const routes: Routes = [
     {path:'',component:EmployeeListComponent},
   ]},
   {path:'product',children:[
-    {path:'detail/:id',component:ProductDetailDefaulComponent},
+    // {path:'detail/:id',component:ProductDetailDefaulComponent},
     {path:'edit/:id',component:ProductEditComponent},
     {path:'',component:ProductListComponent},
   ]},

@@ -38,7 +38,10 @@ import { HomeComponent } from './home/home.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import { HeaderDefaultComponent } from './header-default/header-default.component';
 import { HeaderManagerComponent } from './header-manager/header-manager.component';
-import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import { BillBuyerComponent } from './bill-buyer/bill-buyer.component';
+import { ProfileDefaultComponent } from './profile-default/profile-default.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
+// import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { ProductDetailDefaulComponent } from './product-detail-defaul/product-de
     HomeManagerComponent,
     HeaderDefaultComponent,
     HeaderManagerComponent,
-    ProductDetailDefaulComponent,
+    // ProductDetailDefaulComponent,
+    BillBuyerComponent,
+    ProfileDefaultComponent,
+    ProfileInfoComponent,
 
   ],
   imports: [

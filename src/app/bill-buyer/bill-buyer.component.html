@@ -1,0 +1,42 @@
+<div class="px-5">
+  <div class="row px-3">
+    <button class="col-2 border btn-main text-center" (click)="getAllBill()"  [ngClass]="{'active' : action == 'all'}">Tất cả</button>
+    <button class="col-2 border btn-main text-center" (click)="getAllBillDone()"  [ngClass]="{'active' : action == 'done'}">Hoàn thành</button>
+    <button class="col-2 border btn-main text-center" (click)="getAllBillCancel()" [ngClass]="{'active' : action == 'cancel'}">Đã hủy</button>
+  </div>
+  <div class="border">
+    <div *ngIf="bills" class="px-4">
+      <div *ngFor="let bill of bills" class="mb-5 bg-light">
+        <a>Cửa hàng: {{bill.seller_name}}</a>
+        <div>
+          <span>Trạng thái : {{bill.status.name}}</span>
+        </div>
+        <table class="table">
+          <tHead>
+          <tr>
+            <th>Ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng mua</th>
+            <th>Thành tiền</th>
+          </tr>
+          </tHead>
+          <tBody>
+          <tr *ngFor="let op of bill.orderPayments">
+            <td><img style="width: 50px; height: 50px" [src]="op.productDetail.avatar" alt="Ảnh"></td>
+            <td [innerText]="op.productDetail.name">Tên</td>
+            <td [innerText]="op.amount">Số lượng mua</td>
+            <td [innerText]="op.totalPrice | currency : 'VND'">Thành tiền</td>
+          </tr>
+          <tr>
+            <th>Tổng Bill</th>
+            <th [innerText]="bill.total | currency : 'VND'">Tổng bill</th>
+          </tr>
+          </tBody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

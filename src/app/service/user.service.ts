@@ -40,6 +40,13 @@ export class UserService {
       this.user = data
     })
   }
+  getBuyerAction(action : any){
+    let url = environtment.url + '/buyer/info'
+    this.api.getMapping(url , (data: any)=>{
+      this.user = data
+      action(data)
+    })
+  }
 
 
 }
