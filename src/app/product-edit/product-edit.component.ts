@@ -70,7 +70,6 @@ export class ProductEditComponent implements OnInit {
     } else {
       this.onSubmitSeller()
     }
-
   }
   // submit nếu role là seller
   onSubmitSeller() {

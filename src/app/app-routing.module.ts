@@ -16,6 +16,9 @@ import { HomeComponent } from './home/home.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import {ProfileDefaultComponent} from "./profile-default/profile-default.component";
 import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import {HomeSellerComponent} from "./home-seller/home-seller.component";
+import {BillSellerComponent} from "./bill-seller/bill-seller.component";
+import {ProfileSellerComponent} from "./profile-seller/profile-seller.component";
 
 const routes: Routes = [
   {path:'',children:[
@@ -37,6 +40,11 @@ const routes: Routes = [
   {path:"signup",children:[
     {path:"seller",component:SignupSellerComponent},
     {path:"buyer",component:SignupBuyerComponent},
+  ]},
+  {path:'seller',children:[
+    {path:'bill',component:BillSellerComponent},
+    {path:'profile',component:ProfileSellerComponent},
+    {path:'',component:HomeSellerComponent},
   ]},
   {path:'error',component:PageErrorComponent},
   {path:'login',component:LoginComponent},

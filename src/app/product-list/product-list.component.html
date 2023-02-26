@@ -1,9 +1,8 @@
 <div class="container-fluid px-0 bg-shadow">
   <app-header class=""></app-header>
-  <div class="row mt-4">
+  <div class="row">
     <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
-    <div class="col-9 p-5"
-      *ngIf="pageService.page && ((roleService.userTokent.role == 'ROLE_SELLER') || (roleService.userTokent.role == 'ROLE_EMPLOYEE') || (roleService.userTokent == 'ROLE_ADMIN'))">
+    <div class="px-5">
       <!--      body-->
       <app-filter></app-filter>
       <table id="body" class="table bg-white">

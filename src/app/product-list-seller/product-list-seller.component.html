@@ -1,0 +1,43 @@
+<div class="px-5" *ngIf="pageService.page">
+  <!--      body-->
+  <app-filter></app-filter>
+  <table id="body" class="table bg-white" >
+    <thead>
+    <tr>
+      <th scope="col" class="text-center">Mã</th>
+      <th scope="col" class="text-center">Ảnh</th>
+      <th scope="col" class="text-center">Tên</th>
+      <th scope="col" class="text-center">Giá</th>
+      <th scope="col" class="text-center">Thể loại</th>
+      <th scope="col" class="text-center">Trạng thái</th>
+      <th scope="col" class="text-center">Đã bán</th>
+      <th scope="col" class="text-center" colspan="2">Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of pageService.page.content">
+      <th class="text-center align-middle" scope="">{{p.id}}</th>
+      <td class="text-center align-middle">
+        <a href="/product/detail/{{p.id}}">
+          <img src="{{p.avatar}}" class="" style="height: 100px; width: 100px;;" alt="">
+        </a>
+      </td>
+      <td class="text-center align-middle">{{p.name}}</td>
+      <td class="text-center align-middle">{{p.price}}</td>
+      <td class="text-center align-middle">{{p.category.name}}</td>
+      <td class="text-center align-middle">{{p.status.name}}</td>
+      <td class="text-center align-middle">{{p.sold}}</td>
+      <td class="text-center align-middle"><a class="btn btn-warning"
+                                              href="">Sửa</a></td>
+      <td class="text-center align-middle" (click)="pageService.changeStatus(p.status.id,p.id)"><a
+        class="btn btn-danger">{{(p.status.id == 3)?'Ngừng bán':'Mở bán'}}</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="pageService.page.content.length == 0">
+    Hiện tại không có sản phẩm nào
+  </div>
+  <!-- control -->
+  <app-control-product-page></app-control-product-page>
+  <!-- control -->
+</div>

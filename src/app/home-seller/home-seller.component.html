@@ -1,0 +1,13 @@
+<app-header-seller></app-header-seller>
+<div class="row">
+  <div class="col-3">
+    <button class="col-12 btn-main" (click)="getList()" [ngClass]="{'active': action == 'list'}">Danh sách sản phẩm</button>
+    <button class="col-12 btn-main" (click)="getCreate()" [ngClass]="{'active': action == 'create'}">Thêm sản phẩm</button>
+    <button class="col-12 btn-main" (click)="getBill()" [ngClass]="{'active': action == 'bill'}">Quản lý đơn hàng</button>
+  </div>
+  <div class="col-9">
+    <app-product-list-seller *ngIf="action == 'list'"></app-product-list-seller>
+    <app-product-create-seller *ngIf="action == 'create'"></app-product-create-seller>
+    <app-bill-seller *ngIf="action == 'bill'"></app-bill-seller>
+  </div>
+</div>

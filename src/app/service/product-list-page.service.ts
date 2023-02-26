@@ -47,6 +47,11 @@ export class ProductListPageService{
     this.getListProduct(0)
   }
 
+  getProductListSeller(){
+    this.url = environtment.url + '/seller/product'
+    this.getListProduct(0);
+  }
+
 
 
 
@@ -95,5 +100,29 @@ export class ProductListPageService{
       document.getElementById('modal')?.click()
       this.getListProduct(0)
     })
+  }
+
+  stopSellProduct(id : any){
+    let url = environtment.url + '/seller/product/' + id
+    this.api.deleteMapping(url, (data : any)=>{
+      this.modalMessager = "Xóa thành công"
+      document.getElementById('modal')?.click()
+      this.getListProduct(0)
+    })
+  }
+  openSellProduct(id : any){
+    let url = environtment.url + '/seller/product/open/' + id
+    this.api.getMapping(url, (data : any)=>{
+      this.modalMessager = "Xóa thành công"
+      document.getElementById('modal')?.click()
+      this.getListProduct(0)
+    })
+  }
+  changeStatus(statusId : any, productId : any){
+    if(statusId == 3){
+      this.stopSellProduct(productId);
+    }else{
+      this.openSellProduct(productId);
+    }
   }
 }

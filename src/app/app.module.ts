@@ -42,6 +42,13 @@ import { BillBuyerComponent } from './bill-buyer/bill-buyer.component';
 import { ProfileDefaultComponent } from './profile-default/profile-default.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProductDetailDefaulComponent } from './product-detail-defaul/product-detail-defaul.component';
+import { HomeSellerComponent } from './home-seller/home-seller.component';
+import { BillSellerComponent } from './bill-seller/bill-seller.component';
+import { ProfileSellerComponent } from './profile-seller/profile-seller.component';
+import { HeaderSellerComponent } from './header-seller/header-seller.component';
+import { ProductListSellerComponent } from './product-list-seller/product-list-seller.component';
+import { ProductCreateSellerComponent } from './product-create-seller/product-create-seller.component';
+import { ProductUpdateSellerComponent } from './product-update-seller/product-update-seller.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +84,13 @@ import { ProductDetailDefaulComponent } from './product-detail-defaul/product-de
     BillBuyerComponent,
     ProfileDefaultComponent,
     ProfileInfoComponent,
+    HomeSellerComponent,
+    BillSellerComponent,
+    ProfileSellerComponent,
+    HeaderSellerComponent,
+    ProductListSellerComponent,
+    ProductCreateSellerComponent,
+    ProductUpdateSellerComponent,
 
   ],
   imports: [
