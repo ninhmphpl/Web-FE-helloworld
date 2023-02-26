@@ -18,15 +18,21 @@ export class APIAny {
 
   getToken(){
     let data : any = localStorage.getItem('user_web')
-    data = JSON.parse(data)
-    let token = `${data.type} ${data.token}`
-    console.log(token)
-    return token
+    if(data){
+      data = JSON.parse(data)
+      let token = `${data.type} ${data.token}`
+      console.log(token)
+      return token
+    }
+    return 'No token'
   }
   getRole(){
+    let role : any
     let data : any = localStorage.getItem('user_web')
     data = JSON.parse(data)
-    let role = data.role;
+    if(data){
+      role = data.role;
+    }
     console.log(role)
     return role
   }

@@ -8,8 +8,11 @@
   <div class="border">
     <div *ngIf="bills" class="px-4">
       <div *ngFor="let bill of bills" class="mb-5 bg-light">
-        <a>Khách hàng: {{bill.buyer_name}}</a>
-        <a>Cửa hàng: {{bill.seller_name}}</a>
+        <div class="row row-cols-auto">
+        <a class="col text-dark p-3">Mã đơn hàng : {{bill.id}}</a>
+        <a class="col text-dark p-3">Khách hàng: {{bill.buyer_name}}</a>
+        <a class="col text-dark p-3">Cửa hàng: {{bill.seller_name}}</a>
+        </div>
         <div>
           <span>Trạng thái : {{bill.status.name}}</span>
         </div>
@@ -61,7 +64,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-danger" (click)="cancelBill(note.value)">Hủy đơn</button>
+        <button type="button" class="btn btn-danger" (click)="cancelBill(note.value) " data-bs-dismiss="modal">Hủy đơn</button>
       </div>
     </div>
   </div>
