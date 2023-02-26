@@ -51,6 +51,9 @@ import { ProductCreateSellerComponent } from './product-create-seller/product-cr
 import { ProductUpdateSellerComponent } from './product-update-seller/product-update-seller.component';
 import { ProductDetailSellerComponent } from './product-detail-seller/product-detail-seller.component';
 import { HomeEmployeeComponent } from './home-employee/home-employee.component';
+import { HeaderEmployeeComponent } from './header-employee/header-employee.component';
+import { ProductCreateEmployeeComponent } from './product-create-employee/product-create-employee.component';
+import { ProductUpdateEmployeeComponent } from './product-update-employee/product-update-employee.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +98,9 @@ import { HomeEmployeeComponent } from './home-employee/home-employee.component';
     ProductUpdateSellerComponent,
     ProductDetailSellerComponent,
     HomeEmployeeComponent,
+    HeaderEmployeeComponent,
+    ProductCreateEmployeeComponent,
+    ProductUpdateEmployeeComponent,
 
   ],
   imports: [

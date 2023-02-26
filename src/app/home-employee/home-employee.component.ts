@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-employee.component.scss']
 })
 export class HomeEmployeeComponent {
-
+  action = 'list'
+  getList(){this.action = 'list'}
+  getCreate(){this.action = 'create'}
+  getBill(){this.action = 'bill'}
 }

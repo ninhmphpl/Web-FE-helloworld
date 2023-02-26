@@ -21,6 +21,7 @@ import {BillSellerComponent} from "./bill-seller/bill-seller.component";
 import {ProfileSellerComponent} from "./profile-seller/profile-seller.component";
 import {ProductUpdateSellerComponent} from "./product-update-seller/product-update-seller.component";
 import {ProductDetailSellerComponent} from "./product-detail-seller/product-detail-seller.component";
+import {HomeEmployeeComponent} from "./home-employee/home-employee.component";
 
 const routes: Routes = [
   {path:'',children:[
@@ -31,7 +32,7 @@ const routes: Routes = [
   {path:'employee',children:[
     {path:'detail/:d',component:EmployeeDetailComponent},
     {path:'edit/:d',component:EmployeeEditComponent},
-    {path:'',component:EmployeeListComponent},
+    {path:'',component:HomeEmployeeComponent},
   ]},
   {path:'product',children:[
     {path:'detail/:id',component:ProductDetailDefaulComponent},
