@@ -20,6 +20,7 @@ import {HomeSellerComponent} from "./home-seller/home-seller.component";
 import {BillSellerComponent} from "./bill-seller/bill-seller.component";
 import {ProfileSellerComponent} from "./profile-seller/profile-seller.component";
 import {ProductUpdateSellerComponent} from "./product-update-seller/product-update-seller.component";
+import {ProductDetailSellerComponent} from "./product-detail-seller/product-detail-seller.component";
 
 const routes: Routes = [
   {path:'',children:[
@@ -46,6 +47,7 @@ const routes: Routes = [
     {path:'bill',component:BillSellerComponent},
     {path:'profile',component:ProfileSellerComponent},
     {path:'update/:id',component:ProductUpdateSellerComponent},
+    {path:'product-detail/:id',component:ProductDetailSellerComponent},
     {path:'',component:HomeSellerComponent},
   ]},
   {path:'error',component:PageErrorComponent},

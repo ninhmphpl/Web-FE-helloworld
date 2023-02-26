@@ -10,14 +10,17 @@
         <!-- ảnh start -->
         <div cdkDropList cdkDropListOrientation="horizontal" class="example-list row row-cols-auto"
              (cdkDropListDropped)="fire.drop($event)">
-          <div lass="card example-box p-1 border-primary" style="width: 130px; position: relative;"
+          <div lass="card example-box p-1 border-primary" style="position: relative;"
                *ngFor="let file of fire.files ; let i = index">
-            <img class="card-img" src="{{file.src}}" cdkDrag>
+            <img style="width: 100px; height: 100px" class="card-img" src="{{file.src}}" cdkDrag>
             <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
               Đại diện
             </div>
-            <button type="button" class="btn-close" aria-label="Close"
-                    style="position: absolute; right: 0; top: -5px;" (click)="fire.delete(i)"></button>
+            <svg style="position: absolute; right: 5px; top: -5px; color: #8d1e1e" (click)="fire.delete(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
           </div>
         </div>
         <label class="btn btn-outline-primary my-3" for="input-file">
@@ -123,5 +126,8 @@
     </tBody>
   </table>
   <button type="submit" class="btn btn-primary"
-          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật</button>
+          [disabled]="!formCreate.valid || fire.files.length > 5 || fire.files.length < 1">Tạo sản phẩm
+    <app-onload style="height: 50px; width: 100px"></app-onload>
+  </button>
+  <span class="px-2 text-success">{{message}}</span>
 </form>

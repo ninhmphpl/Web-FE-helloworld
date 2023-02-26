@@ -6,6 +6,7 @@ import {APIAny} from "../service/api-any.service";
 import {upFileArray} from "../../environments/firebase";
 import {environtment} from "../../environments/environtment";
 import {ActivatedRoute} from "@angular/router";
+import {OnloadService} from "../service/onload.service";
 
 @Component({
   selector: 'app-product-update-seller',
@@ -21,6 +22,7 @@ export class ProductUpdateSellerComponent {
     public categoryService: CategoryService,
     public api: APIAny,
     private routerActive: ActivatedRoute,
+    public onloadService : OnloadService,
   ) {
   }
 
@@ -64,12 +66,17 @@ export class ProductUpdateSellerComponent {
     return $('<div/>').text(str).html();
   }
 
+  message : any
   onSubmitSeller() {
+    this.message = ''
+    this.onloadService.onload = true
     if (this.formUpdate.valid) {
       this.getValue((data: any) => {
         let url = environtment.url + "/seller/product"
         this.api.putMapping(url, data, (data1: any) => {
           console.log(data1)
+          this.onloadService.onload = false
+          this.message = "Cập nhật thành công"
         })
       })
     }

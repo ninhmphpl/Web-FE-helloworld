@@ -165,50 +165,6 @@
         </div>
       </div>
       <!-- content customer, buyer end-->
-
-      <!-- content seller, employee, admin start -->
-      <div *ngIf="(roleService.role == 'ADMIN') || (roleService.role == 'SELLER') || (roleService.role == 'EMPLOYEE')"
-        class="col-7 px-5">
-        <table class="table table-bordered">
-          <tBody>
-            <tr>
-              <th class="align-middle"> ID Sản phẩm</th>
-              <td class="text-center align-middle"> {{ service.product.id }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Tên </th>
-              <td class="text-center align-middle"> {{ service.product.name }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Thể loại </th>
-              <td class="text-center align-middle"> {{ service.product.category.name }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Giá </th>
-              <td class="text-center align-middle"> {{ service.product.price }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Số lượng đã bán </th>
-              <td class="text-center align-middle"> {{ service.product.sold }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Tồn kho </th>
-              <td class="text-center align-middle"> {{ service.product.quantity }}</td>
-            </tr>
-            <tr>
-              <th class="align-middle"> Trạng thái </th>
-              <td class="text-center align-middle"> {{ service.product.status.name }}</td>
-            </tr>
-          </tBody>
-        </table>
-        <a class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">Cập nhật ảnh</a>
-        <a href="/product/edit/{{roleService.role}}/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
-      </div>
-      <!-- content seller, employee, admin end -->
-
-
-
-
       <!-- content end -->
     </div>
     <!-- product detail end -->
@@ -224,7 +180,6 @@
 
     </div>
     <!-- Product owner -->
-
     <!-- Description start -->
     <div class="description">
       <h5>Thông tin chi tiết sản phẩm</h5>
@@ -233,62 +188,9 @@
       </div>
     </div>
     <!-- Description end -->
-
-
   </div>
   <!-- body end -->
-
 </div>
-
-<!-- model start -->
-<!-- Modal -->
-<div *ngIf="service.product" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content ">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa ảnh</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body row row-cols-auto">
-        <div style="height: 350px; width: 350px" class="imgMain border p-2 col position-relative">
-          <img src="{{imgMain}}" alt="" class="full-size rounded">
-          <a class="d-none position-absolute bg-main text-white bottom-0 start-0 full-width py-3"
-            (click)="service.setAvatar()">Đặt làm đại diện</a>
-        </div>
-        <!-- list ảnh start -->
-        <div class="col-6 row row-cols-auto">
-          <div class="col p-2 m-1 border position-relative" style="width: 100px; height: 100px;"
-            [ngClass]="{'selected' : imgMain == img.name}" *ngFor="let img of service.product.picture; let i = index">
-            <span (click)="service.deletePicture(i)"
-              class="position-absolute top-0 start-100 translate-middle p-2 text-danger">
-              <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-              </svg>
-            </span>
-
-            <a (click)="getPicture(img); service.indexImg = i">
-              <img src="{{ img.name }}" class="full-size">
-            </a>
-          </div>
-        </div>
-        <!-- list ảnh end -->
-        <div class="col">
-          <label for="file-input" type="button" class="btn-main">Thêm ảnh</label>
-          <a type="button" class="btn-main" (click)="service.savePicture()">Lưu thay đổi</a>
-          <p class="text-success text-center" [innerHTML]="service.pictrueMessenge"></p>
-          <input id="file-input" class="d-none" multiple type="file" (change)="service.selectPicture($event)">
-        </div>
-      </div>
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- model end -->
 
 
 <!-- modal cart start -->

@@ -1,132 +1,139 @@
 <app-header-seller></app-header-seller>
-<body class="py-5 bg-shadow" style="padding-left: 300px; padding-right: 300px">
-<input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
-<form [formGroup]="formUpdate" (ngSubmit)="onSubmitSeller()">
-  <table class="table bg-white">
-    <tBody>
-    <tr>
-      <th>
-        Ảnh
-      </th>
-      <td>
-        <!-- ảnh start -->
-        <div cdkDropList cdkDropListOrientation="horizontal" class="example-list row row-cols-auto"
-             (cdkDropListDropped)="fire.drop($event)">
-          <div lass="card example-box p-1 border-primary" style="width: 130px; position: relative;"
-               *ngFor="let file of fire.files ; let i = index">
-            <img class="card-img" src="{{file.src}}" cdkDrag>
-            <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
-              Đại diện
+<div class="py-5 bg-shadow" style="padding-left: 200px; padding-right: 200px">
+  <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
+  <form [formGroup]="formUpdate" (ngSubmit)="onSubmitSeller()">
+    <table class="table bg-white">
+      <tBody>
+      <tr>
+        <th>
+          Ảnh
+        </th>
+        <td>
+          <!-- ảnh start -->
+          <div cdkDropList cdkDropListOrientation="horizontal" class="example-list row row-cols-auto"
+               (cdkDropListDropped)="fire.drop($event)">
+            <div lass="card example-box p-1 border-primary" style="position: relative;"
+                 *ngFor="let file of fire.files ; let i = index">
+              <img style="width: 100px; height: 100px" class="card-img" src="{{file.src}}" cdkDrag>
+              <div class="card-footer bg-primary text-white mb-1" [ngClass]="{'d-none' : i!=0}">
+                Đại diện
+              </div>
+              <svg style="position: absolute; right: 5px; top: -5px; color: #8d1e1e" (click)="fire.delete(i)"
+                   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+              </svg>
             </div>
-            <button type="button" class="btn-close" aria-label="Close"
-                    style="position: absolute; right: 0; top: -5px;" (click)="fire.delete(i)"></button>
           </div>
-        </div>
-        <label class="btn btn-outline-primary my-3" for="input-file">
-          Thêm ảnh
-        </label>
-        <span class="fw-light">({{ fire.files.length }}/5)</span>
-        <div
-          *ngIf="fire.files.length > 5 || fire.files.length < 1">
-          <div class="text-danger" *ngIf="fire.files.length > 5">
-            Số lượng ảnh vượt quá quy định, (5 ảnh)
+          <label class="btn btn-outline-primary my-3" for="input-file">
+            Thêm ảnh
+          </label>
+          <span class="fw-light">({{ fire.files.length }}/5)</span>
+          <div
+            *ngIf="fire.files.length > 5 || fire.files.length < 1">
+            <div class="text-danger" *ngIf="fire.files.length > 5">
+              Số lượng ảnh vượt quá quy định, (5 ảnh)
+            </div>
+            <div *ngIf="fire.files.length < 1" class="text-danger">
+              Bạn cần chọn ảnh
+            </div>
           </div>
-          <div *ngIf="fire.files.length < 1" class="text-danger">
-            Bạn cần chọn ảnh
+          <!-- ảnh end -->
+        </td>
+      </tr>
+      <tr>
+        <th class="col-3">
+          Tên
+        </th>
+        <td>
+          <input type="text" class="form-control" placeholder="Nhập tên của sản phẩm" formControlName="name">
+          <div class="fw-light text-right">{{formUpdate.controls.name.value?.length}}/100</div>
+          <div
+            *ngIf="formUpdate.controls.name.invalid && (formUpdate.controls.name.dirty || formUpdate.controls.name.touched)">
+            <div *ngIf="formUpdate.controls.name.errors?.['required']" class="text-danger">
+              Bạn phải nhập tên
+            </div>
+            <div *ngIf="formUpdate.controls.name.errors?.['maxlength']" class="text-danger">
+              Tên nhiều hơn 100 ký tự
+            </div>
           </div>
-        </div>
-        <!-- ảnh end -->
-      </td>
-    </tr>
-    <tr>
-      <th class="col-3">
-        Tên
-      </th>
-      <td>
-        <input type="text" class="form-control" placeholder="Nhập tên của sản phẩm" formControlName="name">
-        <div class="fw-light text-right">{{formUpdate.controls.name.value?.length}}/100</div>
-        <div
-          *ngIf="formUpdate.controls.name.invalid && (formUpdate.controls.name.dirty || formUpdate.controls.name.touched)">
-          <div *ngIf="formUpdate.controls.name.errors?.['required']" class="text-danger">
-            Bạn phải nhập tên
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Giá
+        </th>
+        <td>
+          <input type="number" class="form-control" value="0" placeholder="Nhập giá của sản phẩm"
+                 formControlName="price">
+          <div
+            *ngIf="formUpdate.controls.price.invalid && (formUpdate.controls.price.dirty || formUpdate.controls.price.touched)">
+            <div *ngIf="formUpdate.controls.price.errors?.['required']" class="text-danger">
+              Bạn phải nhập giá cho sản phẩm
+            </div>
           </div>
-          <div *ngIf="formUpdate.controls.name.errors?.['maxlength']" class="text-danger">
-            Tên nhiều hơn 100 ký tự
+        </td>
+      </tr>
+      <tr formGroupName="category">
+        <th>
+          Thể loại
+        </th>
+        <td>
+          <select class="form-select bg-white" formControlName="id" value="">
+            <option value="">Thể loại</option>
+            <option value="{{category.id}}" *ngFor="let category of categoryService.categories">{{category.name}}
+            </option>
+          </select>
+          <div
+            *ngIf="formUpdate.controls.category.controls.id.invalid && (formUpdate.controls.category.controls.id.dirty || formUpdate.controls.category.controls.id.touched)">
+            <div *ngIf="formUpdate.controls.category.controls.id.errors?.['required']" class="text-danger">
+              Bạn phải chọn thể loại cho sản phẩm của mình
+            </div>
           </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Giá
-      </th>
-      <td>
-        <input type="number" class="form-control" value="0" placeholder="Nhập giá của sản phẩm"
-               formControlName="price">
-        <div
-          *ngIf="formUpdate.controls.price.invalid && (formUpdate.controls.price.dirty || formUpdate.controls.price.touched)">
-          <div *ngIf="formUpdate.controls.price.errors?.['required']" class="text-danger">
-            Bạn phải nhập giá cho sản phẩm
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Thông tin chi tiết
+        </th>
+        <td>
+                  <textarea name="" id="" cols="30" rows="4" class="form-control"
+                            placeholder="Thông tin chi tiết của sản phẩm" formControlName="description"></textarea>
+          <div class="fw-light text-right">{{formUpdate.controls.description.value?.length}}/2000</div>
+          <div
+            *ngIf="formUpdate.controls.description.invalid && (formUpdate.controls.description.dirty || formUpdate.controls.description.touched)">
+            <div *ngIf="formUpdate.controls.description.errors?.['required']" class="text-danger">
+              Bạn phải nhập thông tin cho sản phẩm này
+            </div>
+            <div *ngIf="formUpdate.controls.description.errors?.['maxlength']" class="text-danger">
+              Số lượng ký tự đã nhiều hơn 2000!
+            </div>
           </div>
-        </div>
-      </td>
-    </tr>
-    <tr formGroupName="category">
-      <th>
-        Thể loại
-      </th>
-      <td>
-        <select class="form-select bg-white" formControlName="id" value="">
-          <option value="">Thể loại</option>
-          <option value="{{category.id}}" *ngFor="let category of categoryService.categories">{{category.name}}
-          </option>
-        </select>
-        <div
-          *ngIf="formUpdate.controls.category.controls.id.invalid && (formUpdate.controls.category.controls.id.dirty || formUpdate.controls.category.controls.id.touched)">
-          <div *ngIf="formUpdate.controls.category.controls.id.errors?.['required']" class="text-danger">
-            Bạn phải chọn thể loại cho sản phẩm của mình
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Số lượng
+        </th>
+        <td>
+          <input type="number" class="form-control" value="0" formControlName="quantity">
+          <div
+            *ngIf="formUpdate.controls.quantity.invalid && (formUpdate.controls.quantity.dirty || formUpdate.controls.quantity.touched)">
+            <div *ngIf="formUpdate.controls.quantity.errors?.['required']" class="text-danger">
+              Bạn phải nhập giá cho sản phẩm
+            </div>
           </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Thông tin chi tiết
-      </th>
-      <td>
-                <textarea name="" id="" cols="30" rows="4" class="form-control"
-                          placeholder="Thông tin chi tiết của sản phẩm" formControlName="description"></textarea>
-        <div class="fw-light text-right">{{formUpdate.controls.description.value?.length}}/2000</div>
-        <div
-          *ngIf="formUpdate.controls.description.invalid && (formUpdate.controls.description.dirty || formUpdate.controls.description.touched)">
-          <div *ngIf="formUpdate.controls.description.errors?.['required']" class="text-danger">
-            Bạn phải nhập thông tin cho sản phẩm này
-          </div>
-          <div *ngIf="formUpdate.controls.description.errors?.['maxlength']" class="text-danger">
-            Số lượng ký tự đã nhiều hơn 2000!
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Số lượng
-      </th>
-      <td>
-        <input type="number" class="form-control" value="0" formControlName="quantity">
-        <div
-          *ngIf="formUpdate.controls.quantity.invalid && (formUpdate.controls.quantity.dirty || formUpdate.controls.quantity.touched)">
-          <div *ngIf="formUpdate.controls.quantity.errors?.['required']" class="text-danger">
-            Bạn phải nhập giá cho sản phẩm
-          </div>
-        </div>
-      </td>
-    </tr>
-    </tBody>
-  </table>
-  <button type="submit" class="btn btn-primary"
-          [disabled]="!formUpdate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật
-  </button>
-</form>
-</body>
+        </td>
+      </tr>
+      </tBody>
+    </table>
+    <button type="submit" class="btn btn-primary"
+            [disabled]="!formUpdate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật
+    <app-onload style="height: 50px; width: 100px"></app-onload>
+    </button>
+    <span class="px-2 text-success">{{message}}</span>
+  </form>
+</div>
+
 <app-footer></app-footer>
