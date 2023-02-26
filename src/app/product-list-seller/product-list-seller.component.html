@@ -28,7 +28,7 @@
       <td class="text-center align-middle">{{p.status.name}}</td>
       <td class="text-center align-middle">{{p.sold}}</td>
       <td class="text-center align-middle"><a class="btn btn-warning"
-                                              href="">Sửa</a></td>
+                                              href="/seller/update/{{p.id}}">Sửa</a></td>
       <td class="text-center align-middle" (click)="pageService.changeStatus(p.status.id,p.id)"><a
         class="btn btn-danger">{{(p.status.id == 3)?'Ngừng bán':'Mở bán'}}</a></td>
     </tr>

@@ -1,1 +1,70 @@
-<p>bill-seller works!</p>
+<div class="px-5">
+  <div class="row px-3">
+    <button class="col-2 border btn-main text-center" (click)="getAllBill()"  [ngClass]="{'active' : action == 'all'}">Tất cả</button>
+    <button class="col-2 border btn-main text-center" (click)="getAllBillWait()"  [ngClass]="{'active' : action == 'wait'}">Đang chờ</button>
+    <button class="col-2 border btn-main text-center" (click)="getAllBillDone()"  [ngClass]="{'active' : action == 'done'}">Hoàn thành</button>
+    <button class="col-2 border btn-main text-center" (click)="getAllBillCancel()" [ngClass]="{'active' : action == 'cancel'}">Đã hủy</button>
+  </div>
+  <div class="border">
+    <div *ngIf="bills" class="px-4">
+      <div *ngFor="let bill of bills" class="mb-5 bg-light">
+        <a>Khách hàng: {{bill.buyer_name}}</a>
+        <a>Cửa hàng: {{bill.seller_name}}</a>
+        <div>
+          <span>Trạng thái : {{bill.status.name}}</span>
+        </div>
+        <table class="table">
+          <tHead>
+          <tr>
+            <th>Ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng mua</th>
+            <th>Thành tiền</th>
+          </tr>
+          </tHead>
+          <tBody>
+          <tr *ngFor="let op of bill.orderPayments">
+            <td><img style="width: 50px; height: 50px" [src]="op.productDetail.avatar" alt="Ảnh"></td>
+            <td [innerText]="op.productDetail.name">Tên</td>
+            <td [innerText]="op.amount">Số lượng mua</td>
+            <td [innerText]="op.totalPrice | currency : 'VND'">Thành tiền</td>
+          </tr>
+          <tr>
+            <th>Tổng Bill</th>
+            <th [innerText]="bill.total | currency : 'VND'">Tổng bill</th>
+            <td *ngIf="bill.status.id == 5"><button class="btn-main" (click)="doneBill(bill.id)">Đồng ý</button></td>
+            <td *ngIf="bill.status.id == 5"><button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="idCancel = bill.id">Hủy đơn</button></td>
+          </tr>
+          </tBody>
+        </table>
+        <small *ngIf="bill.note" >Chi tiết: {{bill.note}}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hủy đơn</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label  for="recipient-name" class="col-form-label">Lý do hủy đơn:</label>
+            <input #note type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-danger" (click)="cancelBill(note.value)">Hủy đơn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
