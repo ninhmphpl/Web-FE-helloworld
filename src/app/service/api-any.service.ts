@@ -124,6 +124,7 @@ export class APIAny {
     this.onloadService.onload = false
   }
   a = "Lỗi"
+  apiError : any
 
   // bắt lỗi của chương trình
   private handleError(error: HttpErrorResponse) {
@@ -134,9 +135,11 @@ export class APIAny {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
     } else {
-      // Lỗi trả về từ máy chủ
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
+      if(error.status == 400){
+        this.apiError = error
+        document.getElementById("buttonError")?.click()
+      }
+
       console.error(
         `Backend returned code (Xảy ra lỗi phía máy chủ) ${error.status}, body was (Dữ liệu trả về): `, error.error);
     }
