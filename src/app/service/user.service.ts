@@ -4,6 +4,7 @@ import { APIAny } from './api-any.service';
 import { CartService } from './cart.service';
 import { RoleService } from './role.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +34,6 @@ export class UserService {
     }
     this.cartLength = length
   }
-
   getBuyer(){
     let url = environtment.url + '/buyer/info'
     this.api.getMapping(url , (data: any)=>{
@@ -47,6 +47,5 @@ export class UserService {
       action(data)
     })
   }
-
 
 }
