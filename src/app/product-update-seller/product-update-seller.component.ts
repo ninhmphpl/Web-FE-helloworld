@@ -4,7 +4,7 @@ import {FireBaseService} from "../service/fire-base.service";
 import {CategoryService} from "../service/category.service";
 import {APIAny} from "../service/api-any.service";
 import {upFileArray} from "../../environments/firebase";
-import {environtment} from "../../environments/environtment";
+import {environtment, ROLE} from "../../environments/environtment";
 import {ActivatedRoute} from "@angular/router";
 import {OnloadService} from "../service/onload.service";
 
@@ -74,6 +74,7 @@ export class ProductUpdateSellerComponent {
     if (this.formUpdate.valid) {
       this.getValue((data: any) => {
         let url = environtment.url + "/seller/product"
+        if(this.role == ROLE.employee)url = environtment.url + "/employees/product"
         this.api.putMapping(url, data, (data1: any) => {
           console.log(data1)
           this.onloadService.onload = false

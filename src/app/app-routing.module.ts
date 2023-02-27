@@ -51,7 +51,7 @@ const routes: Routes = [
     {path:'bill',component:BillSellerComponent},
     {path:'profile',component:ProfileSellerComponent},
     {path:'update/:id',component:ProductUpdateSellerComponent},
-    {path:'product-detail/:id',component:ProductDetailSellerComponent},
+    {path:'detail/:id',component:ProductDetailSellerComponent},
     {path:'',component:HomeSellerComponent},
   ]},
   {path:'error',component:PageErrorComponent},

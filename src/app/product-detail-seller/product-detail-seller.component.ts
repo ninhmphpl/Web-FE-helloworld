@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {ProductDetailService} from "../service/product-detail.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {RoleService} from "../service/role.service";
 import {APIAny} from "../service/api-any.service";
 
 @Component({
