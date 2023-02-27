@@ -9,4 +9,5 @@ export class ProfileDefaultComponent {
   action = 'bill'
   getBill(){this.action = 'bill'}
   getInfo(){this.action = 'info'}
+  getPassword(){this.action = 'pass'}
 }

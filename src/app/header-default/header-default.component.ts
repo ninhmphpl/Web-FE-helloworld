@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {environtment, ROLE} from 'src/environments/environtment';
-import { Buyer } from '../model/buyer';
 import { UserService } from '../service/user.service';
-import { CartService } from '../service/cart.service';
 import { ProductListPageService } from '../service/product-list-page.service';
-import { RoleService } from '../service/role.service';
-import { BuyerService } from '../service/buyer.service';
 import {APIAny} from "../service/api-any.service";
 import {NotificationService} from "../service/notification.service";
 
@@ -26,9 +22,11 @@ export class HeaderDefaultComponent implements OnInit{
 
   ngOnInit(): void {
     console.log(this.api.getRole())
-    if(this.api.getRole() == ROLE.buyer) this.userService.getCard(()=>{})
-    this.userService.getBuyer()
-    this.notificationService.getNotification((data : any)=> this.notifications = data)
+    if(this.api.getRole() == ROLE.buyer) {
+      this.userService.getCard(()=>{})
+      this.userService.getBuyer()
+      this.notificationService.getNotification((data: any) => this.notifications = data)
+    }
   }
   scroll(element: any) {
     window.scrollTo(element.yPosition)

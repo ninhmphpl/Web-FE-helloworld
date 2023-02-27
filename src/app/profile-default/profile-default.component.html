@@ -3,11 +3,13 @@
   <div class="col-3">
     <button class="col-12 btn-main" (click)="getBill()">Quản lý đơn hàng</button>
     <button class="col-12 btn-main" (click)="getInfo()">Thông tin người dùng</button>
+    <button class="col-12 btn-main" (click)="getPassword()">Đổi mật khẩu</button>
     <a href="/login"><button class="col-12 btn-main">Đăng xuất</button></a>
   </div>
   <div class="col-9">
     <app-bill-buyer *ngIf="action == 'bill'"></app-bill-buyer>
     <app-profile-info *ngIf="action == 'info'"></app-profile-info>
+    <app-change-password *ngIf="action == 'pass'"></app-change-password>
   </div>
 </div>
 

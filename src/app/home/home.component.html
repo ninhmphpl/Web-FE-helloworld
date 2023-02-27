@@ -2,7 +2,6 @@
 <div class="row bg-light">
   <div class="col-9 p-5 mx-auto">
     <div class="row mt-4">
-      <app-carousel></app-carousel>
       <app-filter></app-filter>
       <div class="row row-cols-auto product" *ngIf="productService.page">
         <div class="p-2 position-relative" *ngFor="let product of productService.page.content">
