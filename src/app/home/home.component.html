@@ -10,7 +10,7 @@
             <img class="card-img-top full-width" style="height: 150px;" [src]="product.avatar">
             <div class="card-body">
               <h5 class="card-title"
-                  [innerText]="(product.name.length>18)? (product.name | slice:0:18)+'...':(product.name)"></h5>
+                  [innerText]="(product.name.length>16)? (product.name | slice:0:16)+'...':(product.name)"></h5>
               <p class="card-text" [innerText]="product.price | currency : 'VND'"></p>
             </div>
             <div class="product-hover-overlay">

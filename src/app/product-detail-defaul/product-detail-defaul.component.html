@@ -6,26 +6,27 @@
 
     <div class="row">
       <aside class="col-lg-6">
-        <article class="gallery-wrap">
-          <div class="img-big-wrap img-thumbnail">
-            <a data-fslightbox="mygalley" data-type="image" >
-              <img src='{{ service.product.avatar }}'>
-            </a>
-          </div> <!-- img-big-wrap.// -->
-
-
-          <div class="thumbs-wrap" [ngClass]="{'selected' : imgMain == img.name}"
-               *ngFor='let img of service.product.picture'>
-            <a data-fslightbox="mygalley" data-type="image" (click)='getPicture(img)'>
-              <img src='{{ img.name }}'width="60" height="60">
-
-            </a>
-
+        <!-- img start -->
+      <div class="col-4 pr-3">
+        <div class="img-body">
+          <img src="{{ imgMain }}">
+        </div>
+        <div class="img-footer d-flex flex-row">
+          <div>
           </div>
 
+          <!-- img footer start -->
+          <div class="img-child" [ngClass]="{'selected' : imgMain == img.name}"
+            *ngFor="let img of service.product.picture">
+            <a (click)="getPicture(img)">
+              <img src="{{ img.name }}">
+            </a>
+          </div>
+          <!-- img footer end -->
 
-          <!-- thumbs-wrap.// -->
-        </article> <!-- gallery-wrap .end// -->
+        </div>
+      </div>
+      <!-- img end -->
       </aside>
       <main class="col-lg-6">
         <article class="ps-lg-3">
