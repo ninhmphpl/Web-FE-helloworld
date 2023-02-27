@@ -5,6 +5,7 @@ import { OnloadService } from './onload.service';
 
 import { HttpOptions } from 'src/environments/environtment';
 import { Router } from '@angular/router';
+import swal from 'sweetalert';
 @Injectable({
   providedIn: 'root'
 })
@@ -137,7 +138,7 @@ export class APIAny {
     } else {
       if(error.status == 400){
         this.apiError = error
-        document.getElementById("buttonError")?.click()
+     swal("Chức năng cần phải đăng nhập", "error")
       }
 
       console.error(

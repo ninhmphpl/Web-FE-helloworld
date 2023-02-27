@@ -58,6 +58,8 @@ import { ProductListEmployeeComponent } from './product-list-employee/product-li
 import { ProductDetailEmployeeComponent } from './product-detail-employee/product-detail-employee.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import swal from 'sweetalert';
+
 
 @NgModule({
   declarations: [

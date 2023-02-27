@@ -8,6 +8,7 @@ import { FireBaseService } from './fire-base.service';
 import { upFileArray } from 'src/environments/firebase';
 import { OnloadService } from './onload.service';
 import {UserService} from "./user.service";
+import swal from 'sweetalert';
 
 
 const API_URL = `${environtment.url}`
@@ -58,11 +59,12 @@ export class ProductDetailService {
   }
 
 
-  toCartById(id : number) {
+  toCartById(id : number,name : String) {
     let url = API_URL + `/buyer/to-cart/${id}/${1}`
     this.api.postMapping(url, {}, (data: any) => {
       this.userService.getCard(()=>{})
       this.amount = 1
+      swal("Đã thêm "+ name +" vào giỏ hàng", "Tiếp tục mua sắm", "success");
     })
   }
 
