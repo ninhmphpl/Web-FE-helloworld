@@ -18,7 +18,7 @@
     <tr *ngFor="let p of pageService.page.content">
       <th class="text-center align-middle" scope="">{{p.id}}</th>
       <td class="text-center align-middle">
-        <a href="/seller/detail/{{p.id}}">
+        <a href="/employee/detail/{{p.id}}">
           <img src="{{p.avatar}}" class="" style="height: 100px; width: 100px;;" alt="">
         </a>
       </td>
@@ -28,7 +28,7 @@
       <td class="text-center align-middle">{{p.status.name}}</td>
       <td class="text-center align-middle">{{p.sold}}</td>
       <td class="text-center align-middle"><a class="btn btn-warning"
-                                              href="/seller/update/{{p.id}}">Sửa</a></td>
+                                              href="/employee/update/{{p.id}}">Sửa</a></td>
       <td class="text-center align-middle" (click)="pageService.changeStatus(p.status.id,p.id)"><a
         class="btn btn-danger">{{(p.status.id == 3)?'Ngừng bán':'Mở bán'}}</a></td>
     </tr>

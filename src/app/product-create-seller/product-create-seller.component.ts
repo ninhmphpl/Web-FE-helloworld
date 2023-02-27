@@ -5,6 +5,7 @@ import {FireBaseService} from "../service/fire-base.service";
 import {environtment} from "../../environments/environtment";
 import {CategoryService} from "../service/category.service";
 import {APIAny} from "../service/api-any.service";
+import {OnloadService} from "../service/onload.service";
 
 @Component({
   selector: 'app-product-create-seller',
@@ -18,6 +19,7 @@ export class ProductCreateSellerComponent implements OnInit{
     public fire: FireBaseService,
     public categoryService: CategoryService,
     public api : APIAny,
+    public onloadService : OnloadService
 
   ) {
   }
@@ -60,13 +62,19 @@ export class ProductCreateSellerComponent implements OnInit{
   htmlEscape(str: any) {
     return $('<div/>').text(str).html();
   }
-
+  message : any
   onSubmitSeller() {
+    this.message = ''
+    this.onloadService.onload = true
     if (this.formCreate.valid) {
       this.getValue((data : any)=>{
         let url = environtment.url + "/seller/product"
         this.api.postMapping(url, data, (data1 : any)=>{
           console.log(data1)
+          this.onloadService.onload = false
+          this.message = "Tạo sản phẩm thành công"
+          this.formCreate.reset()
+          this.fire.files = []
         })
       })
     }

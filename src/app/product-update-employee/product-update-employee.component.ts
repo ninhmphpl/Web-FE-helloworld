@@ -1,20 +1,21 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {FireBaseService} from "../service/fire-base.service";
 import {CategoryService} from "../service/category.service";
 import {APIAny} from "../service/api-any.service";
-import {upFileArray} from "../../environments/firebase";
-import {environtment} from "../../environments/environtment";
 import {ActivatedRoute} from "@angular/router";
 import {OnloadService} from "../service/onload.service";
+import {upFileArray} from "../../environments/firebase";
+import {environtment} from "../../environments/environtment";
 
 @Component({
-  selector: 'app-product-update-seller',
-  templateUrl: './product-update-seller.component.html',
-  styleUrls: ['./product-update-seller.component.scss']
+  selector: 'app-product-update-employee',
+  templateUrl: './product-update-employee.component.html',
+  styleUrls: ['./product-update-employee.component.scss']
 })
-export class ProductUpdateSellerComponent {
-  role : any
+export class ProductUpdateEmployeeComponent {
+
+
   id : any
   constructor(
     private bf: FormBuilder,
@@ -29,7 +30,6 @@ export class ProductUpdateSellerComponent {
   ngOnInit(): void {
     this.categoryService.getAllCategory()
     this.getProductDetail()
-    this.role = this.api.getRole()
   }
 
   formUpdate = this.bf.group({
@@ -92,5 +92,4 @@ export class ProductUpdateSellerComponent {
       console.log(this.fire.files)
     })
   }
-
 }
