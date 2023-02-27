@@ -1,109 +1,445 @@
 <!--<app-header-default></app-header-default>-->
-<div class='p-5 bg-light' *ngIf='service.product'>
-  <!-- product detail start -->
-  <div id='body' class='d-flex justify-content-between p-3'>
-    <!-- img start -->
-    <div class='col-4 pr-3'>
-      <div class='img-body'>
-        <img src='{{ imgMain }}'>
-      </div>
-      <div class='img-footer d-flex flex-row'>
-        <div>
-        </div>
+<!--<div class='p-5 bg-light' *ngIf='service.product'>-->
+<!--  &lt;!&ndash; product detail start &ndash;&gt;-->
+<!--  <div id='body' class='d-flex justify-content-between p-3'>-->
+<!--    &lt;!&ndash; img start &ndash;&gt;-->
+<!--    <div class='col-4 pr-3'>-->
+<!--      <div class='img-body'>-->
+<!--        <img src='{{ imgMain }}'>-->
+<!--      </div>-->
+<!--      <div class='img-footer d-flex flex-row'>-->
+<!--        <div>-->
+<!--        </div>-->
 
-        <!-- img footer start -->
-        <div class='img-child' [ngClass]="{'selected' : imgMain == img.name}"
-             *ngFor='let img of service.product.picture'>
-          <a (click)='getPicture(img)'>
-            <img src='{{ img.name }}'>
-          </a>
-        </div>
-        <!-- img footer end -->
+<!--        &lt;!&ndash; img footer start &ndash;&gt;-->
+<!--        <div class='img-child' [ngClass]="{'selected' : imgMain == img.name}"-->
+<!--             *ngFor='let img of service.product.picture'>-->
+<!--          <a (click)='getPicture(img)'>-->
+<!--            <img src='{{ img.name }}'>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; img footer end &ndash;&gt;-->
 
-      </div>
-    </div>
-    <!-- img end -->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; img end &ndash;&gt;-->
 
-    <!-- content start -->
-    <!-- content customer, buyer start -->
-    <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class='col-7 px-5'>
-      <div class='h3'>{{ service.product.name }}</div>
-      <div class='d-flex justify-content-between align-items-center'>
-        <div class='text-1'>
-          <small>Đã bán {{ service.product.sold }} Sản phẩm</small>
-        </div>
-      </div>
-      <!-- price start -->
-      <div id='full-width'>
-        <div class='d-flex justify-content-between align-items-center pt-2'>
-          <h1 class='px-5 text-main bg-shadow full-width rounded py-2'>
-            {{ service.product.price | currency: 'VND' }}
-          </h1>
-        </div>
-      </div>
-      <!-- price end -->
+<!--    &lt;!&ndash; content start &ndash;&gt;-->
+<!--    &lt;!&ndash; content customer, buyer start &ndash;&gt;-->
+<!--    <div *ngIf="(roleService.role == 'CUSTOMER') || (roleService.role == 'BUYER')" class='col-7 px-5'>-->
+<!--      <div class='h3'>{{ service.product.name }}</div>-->
+<!--      <div class='d-flex justify-content-between align-items-center'>-->
+<!--        <div class='text-1'>-->
+<!--          <small>Đã bán {{ service.product.sold }} Sản phẩm</small>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; price start &ndash;&gt;-->
+<!--      <div id='full-width'>-->
+<!--        <div class='d-flex justify-content-between align-items-center pt-2'>-->
+<!--          <h1 class='px-5 text-main bg-shadow full-width rounded py-2'>-->
+<!--            {{ service.product.price | currency: 'VND' }}-->
+<!--          </h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; price end &ndash;&gt;-->
 
-      <table class='info'>
-        <tBody>
+<!--      <table class='info'>-->
+<!--        <tBody>-->
 
-        <!-- ship start -->
-        <tr>
-          <td class='col-5'>
-            Giao hàng
-          </td>
-          <td class='col-7'>
-            <img style='width: 20px;'
-                 src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png'
-                 alt=''>
-            Miễn phí giao hàng
-          </td>
-        </tr>
-        <!-- ship end -->
+<!--        &lt;!&ndash; ship start &ndash;&gt;-->
+<!--        <tr>-->
+<!--          <td class='col-5'>-->
+<!--            Giao hàng-->
+<!--          </td>-->
+<!--          <td class='col-7'>-->
+<!--            <img style='width: 20px;'-->
+<!--                 src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png'-->
+<!--                 alt=''>-->
+<!--            Miễn phí giao hàng-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; ship end &ndash;&gt;-->
 
-        <tr>
-          <td class='col-5'>
-            Thể loại
-          </td>
-          <td class='col-7'>
-            {{ service.product.category.name }}
-          </td>
-        </tr>
-        <!-- số lượng start -->
-        <tr>
-          <td class='col-5'>
-            Số lượng
-          </td>
-          <td class='col-7 '>
-            <div class='btn-group' role='group' aria-label='Basic example'>
-              <a type='button' class='bg-white text-1 border px-3 py-2'
-                 (click)='service.setAmount(service.amount - 1)'>-</a>
-              <input style='width: 40px' class='border text-center' type='number' [(ngModel)]='service.amount'>
-              <a type='button' class='bg-white text-1 border px-3 py-2'
-                 (click)='service.setAmount(service.amount + 1)'>+</a>
-            </div>
-            <p class='text-danger'>{{ service.amountMessage }}</p>
-          </td>
-        </tr>
-        <!-- số lượng end -->
+<!--        <tr>-->
+<!--          <td class='col-5'>-->
+<!--            Thể loại-->
+<!--          </td>-->
+<!--          <td class='col-7'>-->
+<!--            {{ service.product.category.name }}-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; số lượng start &ndash;&gt;-->
+<!--        <tr>-->
+<!--          <td class='col-5'>-->
+<!--            Số lượng-->
+<!--          </td>-->
+<!--          <td class='col-7 '>-->
+<!--            <div class='btn-group' role='group' aria-label='Basic example'>-->
+<!--              <a type='button' class='bg-white text-1 border px-3 py-2'-->
+<!--                 (click)='service.setAmount(service.amount - 1)'>-</a>-->
+<!--              <input style='width: 40px' class='border text-center' type='number' [(ngModel)]='service.amount'>-->
+<!--              <a type='button' class='bg-white text-1 border px-3 py-2'-->
+<!--                 (click)='service.setAmount(service.amount + 1)'>+</a>-->
+<!--            </div>-->
+<!--            <p class='text-danger'>{{ service.amountMessage }}</p>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; số lượng end &ndash;&gt;-->
 
-        </tBody>
-      </table>
-      <div style='margin-top: 20px'>
-        <button [disabled]='service.amount <= 0 ' (click)='service.toCart()' type='button' class='btn btn-cart'
-                style='margin-right: 20px;'>
-          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-cart-plus'
-               viewBox='0 0 16 16'>
-            <path d='M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z' />
-            <path
-              d='M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z' />
-          </svg>
-          Thêm vào giỏ hàng
-        </button>
-        <button type='button' class='btn btn-buy'>Mua ngay</button>
-        <span class='available'> còn {{ service.product.quantity }} sản phẩm</span>
-      </div>
-    </div>
-    <!-- content customer, buyer end-->
-  </div>
+<!--        </tBody>-->
+<!--      </table>-->
+<!--      <div style='margin-top: 20px'>-->
+<!--        <button [disabled]='service.amount <= 0 ' (click)='service.toCart()' type='button' class='btn btn-cart'-->
+<!--                style='margin-right: 20px;'>-->
+<!--          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-cart-plus'-->
+<!--               viewBox='0 0 16 16'>-->
+<!--            <path d='M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z' />-->
+<!--            <path-->
+<!--              d='M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z' />-->
+<!--          </svg>-->
+<!--          Thêm vào giỏ hàng-->
+<!--        </button>-->
+<!--        <button type='button' class='btn btn-buy'>Mua ngay</button>-->
+<!--        <span class='available'> còn {{ service.product.quantity }} sản phẩm</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; content customer, buyer end&ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
+<!--<app-footer></app-footer>-->
+
+
+<!-- ============== SECTION PAGETOP ============== -->
+<div style='background-color: orangered '><section class="bg-primary padding-y-sm" >
+  <div class="container" >
+
+    <ol class="breadcrumb ondark mb-0">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active">Data</li>
+    </ol>
+
+  </div> <!-- container //  -->
+</section>
 </div>
-<app-footer></app-footer>
+
+<!-- ============== SECTION PAGETOP END// ============== -->
+
+<!-- ============== SECTION CONTENT ============== -->
+<section class="padding-y">
+  <div class="container">
+
+    <div class="row">
+      <aside class="col-lg-6">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap img-thumbnail">
+            <a data-fslightbox="mygalley" data-type="image" >
+              <img src='{{ service.product.avatar }}'>
+            </a>
+          </div> <!-- img-big-wrap.// -->
+
+
+          <div class="thumbs-wrap" [ngClass]="{'selected' : imgMain == img.name}"
+               *ngFor='let img of service.product.picture'>
+            <a data-fslightbox="mygalley" data-type="image" (click)='getPicture(img)'>
+              <img src='{{ img.name }}'width="60" height="60">
+
+            </a>
+
+          </div>
+
+
+          <!-- thumbs-wrap.// -->
+        </article> <!-- gallery-wrap .end// -->
+      </aside>
+      <main class="col-lg-6">
+        <article class="ps-lg-3">
+          <h4 class="title text-dark">{{ service.product.name }}  </h4>
+          <div class="rating-wrap my-3">
+            <ul class="rating-stars">
+              <li style="width:80%" class="stars-active"> <img src="assets/images/misc/stars-active.svg" alt=""> </li>
+              <li> <img src="assets/images/misc/starts-disable.svg" alt=""> </li>
+            </ul>
+            <i class="dot"></i>
+            <span class="label-rating text-muted"> <i class="fa fa-shopping-basket"></i> Đã bán {{ service.product.sold }} Sản phẩm </span>
+            <i class="dot"></i>
+          </div> <!-- rating-wrap.// -->
+
+          <div class="mb-3">
+            <var class="price h5">   {{ service.product.price | currency: 'VND' }}</var>
+            <span class="text-muted">/sản phẩm</span>
+          </div>
+
+<!--          <p>Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for men.</p>-->
+
+          <dl class="row">
+            <dt class="col-3">Thể loại</dt>
+            <dd class="col-9">{{ service.product.category.name }}</dd>
+
+          </dl>
+
+          <hr>
+
+          <div class="row mb-4">
+   <!-- col.// -->
+            <div class="col-md-4 col-6 mb-3">
+              <label class="form-label d-block"> Số lượng </label>
+              <tr>
+                <br>
+                <td class='col-7 '>
+                  <div class='btn-group' role='group' aria-label='Basic example'>
+                    <a type='button' class='bg-white text-1 border px-3 py-2'
+                       (click)='service.setAmount(service.amount - 1)'>-</a>
+                    <input style='width: 40px' class='border text-center' type='number' [(ngModel)]='service.amount'>
+                    <a type='button' class='bg-white text-1 border px-3 py-2'
+                       (click)='service.setAmount(service.amount + 1)'>+</a>
+                  </div>
+                  <p class='text-danger'>{{ service.amountMessage }}</p>
+                </td>
+              </tr>
+              <span class='available'> Còn {{ service.product.quantity }} sản phẩm</span>
+            </div> <!-- col.// -->
+          </div> <!-- row.// -->
+          <button [disabled]='service.amount <= 0 ' (click)='service.toCart()' type='button' class='btn btn-cart'
+                  style='margin-right: 20px; background-color: orangered'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-cart-plus'
+                 viewBox='0 0 16 16'>
+              <path d='M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z' />
+              <path
+                d='M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z' />
+            </svg>
+            Thêm vào giỏ hàng
+          </button>
+        </article> <!-- product-info-aside .// -->
+      </main> <!-- col.// -->
+    </div> <!-- row.// -->
+
+  </div> <!-- container .//  -->
+</section>
+<!-- ============== SECTION CONTENT END// ============== -->
+
+<!-- ============== SECTION  ============== -->
+<section class="padding-y bg-light border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- =================== COMPONENT SPECS ====================== -->
+        <div class="card">
+          <header class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link active">Mô tả chi tiết sản phẩm</a>
+              </li>
+            </ul>
+          </header>
+          <div class="tab-content" >
+            <article id="tab_specs" class="tab-pane show active card-body">
+              <p>{{service.product.description}} </p>
+              <ul class="list-check cols-two">
+                <li>Kiểu dáng thanh lịch </li>
+                <li>Màu sắc hài hòa trang nhã </li>
+                <li>Hàng chính hãng </li>
+                <li>Hỗ trợ trả góp </li>
+                <li>Thanh toán dễ dàng </li>
+                <li>Hậu mãi dài lâu </li>
+                <li>Thiết kế hiện đại</li>
+              </ul>
+              <table class="table border table-hover">
+                🔶QUY ĐỊNH ĐỔI TRẢ HÀNG: Quý khách có quyền đổi trả hàng trong vòng 03 ngày kể từ ngày nhận hàng (với điều kiện GIÀY CÒN MỚI NGUYÊN-CHƯA QUA SỬ DỤNG) cho những trường hợp sau:
+                <br>
+                ✔️Hàng lỗi nghiêm trọng do sản xuất; hàng giao sai mẫu, nhầm size. Anh/chị vui lòng inbox lại Shop để được hướng dẫn trả hàng/hoàn tiền và Shopee sẽ hỗ trợ 100% phí ship.
+                <br>
+                ✔️Trường hợp anh/chị đổi giày do muốn đổi size, đổi mẫu khác thì cũng xin inbox lại shop để được hướng dẫn. Nếu anh/chị không đến đổi trực tiếp được thì chi phí ship 2 chiều sẽ chịu 100% để thuê bên vận chuyển, bưu điện đi đổi hộ.
+                Vì vậy, anh/chị vui lòng đọc kỹ quy định đổi trả hàng ạ😊
+              </table>
+            </article> <!-- tab-content.// -->
+
+          </div>
+        </div>
+        <!-- =================== COMPONENT SPECS .// ================== -->
+      </div> <!-- col.// -->
+      <aside class="col-lg-4">
+        <!-- =================== COMPONENT ADDINGS ====================== -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Similar items</h5>
+
+            <article class="itemside mb-3">
+              <a href="#" class="aside">
+                <img src="assets/images/items/8.webp" width="96" height="96" class="img-md img-thumbnail">
+              </a>
+              <div class="info">
+                <a href="#" class="title mb-1"> Rucksack Backpack Large <br> Line Mounts </a>
+                <strong class="price"> $38.90</strong> <!-- price.// -->
+              </div>
+            </article>
+
+            <article class="itemside mb-3">
+              <a href="#" class="aside">
+                <img src="assets/images/items/9.webp" width="96" height="96" class="img-md img-thumbnail">
+              </a>
+              <div class="info">
+                <a href="#" class="title mb-1"> Summer New Men's Denim <br> Jeans Shorts  </a>
+                <strong class="price"> $29.50</strong> <!-- price.// -->
+              </div>
+            </article>
+
+            <article class="itemside mb-3">
+              <a href="#" class="aside">
+                <img src="assets/images/items/10.webp" width="96" height="96" class="img-md img-thumbnail">
+              </a>
+              <div class="info">
+                <a href="#" class="title mb-1"> T-shirts with multiple colors, for men and lady </a>
+                <strong class="price"> $120.00</strong> <!-- price.// -->
+              </div>
+            </article>
+
+            <article class="itemside mb-3">
+              <a href="#" class="aside">
+                <img src="assets/images/items/11.webp" width="96" height="96" class="img-md img-thumbnail">
+              </a>
+              <div class="info">
+                <a href="#" class="title mb-1"> Blazer Suit Dress Jacket for Men, Blue color </a>
+                <strong class="price"> $339.90</strong> <!-- price.// -->
+              </div>
+            </article>
+
+          </div> <!-- card-body .// -->
+        </div> <!-- card .// -->
+        <!-- =================== COMPONENT ADDINGS .// ================== -->
+      </aside> <!-- col.// -->
+    </div>
+
+    <br><br>
+
+  </div><!-- container // -->
+</section>
+<footer class="section-footer bg-primary footer-dark">
+  <div class="container">
+    <section class="footer-main padding-y">
+      <div class="row">
+        <aside class="col-12 col-sm-12 col-lg-3">
+          <article class="me-lg-4">
+            <p class="mt-3"> © 2021- 2022 Therichpost. <br> All rights reserved. </p>
+          </article>
+        </aside>
+        <aside class="col-6 col-sm-4 col-lg-2">
+          <h6 class="title">Store</h6>
+          <ul class="list-menu mb-4">
+            <li> <a href="#">About us</a></li>
+            <li> <a href="#">Find store</a></li>
+            <li> <a href="#">Categories</a></li>
+            <li> <a href="#">Blogs</a></li>
+          </ul>
+        </aside>
+        <aside class="col-6 col-sm-4 col-lg-2">
+          <h6 class="title">Information</h6>
+          <ul class="list-menu mb-4">
+            <li> <a href="#">Help center</a></li>
+            <li> <a href="#">Money refund</a></li>
+            <li> <a href="#">Shipping info</a></li>
+            <li> <a href="#">Refunds</a></li>
+          </ul>
+        </aside>
+        <aside class="col-6 col-sm-4  col-lg-2">
+          <h6 class="title">Support</h6>
+          <ul class="list-menu mb-4">
+            <li> <a href="#"> Help center </a></li>
+            <li> <a href="#"> Documents </a></li>
+            <li> <a href="#"> Account restore </a></li>
+            <li> <a href="#"> My Orders </a></li>
+          </ul>
+        </aside>
+        <aside class="col-12 col-sm-12 col-lg-3">
+          <h6 class="title">Newsletter</h6>
+          <p>Stay in touch with latest updates about our products and offers </p>
+
+          <form class="mb-3">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Email">
+              <button class="btn btn-light" type="submit">
+                Join
+              </button>
+            </div> <!-- input-group.// -->
+          </form>
+        </aside>
+      </div> <!-- row.// -->
+    </section>  <!-- footer-top.// -->
+
+    <section class="footer-bottom d-flex justify-content-lg-between border-top">
+      <div>
+        <i class="fab fa-lg fa-cc-visa"></i>
+        <i class="fab fa-lg fa-cc-amex"></i>
+        <i class="fab fa-lg fa-cc-mastercard"></i>
+        <i class="fab fa-lg fa-cc-paypal"></i>
+      </div>
+      <nav class="dropup">
+        <button class="dropdown-toggle btn d-flex align-items-center py-0" type="button" data-bs-toggle="dropdown">
+          <img src="assets/images/flag-usa.webp" class="me-2" height="20">
+          <span>English</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Russian</a></li>
+          <li><a class="dropdown-item" href="#">Arabic</a></li>
+          <li><a class="dropdown-item" href="#">Spanish</a></li>
+        </ul>
+      </nav>
+
+    </section>
+  </div> <!-- container end.// -->
+</footer>
+
+
+<aside class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas_cart">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Your cart (3) </h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <figure class="itemside mb-4">
+      <div class="aside">
+        <img src="assets/images/items/14.webp" class="border img-sm rounded">
+      </div>
+      <figcaption class="info">
+        <a href="#" class="btn btn-icon btn-light float-end"><i class="fa fa-trash"></i></a>
+        <p> Leather Wallet for Men</p>
+        <span class="text-muted">1 x $200.95 </span> <br>
+        <strong class="price"> $400.90 </strong>
+      </figcaption>
+    </figure>
+
+    <figure class="itemside  mb-4">
+      <div class="aside">
+        <img src="assets/images/items/2.webp" class="border img-sm rounded">
+      </div>
+      <figcaption class="info">
+        <a href="#" class="btn btn-icon btn-light float-end"><i class="fa fa-trash"></i></a>
+        <p> Canon EOS 1400 Black </p>
+        <span class="text-muted">2 x $169.95 </span> <br>
+        <strong class="price"> $339.90 </strong>
+      </figcaption>
+    </figure>
+
+    <figure class="itemside  mb-4">
+      <div class="aside">
+        <img src="assets/images/items/11.webp" class="border img-sm rounded">
+      </div>
+      <figcaption class="info">
+        <a href="#" class="btn btn-icon btn-light float-end"><i class="fa fa-trash"></i></a>
+        <p> Winter Jacket for men and lady </p>
+        <span class="text-muted">2 x $169.95 </span> <br>
+        <strong class="price"> $339.90 </strong>
+      </figcaption>
+    </figure>
+    <hr>
+
+    <p class="mb-3 text-center"> Subtotal:  <strong class="text-danger">$893.00</strong>  </p>
+    <div class="mb-3">
+      <a href="#" class="btn w-100 btn-success"> Checkout </a>
+    </div>
+    <p class="mb-3 text-center"> <img src="assets/images/payments.webp" height="22">  </p>
+
+  </div> <!-- offcanvas-body -->
+</aside> <!-- offcanvas -->
+<!-- =============== SECTION  END// ============== -->
