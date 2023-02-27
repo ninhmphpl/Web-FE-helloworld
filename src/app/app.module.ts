@@ -50,6 +50,7 @@ import { ProductListSellerComponent } from './product-list-seller/product-list-s
 import { ProductCreateSellerComponent } from './product-create-seller/product-create-seller.component';
 import { ProductUpdateSellerComponent } from './product-update-seller/product-update-seller.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,8 +91,7 @@ import { ProductUpdateSellerComponent } from './product-update-seller/product-up
     HeaderSellerComponent,
     ProductListSellerComponent,
     ProductCreateSellerComponent,
-    ProductUpdateSellerComponent,
-
+    ProductUpdateSellerComponent
   ],
   imports: [
     BrowserModule,
