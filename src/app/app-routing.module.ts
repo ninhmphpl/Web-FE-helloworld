@@ -29,7 +29,6 @@ import {ProductUpdateEmployeeComponent} from "./product-update-employee/product-
 const routes: Routes = [
   {path:'',children:[
     {path:'',component:HomeComponent},
-    {path:'manager',component:HomeManagerComponent},
     {path:'profile',component:ProfileDefaultComponent}
   ]},
   {path:'employee',children:[

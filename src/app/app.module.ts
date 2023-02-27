@@ -56,6 +56,8 @@ import { ProductCreateEmployeeComponent } from './product-create-employee/produc
 import { ProductUpdateEmployeeComponent } from './product-update-employee/product-update-employee.component';
 import { ProductListEmployeeComponent } from './product-list-employee/product-list-employee.component';
 import { ProductDetailEmployeeComponent } from './product-detail-employee/product-detail-employee.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { ProductDetailEmployeeComponent } from './product-detail-employee/produc
     ProductUpdateEmployeeComponent,
     ProductListEmployeeComponent,
     ProductDetailEmployeeComponent,
+    HomeAdminComponent,
+    ChangePasswordComponent,
 
   ],
   imports: [

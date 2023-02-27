@@ -1,27 +1,13 @@
-<div class="container-fluid px-0 bg-light">
-  <app-header class=""></app-header>
-
-  <div class="row mt-4">
-    <app-nav class="flex-shrink-0 p-3 bg-white col-3 shadow mt-3"></app-nav>
-    <!--    <app-product class="col-9"></app-product>-->
-<!--    <app-admin-display-employee class="col-9"></app-admin-display-employee>-->
-
-  <!-- body start -->
-
-    <div class="col-9 px-4">
-      <!-- <a class="nav-link" [routerLink]="['/formcreate',0]">Thêm nhân viên mới</a> -->
-
-      <!-- tìm kiếm start -->
+<div class="bg-light">
+  <div class="row">
+        <div class="col-9 px-4">
       <div class="input-group mb-3">
         <form #searchProduct="ngForm" (keydown)="onSubmit(searchName)" class="row">
           <input name="search" [(ngModel)]="searchName" type="text" class="form-control col-8"
                  placeholder="Tìm kiếm nhân viên">
           <a class="btn-main col-4" type="">Tìm kiếm</a>
-
         </form>
       </div>
-      <!-- tìm kiếm end -->
-
       <!-- bảng start -->
       <table class="table bg-white">
         <thead>
@@ -53,7 +39,6 @@
         </tbody>
       </table>
       <!-- bảng end -->
-
       <!-- điều trang start -->
       <div class="d-flex justify-content-center">
         <a type="button" class="btn-main mx-2" (click)="adminService.preePage()"
@@ -66,11 +51,6 @@
           [ngClass]="{'d-none' : adminService.page.last }"> Trang sau</a>
       </div>
       <!-- điều trang end -->
-
-
     </div>
-  <!-- body end -->
-
   </div>
-  <app-footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-white"></app-footer>
 </div>

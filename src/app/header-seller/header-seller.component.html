@@ -11,6 +11,23 @@
       </a>
     </div>
     <!-- logo end -->
+    <div class="col-3 p-3 row row-cols-auto" *ngIf="userService.user">
+      <a class="col text-white" style="text-align: left" [innerText]="'Cửa hàng : '+ userService.user.name">Name
+        User</a>
+      <div class="col position-relative text-white" href="" (mouseover)="notification.hidden = false"
+           (mouseout)="notification.hidden = true">Thông báo
+        <div #notification style="position: absolute; right: 0; z-index: 100" hidden="true">
+          <ul class="bg-light text-dark list-group" style="min-width: 260px;
+                      max-height: 300px !important;
+                      overflow-y: auto !important;">
+            <li class="list-group-item" *ngFor="let n of notifications">
+              <a href="" class="text-dark" [innerText]="n.name"></a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

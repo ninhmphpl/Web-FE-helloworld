@@ -40,6 +40,27 @@ export class UserService {
       this.user = data
     })
   }
+
+  getSeller(){
+    let url = environtment.url + '/seller/info'
+    this.api.getMapping(url, (data : any)=>{
+      this.user = data
+    })
+  }
+
+  getEmployee(){
+    let url = environtment.url + '/employees/info'
+    this.api.getMapping(url, (data : any)=>{
+      this.user = data
+    })
+  }
+
+  getAdmin(){
+    let url = environtment.url + '/admin/info'
+    this.api.getMapping(url, (data : any)=>{
+      this.user = data
+    })
+  }
   getBuyerAction(action : any){
     let url = environtment.url + '/buyer/info'
     this.api.getMapping(url , (data: any)=>{

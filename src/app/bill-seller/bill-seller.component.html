@@ -12,6 +12,7 @@
         <a class="col text-dark p-3">Mã đơn hàng : {{bill.id}}</a>
         <a class="col text-dark p-3">Khách hàng: {{bill.buyer_name}}</a>
         <a class="col text-dark p-3">Cửa hàng: {{bill.seller_name}}</a>
+        <a class="col text-dark p-3">Thời gian: {{bill.timeBuy | date : 'hh:mm-dd/MM/YYYY'}}</a>
         </div>
         <div>
           <span>Trạng thái : {{bill.status.name}}</span>
