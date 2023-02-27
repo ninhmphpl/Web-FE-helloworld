@@ -14,7 +14,7 @@ import {OnloadService} from "../service/onload.service";
   styleUrls: ['./product-update-seller.component.scss']
 })
 export class ProductUpdateSellerComponent {
-
+  role : any
   id : any
   constructor(
     private bf: FormBuilder,
@@ -29,6 +29,7 @@ export class ProductUpdateSellerComponent {
   ngOnInit(): void {
     this.categoryService.getAllCategory()
     this.getProductDetail()
+    this.role = this.api.getRole()
   }
 
   formUpdate = this.bf.group({

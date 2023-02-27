@@ -1,4 +1,8 @@
-<app-header-seller></app-header-seller>
+
+<div *ngIf="role == 'ROLE_EMPLOYEE'; then employee ; else seller "></div>
+
+<ng-template #seller><app-header-seller></app-header-seller></ng-template>
+<ng-template #employee><app-header-employee></app-header-employee></ng-template>
 
 <div class="p-5 bg-light" *ngIf="service.product">
   <!-- product detail start -->
@@ -57,7 +61,7 @@
         </tBody>
       </table>
       <a class="btn-main" data-bs-toggle="modal" data-bs-target="#exampleModal">Cập nhật ảnh</a>
-      <a href="/seller/update/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
+      <a href="/{{(role=='ROLE_EMPLOYEE')?'employee':'seller'}}/update/{{service.product.id}}" class="btn-main">Cập nhật thông tin</a>
     </div>
     <!-- content seller, employee, admin end -->
   </div>

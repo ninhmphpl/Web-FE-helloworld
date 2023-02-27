@@ -22,6 +22,9 @@ import {ProfileSellerComponent} from "./profile-seller/profile-seller.component"
 import {ProductUpdateSellerComponent} from "./product-update-seller/product-update-seller.component";
 import {ProductDetailSellerComponent} from "./product-detail-seller/product-detail-seller.component";
 import {HomeEmployeeComponent} from "./home-employee/home-employee.component";
+import {ProductDetailEmployeeComponent} from "./product-detail-employee/product-detail-employee.component";
+import {ProductCreateEmployeeComponent} from "./product-create-employee/product-create-employee.component";
+import {ProductUpdateEmployeeComponent} from "./product-update-employee/product-update-employee.component";
 
 const routes: Routes = [
   {path:'',children:[
@@ -30,8 +33,8 @@ const routes: Routes = [
     {path:'profile',component:ProfileDefaultComponent}
   ]},
   {path:'employee',children:[
-    {path:'detail/:d',component:EmployeeDetailComponent},
-    {path:'edit/:d',component:EmployeeEditComponent},
+    {path:'detail/:id',component:ProductDetailSellerComponent},
+    {path:'update/:id',component:ProductUpdateSellerComponent},
     {path:'',component:HomeEmployeeComponent},
   ]},
   {path:'product',children:[

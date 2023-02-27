@@ -1,4 +1,10 @@
-<app-header-seller></app-header-seller>
+
+<div *ngIf="role == 'ROLE_EMPLOYEE'; then employee ; else seller "></div>
+
+<ng-template #seller><app-header-seller></app-header-seller></ng-template>
+<ng-template #employee><app-header-employee></app-header-employee></ng-template>
+
+
 <div class="py-5 bg-shadow" style="padding-left: 200px; padding-right: 200px">
   <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
   <form [formGroup]="formUpdate" (ngSubmit)="onSubmitSeller()">

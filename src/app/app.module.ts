@@ -54,6 +54,8 @@ import { HomeEmployeeComponent } from './home-employee/home-employee.component';
 import { HeaderEmployeeComponent } from './header-employee/header-employee.component';
 import { ProductCreateEmployeeComponent } from './product-create-employee/product-create-employee.component';
 import { ProductUpdateEmployeeComponent } from './product-update-employee/product-update-employee.component';
+import { ProductListEmployeeComponent } from './product-list-employee/product-list-employee.component';
+import { ProductDetailEmployeeComponent } from './product-detail-employee/product-detail-employee.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +103,8 @@ import { ProductUpdateEmployeeComponent } from './product-update-employee/produc
     HeaderEmployeeComponent,
     ProductCreateEmployeeComponent,
     ProductUpdateEmployeeComponent,
+    ProductListEmployeeComponent,
+    ProductDetailEmployeeComponent,
 
   ],
   imports: [
