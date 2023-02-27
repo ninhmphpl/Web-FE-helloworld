@@ -52,9 +52,10 @@ export class BuyerService {
       this.buyer = data
     })
   }
-getBuyerId(id : number){
+getBuyerId(id : number, action :any){
   this.api.getMapping(this.urlBuyerProfile +id , (data : any)=>{
     this.buyer = data
+    action(data)
   })
 
 }
@@ -72,9 +73,9 @@ getBuyerId(id : number){
   }
   checkAlls = false
 
-  updateEmployee(buyer: Buyer, action : any){
+  updateBuyer(buyer: Buyer, action : any){
     let url = environtment.url
-    this.api.putMapping(url+'/buyer/update', buyer, (data : any) => {
+    this.api.putMapping(url+'/buyer/profile/update', buyer, (data : any) => {
       action()
     })
 
