@@ -1,0 +1,19 @@
+.login {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://photo-cms-ngaynay.epicdn.me/w890/Uploaded/2023/uncdwpjwq/2022_11_26/45swuzdkbpqipeb0vde6n-8xy9kn9kdwq4vwzvt2n8zmirnwu5-lbfaefp0wcttumgmkqaepzwqmwbfsgdybr0f3u6h5i3atllg6pssqipxkjgjk7ongnn1woesxamonynewkw0ccnijgngi5blhw-o-cv4uc2xvezezjyzwae2pxmgwwosuqyzyit2-328.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
