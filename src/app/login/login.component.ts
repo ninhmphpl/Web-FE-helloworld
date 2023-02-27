@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit{
       localStorage.setItem('user_web', JSON.stringify(data))
       this.goPage()
     })
+    this.loginMessage = "Mật khẩu không đúng"
+
   }
 
   goPage(){
@@ -50,6 +52,5 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/admin'])
       return
     }
-    this.loginMessage = "Mật khẩu không đúng"
   }
 }

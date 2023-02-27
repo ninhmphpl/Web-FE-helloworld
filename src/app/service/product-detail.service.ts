@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environtment } from "../../environments/environtment";
+import {environtment, ROLE} from "../../environments/environtment";
 import { ProductDetail } from "../model/product";
 import { APIAny } from './api-any.service';
 import { CartService } from './cart.service';
@@ -7,6 +7,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FireBaseService } from './fire-base.service';
 import { upFileArray } from 'src/environments/firebase';
 import { OnloadService } from './onload.service';
+import {UserService} from "./user.service";
 
 
 const API_URL = `${environtment.url}`
@@ -21,7 +22,7 @@ export class ProductDetailService {
   constructor(
     public api: APIAny,
     public fireService: FireBaseService,
-    public onLoad: OnloadService,
+    public userService: UserService,
   ) { }
 
 
@@ -60,8 +61,8 @@ export class ProductDetailService {
   toCartById(id : number) {
     let url = API_URL + `/buyer/to-cart/${id}/${1}`
     this.api.postMapping(url, {}, (data: any) => {
+      this.userService.getCard(()=>{})
       this.amount = 1
-      document.getElementById('modal')?.click()
     })
   }
 
@@ -109,7 +110,8 @@ export class ProductDetailService {
 
   pictrueMessenge = ""
   savePicture() {
-    let url = API_URL + "/product/editPicture/" + this.product.id
+    let url = API_URL + "/seller/editPicture/" + this.product.id
+    if(this.api.getRole() == ROLE.employee) url = API_URL + "/employees/editPicture/" + this.product.id
     this.api.putMapping(url, this.product.picture, () => {
       this.pictrueMessenge = "Thay đổi thành công"
       setTimeout(() => {

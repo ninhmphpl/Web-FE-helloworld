@@ -1,5 +1,25 @@
-<div>
-<h1>{{ onload.error[0] }}}</h1>
-<p>Name: {{ onload.error[1] }}}</p>
-</div>
+<!-- Button trigger modal -->
+<button id="buttonError" class="d-none" data-bs-toggle="modal" data-bs-target="#errorModal">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="api.apiError">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>Lỗi</h1>
+        <p *ngIf="api.apiError.status == 400">Phiên đăng nhập đã hết hạn</p>
+        <p>Lỗi từ máy chủ : {{api.apiError.error}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/login" *ngIf="api.apiError.status == 400" type="button" class="btn btn-primary">Trở lại đăng nhập</a>
+      </div>
+    </div>
+  </div>
+</div>

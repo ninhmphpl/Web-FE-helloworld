@@ -1,10 +1,4 @@
-
-<div *ngIf="role == 'ROLE_EMPLOYEE'; then employee ; else seller "></div>
-
-<ng-template #seller><app-header-seller></app-header-seller></ng-template>
-<ng-template #employee><app-header-employee></app-header-employee></ng-template>
-
-
+<app-header-seller></app-header-seller>
 <div class="py-5 bg-shadow" style="padding-left: 200px; padding-right: 200px">
   <input type="file" class="d-none" id="input-file" multiple accept=".jpg, .png" (change)="fire.selectFile($event)">
   <form [formGroup]="formUpdate" (ngSubmit)="onSubmitSeller()">
@@ -136,7 +130,7 @@
     </table>
     <button type="submit" class="btn btn-primary"
             [disabled]="!formUpdate.valid || fire.files.length > 5 || fire.files.length < 1">Cập nhật
-    <app-onload style="height: 50px; width: 100px"></app-onload>
+      <app-onload style="height: 50px; width: 100px"></app-onload>
     </button>
     <span class="px-2 text-success">{{message}}</span>
   </form>

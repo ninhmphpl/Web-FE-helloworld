@@ -1,38 +1,36 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {FireBaseService} from "../service/fire-base.service";
 import {CategoryService} from "../service/category.service";
 import {APIAny} from "../service/api-any.service";
-import {upFileArray} from "../../environments/firebase";
-import {environtment, ROLE} from "../../environments/environtment";
-import {ActivatedRoute} from "@angular/router";
 import {OnloadService} from "../service/onload.service";
+import {upFileArray} from "../../environments/firebase";
+import {environtment} from "../../environments/environtment";
+import {SellerService} from "../service/seller.service";
 
 @Component({
-  selector: 'app-product-update-seller',
-  templateUrl: './product-update-seller.component.html',
-  styleUrls: ['./product-update-seller.component.scss']
+  selector: 'app-product-create-employee',
+  templateUrl: './product-create-employee.component.html',
+  styleUrls: ['./product-create-employee.component.scss']
 })
-export class ProductUpdateSellerComponent {
-  role : any
-  id : any
+export class ProductCreateEmployeeComponent {
+
   constructor(
     private bf: FormBuilder,
     public fire: FireBaseService,
     public categoryService: CategoryService,
-    public api: APIAny,
-    private routerActive: ActivatedRoute,
+    public api : APIAny,
     public onloadService : OnloadService,
+    public sellerService: SellerService,
+
   ) {
   }
 
   ngOnInit(): void {
     this.categoryService.getAllCategory()
-    this.getProductDetail()
-    this.role = this.api.getRole()
   }
 
-  formUpdate = this.bf.group({
+  formCreate = this.bf.group({
     id: 0,
     name: ['', [Validators.required, Validators.maxLength(100)]],
     price: [0, [Validators.required]],
@@ -49,7 +47,7 @@ export class ProductUpdateSellerComponent {
   })
 
   getValue(action: any) {
-    let productDetail: any = this.formUpdate.value;
+    let productDetail: any = this.formCreate.value;
     upFileArray(this.fire.files, () => {
       let urlImg = [];
       for (let file of this.fire.files) {
@@ -57,8 +55,8 @@ export class ProductUpdateSellerComponent {
       }
       productDetail.picture = urlImg;
       productDetail.description = this.htmlEscape(productDetail.description)
-      productDetail.id = this.id
       console.log(productDetail);
+
       action(productDetail)
     })
   }
@@ -66,32 +64,26 @@ export class ProductUpdateSellerComponent {
   htmlEscape(str: any) {
     return $('<div/>').text(str).html();
   }
-
   message : any
+  sellerMeasser : any
   onSubmitSeller() {
     this.message = ''
+    this.sellerMeasser = ''
     this.onloadService.onload = true
-    if (this.formUpdate.valid) {
-      this.getValue((data: any) => {
-        let url = environtment.url + "/seller/product"
-        if(this.role == ROLE.employee)url = environtment.url + "/employees/product"
-        this.api.putMapping(url, data, (data1: any) => {
+    if (this.formCreate.valid && this.sellerService.seller) {
+      this.getValue((data : any)=>{
+        let url = environtment.url + '/employees/create-product/' + this.sellerService.seller.id
+        this.api.postMapping(url, data, (data1 : any)=>{
           console.log(data1)
           this.onloadService.onload = false
-          this.message = "Cập nhật thành công"
+          this.message = "Tạo sản phẩm thành công"
+          this.formCreate.reset()
+          this.fire.files = []
         })
       })
+    }else{
+      this.sellerMeasser = 'Bạn phải chọn cửaa hàng để tạo sản phẩm'
     }
-  }
-
-  getProductDetail() {
-    this.id = Number(this.routerActive.snapshot.paramMap.get("id"))
-    let url = environtment.url + "/product/" + this.id
-    this.api.getMapping(url, (data: any) => {
-      this.formUpdate.patchValue(data);
-      this.fire.renderFormArrayImg(data.picture)
-      console.log(this.fire.files)
-    })
   }
 
 }

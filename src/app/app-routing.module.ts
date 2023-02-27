@@ -20,6 +20,11 @@ import {HomeSellerComponent} from "./home-seller/home-seller.component";
 import {BillSellerComponent} from "./bill-seller/bill-seller.component";
 import {ProfileSellerComponent} from "./profile-seller/profile-seller.component";
 import {ProductUpdateSellerComponent} from "./product-update-seller/product-update-seller.component";
+import {ProductDetailSellerComponent} from "./product-detail-seller/product-detail-seller.component";
+import {HomeEmployeeComponent} from "./home-employee/home-employee.component";
+import {ProductDetailEmployeeComponent} from "./product-detail-employee/product-detail-employee.component";
+import {ProductCreateEmployeeComponent} from "./product-create-employee/product-create-employee.component";
+import {ProductUpdateEmployeeComponent} from "./product-update-employee/product-update-employee.component";
 
 const routes: Routes = [
   {path:'',children:[
@@ -28,9 +33,9 @@ const routes: Routes = [
     {path:'profile',component:ProfileDefaultComponent}
   ]},
   {path:'employee',children:[
-    {path:'detail/:d',component:EmployeeDetailComponent},
-    {path:'edit/:d',component:EmployeeEditComponent},
-    {path:'',component:EmployeeListComponent},
+    {path:'detail/:id',component:ProductDetailSellerComponent},
+    {path:'update/:id',component:ProductUpdateSellerComponent},
+    {path:'',component:HomeEmployeeComponent},
   ]},
   {path:'product',children:[
     {path:'detail/:id',component:ProductDetailDefaulComponent},
@@ -46,6 +51,7 @@ const routes: Routes = [
     {path:'bill',component:BillSellerComponent},
     {path:'profile',component:ProfileSellerComponent},
     {path:'update/:id',component:ProductUpdateSellerComponent},
+    {path:'detail/:id',component:ProductDetailSellerComponent},
     {path:'',component:HomeSellerComponent},
   ]},
   {path:'error',component:PageErrorComponent},

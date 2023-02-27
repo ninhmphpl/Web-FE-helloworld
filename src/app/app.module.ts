@@ -50,6 +50,13 @@ import { ProductListSellerComponent } from './product-list-seller/product-list-s
 import { ProductCreateSellerComponent } from './product-create-seller/product-create-seller.component';
 import { ProductUpdateSellerComponent } from './product-update-seller/product-update-seller.component';
 import { ProfileBuyerEditComponent } from './profile-buyer-edit/profile-buyer-edit.component';
+import { ProductDetailSellerComponent } from './product-detail-seller/product-detail-seller.component';
+import { HomeEmployeeComponent } from './home-employee/home-employee.component';
+import { HeaderEmployeeComponent } from './header-employee/header-employee.component';
+import { ProductCreateEmployeeComponent } from './product-create-employee/product-create-employee.component';
+import { ProductUpdateEmployeeComponent } from './product-update-employee/product-update-employee.component';
+import { ProductListEmployeeComponent } from './product-list-employee/product-list-employee.component';
+import { ProductDetailEmployeeComponent } from './product-detail-employee/product-detail-employee.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +99,13 @@ import { ProfileBuyerEditComponent } from './profile-buyer-edit/profile-buyer-ed
     ProductListSellerComponent,
     ProductCreateSellerComponent,
     ProductUpdateSellerComponent,
+    ProductDetailSellerComponent,
+    HomeEmployeeComponent,
+    HeaderEmployeeComponent,
+    ProductCreateEmployeeComponent,
+    ProductUpdateEmployeeComponent,
+    ProductListEmployeeComponent,
+    ProductDetailEmployeeComponent,
     ProfileBuyerEditComponent,
 
   ],

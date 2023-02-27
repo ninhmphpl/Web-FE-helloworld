@@ -20,6 +20,7 @@ export class CartComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.userService.getCard((data : any)=>{this.cart = data})
+    this.userService.getBuyer()
     this.getNotification()
   }
 

@@ -1,0 +1,11 @@
+<app-header-employee></app-header-employee>
+<div class="row py-5">
+  <div class="col-3">
+    <button class="col-12 btn-main" (click)="getList()" [ngClass]="{'active': action == 'list'}">Danh sách sản phẩm</button>
+    <button class="col-12 btn-main" (click)="getCreate()" [ngClass]="{'active': action == 'create'}">Thêm sản phẩm</button>
+  </div>
+  <div class="col-9 px-5">
+    <app-product-list-employee *ngIf="action == 'list'"></app-product-list-employee>
+    <app-product-create-employee *ngIf="action == 'create'"></app-product-create-employee>
+  </div>
+</div>
