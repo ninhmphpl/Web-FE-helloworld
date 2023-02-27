@@ -138,7 +138,7 @@ export class APIAny {
     } else {
       if(error.status == 400){
         this.apiError = error
-     swal("Chức năng cần phải đăng nhập", "error")
+     swal("Chức năng cần phải đăng nhập","" , "error")
       }
 
       console.error(
