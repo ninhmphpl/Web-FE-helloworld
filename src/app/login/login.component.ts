@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit{
     this.loginMessage = null;
     let url = environtment.url + '/login'
     this.api.postMapping(url, this.user, (data : any)=>{
-      alert("dang ky thanh cong");
       localStorage.setItem('user_web', JSON.stringify(data))
       this.goPage()
     })
