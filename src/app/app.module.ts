@@ -49,6 +49,7 @@ import { HeaderSellerComponent } from './header-seller/header-seller.component';
 import { ProductListSellerComponent } from './product-list-seller/product-list-seller.component';
 import { ProductCreateSellerComponent } from './product-create-seller/product-create-seller.component';
 import { ProductUpdateSellerComponent } from './product-update-seller/product-update-seller.component';
+import { ProfileBuyerEditComponent } from './profile-buyer-edit/profile-buyer-edit.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { ProductUpdateSellerComponent } from './product-update-seller/product-up
     ProductListSellerComponent,
     ProductCreateSellerComponent,
     ProductUpdateSellerComponent,
+    ProfileBuyerEditComponent,
 
   ],
   imports: [

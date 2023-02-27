@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environtment } from 'src/environments/environtment';
 import { APIAny } from './api-any.service';
+import { Employee } from '../model/employee';
+import { Buyer } from '../model/buyer';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class BuyerService {
   cart: any[] = []
   urlCart = environtment.url + "/buyer/cart"
   urlBuyer = environtment.url + '/buyer/info'
+  urlBuyerProfile = environtment.url + '/buyer/profile/'
   urlCartDelete = environtment + 'cart/delete/'
 
   constructor(
@@ -49,7 +52,12 @@ export class BuyerService {
       this.buyer = data
     })
   }
+getBuyerId(id : number){
+  this.api.getMapping(this.urlBuyerProfile +id , (data : any)=>{
+    this.buyer = data
+  })
 
+}
   choiceProduct(){
     setTimeout(()=>{
       this.listBuy = []
@@ -63,4 +71,12 @@ export class BuyerService {
     },100)
   }
   checkAlls = false
+
+  updateEmployee(buyer: Buyer, action : any){
+    let url = environtment.url
+    this.api.putMapping(url+'/buyer/update', buyer, (data : any) => {
+      action()
+    })
+
+  }
 }
