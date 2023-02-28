@@ -3,6 +3,8 @@
   <div class="col-3">
     <button class="col-12 btn-main" (click)="getList()" [ngClass]="{'active': action == 'list'}">Danh sách sản phẩm</button>
     <button class="col-12 btn-main" (click)="getCreate()" [ngClass]="{'active': action == 'create'}">Thêm sản phẩm</button>
+    <a href="/login"><button class="col-12 btn-main">Đăng xuất</button></a>
+
   </div>
   <div class="col-9 px-5">
     <app-product-list-employee *ngIf="action == 'list'"></app-product-list-employee>
